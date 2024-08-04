@@ -2,8 +2,11 @@
 import { defineEmits } from 'vue'
 import { Icon, Avatar, Tooltip } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
+import useLangStore from '@/stores/LangStore'
 
 const emits = defineEmits(['onClick'])
+
+const t = useLangStore()
 
 const handleClick = () => emits('onClick', 'notification')
 </script>
@@ -15,6 +18,6 @@ const handleClick = () => emits('onClick', 'notification')
         <Icon :iconName="iconName.BELL" />
       </Avatar>
     </template>
-    <template #content>Notification</template>
+    <template #content>{{ t.lang.common.header.features.notification }}</template>
   </Tooltip>
 </template>

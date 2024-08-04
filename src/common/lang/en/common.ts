@@ -1,4 +1,23 @@
 const common_en = {
+  routes: {
+    home: 'Home',
+    friend: 'Friend'
+  },
+  header: {
+    searchInput: {
+      recent: 'Recent',
+      placeholder: 'Search Circle Up'
+    },
+    features: {
+      notification: 'Notification',
+      profile: {
+        title: 'Profile',
+        setting: 'Setting',
+        display: 'Display',
+        logout: 'Logout',
+      }
+    }
+  },
   form: {
     label: {
       account: 'Account',

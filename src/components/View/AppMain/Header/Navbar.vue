@@ -4,14 +4,17 @@ import { Grid, Icon, Space, Tooltip } from '@/components/UI'
 import { RouterLink, useRouter } from 'vue-router'
 import { iconName } from '@/components/UI/Icon/constant'
 import type { NavbarMenuItems } from './type'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
 const { currentRoute } = useRouter()
 
+const t = useLangStore()
+
 const menus = computed<NavbarMenuItems>(() => [
-  { id: 'home', name: 'Home', path: '/', iconName: iconName.HOUSE },
-  { id: 'friend', name: 'Friend', path: '/user', iconName: iconName.USER }
+  { id: 'home', name: t.lang.common.routes.home, path: '/', iconName: iconName.HOUSE },
+  { id: 'friend', name: t.lang.common.routes.friend, path: '/user', iconName: iconName.USER }
 ])
 </script>
 

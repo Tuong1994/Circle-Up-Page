@@ -1,4 +1,23 @@
 const common_vn = {
+  routes: {
+    home: 'Trang chủ',
+    friend: 'Bạn bè'
+  },
+  header: {
+    searchInput: {
+      recent: 'Gần đây',
+      placeholder: 'Tìm kiếm Circle Up'
+    },
+    features: {
+      notification: 'Thông báo',
+      profile: {
+        title: 'Tài khoản',
+        setting: 'Cài đặt',
+        display: 'Hiển thị',
+        logout: 'Đăng xuất'
+      }
+    }
+  },
   form: {
     label: {
       account: 'Tài khoản',

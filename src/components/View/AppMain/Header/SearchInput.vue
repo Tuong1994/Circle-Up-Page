@@ -8,6 +8,7 @@ import Logo from '../../Logo/Logo.vue'
 import Item from './Item.vue'
 import useClickOutSide from '@/hooks/useClickOutside'
 import useHeaderStore from '../HeaderStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
@@ -18,6 +19,8 @@ const { isPhone } = useViewPoint()
 const inputRef = ref<HTMLDivElement>()
 
 const open = ref<boolean>(false)
+
+const t = useLangStore()
 
 const header = useHeaderStore()
 
@@ -57,7 +60,13 @@ watch(open, (newValue) => {
         <div v-if="open" class="control-back">
           <Icon :size="18" :iconName="iconName.ANGLE_DOUBLE_LEFT" @click="handleClose" />
         </div>
-        <Input shape="round" color="orange" rootClassName="control-box" @click="handleOpen">
+        <Input
+          shape="round"
+          color="orange"
+          rootClassName="control-box"
+          :placeholder="t.lang.common.header.searchInput.placeholder"
+          @click="handleOpen"
+        >
           <template #addonBefore>
             <Icon v-if="!open" :iconName="iconName.SEARCH" />
           </template>
@@ -66,10 +75,10 @@ watch(open, (newValue) => {
       <div v-if="render" :class="['control-dropdown', dropdownClassName]">
         <Row justify="between" aligns="middle">
           <Col>
-            <Paragraph>Recent</Paragraph>
+            <Paragraph>{{ t.lang.common.header.searchInput.recent }}</Paragraph>
           </Col>
           <Col>
-            <Button text>Edit</Button>
+            <Button text>{{ t.lang.common.actions.edit }}</Button>
           </Col>
         </Row>
         <Item v-for="item in 10">

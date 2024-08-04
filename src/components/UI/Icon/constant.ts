@@ -36,5 +36,8 @@ export const iconName = {
   BELL: 'bell',
   HOUSE: 'house',
   SEARCH: 'search',
-  ELLIPSIS_H: 'ellipsis-h'
+  ELLIPSIS_H: 'ellipsis-h',
+  GEAR: 'gear',
+  LIGHTBULB: 'lightbulb',
+  SIGN_OUT: 'sign-out'
 }

@@ -35,7 +35,10 @@ import {
   faBell,
   faHouse,
   faSearch,
-  faEllipsisH
+  faEllipsisH,
+  faGear,
+  faLightbulb,
+  faSignOut,
 } from '@fortawesome/free-solid-svg-icons'
 
 import App from './App.vue'
@@ -77,6 +80,9 @@ library.add(
   faHouse,
   faSearch,
   faEllipsisH,
+  faGear,
+  faLightbulb,
+  faSignOut,
 )
 
 const app = createApp(App)

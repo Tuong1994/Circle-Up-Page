@@ -3,10 +3,13 @@ import { ref } from 'vue'
 import { Grid, Space, Icon, Avatar, Typography, Dropdown, Divider } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import Item from '../Item.vue'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
+
+const t = useLangStore()
 
 const iconSize = 18
 
@@ -34,7 +37,7 @@ const handleSelect = (selected: boolean, id: string) => {
 <template>
   <Row justify="between" aligns="middle">
     <Col>
-      <Paragraph :weight="600" :size="18">Notification</Paragraph>
+      <Paragraph :weight="600" :size="18">{{ t.lang.common.header.features.notification }}</Paragraph>
     </Col>
     <Col>
       <Dropdown>
@@ -45,14 +48,14 @@ const handleSelect = (selected: boolean, id: string) => {
     </Col>
   </Row>
   <Divider />
-  <Item v-for="item in items" @onSelect="(selected) => handleSelect(selected, item.id)">
+  <Item v-for="item in items" :key="item.id" @onSelect="(selected) => handleSelect(selected, item.id)">
     <Row justify="between" aligns="middle">
       <Col>
         <Space aligns="middle">
           <Avatar :size="40" />
           <div>
-            <Paragraph :size="12">Notification</Paragraph>
-            <Paragraph :size="12">1h</Paragraph>
+            <Paragraph>Notification</Paragraph>
+            <Paragraph :size="11" :weight="600" variant="warning">1h</Paragraph>
           </div>
         </Space>
       </Col>
