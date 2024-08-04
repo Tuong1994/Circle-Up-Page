@@ -1,0 +1,146 @@
+.header {
+  .header-icon {
+    cursor: pointer;
+  }
+  .search-input {
+    width: $w-10 * 3.2;
+    position: relative;
+    .input-logo {
+      opacity: 1;
+      transition: all $transition-time-sm $transition-fn;
+    }
+    .input-control {
+      width: calc($w-full - 100px);
+      position: absolute;
+      right: 0;
+      z-index: 10;
+      transition: all $transition-time-sm $transition-fn;
+      .control-back {
+        width: $w-1;
+        cursor: pointer;
+      }
+      .control-box {
+        width: $w-full;
+      }
+      .control-dropdown {
+        min-width: max-content;
+        min-height: max-content;
+        max-height: $h-10 * 4;
+        width: $w-full;
+        padding: $p-1;
+        background: $bg-white;
+        border-radius: $rounded;
+        box-shadow: 0 0 5px $bg-black-rgba-xs;
+        overflow-y: auto;
+        position: absolute;
+        top: 80%;
+        left: 0;
+        opacity: 0;
+        z-index: 5;
+        transition: all $transition-time-sm $transition-fn;
+        @include respond(mdPhone) {
+          width: $w-10 * 3.5;
+        }
+      }
+      .control-dropdown-active {
+        opacity: 1;
+        top: calc(100% + 5px);
+        animation: open $transition-time-sm $transition-fn;
+      }
+      @include respond(mdPhone) {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    .input-control-active {
+      width: $w-full;
+      .control-box {
+        width: calc($w-full - $w-4);
+      }
+    }
+    .input-control-responsive {
+      @include respond(mdPhone) {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    .input-logo-render {
+      opacity: 0;
+      animation: fading $transition-time-sm $transition-fn;
+    }
+  }
+  .navbar-item {
+    width: $w-full;
+    .item-title {
+      padding: $p-1;
+      border-radius: $rounded-xxl;
+      transition: all $transition-time-sm $transition-fn;
+      &:hover {
+        background: $bg-slate;
+      }
+    }
+  }
+  .navbar-item-active {
+    .item-title {
+      background: $bg-orange;
+      path {
+        color: $text-white;
+      }
+    }
+  }
+  .features {
+    width: $w-10 * 4;
+    min-height: max-content;
+    max-height: $h-10 * 4;
+    padding: $p-1;
+    background: $bg-white;
+    border-radius: $rounded;
+    box-shadow: 0 0 5px $bg-black-rgba-xs;
+    position: absolute;
+    overflow-y: auto;
+    top: 100%;
+    right: 1rem;
+    opacity: 0;
+    z-index: 2;
+    transition: all $transition-time-xs $transition-fn;
+    @include respond(mdPhone) {
+      width: $w-full;
+      right: 0;
+    }
+  }
+  .features-active {
+    opacity: 1;
+    top: calc(100% + 5px);
+    animation: dropdown $transition-time-xs $transition-fn;
+  }
+}
+
+.item {
+  cursor: pointer;
+  padding: $p-1;
+  border-radius: $rounded-xxl;
+  transition: all $transition-time-sm $transition-fn;
+  &:hover {
+    background: $bg-slate;
+  }
+}
+
+@keyframes fading {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes open {
+  from {
+    top: 80%;
+    opacity: 0;
+  }
+  to {
+    top: calc(100% + 5px);
+    opacity: 1;
+  }
+}
