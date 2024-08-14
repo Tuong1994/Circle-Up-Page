@@ -1,7 +1,9 @@
 const common_vn = {
   routes: {
     home: 'Trang chủ',
-    friend: 'Bạn bè'
+    friend: 'Bạn bè',
+    saved: "Đã lưu",
+    events: 'Sự kiện',
   },
   header: {
     searchInput: {

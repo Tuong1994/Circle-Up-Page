@@ -1,7 +1,9 @@
 const common_en = {
   routes: {
     home: 'Home',
-    friend: 'Friend'
+    friend: 'Friend',
+    saved: "Saved",
+    events: 'Events',
   },
   header: {
     searchInput: {

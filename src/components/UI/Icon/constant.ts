@@ -39,5 +39,10 @@ export const iconName = {
   ELLIPSIS_H: 'ellipsis-h',
   GEAR: 'gear',
   LIGHTBULB: 'lightbulb',
-  SIGN_OUT: 'sign-out'
+  SIGN_OUT: 'sign-out',
+  USER_GROUP: 'user-group',
+  BOOKMARK: 'bookmark',
+  THUMBS_UP: 'thumbs-up',
+  MESSAGE: 'message',
+  SHARE: 'share'
 }

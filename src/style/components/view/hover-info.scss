@@ -1,0 +1,30 @@
+.hover-info {
+  position: relative;
+  .hover-info-content {
+    min-width: max-content;
+    width: $w-10 * 3;
+    padding: $p-1;
+    background: $bg-white;
+    border-radius: $rounded;
+    box-shadow: 0 0 10px $bg-gray;
+    position: absolute;
+    top: 100%;
+    z-index: 3;
+    opacity: 0;
+    transition: all $transition-time-sm $transition-fn;
+  }
+  .hover-info-content-left {
+    left: 0;
+  }
+  .hover-info-content-right {
+    right: 0;
+  }
+  .hover-info-content-active {
+    opacity: 1;
+    animation: fade $transition-time-sm $transition-fn;
+  }
+  .hover-info-content-bottom {
+    top: unset;
+    bottom: 100%;
+  }
+}

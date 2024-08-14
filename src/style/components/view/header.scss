@@ -115,16 +115,6 @@
   }
 }
 
-.item {
-  cursor: pointer;
-  padding: $p-1;
-  border-radius: $rounded-xxl;
-  transition: all $transition-time-sm $transition-fn;
-  &:hover {
-    background: $bg-slate;
-  }
-}
-
 @keyframes fading {
   from {
     opacity: 1;

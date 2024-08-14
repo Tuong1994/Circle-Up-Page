@@ -34,6 +34,16 @@
   }
 }
 
+.dropdown-bottom {
+  .dropdown-list {
+    top: unset;
+    bottom: 100%;
+  }
+  .dropdown-list-active {
+    animation: slideUp $transition-time-xs $transition-fn;
+  }
+}
+
 // Placement
 .dropdown-left {
   .dropdown-list {
@@ -68,6 +78,17 @@
   }
   to {
     top: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    bottom: calc(100% - 5px);
+    opacity: 0;
+  }
+  to {
+    bottom: 100%;
     opacity: 1;
   }
 }

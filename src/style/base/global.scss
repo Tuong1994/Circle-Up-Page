@@ -1,8 +1,17 @@
+.side {
+  .side-content {
+    overflow-y: hidden !important;
+  }
+  &:hover .side-content {
+    overflow-y: auto !important;
+  }
+}
+
 .side.side-light {
-  width: $w-10 * 3.2;
+  width: $w-10 * 3.3;
   border-right: unset;
 }
 
 .content.content-resize {
-  padding-left: $w-10 * 3.2;
+  padding-left: $w-10 * 3.3;
 }

@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { Grid, Space, Icon, Avatar, Typography, Dropdown, Divider } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
-import Item from '../Item.vue'
+import ItemWrapper from '../../ItemWrapper/ItemWrapper.vue'
 import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
@@ -48,7 +48,7 @@ const handleSelect = (selected: boolean, id: string) => {
     </Col>
   </Row>
   <Divider />
-  <Item v-for="item in items" :key="item.id" @onSelect="(selected) => handleSelect(selected, item.id)">
+  <ItemWrapper v-for="item in items" :key="item.id" @onSelect="(selected) => handleSelect(selected, item.id)">
     <Row justify="between" aligns="middle">
       <Col>
         <Space aligns="middle">
@@ -68,5 +68,5 @@ const handleSelect = (selected: boolean, id: string) => {
         </Dropdown>
       </Col>
     </Row>
-  </Item>
+  </ItemWrapper>
 </template>

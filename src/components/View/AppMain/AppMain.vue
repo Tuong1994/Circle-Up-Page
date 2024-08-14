@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+import { routePaths } from '@/router'
 import { Layout } from '@/components/UI'
-import Header from './Header/Header.vue'
-import useHeaderStore from './HeaderStore'
+import Header from '../Header/Header.vue'
+import HomeMenu from './HomeMenu.vue'
 
-const { Container, Head, Body, Side, Menu, Content } = Layout
+const { Container, Head, Body, Side, Content } = Layout
 
-const menu = useHeaderStore()
+const { currentRoute } = useRouter()
 </script>
 
 <template>
@@ -15,7 +17,9 @@ const menu = useHeaderStore()
     </Head>
     <Body>
       <Side :hasCollapseButton="false">
-        <Menu type="vertical" :items="menu.items" />
+        <div class="side-menu">
+          <HomeMenu v-if="currentRoute.fullPath === routePaths.HOME" />
+        </div>
       </Side>
       <Content>
         <slot></slot>

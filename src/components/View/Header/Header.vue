@@ -8,7 +8,7 @@ import SearchInput from './SearchInput.vue'
 import Notification from './Features/NotificationIcon.vue'
 import Profile from './Features/ProfileIcon.vue'
 import Features from './Features/Features.vue'
-import useHeaderStore from '../HeaderStore'
+import useHeaderStore from './HeaderStore'
 
 const { Row, Col } = Grid
 
@@ -35,7 +35,7 @@ const handleOpenFeatures = (featureType: FeatureType) => {
     <Col :xs="3" :span="6">
       <SearchInput />
     </Col>
-    <Col :xs="0" :span="8">
+    <Col :xs="0" :span="10">
       <Navbar />
     </Col>
     <Col :span="6">

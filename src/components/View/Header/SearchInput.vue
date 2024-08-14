@@ -4,10 +4,10 @@ import { Avatar, Icon, Space, Button, Grid, Typography } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { useRender, useViewPoint } from '@/hooks'
-import Logo from '../../Logo/Logo.vue'
-import Item from './Item.vue'
+import Logo from '../Logo/Logo.vue'
+import ItemWrapper from './../ItemWrapper/ItemWrapper.vue'
 import useClickOutSide from '@/hooks/useClickOutside'
-import useHeaderStore from '../HeaderStore'
+import useHeaderStore from './HeaderStore'
 import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
@@ -81,7 +81,7 @@ watch(open, (newValue) => {
             <Button text>{{ t.lang.common.actions.edit }}</Button>
           </Col>
         </Row>
-        <Item v-for="item in 10">
+        <ItemWrapper v-for="item in 10">
           <Row justify="between" aligns="middle">
             <Col>
               <Space>
@@ -93,7 +93,7 @@ watch(open, (newValue) => {
               <Icon :iconName="iconName.X_MARK" />
             </Col>
           </Row>
-        </Item>
+        </ItemWrapper>
       </div>
     </div>
   </Space>

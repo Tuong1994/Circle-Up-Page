@@ -17,7 +17,7 @@ const handleMouseLeave = () => emits('onSelect', false)
 </script>
 
 <template>
-  <div :class="['item', rootClassName]" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+  <div :class="['item-wrapper', rootClassName]" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
     <slot></slot>
   </div>
 </template>

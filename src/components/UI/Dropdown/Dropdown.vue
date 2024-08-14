@@ -2,7 +2,7 @@
 import { ref, computed, withDefaults, defineEmits, type StyleValue, useSlots, watch, toRefs } from 'vue'
 import type { ComponentPlacement } from '@/common/type.ts'
 import type { DropdownItems } from './type.ts'
-import { useRender, useClickOutside } from '@/hooks'
+import { useRender, useClickOutside, useDetectBottom } from '@/hooks'
 import useLayoutStore from '../Layout/LayoutStore'
 
 type TriggerType = 'hover' | 'click'
@@ -40,6 +40,8 @@ useClickOutside(dropdownRef, dropdown)
 
 const render = useRender(dropdown)
 
+const bottom = useDetectBottom(dropdownRef)
+
 const layout = useLayoutStore()
 
 const slots = useSlots()
@@ -47,6 +49,8 @@ const slots = useSlots()
 const hasDropdownSlot = computed<boolean>(() => slots.dropdown !== undefined)
 
 const placementClassName = computed<string>(() => `dropdown-${props.placement}`)
+
+const bottomClassName = computed<string>(() => (bottom.value ? 'dropdown-bottom' : ''))
 
 const activeClassName = computed<string>(() => (dropdown.value ? 'dropdown-list-active' : ''))
 
@@ -66,7 +70,7 @@ watch(open, (newValue) => {
   <div
     ref="dropdownRef"
     :style="rootStyle"
-    :class="['dropdown', placementClassName, themeClassName, rootClassName]"
+    :class="['dropdown', placementClassName, themeClassName, bottomClassName, rootClassName]"
     @click="trigger === 'click' && handleDropdown()"
     @mouseenter="trigger === 'hover' && handleDropdown()"
     @mouseleave="trigger === 'hover' && handleDropdown()"
