@@ -22,7 +22,7 @@ const menus = computed<NavbarMenuItems>(() => [
 <template>
   <nav>
     <Row>
-      <Col v-for="menu in menus" :key="menu.id" :span="12">
+      <Col v-for="menu in menus" :key="menu.id" :lg="12" :span="12">
         <RouterLink :to="menu.path">
           <Tooltip
             :rootClassName="`navbar-item ${menu.path === currentRoute.fullPath ? 'navbar-item-active' : ''}`"

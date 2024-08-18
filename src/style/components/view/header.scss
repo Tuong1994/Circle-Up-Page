@@ -39,7 +39,7 @@
         z-index: 5;
         transition: all $transition-time-sm $transition-fn;
         @include respond(mdPhone) {
-          width: $w-10 * 3.5;
+          left: -1rem;
         }
       }
       .control-dropdown-active {
@@ -56,6 +56,9 @@
       width: $w-full;
       .control-box {
         width: calc($w-full - $w-4);
+        @include respond(mdPhone) {
+          width: calc($w-full - $w-6);
+        }
       }
     }
     .input-control-responsive {
@@ -98,7 +101,7 @@
     box-shadow: 0 0 5px $bg-black-rgba-xs;
     position: absolute;
     overflow-y: auto;
-    top: 100%;
+    top: 95%;
     right: 1rem;
     opacity: 0;
     z-index: 2;
@@ -110,8 +113,8 @@
   }
   .features-active {
     opacity: 1;
-    top: calc(100% + 5px);
-    animation: dropdown $transition-time-xs $transition-fn;
+    top: 100%;
+    animation: features $transition-time-xs $transition-fn;
   }
 }
 
@@ -121,6 +124,17 @@
   }
   to {
     opacity: 0;
+  }
+}
+
+@keyframes features {
+  from {
+    opacity: 0;
+    top: 95%;
+  }
+  to {
+    opacity: 1;
+    top: 100%;
   }
 }
 

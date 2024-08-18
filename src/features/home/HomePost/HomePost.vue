@@ -4,7 +4,6 @@ import PostHead from './PostHead.vue'
 import PostBody from './PostBody.vue'
 import PostSummary from './PostSummary.vue'
 import PostActions from './PostActions.vue'
-import HoverInfo from '@/components/View/HoverInfo/HoverInfo.vue'
 </script>
 
 <template>

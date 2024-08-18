@@ -25,7 +25,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <main :style="rootStyle" :class="['container', rootClassName]">
+  <main :style="rootStyle" :class="rootClassName">
     <slot></slot>
   </main>
 </template>

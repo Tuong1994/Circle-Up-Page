@@ -7,11 +7,26 @@
   }
 }
 
-.side.side-light {
+.side.side-layout {
   width: $w-10 * 3.3;
   border-right: unset;
+  @include respond(laptop) {
+    width: $w-10 * 2.5;
+  }
+}
+
+.content.content-layout {
+  @include respond(mdTablet) {
+    padding-top: $p-5 + 1;
+  }
 }
 
 .content.content-resize {
   padding-left: $w-10 * 3.3;
+  @include respond(laptop) {
+    padding-left: $w-10 * 2.5;
+  }
+  @include respond(mdTablet) {
+    padding-left: 0;
+  }
 }

@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { computed, ref, withDefaults, defineProps, type StyleValue } from 'vue'
-import { useDetectBottom, useRender } from '@/hooks'
-import { Grid, Typography, UList, Space, Button, Icon, Avatar, Divider, Dropdown } from '@/components/UI'
+import { useDetectBottom, useRender, useViewPoint } from '@/hooks'
+import { Grid, UList, Space, Button, Icon, Avatar, Divider, Dropdown } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 
 const { Row, Col } = Grid
-
-const { Paragraph } = Typography
 
 const { List, ListItem } = UList
 
@@ -26,6 +24,8 @@ const props = withDefaults(defineProps<HoverInfoProps>(), {
   placement: 'left'
 })
 
+const { isPhone, isTablet } = useViewPoint()
+
 const show = ref<boolean>(false)
 
 const elRef = ref<HTMLDivElement>()
@@ -33,6 +33,8 @@ const elRef = ref<HTMLDivElement>()
 const render = useRender(show)
 
 const bottom = useDetectBottom(elRef)
+
+const hasContent = computed<boolean>(() => !Boolean(isPhone.value || isTablet.value) && render.value)
 
 const activeClassName = computed<string>(() => (show.value ? 'hover-info-content-active' : ''))
 
@@ -55,7 +57,7 @@ const handleMouseLeave = () => (show.value = false)
   >
     <slot name="label"></slot>
     <div
-      v-if="render"
+      v-if="hasContent"
       :style="contentStyle"
       :class="['hover-info-content', placementClassName, bottomClassName, activeClassName, contentClassName]"
     >

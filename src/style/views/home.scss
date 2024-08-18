@@ -1,8 +1,18 @@
 .home {
   width: $w-10 * 7;
+  padding: $p-1;
   .home-wrap {
     width: $w-10 * 5;
     margin: 0 auto;
+    @include respond(laptop) {
+      width: $w-full;
+    }
+    @include respond(lgTablet) {
+      width: $w-10 * 5;
+    }
+    @include respond(mdPhone) {
+      width: $w-full;
+    }
   }
   .home-actions {
     margin: $m-1 0;
@@ -31,6 +41,7 @@
     width: $w-10 * 3.3;
     height: $h-screen;
     margin-top: $m-5 + 1;
+    background: $bg-white;
     padding: $p-1;
     position: fixed;
     top: 0;
@@ -64,5 +75,20 @@
         overflow-y: auto;
       }
     }
+    @include respond(laptop) {
+      width: $w-10 * 2.5;
+    }
+  }
+  @include respond(laptop) {
+    width: calc($w-full - $w-10 * 2.5);
+  }
+  @include respond(lgTablet) {
+    width: $w-full;
+  }
+  @include respond(mdTablet) {
+    width: $w-full;
+  }
+  @include respond(mdPhone) {
+    width: $w-full;
   }
 }

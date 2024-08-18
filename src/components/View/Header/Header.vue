@@ -35,7 +35,7 @@ const handleOpenFeatures = (featureType: FeatureType) => {
     <Col :xs="3" :span="6">
       <SearchInput />
     </Col>
-    <Col :xs="0" :span="10">
+    <Col :xs="0" :md="0" :lg="8" :span="10">
       <Navbar />
     </Col>
     <Col :span="6">
