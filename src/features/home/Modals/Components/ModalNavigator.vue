@@ -12,9 +12,11 @@ type ModalHeadType = 'main' | 'sub'
 interface PostModalHeadProps {
   title?: string
   type?: ModalHeadType
+  rootClassName?: string
 }
 
 withDefaults(defineProps<PostModalHeadProps>(), {
+  rootClassName: '',
   type: 'main'
 })
 
@@ -26,7 +28,7 @@ const handleClose = () => emits('onClose')
 </script>
 
 <template>
-  <Row justify="between" aligns="middle" rootClassName="post-modal-head">
+  <Row justify="between" aligns="middle" :rootClassName="`post-modal-head ${rootClassName}`">
     <Col :span="2">
       <Button v-if="type === 'sub'" shape="round" @click="handleBack">
         <Icon :iconName="iconName.ANGLE_LEFT" :size="16" />

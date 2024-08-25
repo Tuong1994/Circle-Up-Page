@@ -2,7 +2,7 @@
 import { computed, withDefaults, defineProps } from 'vue'
 
 interface SliderProps {
-  rootClassName: ''
+  rootClassName?: ''
   slided?: boolean
 }
 

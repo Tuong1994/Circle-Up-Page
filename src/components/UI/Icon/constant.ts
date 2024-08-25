@@ -48,5 +48,7 @@ export const iconName = {
   IMAGE: 'image',
   TAG: 'tag',
   LAUGH: 'laugh',
-  MAP_MARKER_ALT: 'map-marker-alt'
+  MAP_MARKER_ALT: 'map-marker-alt',
+  GLOBE: 'globe',
+  LOCK: 'lock'
 }

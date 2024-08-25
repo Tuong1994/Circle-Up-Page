@@ -97,6 +97,7 @@
 .post-modal {
   width: $w-10 * 5;
   .modal-body {
+    max-height: $h-screen;
     padding: 0;
     overflow: unset;
   }
@@ -120,10 +121,18 @@
 }
 
 .post-modal-body {
+  max-height: calc($h-screen - 150px);
   padding: $p-1 $p-2;
-  .body-content {
-    max-height: calc($h-screen - 350px);
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
+  overflow-y: auto;
+}
+
+.post-modal-foot {
+  padding: $p-1 $p-2;
+}
+
+// Create Post
+.create-post-content {
+  max-height: calc($h-screen - 300px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }

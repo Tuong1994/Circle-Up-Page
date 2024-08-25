@@ -2,10 +2,10 @@
 import { computed, ref } from 'vue'
 import { useViewPoint } from '@/hooks'
 import { screen } from '@/hooks/useViewPoint'
-import HomeActions from '@/features/home/components/HomeActions.vue'
-import HomePost from '@/features/home/components/HomePost/HomePost.vue'
-import HomeSide from '@/features/home/components/HomeSide/HomeSide.vue'
-import PostModal from '@/features/home/components/PostModal/PostModal.vue'
+import HomeActions from '@/features/home/HomeActions.vue'
+import HomePost from '@/features/home/HomePost/HomePost.vue'
+import HomeSide from '@/features/home/HomeSide/HomeSide.vue'
+import PostModal from '@/features/home/Modals/PostModal/PostModal.vue'
 
 const { isPhone, screenWidth } = useViewPoint()
 
