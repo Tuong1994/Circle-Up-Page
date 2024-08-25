@@ -1,0 +1,11 @@
+.slider {
+  display: flex;
+  transition: all $transition-time-xs $transition-fn;
+  .slider-group {
+    min-width: $w-full;
+  }
+}
+
+.slider-slided {
+  transform: translateX(-100%);
+}

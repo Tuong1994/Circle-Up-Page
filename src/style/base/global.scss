@@ -1,4 +1,9 @@
+.head.head-fixed {
+  z-index: 2;
+}
+
 .side {
+  z-index: 1 !important;
   .side-content {
     overflow-y: hidden !important;
   }

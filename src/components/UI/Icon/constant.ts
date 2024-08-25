@@ -44,5 +44,9 @@ export const iconName = {
   BOOKMARK: 'bookmark',
   THUMBS_UP: 'thumbs-up',
   MESSAGE: 'message',
-  SHARE: 'share'
+  SHARE: 'share',
+  IMAGE: 'image',
+  TAG: 'tag',
+  LAUGH: 'laugh',
+  MAP_MARKER_ALT: 'map-marker-alt'
 }

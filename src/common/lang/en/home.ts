@@ -15,6 +15,11 @@ const home_en = {
       title: 'Contacts',
       placeholder: 'Search contacts'
     }
+  },
+  modal: {
+    post: {
+      title: 'Create post'
+    }
   }
 }
 

@@ -92,3 +92,38 @@
     width: $w-full;
   }
 }
+
+// Post modal
+.post-modal {
+  width: $w-10 * 5;
+  .modal-body {
+    padding: 0;
+    overflow: unset;
+  }
+  @include respond(mdTablet) {
+    width: $w-10 * 6;
+  }
+  @include respond(lgPhone) {
+    width: $w-10 * 5;
+  }
+  @include respond(mdPhone) {
+    width: $w-10 * 3.6;
+  }
+  @include respond(smPhone) {
+    width: $w-full;
+  }
+}
+
+.post-modal-head {
+  padding: $p-1 $p-2;
+  border-bottom: 1px solid $bg-gray;
+}
+
+.post-modal-body {
+  padding: $p-1 $p-2;
+  .body-content {
+    max-height: calc($h-screen - 350px);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}

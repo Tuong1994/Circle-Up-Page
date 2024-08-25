@@ -15,6 +15,11 @@ const home_vn = {
       title: 'Liên hệ',
       placeholder: 'Tìm kiếm liên hệ'
     }
+  },
+  modal: {
+    post: {
+      title: 'Tạo bài đăng'
+    }
   }
 }
 

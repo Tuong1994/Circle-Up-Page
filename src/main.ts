@@ -44,6 +44,10 @@ import {
   faThumbsUp,
   faMessage,
   faShare,
+  faImage,
+  faTag,
+  faLaugh,
+  faMapMarkerAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 import App from './App.vue'
@@ -93,6 +97,10 @@ library.add(
   faThumbsUp,
   faMessage,
   faShare,
+  faImage,
+  faTag,
+  faLaugh,
+  faMapMarkerAlt
 )
 
 const app = createApp(App)
