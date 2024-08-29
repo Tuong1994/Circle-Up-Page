@@ -3,7 +3,8 @@ import { defineEmits, defineProps, ref } from 'vue'
 import { Space, Avatar, Typography, Grid, Card, Tooltip, Button, Icon } from '@/components/UI'
 import { TextArea, Upload } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
-import type { ActionType } from './PostModal.vue'
+import { EActionType } from './enum'
+import { type ActionType } from './PostModal.vue'
 import type { ComponentColor } from '@/common/type'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
@@ -35,10 +36,10 @@ const emits = defineEmits(['onBack', 'onClose', 'onAction'])
 const isUpload = ref<boolean>(false)
 
 const actions: Action[] = [
-  { type: 'photo', name: 'Photo', icon: iconName.IMAGE, iconColor: 'green' },
-  { type: 'tag', name: 'Tag people', icon: iconName.TAG, iconColor: 'blue' },
-  { type: 'feeling', name: 'Feeling', icon: iconName.LAUGH, iconColor: 'yellow' },
-  { type: 'checkin', name: 'Check in', icon: iconName.MAP_MARKER_ALT, iconColor: 'pink' }
+  { type: EActionType.PHOTO, name: 'Photo', icon: iconName.IMAGE, iconColor: 'green' },
+  { type: EActionType.TAG, name: 'Tag people', icon: iconName.TAG, iconColor: 'blue' },
+  { type: EActionType.FEELING, name: 'Feeling', icon: iconName.LAUGH, iconColor: 'yellow' },
+  { type: EActionType.CHECK_IN, name: 'Check in', icon: iconName.MAP_MARKER_ALT, iconColor: 'pink' }
 ]
 
 const handleBack = () => emits('onBack')
@@ -46,7 +47,7 @@ const handleBack = () => emits('onBack')
 const handleClose = () => emits('onClose')
 
 const handleAction = (type: ActionType) => {
-  if (type === 'photo') return (isUpload.value = !isUpload.value)
+  if (type === EActionType.PHOTO) return (isUpload.value = !isUpload.value)
   emits('onAction', type)
 }
 </script>
@@ -58,7 +59,7 @@ const handleAction = (type: ActionType) => {
       <Avatar :size="45" />
       <div>
         <Paragraph>User name</Paragraph>
-        <Button sizes="sm" @click="() => handleAction('audience')">
+        <Button sizes="sm" @click="() => handleAction(EActionType.AUDIENCE)">
           <Space aligns="middle">
             <Icon :iconName="iconName.USER_GROUP" />
             <span>Friends</span>
