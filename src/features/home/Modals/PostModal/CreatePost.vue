@@ -4,12 +4,13 @@ import { Space, Avatar, Typography, Grid, Card, Tooltip, Button, Icon } from '@/
 import { TextArea, Upload } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EActionType } from './enum'
-import { type ActionType } from './PostModal.vue'
+import type { ActionType } from './PostModal.vue'
 import type { ComponentColor } from '@/common/type'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
@@ -36,13 +37,30 @@ const emits = defineEmits(['onBack', 'onClose', 'onAction'])
 
 const layout = useLayoutStore()
 
+const t = useLangStore()
+
 const isUpload = ref<boolean>(false)
 
 const actions: Action[] = [
-  { type: EActionType.PHOTO, name: 'Photo', icon: iconName.IMAGE, iconColor: 'green' },
-  { type: EActionType.TAG, name: 'Tag people', icon: iconName.TAG, iconColor: 'blue' },
-  { type: EActionType.FEELING, name: 'Feeling', icon: iconName.LAUGH, iconColor: 'yellow' },
-  { type: EActionType.CHECK_IN, name: 'Check in', icon: iconName.MAP_MARKER_ALT, iconColor: 'pink' }
+  {
+    type: EActionType.PHOTO,
+    name: t.lang.home.modal.createPost.photo,
+    icon: iconName.IMAGE,
+    iconColor: 'green'
+  },
+  { type: EActionType.TAG, name: t.lang.home.modal.createPost.tag, icon: iconName.TAG, iconColor: 'blue' },
+  {
+    type: EActionType.FEELING,
+    name: t.lang.home.modal.createPost.feeling,
+    icon: iconName.LAUGH,
+    iconColor: 'yellow'
+  },
+  {
+    type: EActionType.CHECK_IN,
+    name: t.lang.home.modal.createPost.checkin,
+    icon: iconName.MAP_MARKER_ALT,
+    iconColor: 'pink'
+  }
 ]
 
 const handleBack = () => emits('onBack')
@@ -65,20 +83,24 @@ const handleAction = (type: ActionType) => {
         <Button sizes="sm" @click="() => handleAction(EActionType.AUDIENCE)">
           <Space aligns="middle">
             <Icon :iconName="iconName.USER_GROUP" />
-            <span>Friends</span>
+            <span>{{ t.lang.home.modal.common.friends }}</span>
           </Space>
         </Button>
       </div>
     </Space>
     <div class="py-5 create-post-content">
-      <TextArea rootClassName="pb-5" :color="layout.color" placeholder="What's on your mind, User name?" />
+      <TextArea
+        rootClassName="pb-5"
+        :color="layout.color"
+        :placeholder="`${t.lang.home.modal.createPost.placeholder}, User name?`"
+      />
       <MultipleImageUpload v-if="isUpload" :color="layout.color" />
     </div>
     <Card>
       <template #body>
         <Row justify="between" aligns="middle">
           <Col>
-            <Paragraph>Add to your post</Paragraph>
+            <Paragraph>{{ t.lang.home.modal.createPost.actionTitle }}</Paragraph>
           </Col>
           <Col>
             <Space aligns="middle">
@@ -103,6 +125,8 @@ const handleAction = (type: ActionType) => {
     </Card>
   </ModalBody>
   <ModalFoot>
-    <Button :color="layout.color" sizes="lg" rootClassName="w-full">Post</Button>
+    <Button :color="layout.color" sizes="lg" rootClassName="w-full">
+      {{ t.lang.common.actions.post }}
+    </Button>
   </ModalFoot>
 </template>

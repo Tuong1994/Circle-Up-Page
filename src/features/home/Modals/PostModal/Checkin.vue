@@ -8,10 +8,13 @@ import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
 
 const emits = defineEmits(['onBack'])
+
+const t = useLangStore()
 
 const layout = useLayoutStore()
 
@@ -19,10 +22,10 @@ const handleBack = () => emits('onBack')
 </script>
 
 <template>
-  <ModalNavigator type="sub" title="Select for location" @onBack="handleBack" />
+  <ModalNavigator type="sub" :title="t.lang.home.modal.checkin.title" @onBack="handleBack" />
   <ModalBody>
     <div class="py-5">
-      <Input :color="layout.color" shape="round" placeholder="Where are you?">
+      <Input :color="layout.color" shape="round" :placeholder="`${t.lang.home.modal.checkin.placeholder}?`">
         <template #addonBefore>
           <Icon :iconName="iconName.SEARCH" />
         </template>

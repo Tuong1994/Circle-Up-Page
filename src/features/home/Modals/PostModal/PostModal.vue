@@ -7,7 +7,7 @@ import CreatePost from './CreatePost.vue'
 import PostAudience from './PostAudience.vue'
 import TagPeople from './TagPeople.vue'
 import Feeling from './Feeling.vue'
-import Checking from './Checking.vue'
+import Checkin from './Checkin.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 export type ActionType =
@@ -68,7 +68,7 @@ const handleBack = () => {
           <PostAudience v-if="actionType === EActionType.AUDIENCE" @onBack="handleBack" />
           <TagPeople v-if="actionType === EActionType.TAG" @onBack="handleBack" />
           <Feeling v-if="actionType === EActionType.FEELING" @onBack="handleBack" />
-          <Checking v-if="actionType === EActionType.CHECK_IN" @onBack="handleBack" />
+          <Checkin v-if="actionType === EActionType.CHECK_IN" @onBack="handleBack" />
         </template>
       </Slider>
     </template>

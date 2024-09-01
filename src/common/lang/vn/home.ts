@@ -17,8 +17,83 @@ const home_vn = {
     }
   },
   modal: {
-    post: {
-      title: 'Tạo bài đăng'
+    common: {
+      friends: 'Bạn bè',
+      public: 'Công khai',
+      private: 'Chỉ mình tôi'
+    },
+    createPost: {
+      title: 'Tạo bài viết',
+      actionTitle: 'Thêm vào bài viết của bạn',
+      photo: 'Ảnh',
+      tag: 'Gắn thẻ mọi người',
+      feeling: 'Cảm xúc',
+      checkin: 'Địa điểm',
+      placeholder: 'Bạn đang nghĩ gì?'
+    },
+    audience: {
+      title: 'Đối tượng bài viết',
+      subTitle: 'Ai có thể xem bài viết của bạn',
+      content_1:
+        'Bài viết của bạn sẽ xuất hiện trong Bảng tin, trên trang cá nhân và trong kết quả tìm kiếm.',
+      content_2:
+        'Đối tượng mặc định của bạn được đặt là Bạn bè, nhưng bạn có thể thay đổi đối tượng cho bài viết cụ thể này.',
+      desc_1: 'Bất kỳ ai trên hoặc ngoài Circle Up',
+      desc_2: 'Bạn bè của bạn trên Circle Up',
+      desc_3: 'Chỉ mình bạn có thể xem'
+    },
+    tag: {
+      title: 'Gắn thẻ mọi người',
+      selected: 'Đã chọn',
+      people: 'Mọi người'
+    },
+    feeling: {
+      title: 'Bạn cảm thấy thế nào',
+      happy: 'Vui vẻ',
+      sad: 'Buồn',
+      loved: 'Yêu thương',
+      angry: 'Tức giận',
+      confused: 'Bối rối',
+      content: 'Hài lòng',
+      tired: 'Mệt mỏi',
+      excited: 'Hứng thú',
+      blessed: 'Hạnh phúc',
+      furious: 'Giận dữ',
+      heartbroken: 'Tan vỡ',
+      sick: 'Ốm',
+      cool: 'Ngầu',
+      thoughtful: 'Suy nghĩ',
+      worried: 'Lo lắng',
+      silly: 'Ngớ ngẩn',
+      embarrassed: 'Xấu hổ',
+      depressed: 'Trầm cảm',
+      frustrated: 'Cảm thấy bực bội',
+      shocked: 'Bị sốc',
+      satisfied: 'Hài lòng',
+      lonely: 'Cô đơn',
+      nervous: 'Lo âu',
+      speechless: 'Không nói nên lời',
+      amused: 'Thích thú',
+      hungry: 'Đói',
+      craving: 'Thèm muốn',
+      grateful: 'Biết ơn',
+      thankful: 'Cảm ơn',
+      awkward: 'Ngượng ngùng',
+      adored: 'Yêu quý',
+      amazed: 'Kinh ngạc',
+      celebrating: 'Ăn mừng',
+      annoyed: 'Phiền phức',
+      stressed: 'Căng thẳng',
+      uncomfortable: 'Khó chịu',
+      mindBlown: 'Sốc',
+      disappointed: 'Thất vọng',
+      indifferent: 'Thờ ơ',
+      nerdy: 'Yêu thích học hỏi',
+      determined: 'Quyết tâm'
+    },
+    checkin: {
+      title: 'Chọn vị trí',
+      placeholder: 'Bạn ở đâu'
     }
   }
 }

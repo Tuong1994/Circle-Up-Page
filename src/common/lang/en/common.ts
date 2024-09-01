@@ -2,8 +2,8 @@ const common_en = {
   routes: {
     home: 'Home',
     friend: 'Friend',
-    saved: "Saved",
-    events: 'Events',
+    saved: 'Saved',
+    events: 'Events'
   },
   header: {
     searchInput: {
@@ -16,7 +16,7 @@ const common_en = {
         title: 'Profile',
         setting: 'Setting',
         display: 'Display',
-        logout: 'Logout',
+        logout: 'Logout'
       }
     }
   },
@@ -74,6 +74,8 @@ const common_en = {
   },
   actions: {
     ok: 'Ok',
+    done: 'Done',
+    post: 'Post',
     send: 'Send',
     save: 'Save',
     edit: 'Edit',

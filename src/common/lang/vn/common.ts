@@ -2,8 +2,8 @@ const common_vn = {
   routes: {
     home: 'Trang chủ',
     friend: 'Bạn bè',
-    saved: "Đã lưu",
-    events: 'Sự kiện',
+    saved: 'Đã lưu',
+    events: 'Sự kiện'
   },
   header: {
     searchInput: {
@@ -74,6 +74,8 @@ const common_vn = {
   },
   actions: {
     ok: 'Ok',
+    done: 'Xong',
+    post: 'Đăng bài',
     send: 'Gửi',
     save: 'Lưu',
     edit: 'Chỉnh sửa',
