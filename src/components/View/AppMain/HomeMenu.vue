@@ -2,10 +2,13 @@
 import { computed } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant'
 import { Space, Avatar, Icon, Typography } from '@/components/UI'
-import useLangStore from '@/stores/LangStore'
 import ItemWrapper from '../ItemWrapper/ItemWrapper.vue'
+import useLangStore from '@/stores/LangStore'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
+
+const layout = useLayoutStore()
 
 const t = useLangStore()
 
@@ -20,7 +23,7 @@ const items = computed(() => [
 <template>
   <ItemWrapper v-for="item in items" :key="item.id">
     <Space aligns="middle">
-      <Avatar :size="30" color="orange">
+      <Avatar :size="30" :color="layout.color">
         <Icon :iconName="item.icon" />
       </Avatar>
       <Paragraph>{{ item.name }}</Paragraph>

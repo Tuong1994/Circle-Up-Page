@@ -9,14 +9,19 @@ import Notification from './Features/NotificationIcon.vue'
 import Profile from './Features/ProfileIcon.vue'
 import Features from './Features/Features.vue'
 import useHeaderStore from './HeaderStore'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
+
+const layout = useLayoutStore()
 
 const header = useHeaderStore()
 
 const { screenWidth } = useViewPoint()
 
 const type = ref<FeatureType | undefined>(undefined)
+
+const colorClassName = computed<string>(() => `header-${layout.color}`)
 
 const isRenderFeatures = computed<boolean>(() => {
   if (screenWidth.value >= 320 && screenWidth.value < 480) return !header.openSearch
@@ -31,7 +36,7 @@ const handleOpenFeatures = (featureType: FeatureType) => {
 </script>
 
 <template>
-  <Row aligns="middle" justify="between" rootClassName="header">
+  <Row aligns="middle" justify="between" :rootClassName="`header ${colorClassName}`">
     <Col :xs="3" :span="6">
       <SearchInput />
     </Col>

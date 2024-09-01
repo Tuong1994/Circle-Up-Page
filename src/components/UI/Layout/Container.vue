@@ -12,7 +12,7 @@ export interface LayoutContainerProps {
 const props = withDefaults(defineProps<LayoutContainerProps>(), {
   rootClassName: '',
   theme: 'light',
-  color: 'blue'
+  color: 'orange'
 })
 
 const layout = useLayoutStore()

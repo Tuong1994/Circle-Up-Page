@@ -85,7 +85,6 @@
   }
   .navbar-item-active {
     .item-title {
-      background: $bg-orange;
       path {
         color: $text-white;
       }
@@ -115,6 +114,62 @@
     opacity: 1;
     top: 100%;
     animation: features $transition-time-xs $transition-fn;
+  }
+}
+
+.header-blue {
+  .navbar-item-active {
+    .item-title {
+      background: $bg-blue;
+    }
+  }
+}
+
+.header-green {
+  .navbar-item-active {
+    .item-title {
+      background: $bg-green;
+    }
+  }
+}
+
+.header-red {
+  .navbar-item-active {
+    .item-title {
+      background: $bg-red;
+    }
+  }
+}
+
+.header-orange {
+  .navbar-item-active {
+    .item-title {
+      background: $bg-orange;
+    }
+  }
+}
+
+.header-yellow {
+  .navbar-item-active {
+    .item-title {
+      background: $bg-yellow;
+    }
+  }
+}
+
+.header-purple {
+  .navbar-item-active {
+    .item-title {
+      background: $bg-purple;
+    }
+  }
+}
+
+.header-pink {
+  .navbar-item-active {
+    .item-title {
+      background: $bg-pink;
+    }
   }
 }
 

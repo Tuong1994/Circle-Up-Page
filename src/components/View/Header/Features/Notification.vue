@@ -55,7 +55,7 @@ const handleSelect = (selected: boolean, id: string) => {
           <Avatar :size="40" />
           <div>
             <Paragraph>Notification</Paragraph>
-            <Paragraph :size="11" :weight="600" variant="warning">1h</Paragraph>
+            <Paragraph :size="11" :weight="600" variant="secondary">1h</Paragraph>
           </div>
         </Space>
       </Col>

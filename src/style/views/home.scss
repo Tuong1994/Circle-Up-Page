@@ -100,18 +100,26 @@
     max-height: $h-screen;
     padding: 0;
     overflow: unset;
+    @include respond(mdPhone) {
+      height: $h-screen;
+      position: relative;
+    }
   }
   @include respond(mdTablet) {
     width: $w-10 * 6;
+    height: auto;
   }
   @include respond(lgPhone) {
     width: $w-10 * 5;
+    height: $h-screen;
   }
   @include respond(mdPhone) {
-    width: $w-10 * 3.6;
+    width: $w-full;
+    height: $h-screen;
   }
   @include respond(smPhone) {
     width: $w-full;
+    height: $h-screen;
   }
 }
 
@@ -124,15 +132,45 @@
   max-height: calc($h-screen - 150px);
   padding: $p-1 $p-2;
   overflow-y: auto;
+  @include respond(mdTablet) {
+    max-height: calc($h-screen - 100px);
+  }
+  @include respond(mdPhone) {
+    max-height: calc($h-screen - 100px);
+  }
 }
 
 .post-modal-foot {
+  width: $w-full;
   padding: $p-1 $p-2;
+  @include respond(lgPhone) {
+    background: $bg-white;
+    position: absolute;
+    z-index: 5;
+  }
 }
 
-// Create Post
+.post-content {
+  padding: $p-1 0;
+  max-height: calc($h-screen - 250px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  @include respond(mdTablet) {
+    max-height: calc($h-screen - 200px);
+  }
+  @include respond(mdPhone) {
+    max-height: calc($h-screen - 200px);
+  }
+}
+
 .create-post-content {
   max-height: calc($h-screen - 300px);
   overflow-y: auto;
   overflow-x: hidden;
+  @include respond(mdTablet) {
+    max-height: calc($h-screen - 150px);
+  }
+  @include respond(mdPhone) {
+    max-height: calc($h-screen - 150px);
+  }
 }

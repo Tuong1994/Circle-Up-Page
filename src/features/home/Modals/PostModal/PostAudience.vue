@@ -7,6 +7,7 @@ import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 type AudienceType = 'public' | 'friends' | 'only'
 
@@ -17,6 +18,8 @@ const { Paragraph } = Typography
 const { Row, Col } = Grid
 
 const emits = defineEmits(['onBack'])
+
+const layout = useLayoutStore()
 
 const audiences: Audience[] = [
   { type: 'public', name: 'Public', content: 'Anyone on or off Circle Up', icon: iconName.GLOBE },
@@ -38,24 +41,26 @@ const handleBack = () => emits('onBack')
       Your default audience is set to Friends, but you can change the audience of this specific post.
     </Paragraph>
     <Divider />
-    <ItemWrapper v-for="audience in audiences" :key="audience.type">
-      <Row justify="between" aligns="middle">
-        <Col>
-          <Space size="md" aligns="middle">
-            <Icon rootClassName="w-12" :iconName="audience.icon" :size="30" />
-            <div>
-              <Paragraph>{{ audience.name }}</Paragraph>
-              <Paragraph variant="secondary" :size="12">{{ audience.content }}</Paragraph>
-            </div>
-          </Space>
-        </Col>
-        <Col>
-          <Radio color="orange" name="audience" />
-        </Col>
-      </Row>
-    </ItemWrapper>
+    <div class="post-content">
+      <ItemWrapper v-for="audience in audiences" :key="audience.type">
+        <Row justify="between" aligns="middle">
+          <Col>
+            <Space size="md" aligns="middle">
+              <Icon rootClassName="w-12" :iconName="audience.icon" :size="30" />
+              <div>
+                <Paragraph>{{ audience.name }}</Paragraph>
+                <Paragraph variant="secondary" :size="12">{{ audience.content }}</Paragraph>
+              </div>
+            </Space>
+          </Col>
+          <Col>
+            <Radio :color="layout.color" name="audience" />
+          </Col>
+        </Row>
+      </ItemWrapper>
+    </div>
   </ModalBody>
   <ModalFoot>
-    <Button rootClassName="w-full" color="orange" sizes="lg">Done</Button>
+    <Button rootClassName="w-full" :color="layout.color" sizes="lg">Done</Button>
   </ModalFoot>
 </template>

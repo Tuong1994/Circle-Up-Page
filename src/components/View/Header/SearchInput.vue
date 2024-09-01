@@ -9,12 +9,15 @@ import ItemWrapper from './../ItemWrapper/ItemWrapper.vue'
 import useClickOutSide from '@/hooks/useClickOutside'
 import useHeaderStore from './HeaderStore'
 import useLangStore from '@/stores/LangStore'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
 const { isPhone } = useViewPoint()
+
+const layout = useLayoutStore()
 
 const inputRef = ref<HTMLDivElement>()
 
@@ -62,8 +65,8 @@ watch(open, (newValue) => {
         </div>
         <Input
           shape="round"
-          color="orange"
           rootClassName="control-box"
+          :color="layout.color"
           :placeholder="t.lang.common.header.searchInput.placeholder"
           @click="handleOpen"
         >

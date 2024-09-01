@@ -9,6 +9,7 @@ import type { ComponentColor } from '@/common/type'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
 
@@ -32,6 +33,8 @@ interface CreatePostProps {
 defineProps<CreatePostProps>()
 
 const emits = defineEmits(['onBack', 'onClose', 'onAction'])
+
+const layout = useLayoutStore()
 
 const isUpload = ref<boolean>(false)
 
@@ -68,8 +71,8 @@ const handleAction = (type: ActionType) => {
       </div>
     </Space>
     <div class="py-5 create-post-content">
-      <TextArea rootClassName="pb-5" color="orange" placeholder="What's on your mind, User name?" />
-      <MultipleImageUpload v-if="isUpload" color="orange" />
+      <TextArea rootClassName="pb-5" :color="layout.color" placeholder="What's on your mind, User name?" />
+      <MultipleImageUpload v-if="isUpload" :color="layout.color" />
     </div>
     <Card>
       <template #body>
@@ -100,6 +103,6 @@ const handleAction = (type: ActionType) => {
     </Card>
   </ModalBody>
   <ModalFoot>
-    <Button color="orange" sizes="lg" rootClassName="w-full">Post</Button>
+    <Button :color="layout.color" sizes="lg" rootClassName="w-full">Post</Button>
   </ModalFoot>
 </template>

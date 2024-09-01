@@ -7,12 +7,15 @@ import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
 const emits = defineEmits(['onBack'])
+
+const layout = useLayoutStore()
 
 const handleBack = () => emits('onBack')
 </script>
@@ -32,21 +35,23 @@ const handleBack = () => emits('onBack')
       </Col>
     </Row>
     <Divider> People </Divider>
-    <ItemWrapper v-for="item in 10">
-      <Row justify="between" aligns="middle">
-        <Col>
-          <Space aligns="middle">
-            <Avatar :size="40" />
-            <Paragraph>People</Paragraph>
-          </Space>
-        </Col>
-        <Col>
-          <CheckBox color="orange" />
-        </Col>
-      </Row>
-    </ItemWrapper>
+    <div class="post-content">
+      <ItemWrapper v-for="item in 10">
+        <Row justify="between" aligns="middle">
+          <Col>
+            <Space aligns="middle">
+              <Avatar :size="40" />
+              <Paragraph>People</Paragraph>
+            </Space>
+          </Col>
+          <Col>
+            <CheckBox :color="layout.color" />
+          </Col>
+        </Row>
+      </ItemWrapper>
+    </div>
   </ModalBody>
   <ModalFoot>
-    <Button rootClassName="w-full" color="orange" sizes="lg">Done</Button>
+    <Button rootClassName="w-full" :color="layout.color" sizes="lg">Done</Button>
   </ModalFoot>
 </template>

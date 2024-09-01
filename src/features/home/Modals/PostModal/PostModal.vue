@@ -6,6 +6,9 @@ import Slider from '@/components/View/Slider/Slider.vue'
 import CreatePost from './CreatePost.vue'
 import PostAudience from './PostAudience.vue'
 import TagPeople from './TagPeople.vue'
+import Feeling from './Feeling.vue'
+import Checking from './Checking.vue'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 export type ActionType =
   | EActionType.PHOTO
@@ -21,6 +24,8 @@ interface PostModalProps {
 defineProps<PostModalProps>()
 
 const emits = defineEmits(['onOk', 'onClose'])
+
+const layout = useLayoutStore()
 
 const slided = ref<boolean>(false)
 
@@ -45,7 +50,7 @@ const handleBack = () => {
     :hasHead="false"
     :hasFoot="false"
     :hasCancelButton="false"
-    color="orange"
+    :color="layout.color"
     rootClassName="post-modal"
     @onClose="handleClose"
   >
@@ -62,6 +67,8 @@ const handleBack = () => {
         <template #sub>
           <PostAudience v-if="actionType === EActionType.AUDIENCE" @onBack="handleBack" />
           <TagPeople v-if="actionType === EActionType.TAG" @onBack="handleBack" />
+          <Feeling v-if="actionType === EActionType.FEELING" @onBack="handleBack" />
+          <Checking v-if="actionType === EActionType.CHECK_IN" @onBack="handleBack" />
         </template>
       </Slider>
     </template>
