@@ -11,7 +11,13 @@ const common_vn = {
       placeholder: 'Tìm kiếm Circle Up'
     },
     features: {
-      notification: 'Thông báo',
+      notification: {
+        title: 'Thông báo',
+        markReadAll: 'Đánh dấu tất cả là đã đọc',
+        markRead: 'Đánh dấu là đã đọc',
+        open: 'Mở thông báo',
+        remove: 'Xóa thông báo này'
+      },
       profile: {
         title: 'Tài khoản',
         setting: 'Cài đặt',

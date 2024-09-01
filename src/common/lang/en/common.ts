@@ -11,7 +11,13 @@ const common_en = {
       placeholder: 'Search Circle Up'
     },
     features: {
-      notification: 'Notification',
+      notification: {
+        title: 'Notification',
+        markReadAll: 'Mark all as read',
+        markRead: 'Mark as read',
+        open: "Open notifications",
+        remove: 'Remove this notification'
+      },
       profile: {
         title: 'Profile',
         setting: 'Setting',

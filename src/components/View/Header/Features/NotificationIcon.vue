@@ -21,6 +21,6 @@ const handleClick = () => emits('onClick', 'notification')
         <Icon :iconName="iconName.BELL" />
       </Avatar>
     </template>
-    <template #content>{{ t.lang.common.header.features.notification }}</template>
+    <template #content>{{ t.lang.common.header.features.notification.title }}</template>
   </Tooltip>
 </template>

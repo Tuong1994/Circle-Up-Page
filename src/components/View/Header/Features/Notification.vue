@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { Grid, Space, Icon, Avatar, Typography, Dropdown, Divider } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import ItemWrapper from '../../ItemWrapper/ItemWrapper.vue'
@@ -28,6 +28,16 @@ const items = [
   { id: 'item-10' }
 ]
 
+const settings = computed(() => [
+  { id: 'mark', title: t.lang.common.header.features.notification.markReadAll, iconName: iconName.CHECK },
+  { id: 'open', title: t.lang.common.header.features.notification.open, iconName: iconName.GEAR }
+])
+
+const itemSettings = computed(() => [
+  { id: 'mark', title: t.lang.common.header.features.notification.markRead, iconName: iconName.CHECK },
+  { id: 'remove', title: t.lang.common.header.features.notification.remove, iconName: iconName.X_MARK_CIRCLE }
+])
+
 const handleSelect = (selected: boolean, id: string) => {
   if (!selected) return (selectedItem.value = '')
   selectedItem.value = id
@@ -37,12 +47,22 @@ const handleSelect = (selected: boolean, id: string) => {
 <template>
   <Row justify="between" aligns="middle">
     <Col>
-      <Paragraph :weight="600" :size="18">{{ t.lang.common.header.features.notification }}</Paragraph>
+      <Paragraph :weight="600" :size="18">{{ t.lang.common.header.features.notification.title }}</Paragraph>
     </Col>
     <Col>
-      <Dropdown>
+      <Dropdown placement="right">
         <template #label>
           <Icon :iconName="iconName.ELLIPSIS_H" :size="iconSize" />
+        </template>
+        <template #dropdown>
+          <div class="p-2">
+            <ItemWrapper v-for="setting in settings" :key="setting.id">
+              <Space aligns="middle">
+                <Icon :iconName="setting.iconName" />
+                <span>{{ setting.title }}</span>
+              </Space>
+            </ItemWrapper>
+          </div>
         </template>
       </Dropdown>
     </Col>
@@ -64,7 +84,16 @@ const handleSelect = (selected: boolean, id: string) => {
           <template #label>
             <Icon :iconName="iconName.ELLIPSIS_H" :size="iconSize" />
           </template>
-          <template #dropdown> Setting </template>
+          <template #dropdown>
+            <div class="p-2">
+              <ItemWrapper v-for="setting in itemSettings" :key="setting.id">
+                <Space aligns="middle">
+                  <Icon :iconName="setting.iconName" />
+                  <span>{{ setting.title }}</span>
+                </Space>
+              </ItemWrapper>
+            </div>
+          </template>
         </Dropdown>
       </Col>
     </Row>
