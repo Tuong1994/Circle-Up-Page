@@ -36,6 +36,11 @@
         color: $text-orange;
       }
     }
+    .post-setting {
+      max-height: $h-10 * 3;
+      padding: $p-1;
+      overflow-y: auto;
+    }
   }
   .home-side {
     width: $w-10 * 3.3;

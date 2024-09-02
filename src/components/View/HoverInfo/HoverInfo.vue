@@ -3,6 +3,8 @@ import { computed, ref, withDefaults, defineProps, type StyleValue } from 'vue'
 import { useDetectBottom, useRender, useViewPoint } from '@/hooks'
 import { Grid, UList, Space, Button, Icon, Avatar, Divider, Dropdown } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
+import useLangStore from '@/stores/LangStore'
+import ItemWrapper from '../ItemWrapper/ItemWrapper.vue'
 
 const { Row, Col } = Grid
 
@@ -26,6 +28,8 @@ const props = withDefaults(defineProps<HoverInfoProps>(), {
 
 const { isPhone, isTablet } = useViewPoint()
 
+const t = useLangStore()
+
 const show = ref<boolean>(false)
 
 const elRef = ref<HTMLDivElement>()
@@ -33,6 +37,13 @@ const elRef = ref<HTMLDivElement>()
 const render = useRender(show)
 
 const bottom = useDetectBottom(elRef)
+
+const settings = computed(() => [
+  { id: 'report', title: t.lang.common.hoverInfo.report, iconName: iconName.CIRCLE_EXCLAMATION },
+  { id: 'block', title: t.lang.common.hoverInfo.block, iconName: iconName.LOCK },
+  { id: 'follow', title: t.lang.common.hoverInfo.follow, iconName: iconName.PLUS },
+  { id: 'invite', title: t.lang.common.hoverInfo.invite, iconName: iconName.PLUS }
+])
 
 const hasContent = computed<boolean>(() => !Boolean(isPhone.value || isTablet.value) && render.value)
 
@@ -74,13 +85,13 @@ const handleMouseLeave = () => (show.value = false)
       <Divider />
       <Row aligns="middle">
         <Col>
-          <Button>Visit group</Button>
+          <Button>{{ t.lang.common.hoverInfo.visit }}</Button>
         </Col>
         <Col>
-          <Button>Message</Button>
+          <Button>{{ t.lang.common.hoverInfo.message }}</Button>
         </Col>
         <Col>
-          <Button>Like</Button>
+          <Button>{{ t.lang.common.hoverInfo.like }}</Button>
         </Col>
         <Col>
           <Dropdown placement="right">
@@ -89,7 +100,16 @@ const handleMouseLeave = () => (show.value = false)
                 <Icon :iconName="iconName.ELLIPSIS_H" />
               </Button>
             </template>
-            <template #dropdown> Setting </template>
+            <template #dropdown>
+              <div class="p-2">
+                <ItemWrapper v-for="setting in settings" :key="setting.id">
+                  <Space aligns="middle">
+                    <Icon :iconName="setting.iconName" />
+                    <span>{{ setting.title }}</span>
+                  </Space>
+                </ItemWrapper>
+              </div>
+            </template>
           </Dropdown>
         </Col>
       </Row>

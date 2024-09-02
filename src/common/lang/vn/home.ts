@@ -7,8 +7,18 @@ const home_vn = {
     like: 'Thích',
     comment: 'Bình luận',
     share: 'Chia sẻ',
-    visit: 'Thăm nhóm',
-    message: 'Tin nhắn'
+    setting: {
+      interested: 'Quan tâm',
+      notInterested: 'Không quan tâm',
+      save: 'Lưu bài viết',
+      hide: 'Ẩn bài viết',
+      hideAll: 'Ẩn tất cả từ',
+      desc_1: 'Nhiều bài viết được đề xuất trong bảng tin của bạn sẽ giống như thế này',
+      desc_2: 'Ít bài viết được đề xuất trong bảng tin của bạn sẽ giống như thế này',
+      desc_3: 'Thêm vào các mục đã lưu',
+      desc_4: 'Xem ít bài viết giống như thế này hơn',
+      desc_5: 'Ngừng xem bài viết từ trang này'
+    }
   },
   side: {
     contacts: {

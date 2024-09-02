@@ -1,14 +1,49 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Grid, Space, Avatar, Dropdown, Icon, Typography, Button } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import HoverInfo from '@/components/View/HoverInfo/HoverInfo.vue'
 import useLangStore from '@/stores/LangStore'
+import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
 const t = useLangStore()
+
+const settings = computed(() => [
+  {
+    id: 'interested',
+    title: t.lang.home.post.setting.interested,
+    desc: t.lang.home.post.setting.desc_1,
+    iconName: iconName.PLUS
+  },
+  {
+    id: 'notInterested',
+    title: t.lang.home.post.setting.notInterested,
+    desc: t.lang.home.post.setting.desc_2,
+    iconName: iconName.MINUS
+  },
+  {
+    id: 'save',
+    title: t.lang.home.post.setting.save,
+    desc: t.lang.home.post.setting.desc_3,
+    iconName: iconName.TAG
+  },
+  {
+    id: 'hide',
+    title: t.lang.home.post.setting.hide,
+    desc: t.lang.home.post.setting.desc_4,
+    iconName: iconName.X_MARK
+  },
+  {
+    id: 'hideAll',
+    title: t.lang.home.post.setting.hideAll,
+    desc: t.lang.home.post.setting.desc_5,
+    iconName: iconName.X_MARK_CIRCLE
+  }
+])
 
 const iconSize = 18
 </script>
@@ -41,7 +76,21 @@ const iconSize = 18
           <template #label>
             <Icon :size="iconSize" :iconName="iconName.ELLIPSIS_H" />
           </template>
-          <template #dropdown> Setting </template>
+          <template #dropdown>
+            <div class="post-setting">
+              <ItemWrapper v-for="setting in settings" :key="setting.id">
+                <Space aligns="middle">
+                  <Avatar>
+                    <Icon :iconName="setting.iconName" :size="iconSize" />
+                  </Avatar>
+                  <div>
+                    <Paragraph :weight="600">{{ setting.title }}</Paragraph>
+                    <Paragraph :size="12" variant="secondary">{{ setting.desc }}</Paragraph>
+                  </div>
+                </Space>
+              </ItemWrapper>
+            </div>
+          </template>
         </Dropdown>
         <Icon :size="iconSize" :iconName="iconName.X_MARK" />
       </Space>

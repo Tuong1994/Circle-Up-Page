@@ -15,7 +15,7 @@ const common_en = {
         title: 'Notification',
         markReadAll: 'Mark all as read',
         markRead: 'Mark as read',
-        open: "Open notifications",
+        open: 'Open notifications',
         remove: 'Remove this notification'
       },
       profile: {
@@ -25,6 +25,15 @@ const common_en = {
         logout: 'Logout'
       }
     }
+  },
+  hoverInfo: {
+    visit: 'Visit group',
+    message: 'Message',
+    like: 'Like',
+    report: 'Report page',
+    block: 'Block',
+    invite: 'Invite friends',
+    follow: 'Follow'
   },
   form: {
     label: {

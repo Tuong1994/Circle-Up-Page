@@ -26,6 +26,15 @@ const common_vn = {
       }
     }
   },
+  hoverInfo: {
+    visit: 'Thăm nhóm',
+    message: 'Nhắn tin',
+    like: 'Thích',
+    report: 'Báo cáo trang',
+    block: 'Chặn',
+    invite: 'Mời bạn bè',
+    follow: 'Theo dõi'
+  },
   form: {
     label: {
       account: 'Tài khoản',
