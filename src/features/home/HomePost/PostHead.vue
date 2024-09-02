@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { Grid, Space, Avatar, Dropdown, Icon, Typography, Button } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
+import useViewPoint, { screen } from '@/hooks/useViewPoint'
 import HoverInfo from '@/components/View/HoverInfo/HoverInfo.vue'
 import useLangStore from '@/stores/LangStore'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
@@ -11,6 +12,8 @@ const { Row, Col } = Grid
 const { Paragraph } = Typography
 
 const t = useLangStore()
+
+const { isSmPhone } = useViewPoint()
 
 const settings = computed(() => [
   {
@@ -72,7 +75,7 @@ const iconSize = 18
     </Col>
     <Col>
       <Space size="md" aligns="middle">
-        <Dropdown placement="right">
+        <Dropdown placement="right" v-if="!isSmPhone">
           <template #label>
             <Icon :size="iconSize" :iconName="iconName.ELLIPSIS_H" />
           </template>

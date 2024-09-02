@@ -22,6 +22,8 @@ const useViewPoint = () => {
     onStop(() => window.removeEventListener('resize', handleResize))
   })
 
+  const isSmPhone = computed<boolean>(() => screenWidth.value >= SM_PHONE && screenWidth.value < MD_PHONE)
+
   const isPhone = computed<boolean>(() => screenWidth.value >= SM_PHONE && screenWidth.value <= MD_PHONE)
 
   const isTablet = computed<boolean>(() => screenWidth.value > MD_PHONE && screenWidth.value <= MD_TABLET)
@@ -30,7 +32,7 @@ const useViewPoint = () => {
 
   const isDesktop = computed<boolean>(() => screenWidth.value > 1100)
 
-  return { screenWidth, isPhone, isTablet, isLaptop, isDesktop }
+  return { screenWidth, isSmPhone, isPhone, isTablet, isLaptop, isDesktop }
 }
 
 export default useViewPoint
