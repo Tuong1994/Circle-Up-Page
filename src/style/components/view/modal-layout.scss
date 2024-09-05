@@ -1,0 +1,29 @@
+.modal-layout {
+  width: $w-10 * 5;
+  overflow: unset;
+  .modal-body {
+    max-height: $h-screen;
+    padding: 0;
+    overflow: unset;
+    @include respond(mdPhone) {
+      height: $h-screen;
+      position: relative;
+    }
+  }
+  @include respond(mdTablet) {
+    width: $w-10 * 6 !important;
+    height: auto;
+  }
+  @include respond(lgPhone) {
+    width: $w-10 * 5 !important;
+    height: $h-screen;
+  }
+  @include respond(mdPhone) {
+    width: $w-full !important;
+    height: $h-screen;
+  }
+  @include respond(smPhone) {
+    width: $w-full !important;
+    height: $h-screen;
+  }
+}

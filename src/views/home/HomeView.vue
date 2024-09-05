@@ -26,11 +26,7 @@ const handleClosePostModal = () => (openPostModal.value = false)
   <div class="home">
     <div class="home-wrap">
       <HomeActions @onClick="handleOpenPostModal" />
-      <HomePost />
-      <HomePost />
-      <HomePost />
-      <HomePost />
-      <HomePost />
+      <HomePost v-for="item in 100" />
     </div>
     <HomeSide v-if="!isMobile" />
   </div>

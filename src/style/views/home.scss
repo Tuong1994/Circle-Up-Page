@@ -23,30 +23,12 @@
   }
   .home-post {
     margin: $m-1 0;
-    .post-image {
-      width: $w-full;
-    }
-    .post-action {
-      cursor: pointer;
-      * {
-        color: $text-gray;
-        transition: all $transition-time-sm $transition-fn;
-      }
-      &:hover * {
-        color: $text-orange;
-      }
-    }
-    .post-setting {
-      max-height: $h-10 * 3;
-      padding: $p-1;
-      overflow-y: auto;
-    }
   }
   .home-side {
     width: $w-10 * 3.3;
     height: $h-screen;
     margin-top: $m-5 + 1;
-    background: $bg-white;
+    background: $bg-light-slate;
     padding: $p-1;
     position: fixed;
     top: 0;
@@ -98,36 +80,7 @@
   }
 }
 
-// Post modal
-.post-modal {
-  width: $w-10 * 5;
-  .modal-body {
-    max-height: $h-screen;
-    padding: 0;
-    overflow: unset;
-    @include respond(mdPhone) {
-      height: $h-screen;
-      position: relative;
-    }
-  }
-  @include respond(mdTablet) {
-    width: $w-10 * 6;
-    height: auto;
-  }
-  @include respond(lgPhone) {
-    width: $w-10 * 5;
-    height: $h-screen;
-  }
-  @include respond(mdPhone) {
-    width: $w-full;
-    height: $h-screen;
-  }
-  @include respond(smPhone) {
-    width: $w-full;
-    height: $h-screen;
-  }
-}
-
+// Modal component
 .post-modal-head {
   padding: $p-1 $p-2;
   border-bottom: 1px solid $bg-gray;
@@ -155,6 +108,31 @@
   }
 }
 
+// Create post modal
+.post-modal {
+  overflow: hidden;
+}
+
+.post-image {
+  width: $w-full;
+}
+.post-action {
+  cursor: pointer;
+  * {
+    color: $text-gray;
+    transition: all $transition-time-sm $transition-fn;
+  }
+  &:hover * {
+    color: $text-orange;
+  }
+}
+.post-setting {
+  max-height: $h-10 * 3;
+  padding: $p-1;
+  overflow-y: auto;
+}
+
+// Post modal content
 .post-content {
   padding: $p-1 0;
   max-height: calc($h-screen - 250px);
@@ -178,4 +156,9 @@
   @include respond(mdPhone) {
     max-height: calc($h-screen - 150px);
   }
+}
+
+// Comment Modal
+.comment-modal {
+  width: $w-10 * 7;
 }

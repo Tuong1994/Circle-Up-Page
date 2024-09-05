@@ -1,0 +1,39 @@
+<script setup lang="ts">
+import { defineEmits, defineProps } from 'vue'
+import { Divider } from '@/components/UI'
+import ModalLayout from '@/components/View/ModalLayout/ModalLayout.vue'
+import ModalNavigator from '../Components/ModalNavigator.vue'
+import ModalBody from '../Components/ModalBody.vue'
+import ModalFoot from '../Components/ModalFoot.vue'
+import PostHead from '../../HomePost/PostHead.vue'
+import PostBody from '../../HomePost/PostBody.vue'
+import PostSummary from '../../HomePost/PostSummary.vue'
+import PostActions from '../../HomePost/PostActions.vue'
+import CommentInput from '@/components/View/Comment/CommentInput.vue'
+
+interface CommentModalProps {
+  open?: boolean
+}
+
+defineProps<CommentModalProps>()
+
+const emits = defineEmits(['onClose'])
+
+const handleClose = () => emits('onClose')
+</script>
+
+<template>
+  <ModalLayout rootClassName="comment-modal" :open="open" sizes="lg" @onClose="handleClose">
+    <ModalNavigator title="User's post" @onClose="handleClose" />
+    <ModalBody>
+      <PostHead />
+      <PostBody />
+      <PostSummary />
+      <Divider />
+      <PostActions />
+    </ModalBody>
+    <ModalFoot>
+      <CommentInput />
+    </ModalFoot>
+  </ModalLayout>
+</template>

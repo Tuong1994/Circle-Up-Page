@@ -16,6 +16,7 @@ export interface DropdownProps {
   placement?: Exclude<ComponentPlacement, 'top' | 'bottom'>
   items?: DropdownItems
   trigger?: TriggerType
+  isBottom?: boolean;
   open?: boolean
 }
 
@@ -50,7 +51,7 @@ const hasDropdownSlot = computed<boolean>(() => slots.dropdown !== undefined)
 
 const placementClassName = computed<string>(() => `dropdown-${props.placement}`)
 
-const bottomClassName = computed<string>(() => (bottom.value ? 'dropdown-bottom' : ''))
+const bottomClassName = computed<string>(() => (!props.isBottom ? bottom.value ? 'dropdown-bottom' : '' : 'dropdown-bottom'))
 
 const activeClassName = computed<string>(() => (dropdown.value ? 'dropdown-list-active' : ''))
 
