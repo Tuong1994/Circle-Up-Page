@@ -8,7 +8,7 @@ export interface IconProps {
   rootStyle?: StyleValue
   type?: string
   size?: number
-  color?: Exclude<ComponentColor, 'white' | 'gray'>
+  color?: Exclude<ComponentColor, 'white'>
   iconName: string
 }
 

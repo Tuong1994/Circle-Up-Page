@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, withDefaults, watchEffect, useSlots, toRefs, inject, type StyleValue } from 'vue'
 import { useField } from 'vee-validate'
-import type { FormRule } from '@/components/Control/type.ts'
+import type { FormRule, ClickBoxColor } from '@/components/Control/type.ts'
 import type { ComponentColor, ComponentSize } from '@/common/type.ts'
 import NoteMessage from '@/components/UI/NoteMessage/NoteMessage.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
@@ -15,7 +15,7 @@ export interface RadioProps {
   labelStyle?: StyleValue
   controlStyle?: StyleValue
   sizes?: ComponentSize
-  color?: Exclude<ComponentColor, 'red' | 'gray'>
+  color?: ClickBoxColor
   name?: string
   value?: string | number
   disabled?: boolean

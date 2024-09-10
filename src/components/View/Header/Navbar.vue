@@ -30,7 +30,7 @@ const menus = computed<NavbarMenuItems>(() => [
           >
             <template #title>
               <Space justify="center">
-                <Icon :iconName="menu.iconName" :size="18" />
+                <Icon :iconName="(menu.iconName as string)" :size="18" />
               </Space>
             </template>
             <template #content>{{ menu.name }}</template>

@@ -4,6 +4,7 @@ import { Avatar, Icon, Space, Button, Grid, Typography } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { useRender, useViewPoint } from '@/hooks'
+import type { ControlColor } from '@/components/Control/type'
 import Logo from '../Logo/Logo.vue'
 import ItemWrapper from './../ItemWrapper/ItemWrapper.vue'
 import useClickOutSide from '@/hooks/useClickOutside'
@@ -66,7 +67,7 @@ watch(open, (newValue) => {
         <Input
           shape="round"
           rootClassName="control-box"
-          :color="layout.color"
+          :color="(layout.color as ControlColor)"
           :placeholder="t.lang.common.header.searchInput.placeholder"
           @click="handleOpen"
         >

@@ -3,6 +3,7 @@ import { defineEmits } from 'vue'
 import { Typography, Space, Grid, Icon, Button, Divider } from '@/components/UI'
 import { Radio } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
+import type { ClickBoxColor } from '@/components/Control/type'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
@@ -74,7 +75,7 @@ const handleBack = () => emits('onBack')
             </Space>
           </Col>
           <Col>
-            <Radio :color="layout.color" name="audience" />
+            <Radio :color="(layout.color as ClickBoxColor)" name="audience" />
           </Col>
         </Row>
       </ItemWrapper>

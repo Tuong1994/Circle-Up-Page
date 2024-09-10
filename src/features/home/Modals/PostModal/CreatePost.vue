@@ -6,6 +6,7 @@ import { iconName } from '@/components/UI/Icon/constant'
 import { EActionType } from './enum'
 import type { ActionType } from './PostModal.vue'
 import type { ComponentColor } from '@/common/type'
+import type { ControlColor } from '@/components/Control/type'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
@@ -91,10 +92,10 @@ const handleAction = (type: ActionType) => {
     <div class="py-5 create-post-content">
       <TextArea
         rootClassName="pb-5"
-        :color="layout.color"
+        :color="(layout.color as ControlColor)"
         :placeholder="`${t.lang.home.modal.createPost.placeholder}, User name?`"
       />
-      <MultipleImageUpload v-if="isUpload" :color="layout.color" />
+      <MultipleImageUpload v-if="isUpload" :color="(layout.color as ControlColor)" />
     </div>
     <Card>
       <template #body>

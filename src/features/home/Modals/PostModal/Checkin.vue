@@ -3,6 +3,7 @@ import { defineEmits } from 'vue'
 import { Button, Icon, Typography } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
+import type { ControlColor } from '@/components/Control/type'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
@@ -25,7 +26,7 @@ const handleBack = () => emits('onBack')
   <ModalNavigator type="sub" :title="t.lang.home.modal.checkin.title" @onBack="handleBack" />
   <ModalBody>
     <div class="py-5">
-      <Input :color="layout.color" shape="round" :placeholder="`${t.lang.home.modal.checkin.placeholder}?`">
+      <Input :color="(layout.color as ControlColor)" shape="round" :placeholder="`${t.lang.home.modal.checkin.placeholder}?`">
         <template #addonBefore>
           <Icon :iconName="iconName.SEARCH" />
         </template>

@@ -50,5 +50,6 @@ export const iconName = {
   LAUGH: 'laugh',
   MAP_MARKER_ALT: 'map-marker-alt',
   GLOBE: 'globe',
-  LOCK: 'lock'
+  LOCK: 'lock',
+  PAPER_PLANE: 'paper-plane'
 }

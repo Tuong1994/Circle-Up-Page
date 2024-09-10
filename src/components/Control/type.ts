@@ -5,6 +5,8 @@ export type ControlColor = Exclude<ComponentColor, 'black' | 'white' | 'gray'>
 
 export type ControlShape = Exclude<ComponentShape, 'circle'>
 
+export type ClickBoxColor = Exclude<ComponentColor, 'red' | 'gray'>
+
 export type FormRule = RuleExpression<any>
 
 // Select

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineEmits, defineProps } from 'vue'
+import { computed, defineEmits, defineProps } from 'vue'
 import { Divider } from '@/components/UI'
 import ModalLayout from '@/components/View/ModalLayout/ModalLayout.vue'
 import ModalNavigator from '../Components/ModalNavigator.vue'
@@ -9,7 +9,8 @@ import PostHead from '../../HomePost/PostHead.vue'
 import PostBody from '../../HomePost/PostBody.vue'
 import PostSummary from '../../HomePost/PostSummary.vue'
 import PostActions from '../../HomePost/PostActions.vue'
-import CommentInput from '@/components/View/Comment/CommentInput.vue'
+import CommentInput from '@/components/View/Comment/CommentInput/CommentInput.vue'
+import useCommentStore from '@/components/View/Comment/CommentStore'
 
 interface CommentModalProps {
   open?: boolean
@@ -19,14 +20,18 @@ defineProps<CommentModalProps>()
 
 const emits = defineEmits(['onClose'])
 
+const comment = useCommentStore()
+
+const uploadedClassName = computed<string>(() => (comment.uploaded ? 'modal-body-height' : ''))
+
 const handleClose = () => emits('onClose')
 </script>
 
 <template>
   <ModalLayout rootClassName="comment-modal" :open="open" sizes="lg" @onClose="handleClose">
     <ModalNavigator title="User's post" @onClose="handleClose" />
-    <ModalBody>
-      <PostHead />
+    <ModalBody :rootClassName="uploadedClassName">
+      <PostHead :hasRemove="false" />
       <PostBody />
       <PostSummary />
       <Divider />

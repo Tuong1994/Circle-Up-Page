@@ -1,0 +1,46 @@
+.comment-sticker {
+  max-width: $w-10 * 3.2;
+  padding: $p-3 $p-1;
+  .sticker-item {
+    padding: $p-1 - 0.2 $p-1;
+    border-radius: $rounded-xxl;
+    transition: all $transition-time-sm $transition-fn;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.9;
+    }
+    .item-title {
+      color: $text-white;
+    }
+  }
+  .sticker-item-blue {
+    background: $bg-blue;
+  }
+  .sticker-item-red {
+    background: $bg-red;
+  }
+  .sticker-item-green {
+    background: $bg-green;
+  }
+  .sticker-item-orange {
+    background: $bg-orange;
+  }
+  .sticker-item-yellow {
+    background: $bg-yellow;
+  }
+  .sticker-item-purple {
+    background: $bg-purple;
+  }
+  .sticker-item-pink {
+    background: $bg-pink;
+  }
+  .sticker-item-brown {
+    background: $bg-brown;
+  }
+  .sticker-item-black {
+    background: $bg-black;
+  }
+  .sticker-item-light-green {
+    background: $bg-light-green;
+  }
+}

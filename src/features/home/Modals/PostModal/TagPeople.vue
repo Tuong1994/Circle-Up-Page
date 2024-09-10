@@ -3,6 +3,7 @@ import { defineEmits } from 'vue'
 import { Icon, Grid, Typography, Space, Avatar, Button, Divider } from '@/components/UI'
 import { Input, CheckBox } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
+import type { ControlColor, ClickBoxColor } from '@/components/Control/type'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
@@ -26,7 +27,7 @@ const handleBack = () => emits('onBack')
 <template>
   <ModalNavigator type="sub" :title="t.lang.home.modal.tag.title" @onBack="handleBack" />
   <ModalBody>
-    <Input color="orange" shape="round" :placeholder="t.lang.common.form.placeholder.search">
+    <Input :color="(layout.color as ControlColor)" shape="round" :placeholder="t.lang.common.form.placeholder.search">
       <template #addonBefore>
         <Icon :iconName="iconName.SEARCH" />
       </template>
@@ -52,7 +53,7 @@ const handleBack = () => emits('onBack')
             </Space>
           </Col>
           <Col>
-            <CheckBox :color="layout.color" />
+            <CheckBox :color="(layout.color as ClickBoxColor)" />
           </Col>
         </Row>
       </ItemWrapper>

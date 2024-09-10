@@ -1,15 +1,23 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, withDefaults, defineProps } from 'vue'
 import { Grid, Space, Avatar, Dropdown, Icon, Typography, Button } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
-import useViewPoint, { screen } from '@/hooks/useViewPoint'
 import HoverInfo from '@/components/View/HoverInfo/HoverInfo.vue'
-import useLangStore from '@/stores/LangStore'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
+import useViewPoint from '@/hooks/useViewPoint'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
+
+interface PostHeadProps {
+  hasRemove?: boolean;
+}
+
+withDefaults(defineProps<PostHeadProps>(), {
+  hasRemove: true
+})
 
 const t = useLangStore()
 
@@ -95,7 +103,7 @@ const iconSize = 18
             </div>
           </template>
         </Dropdown>
-        <Icon :size="iconSize" :iconName="iconName.X_MARK" />
+        <Icon v-if="hasRemove" :size="iconSize" :iconName="iconName.X_MARK" />
       </Space>
     </Col>
   </Row>
