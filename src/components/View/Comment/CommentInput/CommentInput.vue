@@ -10,10 +10,13 @@ import InputSticker from './InputSticker.vue'
 import InputPhoto from './InputPhoto.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
+import useCommentStore from '../CommentStore'
 
 const { Row, Col } = Grid
 
 const layout = useLayoutStore()
+
+const comment = useCommentStore()
 
 const t = useLangStore()
 
@@ -38,19 +41,17 @@ const handleRemoveImage = () => {
     inputEl.files = fileTransfer.files
   }
   image.value = null
+  comment.setUploaded(false)
 }
 </script>
 
 <template>
   <Row>
     <Col :span="2">
-      <Avatar :size="40" @click="handleRemoveImage" />
+      <Avatar :size="40" />
     </Col>
     <Col :span="22">
-      <div class="w-full">
-        <CommentBox shape="round" :color="(layout.color as ControlColor)" />
-        <!-- <Image rootClassName="mt-3" :imgWidth="50" :imgHeight="50" /> -->
-      </div>
+      <CommentBox rootClassName="mb-3" shape="round" :color="(layout.color as ControlColor)" />
       <Row justify="between" aligns="middle">
         <Col>
           <Space :size="14">
@@ -86,6 +87,12 @@ const handleRemoveImage = () => {
           </Button>
         </Col>
       </Row>
+      <div v-if="comment.uploaded" class="comment-photo">
+        <Button sizes="sm" shape="round" rootClassName="photo-close" @click="handleRemoveImage">
+          <Icon :iconName="iconName.X_MARK" />
+        </Button>
+        <Image :imgWidth="50" :imgHeight="50" />
+      </div>
     </Col>
   </Row>
 </template>

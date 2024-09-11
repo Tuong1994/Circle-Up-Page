@@ -44,3 +44,17 @@
     background: $bg-light-green;
   }
 }
+
+.comment-photo {
+  width: max-content;
+  margin-top: $m-1;
+  position: relative;
+  .photo-close {
+    width: $w-2;
+    height: $h-2;
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    z-index: 1;
+  }
+}

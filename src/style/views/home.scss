@@ -116,6 +116,7 @@
 .post-image {
   width: $w-full;
 }
+
 .post-action {
   cursor: pointer;
   * {
@@ -126,6 +127,7 @@
     color: $text-orange;
   }
 }
+
 .post-setting {
   max-height: $h-10 * 3;
   padding: $p-1;
@@ -161,4 +163,13 @@
 // Comment Modal
 .comment-modal {
   width: $w-10 * 7;
+  .modal-body-height {
+    max-height: calc($h-screen - 230px);
+    @include respond(mdTablet) {
+      max-height: calc($h-screen - 200px);
+    }
+    @include respond(mdPhone) {
+      max-height: calc($h-screen - 200px);
+    }
+  }
 }
