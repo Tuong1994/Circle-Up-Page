@@ -66,7 +66,7 @@ const handleMouseLeave = () => (show.value = false)
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
-    <slot name="label"></slot>
+    <slot></slot>
     <div
       v-if="hasContent"
       :style="contentStyle"

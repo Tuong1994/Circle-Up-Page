@@ -16,7 +16,7 @@ export interface DropdownProps {
   placement?: Exclude<ComponentPlacement, 'top' | 'bottom'>
   items?: DropdownItems
   trigger?: TriggerType
-  isBottom?: boolean;
+  isBottom?: boolean
   open?: boolean
 }
 
@@ -51,7 +51,9 @@ const hasDropdownSlot = computed<boolean>(() => slots.dropdown !== undefined)
 
 const placementClassName = computed<string>(() => `dropdown-${props.placement}`)
 
-const bottomClassName = computed<string>(() => (!props.isBottom ? bottom.value ? 'dropdown-bottom' : '' : 'dropdown-bottom'))
+const bottomClassName = computed<string>(() =>
+  !props.isBottom ? (bottom.value ? 'dropdown-bottom' : '') : 'dropdown-bottom'
+)
 
 const activeClassName = computed<string>(() => (dropdown.value ? 'dropdown-list-active' : ''))
 
@@ -72,11 +74,14 @@ watch(open, (newValue) => {
     ref="dropdownRef"
     :style="rootStyle"
     :class="['dropdown', placementClassName, themeClassName, bottomClassName, rootClassName]"
-    @click="trigger === 'click' && handleDropdown()"
     @mouseenter="trigger === 'hover' && handleDropdown()"
     @mouseleave="trigger === 'hover' && handleDropdown()"
   >
-    <div :style="labelStyle" :class="['dropdown-label', labelClassName]">
+    <div
+      :style="labelStyle"
+      :class="['dropdown-label', labelClassName]"
+      @click="trigger === 'click' && handleDropdown()"
+    >
       <slot name="label"></slot>
     </div>
     <div v-if="render" :class="['dropdown-list', activeClassName, boxClassName]">

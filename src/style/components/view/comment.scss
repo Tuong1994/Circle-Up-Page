@@ -58,3 +58,26 @@
     z-index: 1;
   }
 }
+
+.comment-item {
+  .item-main {
+    .main-content {
+      padding: $p-1;
+      background: $bg-slate;
+      border-radius: $rounded-xxl;
+      & > p {
+        line-height: $h-2 !important;
+      }
+    }
+    .main-action {
+      transition: all $transition-time-sm $transition-fn;
+      cursor: pointer;
+      &:hover {
+        color: $text-orange;
+      }
+    }
+  }
+  .item-child {
+    padding-left: $p-4;
+  }
+}

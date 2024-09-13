@@ -12,7 +12,7 @@ const { Row, Col } = Grid
 const { Paragraph } = Typography
 
 interface PostHeadProps {
-  hasRemove?: boolean;
+  hasRemove?: boolean
 }
 
 withDefaults(defineProps<PostHeadProps>(), {
@@ -64,16 +64,12 @@ const iconSize = 18
     <Col>
       <Space aligns="middle">
         <HoverInfo>
-          <template #label>
-            <Avatar :size="40" />
-          </template>
+          <Avatar :size="40" />
         </HoverInfo>
         <div>
           <Space aligns="middle">
             <HoverInfo>
-              <template #label>
-                <Paragraph>User name</Paragraph>
-              </template>
+              <Paragraph>User name</Paragraph>
             </HoverInfo>
             <Button text>{{ t.lang.home.post.follow }}</Button>
           </Space>

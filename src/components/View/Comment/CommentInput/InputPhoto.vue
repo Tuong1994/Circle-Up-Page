@@ -45,7 +45,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <label>
+  <label class="cursor-pointer">
     <input :id="id" type="file" class="hidden" @input="handleChange" />
     <slot></slot>
   </label>

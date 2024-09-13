@@ -11,6 +11,7 @@ import PostSummary from '../../HomePost/PostSummary.vue'
 import PostActions from '../../HomePost/PostActions.vue'
 import CommentInput from '@/components/View/Comment/CommentInput/CommentInput.vue'
 import useCommentStore from '@/components/View/Comment/CommentStore'
+import Comment from '@/components/View/Comment/Comment.vue'
 
 interface CommentModalProps {
   open?: boolean
@@ -36,6 +37,8 @@ const handleClose = () => emits('onClose')
       <PostSummary />
       <Divider />
       <PostActions />
+      <Divider />
+      <Comment />
     </ModalBody>
     <ModalFoot>
       <CommentInput />

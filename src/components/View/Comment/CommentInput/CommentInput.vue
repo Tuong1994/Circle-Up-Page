@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, withDefaults, defineProps, defineEmits } from 'vue'
 import { Avatar, Space, Grid, Icon, Tooltip, Button, Image, Dropdown } from '@/components/UI'
 import { Input as CommentBox } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
@@ -14,6 +14,16 @@ import useCommentStore from '../CommentStore'
 
 const { Row, Col } = Grid
 
+interface CommentInputProps {
+  hasCancel?: boolean
+}
+
+withDefaults(defineProps<CommentInputProps>(), {
+  hasCancel: false
+})
+
+const emits = defineEmits(['onCancel'])
+
 const layout = useLayoutStore()
 
 const comment = useCommentStore()
@@ -22,11 +32,15 @@ const t = useLangStore()
 
 const image = ref<File | null>(null)
 
+const content = ref<string>('Comment')
+
 const actions = computed(() => [
   { type: EFeatureType.EMOJI, iconName: iconName.LAUGH, desc: 'Insert an emoji' },
   { type: EFeatureType.PHOTO, iconName: iconName.IMAGE, desc: 'Attach a photo' },
   { type: EFeatureType.STICKER, iconName: iconName.BOOKMARK, desc: 'Comment with a sticker' }
 ])
+
+const handleCancel = () => emits('onCancel')
 
 const handleRemoveImage = () => {
   const inputEl = document.getElementById('inputPhoto') as HTMLInputElement
@@ -51,7 +65,7 @@ const handleRemoveImage = () => {
       <Avatar :size="40" />
     </Col>
     <Col :span="22">
-      <CommentBox rootClassName="mb-3" shape="round" :color="(layout.color as ControlColor)" />
+      <CommentBox rootClassName="mb-3" shape="round" :color="(layout.color as ControlColor)" :modelValue="content" />
       <Row justify="between" aligns="middle">
         <Col>
           <Space :size="14">
@@ -82,9 +96,14 @@ const handleRemoveImage = () => {
           </Space>
         </Col>
         <Col>
-          <Button sizes="sm" shape="round">
-            <Icon :iconName="iconName.PAPER_PLANE" :sizes="16" color="gray" />
-          </Button>
+          <Space aligns="middle">
+            <Button sizes="sm" shape="round">
+              <Icon :iconName="iconName.PAPER_PLANE" :sizes="16" color="gray" />
+            </Button>
+            <Button v-if="hasCancel" sizes="sm" shape="round" @click="handleCancel">
+              <Icon :iconName="iconName.X_MARK" :sizes="16" color="gray" />
+            </Button>
+          </Space>
         </Col>
       </Row>
       <div v-if="comment.uploaded" class="comment-photo">
