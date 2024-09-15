@@ -6,6 +6,7 @@ import PostBody from './PostBody.vue'
 import PostSummary from './PostSummary.vue'
 import PostActions from './PostActions.vue'
 import CommentModal from '../Modals/CommentModal/CommentModal.vue'
+import InputMention from "@/components/Control/InputMention/InputMention.vue"
 
 const openCommentModal = ref<boolean>(false)
 
@@ -22,6 +23,7 @@ const handleCloseCommentModal = () => (openCommentModal.value = false)
       <PostSummary />
       <Divider />
       <PostActions @onComment="handleOpenCommentModal" />
+      <InputMention />
     </template>
   </Card>
   <CommentModal :open="openCommentModal" @onClose="handleCloseCommentModal" />

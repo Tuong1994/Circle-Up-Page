@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, withDefaults, defineProps, defineEmits } from 'vue'
 import { Avatar, Space, Grid, Icon, Tooltip, Button, Image, Dropdown } from '@/components/UI'
-import { Input as CommentBox } from '@/components/Control'
+import { TextArea as CommentBox } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EFeatureType } from '../enum'
 import type { ControlColor } from '@/components/Control/type'
@@ -65,7 +65,7 @@ const handleRemoveImage = () => {
       <Avatar :size="40" />
     </Col>
     <Col :span="22">
-      <CommentBox rootClassName="mb-3" shape="round" :color="(layout.color as ControlColor)" :modelValue="content" />
+      <CommentBox rootClassName="mb-3" shape="round" :rows="1" :color="(layout.color as ControlColor)" :modelValue="content" />
       <Row justify="between" aligns="middle">
         <Col>
           <Space :size="14">

@@ -1,0 +1,165 @@
+.input-mention {
+  .mention-box {
+    outline: none;
+    border: 0.5px solid $bg-gray;
+    background: $bg-white;
+    transition: all $transition-time-md $transition-fn;
+  }
+  .mention-list {
+    min-width: max-content;
+    width: $w-10 * 1.5;
+    background: $bg-white;
+    border-radius: $rounded;
+    box-shadow: 0 0 5px $bg-black-rgba-xs;
+    overflow: hidden;
+    position: absolute;
+    z-index: 5;
+    transition: all $transition-time-xs $transition-fn;
+    .list-item {
+      width: $w-full;
+      display: block;
+    }
+  }
+}
+
+// Disabled
+.input-mention-disabled {
+  .mention-box {
+    background: $bg-slate !important;
+    color: $text-gray;
+    cursor: not-allowed;
+    &:hover {
+      border-color: $bg-gray !important;
+    }
+  }
+}
+
+// Size
+.input-mention-sm {
+  .mention-box {
+    padding: $p-1 - 0.8 $p-1 - 0.4;
+    * {
+      font-size: $text-xs;
+    }
+  }
+}
+
+.input-mention-md {
+  .mention-box {
+    padding: $p-1 - 0.6 $p-1 - 0.2;
+  }
+}
+
+.input-mention-lg {
+  .mention-box {
+    padding: $p-1 - 0.4 $p-1;
+
+    * {
+      font-size: $text-md;
+    }
+  }
+}
+
+// Shape
+.input-mention-square {
+  .mention-box {
+    border-radius: $rounded;
+  }
+}
+
+.input-mention-round {
+  .mention-box {
+    border-radius: $rounded-xxl;
+  }
+}
+
+// Color
+.input-mention-blue {
+  .mention-box {
+    &:hover {
+      border-color: $bg-blue;
+    }
+    &:focus-within {
+      border-color: $bg-blue;
+    }
+  }
+}
+
+.input-mention-red {
+  .mention-box {
+    &:hover {
+      border-color: $bg-red;
+    }
+    &:focus-within {
+      border-color: $bg-red;
+    }
+  }
+}
+
+.input-mention-green {
+  .mention-box {
+    &:hover {
+      border-color: $bg-green;
+    }
+    &:focus-within {
+      border-color: $bg-green;
+    }
+  }
+}
+
+.input-mention-orange {
+  .mention-box {
+    &:hover {
+      border-color: $bg-orange;
+    }
+    &:focus-within {
+      border-color: $bg-orange;
+    }
+  }
+}
+
+.input-mention-yellow {
+  .mention-box {
+    &:hover {
+      border-color: $bg-yellow;
+    }
+    &:focus-within {
+      border-color: $bg-yellow;
+    }
+  }
+}
+
+.input-mention-purple {
+  .mention-box {
+    &:hover {
+      border-color: $bg-purple;
+    }
+    &:focus-within {
+      border-color: $bg-purple;
+    }
+  }
+}
+
+.input-mention-pink {
+  .mention-box {
+    &:hover {
+      border-color: $bg-pink;
+    }
+    &:focus-within {
+      border-color: $bg-pink;
+    }
+  }
+}
+
+// Theme
+.input-mention-light {
+  .mention-box {
+    background: $bg-white;
+  }
+}
+
+.input-mention-dark {
+  .mention-box {
+    background: $bg-deep-blue;
+  }
+}
