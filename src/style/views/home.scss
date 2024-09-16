@@ -163,6 +163,14 @@
 // Comment Modal
 .comment-modal {
   width: $w-10 * 7;
+  .post-modal-body {
+    @include respond(mdTablet) {
+      max-height: calc($h-screen - 150px);
+    }
+    @include respond(mdPhone) {
+      max-height: calc($h-screen - 150px);
+    }
+  }
   .modal-body-height {
     max-height: calc($h-screen - 230px);
     @include respond(mdTablet) {

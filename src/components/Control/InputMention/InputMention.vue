@@ -69,12 +69,12 @@ const disabledClassName = computed<string>(() => (props.disabled ? 'input-mentio
 const themeClassName = computed<string>(() => `input-mention-${layout.theme}`)
 
 const listInlineStyle = computed<StyleValue>(() => {
-  const top = props.placement === 'top' ? mentionPosition.value.top : 'unset'
-  const bottom = props.placement === 'bottom' ? mentionPosition.value.bottom : 'unset'
+  const top = props.placement === 'bottom' ? mentionPosition.value.top + 'px' : 'unset'
+  const bottom = props.placement === 'top' ? mentionPosition.value.bottom + 'px' : 'unset'
   const style = {
     ...(listStyle?.value as object),
-    top: top + 'px',
-    bottom: bottom + 'px',
+    top,
+    bottom,
     left: mentionPosition.value.left + 'px'
   }
   return style

@@ -69,16 +69,18 @@ const handleRemoveImage = () => {
 
 <template>
   <Row>
-    <Col :span="2">
+    <Col :xs="4" :md="2" :lg="2" :span="2">
       <Avatar :size="40" />
     </Col>
-    <Col :span="22">
+    <Col :xs="20" :md="22" :lg="22" :span="22">
       <CommentBox
-        rootClassName="mb-3"
-        shape="round"
         :rows="1"
         :color="(layout.color as ControlColor)"
         :mentions="mentions"
+        shape="round"
+        placement="top"
+        rootClassName="mb-3"
+        placeholder="Write a comment"
       />
       <Row justify="between" aligns="middle">
         <Col>
