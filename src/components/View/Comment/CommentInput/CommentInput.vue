@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, withDefaults, defineProps, defineEmits } from 'vue'
 import { Avatar, Space, Grid, Icon, Tooltip, Button, Image, Dropdown } from '@/components/UI'
-import { TextArea as CommentBox } from '@/components/Control'
+import { InputMention as CommentBox } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EFeatureType } from '../enum'
 import type { ControlColor } from '@/components/Control/type'
@@ -11,6 +11,7 @@ import InputPhoto from './InputPhoto.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 import useCommentStore from '../CommentStore'
+import type { MentionItems } from '@/components/Control/InputMention/type'
 
 const { Row, Col } = Grid
 
@@ -33,6 +34,13 @@ const t = useLangStore()
 const image = ref<File | null>(null)
 
 const content = ref<string>('Comment')
+
+const mentions: MentionItems = [
+  { label: 'User name 1', value: '1', imgUrl: '' },
+  { label: 'User name 2', value: '2', imgUrl: '' },
+  { label: 'User name 3', value: '3', imgUrl: '' },
+  { label: 'User name 4', value: '4', imgUrl: '' }
+]
 
 const actions = computed(() => [
   { type: EFeatureType.EMOJI, iconName: iconName.LAUGH, desc: 'Insert an emoji' },
@@ -65,7 +73,13 @@ const handleRemoveImage = () => {
       <Avatar :size="40" />
     </Col>
     <Col :span="22">
-      <CommentBox rootClassName="mb-3" shape="round" :rows="1" :color="(layout.color as ControlColor)" :modelValue="content" />
+      <CommentBox
+        rootClassName="mb-3"
+        shape="round"
+        :rows="1"
+        :color="(layout.color as ControlColor)"
+        :mentions="mentions"
+      />
       <Row justify="between" aligns="middle">
         <Col>
           <Space :size="14">

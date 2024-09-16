@@ -1,13 +1,19 @@
 .input-mention {
+  position: relative;
   .mention-box {
     outline: none;
     border: 0.5px solid $bg-gray;
     background: $bg-white;
     transition: all $transition-time-md $transition-fn;
+    &:empty:before {
+      content: attr(placeholder);
+      color: $text-gray;
+    }
   }
   .mention-list {
     min-width: max-content;
     width: $w-10 * 1.5;
+    padding: $p-1 0;
     background: $bg-white;
     border-radius: $rounded;
     box-shadow: 0 0 5px $bg-black-rgba-xs;
@@ -17,6 +23,7 @@
     transition: all $transition-time-xs $transition-fn;
     .list-item {
       width: $w-full;
+      margin: 0;
       display: block;
     }
   }

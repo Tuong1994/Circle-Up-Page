@@ -4,6 +4,7 @@ import Input from './Input/Input.vue'
 import InputPhone from './InputPhone/InputPhone.vue'
 import InputNumber from './InputNumber/InputNumber.vue'
 import InputPassword from './Password/Password.vue'
+import InputMention from './InputMention/InputMention.vue'
 import TextArea from './TextArea/TextArea.vue'
 import Select from './Select/Select.vue'
 import SelectTag from './SelectTag/SelectTag.vue'
@@ -19,6 +20,7 @@ export {
   InputPhone,
   InputNumber,
   InputPassword,
+  InputMention,
   TextArea,
   Select,
   SelectTag,

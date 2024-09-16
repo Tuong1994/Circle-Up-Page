@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { ref, computed, defineProps, defineEmits, withDefaults, type StyleValue } from 'vue'
-import type { MentionPosition } from './type'
+import { ref, computed, defineProps, defineEmits, withDefaults, type StyleValue, watch, toRefs } from 'vue'
+import { addNewLine, updateMentionPosition } from './helper'
+import { Space, Avatar, Image, Typography } from '@/components/UI'
+import type { MentionItems, MentionItem, MentionPlacement, MentionPosition } from './type'
 import type { ComponentColor, ComponentShape, ComponentSize } from '@/common/type'
-import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+
+const { Paragraph } = Typography
 
 export interface InputMentionProps {
   rootClassName?: string
@@ -15,8 +19,10 @@ export interface InputMentionProps {
   sizes?: ComponentSize
   color?: ComponentColor
   shape?: ComponentShape
+  placement?: MentionPlacement
   placeholder?: string
   disabled?: boolean
+  mentions?: MentionItems
 }
 
 const props = withDefaults(defineProps<InputMentionProps>(), {
@@ -25,12 +31,16 @@ const props = withDefaults(defineProps<InputMentionProps>(), {
   listClassName: '',
   sizes: 'md',
   color: 'blue',
-  shape: 'square'
+  shape: 'square',
+  placement: 'bottom',
+  mentions: () => []
 })
 
-const users = ['Alice', 'Bob', 'Charlie', 'David'] // Example user list
+const emits = defineEmits(['onInput', 'onSelectMention'])
 
 const layout = useLayoutStore()
+
+const { listStyle } = toRefs(props)
 
 const message = ref<string>('')
 
@@ -38,9 +48,15 @@ const showMentions = ref<boolean>(false)
 
 const inputMentionRef = ref<HTMLDivElement | null>(null)
 
+const mentionBoxRef = ref<HTMLDivElement | null>(null)
+
 const mentionPosition = ref<MentionPosition>({ top: 0, left: 0 })
 
-const filteredUsers = ref<any>([])
+const filterMentions = ref<MentionItems>([])
+
+const controlPlaceholder = computed<string>(
+  () => props.placeholder ?? 'Type your message... (Use @ to mention)'
+)
 
 const colorClassName = computed<string>(() => `input-mention-${props.color}`)
 
@@ -52,48 +68,40 @@ const disabledClassName = computed<string>(() => (props.disabled ? 'input-mentio
 
 const themeClassName = computed<string>(() => `input-mention-${layout.theme}`)
 
-const addNewLine = () => {
-  const range = document.getSelection()?.getRangeAt(0)
-  if (!range) return
-  const br = document.createElement('br')
-  range.insertNode(br)
-  range.setStartAfter(br)
-  range.setEndAfter(br)
-  document.getSelection()?.removeAllRanges()
-  document.getSelection()?.addRange(range)
-}
-
-const updateMentionPosition = () => {
-  const selection = window.getSelection()
-  if (!selection || !selection.rangeCount) return
-  const range = selection.getRangeAt(0).cloneRange()
-  range.collapse(false) // Collapse to the end of the range (caret position)
-  const rect = range.getBoundingClientRect()
-  mentionPosition.value = {
-    top: rect.bottom + window.scrollY, // Consider scroll position
-    left: rect.left + window.scrollX // Consider scroll position
+const listInlineStyle = computed<StyleValue>(() => {
+  const top = props.placement === 'top' ? mentionPosition.value.top : 'unset'
+  const bottom = props.placement === 'bottom' ? mentionPosition.value.bottom : 'unset'
+  const style = {
+    ...(listStyle?.value as object),
+    top: top + 'px',
+    bottom: bottom + 'px',
+    left: mentionPosition.value.left + 'px'
   }
-}
+  return style
+})
 
 const handleChange = () => {
-  message.value = inputMentionRef.value?.innerText as string // Update message from contenteditable div
+  message.value = mentionBoxRef.value?.innerText as string // Update message from contenteditable div
   const lastWord = message.value.split(' ').pop() // Get the last word typed
-  if (lastWord?.startsWith('@')) {
-    const searchText = lastWord?.slice(1).toLowerCase()
-    filteredUsers.value = users.filter((user) => user.toLowerCase().includes(searchText))
+  if (lastWord === undefined) return
+  if (!lastWord.startsWith('@')) return (showMentions.value = false)
+  if (lastWord.startsWith('@')) {
+    const searchText = lastWord.slice(1).toLowerCase()
+    filterMentions.value = props.mentions.filter((mention) =>
+      mention.label.toLowerCase().includes(searchText)
+    )
     showMentions.value = true
-    updateMentionPosition()
-  } else {
-    showMentions.value = false
+    updateMentionPosition(mentionPosition, inputMentionRef)
   }
 }
 
-const handleAddMention = (user: any) => {
+const handleSelectMention = (mention: MentionItem) => {
   const words = message.value.split(' ')
   words.pop() // Remove the last incomplete mention
-  message.value = words.join(' ') + ` @${user} `
-  if (inputMentionRef.value) inputMentionRef.value.innerText = message.value // Update the contenteditable div
+  message.value = words.join(' ') + ` @${mention.label} `
+  if (mentionBoxRef.value) mentionBoxRef.value.innerText = message.value // Update the contenteditable div
   showMentions.value = false
+  emits('onSelectMention', mention)
 }
 
 // Optionally handle keydown to prevent unwanted behavior like enter key, etc.
@@ -105,10 +113,15 @@ const handleKeydown = (e: any) => {
     addNewLine()
   }
 }
+
+watch(message, (newValue) => {
+  emits('onInput', newValue)
+})
 </script>
 
 <template>
   <div
+    ref="inputMentionRef"
     :style="rootStyle"
     :class="[
       'input-mention',
@@ -123,22 +136,30 @@ const handleKeydown = (e: any) => {
     <div
       :style="inputStyle"
       :class="['mention-box', inputClassName]"
-      ref="inputMentionRef"
-      placeholder="Type your message... (Use @ to mention)"
+      ref="mentionBoxRef"
+      :placeholder="controlPlaceholder"
       contenteditable
       @input="handleChange"
       @keydown="handleKeydown"
     ></div>
-    <ul
-      v-if="showMentions && filteredUsers.length"
-      :style="{ top: mentionPosition.top + 'px', left: mentionPosition.left + 'px' }"
+    <div
+      v-if="showMentions && filterMentions.length"
+      :style="listInlineStyle"
       :class="['mention-list', listClassName]"
     >
-      <li v-for="user in filteredUsers" :key="user" @click="handleAddMention(user)" class="list-item">
-        <ItemWrapper>
-          {{ user }}
-        </ItemWrapper>
-      </li>
-    </ul>
+      <ItemWrapper
+        v-for="(mention, idx) in filterMentions"
+        :key="`${mention.label}-${idx}`"
+        @click="handleSelectMention(mention)"
+        class="list-item"
+      >
+        <Space aligns="middle">
+          <Avatar v-if="mention.imgUrl">
+            <Image :src="mention.imgUrl" />
+          </Avatar>
+          <Paragraph :weight="600"> {{ mention.label }}</Paragraph>
+        </Space>
+      </ItemWrapper>
+    </div>
   </div>
 </template>
