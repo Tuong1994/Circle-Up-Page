@@ -54,6 +54,8 @@ const mentionPosition = ref<MentionPosition>({ top: 0, left: 0 })
 
 const filterMentions = ref<MentionItems>([])
 
+const selectedIdx = ref<number>(-1)
+
 const controlPlaceholder = computed<string>(
   () => props.placeholder ?? 'Type your message... (Use @ to mention)'
 )
@@ -91,6 +93,7 @@ const handleChange = () => {
       mention.label.toLowerCase().includes(searchText)
     )
     showMentions.value = true
+    selectedIdx.value = 0 // Reset the index when mention list shows
     updateMentionPosition(mentionPosition, inputMentionRef)
   }
 }
@@ -98,15 +101,32 @@ const handleChange = () => {
 const handleSelectMention = (mention: MentionItem) => {
   const words = message.value.split(' ')
   words.pop() // Remove the last incomplete mention
-  message.value = words.join(' ') + ` @${mention.label} `
-  if (mentionBoxRef.value) mentionBoxRef.value.innerText = message.value // Update the contenteditable div
+  const json = ` ${JSON.stringify(mention)} `
+  message.value = words.join(' ') + json
+  const renderContent = words.join(' ') + ` <strong>${mention.label}</strong> `
+  if (mentionBoxRef.value)
+    mentionBoxRef.value.innerHTML = renderContent + ' ' + message.value.slice(json.length) // Update the contenteditable div
   showMentions.value = false
+  selectedIdx.value = -1 // Reset after selecting
+  console.log(message.value.length, json.length)
   emits('onSelectMention', mention)
 }
 
-// Optionally handle keydown to prevent unwanted behavior like enter key, etc.
-const handleKeydown = (e: any) => {
-  // You can prevent the enter key from adding a new line if needed
+const handleKeydown = (e: KeyboardEvent) => {
+  if (showMentions.value && filterMentions.value.length) {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      selectedIdx.value = (selectedIdx.value + 1) % filterMentions.value.length
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      selectedIdx.value = (selectedIdx.value - 1 + filterMentions.value.length) % filterMentions.value.length
+    } else if (e.key === 'Enter' && selectedIdx.value >= 0) {
+      e.preventDefault()
+      handleSelectMention(filterMentions.value[selectedIdx.value])
+    }
+  }
+
+  // Prevent the enter key from adding a new line, only shift + enter add a new line
   if (e.key === 'Enter') {
     if (!e.shiftKey) return e.preventDefault()
     e.preventDefault()
@@ -150,8 +170,9 @@ watch(message, (newValue) => {
       <ItemWrapper
         v-for="(mention, idx) in filterMentions"
         :key="`${mention.label}-${idx}`"
+        :class="{ 'list-item-selected': idx === selectedIdx }"
+        rootClassName="list-item"
         @click="handleSelectMention(mention)"
-        class="list-item"
       >
         <Space aligns="middle">
           <Avatar v-if="mention.imgUrl">

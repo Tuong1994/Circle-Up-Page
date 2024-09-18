@@ -25,6 +25,10 @@
       width: $w-full;
       margin: 0;
       display: block;
+      transition: all $transition-time-xs $transition-fn;
+    }
+    .list-item-selected {
+      background: $bg-slate;
     }
   }
 }

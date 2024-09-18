@@ -1,5 +1,5 @@
 import type { Ref } from 'vue'
-import type { MentionPlacement, MentionPosition } from './type'
+import type { MentionPosition } from './type'
 
 export const addNewLine = () => {
   const range = document.getSelection()?.getRangeAt(0)
