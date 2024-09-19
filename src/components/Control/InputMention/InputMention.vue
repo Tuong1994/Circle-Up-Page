@@ -104,11 +104,28 @@ const handleSelectMention = (mention: MentionItem) => {
   const json = ` ${JSON.stringify(mention)} `
   message.value = words.join(' ') + json
   const renderContent = words.join(' ') + ` <strong>${mention.label}</strong> `
-  if (mentionBoxRef.value)
-    mentionBoxRef.value.innerHTML = renderContent + ' ' + message.value.slice(json.length) // Update the contenteditable div
+  if (mentionBoxRef.value) {
+    const tempDiv = document.createElement('div')
+    tempDiv.innerHTML = renderContent + ' ' + message.value.slice(json.length)
+
+    // Clear the contenteditable div and append parsed content from tempDiv
+    mentionBoxRef.value.innerHTML = ''
+    Array.from(tempDiv.childNodes).forEach((node) => {
+      mentionBoxRef.value?.appendChild(node)
+    })
+    // Fix cursor positioning after the mention
+    const range = document.createRange()
+    const selection = window.getSelection()
+
+    // Move the cursor after the mention (after the <strong> tag)
+    const mentionBox = mentionBoxRef.value
+    range.setStart(mentionBox, mentionBox.childNodes.length)
+    range.collapse(true)
+    selection?.removeAllRanges()
+    selection?.addRange(range)
+  }
   showMentions.value = false
   selectedIdx.value = -1 // Reset after selecting
-  console.log(message.value.length, json.length)
   emits('onSelectMention', mention)
 }
 
