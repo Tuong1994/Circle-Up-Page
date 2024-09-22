@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue'
 import { Icon, Grid, Typography, Space, Avatar, Button, Divider } from '@/components/UI'
 import { Input, CheckBox } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import type { ControlColor, ClickBoxColor } from '@/components/Control/type'
+import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
@@ -13,7 +14,13 @@ import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
-const { Paragraph } = Typography
+const { Paragraph } = Typography;
+
+interface TagPeopleProps {
+  buttonProps: ButtonProps
+}
+
+defineProps<TagPeopleProps>()
 
 const emits = defineEmits(['onBack'])
 
@@ -60,7 +67,7 @@ const handleBack = () => emits('onBack')
     </div>
   </ModalBody>
   <ModalFoot>
-    <Button rootClassName="w-full" :color="layout.color" sizes="lg">
+    <Button v-bind="buttonProps">
       {{ t.lang.common.actions.done }}
     </Button>
   </ModalFoot>

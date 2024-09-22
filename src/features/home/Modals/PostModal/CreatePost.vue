@@ -12,6 +12,7 @@ import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
+import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 
 const { Row, Col } = Grid
 
@@ -30,6 +31,7 @@ type Action = {
 
 interface CreatePostProps {
   actionType: ActionType
+  buttonProps: ButtonProps
 }
 
 defineProps<CreatePostProps>()
@@ -95,7 +97,12 @@ const handleAction = (type: ActionType) => {
         :color="(layout.color as ControlColor)"
         :placeholder="`${t.lang.home.modal.createPost.placeholder}, User name?`"
       />
-      <MultipleImageUpload v-if="isUpload" :color="(layout.color as ControlColor)" />
+      <div class="content-upload" v-if="isUpload">
+        <Button shape="round" rootClassName="upload-close" @click="() => handleAction(EActionType.PHOTO)">
+          <Icon :iconName="iconName.X_MARK" :size="16" />
+        </Button>
+        <MultipleImageUpload :color="(layout.color as ControlColor)" />
+      </div>
     </div>
     <Card>
       <template #body>
@@ -126,7 +133,7 @@ const handleAction = (type: ActionType) => {
     </Card>
   </ModalBody>
   <ModalFoot>
-    <Button :color="layout.color" sizes="lg" rootClassName="w-full">
+    <Button v-bind="buttonProps">
       {{ t.lang.common.actions.post }}
     </Button>
   </ModalFoot>

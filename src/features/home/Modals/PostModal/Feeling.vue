@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed, defineEmits } from 'vue'
+import { computed, defineProps, defineEmits } from 'vue'
 import { Button, Icon, Grid, Space, Avatar } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EFeeling } from './enum'
 import type { ControlColor } from '@/components/Control/type'
+import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
@@ -13,6 +14,12 @@ import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
+
+interface FeelingProps {
+  buttonProps: ButtonProps;
+}
+
+defineProps<FeelingProps>()
 
 const emits = defineEmits(['onBack'])
 
@@ -136,6 +143,8 @@ const handleBack = () => emits('onBack')
     </div>
   </ModalBody>
   <ModalFoot>
-    <Button rootClassName="w-full" sizes="lg" :color="layout.color">Done</Button>
+    <Button v-bind="buttonProps">
+      {{ t.lang.common.actions.done }}
+    </Button>
   </ModalFoot>
 </template>

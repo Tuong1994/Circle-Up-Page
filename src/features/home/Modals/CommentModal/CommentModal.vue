@@ -9,9 +9,9 @@ import PostHead from '../../HomePost/PostHead.vue'
 import PostBody from '../../HomePost/PostBody.vue'
 import PostSummary from '../../HomePost/PostSummary.vue'
 import PostActions from '../../HomePost/PostActions.vue'
+import Comment from '@/components/View/Comment/Comment.vue'
 import CommentInput from '@/components/View/Comment/CommentInput/CommentInput.vue'
 import useCommentStore from '@/components/View/Comment/CommentStore'
-import Comment from '@/components/View/Comment/Comment.vue'
 
 interface CommentModalProps {
   open?: boolean

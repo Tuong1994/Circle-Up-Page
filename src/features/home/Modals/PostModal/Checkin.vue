@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue'
 import { Button, Icon, Typography } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import type { ControlColor } from '@/components/Control/type'
+import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
@@ -12,6 +13,12 @@ import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
+
+interface CheckinProps {
+  buttonProps: ButtonProps
+}
+
+defineProps<CheckinProps>()
 
 const emits = defineEmits(['onBack'])
 
@@ -26,7 +33,11 @@ const handleBack = () => emits('onBack')
   <ModalNavigator type="sub" :title="t.lang.home.modal.checkin.title" @onBack="handleBack" />
   <ModalBody>
     <div class="py-5">
-      <Input :color="(layout.color as ControlColor)" shape="round" :placeholder="`${t.lang.home.modal.checkin.placeholder}?`">
+      <Input
+        :color="(layout.color as ControlColor)"
+        shape="round"
+        :placeholder="`${t.lang.home.modal.checkin.placeholder}?`"
+      >
         <template #addonBefore>
           <Icon :iconName="iconName.SEARCH" />
         </template>
@@ -39,6 +50,8 @@ const handleBack = () => emits('onBack')
     </div>
   </ModalBody>
   <ModalFoot>
-    <Button rootClassName="w-full" sizes="lg" :color="layout.color">Done</Button>
+    <Button v-bind="buttonProps">
+      {{ t.lang.common.actions.done }}
+    </Button>
   </ModalFoot>
 </template>

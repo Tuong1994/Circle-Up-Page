@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue'
 import { Typography, Space, Grid, Icon, Button, Divider } from '@/components/UI'
 import { Radio } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import type { ClickBoxColor } from '@/components/Control/type'
+import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
 import ModalFoot from '../Components/ModalFoot.vue'
@@ -14,6 +15,12 @@ import useLangStore from '@/stores/LangStore'
 type AudienceType = 'public' | 'friends' | 'only'
 
 type Audience = { type: AudienceType; name: string; content: string; icon: string }
+
+interface PostAudienceProps {
+  buttonProps: ButtonProps;
+}
+
+defineProps<PostAudienceProps>()
 
 const { Paragraph } = Typography
 
@@ -82,7 +89,7 @@ const handleBack = () => emits('onBack')
     </div>
   </ModalBody>
   <ModalFoot>
-    <Button rootClassName="w-full" :color="layout.color" sizes="lg">
+    <Button v-bind="buttonProps">
       {{ t.lang.common.actions.done }}
     </Button>
   </ModalFoot>
