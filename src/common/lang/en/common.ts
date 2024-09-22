@@ -35,6 +35,26 @@ const common_en = {
     invite: 'Invite friends',
     follow: 'Follow'
   },
+  comment: {
+    comment: 'Comment',
+    like: 'Like',
+    reply: 'Reply',
+    emoji: 'Insert an emoji',
+    photo: 'Attach a photo',
+    sticker: 'Comment with a sticker',
+    feeling: {
+      happy: 'Happy',
+      inLove: 'In love',
+      sad: 'Sad',
+      eating: 'Eating',
+      celebrating: 'Celebrating',
+      active: 'Active',
+      working: 'Working',
+      sleepy: 'Sleepy',
+      angry: 'Angry',
+      confused: 'Confused'
+    }
+  },
   form: {
     label: {
       account: 'Account',
@@ -64,7 +84,8 @@ const common_en = {
       select: 'Select',
       search: 'Search',
       imagesUpload: 'Select or drag image here',
-      filesUpload: 'Choose file'
+      filesUpload: 'Choose file',
+      comment: 'Write a comment'
     },
     rule: {
       required: 'This field is required',

@@ -101,18 +101,16 @@ const handleChange = () => {
 const handleSelectMention = (mention: MentionItem) => {
   const words = message.value.split(' ')
   words.pop() // Remove the last incomplete mention
-  const json = ` ${JSON.stringify(mention)} `
-  message.value = words.join(' ') + json
-  const renderContent = words.join(' ') + ` <strong>${mention.label}</strong> `
+  const mentionJson = ` ${JSON.stringify(mention)} `
+  message.value = words.join(' ') + mentionJson
+  const renderContent = words.join(' ') + ` <strong>${mention.label}</strong>&nbsp;`
   if (mentionBoxRef.value) {
     const tempDiv = document.createElement('div')
-    tempDiv.innerHTML = renderContent + ' ' + message.value.slice(json.length)
+    tempDiv.innerHTML = renderContent + ' ' + message.value.slice(mentionJson.length)
 
     // Clear the contenteditable div and append parsed content from tempDiv
     mentionBoxRef.value.innerHTML = ''
-    Array.from(tempDiv.childNodes).forEach((node) => {
-      mentionBoxRef.value?.appendChild(node)
-    })
+    Array.from(tempDiv.childNodes).forEach((node) => mentionBoxRef.value?.appendChild(node))
     // Fix cursor positioning after the mention
     const range = document.createRange()
     const selection = window.getSelection()
@@ -126,6 +124,7 @@ const handleSelectMention = (mention: MentionItem) => {
   }
   showMentions.value = false
   selectedIdx.value = -1 // Reset after selecting
+
   emits('onSelectMention', mention)
 }
 

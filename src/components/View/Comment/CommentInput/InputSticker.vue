@@ -16,16 +16,16 @@ const t = useLangStore()
 const layout = useLayoutStore()
 
 const stickers = computed(() => [
-  { type: '', title: 'Happy', icon: '😊', color: 'yellow' },
-  { type: '', title: 'In love', icon: '😍', color: 'pink' },
-  { type: '', title: 'Sad', icon: '😢', color: 'black' },
-  { type: '', title: 'Eating', icon: '😋', color: 'orange' },
-  { type: '', title: 'Celebrating', icon: '🥳', color: 'light-green' },
-  { type: '', title: 'Active', icon: '😎', color: 'blue' },
-  { type: '', title: 'Working', icon: '🤓', color: 'green' },
-  { type: '', title: 'Sleepy', icon: '😴', color: 'purple' },
-  { type: '', title: 'Angry', icon: '😠', color: 'red' },
-  { type: '', title: 'Confused', icon: '😕', color: 'brown' }
+  { type: '', title: t.lang.common.comment.feeling.happy, icon: '😊', color: 'yellow' },
+  { type: '', title: t.lang.common.comment.feeling.inLove, icon: '😍', color: 'pink' },
+  { type: '', title: t.lang.common.comment.feeling.sad, icon: '😢', color: 'black' },
+  { type: '', title: t.lang.common.comment.feeling.eating, icon: '😋', color: 'orange' },
+  { type: '', title: t.lang.common.comment.feeling.celebrating, icon: '🥳', color: 'light-green' },
+  { type: '', title: t.lang.common.comment.feeling.active, icon: '😎', color: 'blue' },
+  { type: '', title: t.lang.common.comment.feeling.working, icon: '🤓', color: 'green' },
+  { type: '', title: t.lang.common.comment.feeling.sleepy, icon: '😴', color: 'purple' },
+  { type: '', title: t.lang.common.comment.feeling.angry, icon: '😠', color: 'red' },
+  { type: '', title: t.lang.common.comment.feeling.confused, icon: '😕', color: 'brown' }
 ])
 </script>
 

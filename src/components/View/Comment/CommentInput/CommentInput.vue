@@ -5,13 +5,13 @@ import { InputMention as CommentBox } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EFeatureType } from '../enum'
 import type { ControlColor } from '@/components/Control/type'
+import type { MentionItems } from '@/components/Control/InputMention/type'
 import EmojiPicker from 'vue3-emoji-picker'
 import InputSticker from './InputSticker.vue'
 import InputPhoto from './InputPhoto.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 import useCommentStore from '../CommentStore'
-import type { MentionItems } from '@/components/Control/InputMention/type'
 
 const { Row, Col } = Grid
 
@@ -43,9 +43,9 @@ const mentions: MentionItems = [
 ]
 
 const actions = computed(() => [
-  { type: EFeatureType.EMOJI, iconName: iconName.LAUGH, desc: 'Insert an emoji' },
-  { type: EFeatureType.PHOTO, iconName: iconName.IMAGE, desc: 'Attach a photo' },
-  { type: EFeatureType.STICKER, iconName: iconName.BOOKMARK, desc: 'Comment with a sticker' }
+  { type: EFeatureType.EMOJI, iconName: iconName.LAUGH, desc: t.lang.common.comment.emoji },
+  { type: EFeatureType.PHOTO, iconName: iconName.IMAGE, desc: t.lang.common.comment.photo },
+  { type: EFeatureType.STICKER, iconName: iconName.BOOKMARK, desc: t.lang.common.comment.sticker }
 ])
 
 const handleCancel = () => emits('onCancel')
@@ -74,13 +74,13 @@ const handleRemoveImage = () => {
     </Col>
     <Col :xs="20" :md="22" :lg="22" :span="22">
       <CommentBox
-        :rows="1"
-        :color="(layout.color as ControlColor)"
-        :mentions="mentions"
         shape="round"
         placement="top"
         rootClassName="mb-3"
-        placeholder="Write a comment"
+        :rows="1"
+        :color="(layout.color as ControlColor)"
+        :mentions="mentions"
+        :placeholder="t.lang.common.form.placeholder.comment"
       />
       <Row justify="between" aligns="middle">
         <Col>
@@ -113,12 +113,26 @@ const handleRemoveImage = () => {
         </Col>
         <Col>
           <Space aligns="middle">
-            <Button sizes="sm" shape="round">
-              <Icon :iconName="iconName.PAPER_PLANE" :sizes="16" color="gray" />
-            </Button>
-            <Button v-if="hasCancel" sizes="sm" shape="round" @click="handleCancel">
-              <Icon :iconName="iconName.X_MARK" :sizes="16" color="gray" />
-            </Button>
+            <Tooltip placement="top">
+              <template #title>
+                <Button sizes="sm" shape="round">
+                  <Icon :iconName="iconName.PAPER_PLANE" :sizes="16" color="gray" />
+                </Button>
+              </template>
+              <template #content>
+                {{ t.lang.common.comment.comment }}
+              </template>
+            </Tooltip>
+            <Tooltip placement="top">
+              <template #title>
+                <Button v-if="hasCancel" sizes="sm" shape="round" @click="handleCancel">
+                  <Icon :iconName="iconName.X_MARK" :sizes="16" color="gray" />
+                </Button>
+              </template>
+              <template #content>
+                {{ t.lang.common.actions.cancel }}
+              </template>
+            </Tooltip>
           </Space>
         </Col>
       </Row>

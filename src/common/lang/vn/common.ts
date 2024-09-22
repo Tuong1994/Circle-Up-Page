@@ -35,6 +35,26 @@ const common_vn = {
     invite: 'Mời bạn bè',
     follow: 'Theo dõi'
   },
+  comment: {
+    comment: 'Bình luận',
+    like: 'Thích',
+    reply: 'Phản hồi',
+    emoji: 'Chèn biểu tượng cảm xúc',
+    photo: 'Đính kèm ảnh',
+    sticker: 'Bình luận bằng nhãn dán',
+    feeling: {
+      happy: 'Vui vẻ',
+      inLove: 'Đang yêu',
+      sad: 'Buồn',
+      eating: 'Ăn uống',
+      celebrating: 'Ăn mừng',
+      active: 'Năng động',
+      working: 'Làm việc',
+      sleepy: 'Buồn ngủ',
+      angry: 'Tức giận',
+      confused: 'Bối rối'
+    }
+  },
   form: {
     label: {
       account: 'Tài khoản',
@@ -64,7 +84,8 @@ const common_vn = {
       select: 'Chọn',
       search: 'Tìm kiếm',
       imagesUpload: 'Chọn hoặc kéo thả hình ảnh vào khu vực này',
-      filesUpload: 'Chọn tập tin'
+      filesUpload: 'Chọn tập tin',
+      comment: 'Write a comment'
     },
     rule: {
       required: 'Trường này là bắt buộc',

@@ -7,6 +7,7 @@ import type { ActiveComment } from './type'
 import CommentList from './CommentList.vue'
 import CommentInput from './CommentInput/CommentInput.vue'
 import HoverInfo from '../HoverInfo/HoverInfo.vue'
+import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
 
@@ -21,6 +22,8 @@ const props = withDefaults(defineProps<CommentItemProps>(), {
 })
 
 const emits = defineEmits(['onReply', 'onCancelReply'])
+
+const t = useLangStore()
 
 const childComments = props.comments.filter((childComment) => childComment.parentId === props.comment.id)
 
@@ -49,9 +52,11 @@ const handleCancelReply = () => emits('onCancelReply')
           </div>
           <Space aligns="middle">
             <Paragraph :size="12" variant="secondary">1d</Paragraph>
-            <Paragraph :size="12" :weight="600" rootClassName="main-action">Like</Paragraph>
+            <Paragraph :size="12" :weight="600" rootClassName="main-action">
+              {{ t.lang.common.comment.like }}
+            </Paragraph>
             <Paragraph :size="12" :weight="600" rootClassName="main-action" @click="handleReply">
-              Reply
+              {{ t.lang.common.comment.reply }}
             </Paragraph>
             <Dropdown trigger="hover">
               <template #label>
