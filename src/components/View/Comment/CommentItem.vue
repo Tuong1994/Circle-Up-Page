@@ -8,6 +8,7 @@ import CommentList from './CommentList.vue'
 import CommentInput from './CommentInput/CommentInput.vue'
 import HoverInfo from '../HoverInfo/HoverInfo.vue'
 import useLangStore from '@/stores/LangStore'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
 
@@ -25,7 +26,11 @@ const emits = defineEmits(['onReply', 'onCancelReply'])
 
 const t = useLangStore()
 
+const layout = useLayoutStore()
+
 const childComments = props.comments.filter((childComment) => childComment.parentId === props.comment.id)
+
+const actionClassName = computed<string>(() => `main-action main-action-${layout.color}`)
 
 const isReply = computed<boolean>(
   () => props.activeComment.id === props.comment.id && props.activeComment.type === 'reply'
@@ -52,10 +57,10 @@ const handleCancelReply = () => emits('onCancelReply')
           </div>
           <Space aligns="middle">
             <Paragraph :size="12" variant="secondary">1d</Paragraph>
-            <Paragraph :size="12" :weight="600" rootClassName="main-action">
+            <Paragraph :size="12" :weight="600" :rootClassName="actionClassName">
               {{ t.lang.common.comment.like }}
             </Paragraph>
-            <Paragraph :size="12" :weight="600" rootClassName="main-action" @click="handleReply">
+            <Paragraph :size="12" :weight="600" :rootClassName="actionClassName" @click="handleReply">
               {{ t.lang.common.comment.reply }}
             </Paragraph>
             <Dropdown trigger="hover">

@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Layout } from '@/components/UI'
-import { routePaths } from '@/router'
+import { routeNames } from '@/router'
 import { useRouter } from 'vue-router'
 import { useViewPoint } from '@/hooks'
 import Header from '../Header/Header.vue'
 import HomeMenu from './HomeMenu.vue'
+import FriendsMenu from './FriendsMenu.vue'
 
 const { Container, Head, Body, Side, Content } = Layout
 
@@ -24,7 +25,8 @@ const isMobile = computed<boolean>(() => Boolean(isPhone.value || isTablet.value
     <Body>
       <Side v-if="!isMobile" :hasCollapseButton="false">
         <div class="side-menu">
-          <HomeMenu v-if="currentRoute.fullPath === routePaths.HOME" />
+          <HomeMenu v-if="currentRoute.name === routeNames.HOME" />
+          <FriendsMenu v-if="currentRoute.name === routeNames.FRIENDS" />
         </div>
       </Side>
       <Content>

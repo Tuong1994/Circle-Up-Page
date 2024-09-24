@@ -1,7 +1,7 @@
 const common_en = {
   routes: {
     home: 'Home',
-    friend: 'Friend',
+    friends: 'Friends',
     saved: 'Saved',
     events: 'Events'
   },

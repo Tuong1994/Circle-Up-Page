@@ -70,10 +70,42 @@
       }
     }
     .main-action {
-      transition: all $transition-time-sm $transition-fn;
       cursor: pointer;
+      transition: all $transition-time-sm $transition-fn;
+    }
+    .main-action-blue {
+      &:hover {
+        color: $text-blue;
+      }
+    }
+    .main-action-green {
+      &:hover {
+        color: $text-green;
+      }
+    }
+    .main-action-red {
+      &:hover {
+        color: $text-red;
+      }
+    }
+    .main-action-orange {
       &:hover {
         color: $text-orange;
+      }
+    }
+    .main-action-yellow {
+      &:hover {
+        color: $text-yellow;
+      }
+    }
+    .main-action-purple {
+      &:hover {
+        color: $text-purple;
+      }
+    }
+    .main-action-pink {
+      &:hover {
+        color: $text-pink;
       }
     }
   }

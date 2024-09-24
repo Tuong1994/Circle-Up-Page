@@ -1,7 +1,7 @@
 const common_vn = {
   routes: {
     home: 'Trang chủ',
-    friend: 'Bạn bè',
+    friends: 'Bạn bè',
     saved: 'Đã lưu',
     events: 'Sự kiện'
   },

@@ -3,8 +3,8 @@ import { computed } from 'vue'
 import { Grid, Icon, Space, Tooltip } from '@/components/UI'
 import { RouterLink, useRouter } from 'vue-router'
 import { iconName } from '@/components/UI/Icon/constant'
-import { routePaths } from '@/router'
-import type { NavbarMenuItems } from './type'
+import { routeNames, routePaths } from '@/router'
+import type { RouterItems } from '@/router/type'
 import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
@@ -13,9 +13,14 @@ const { currentRoute } = useRouter()
 
 const t = useLangStore()
 
-const menus = computed<NavbarMenuItems>(() => [
-  { id: 'home', name: t.lang.common.routes.home, path: routePaths.HOME, iconName: iconName.HOUSE },
-  { id: 'friend', name: t.lang.common.routes.friend, path: routePaths.USER, iconName: iconName.USER }
+const menus = computed<RouterItems>(() => [
+  { id: routeNames.HOME, name: t.lang.common.routes.home, path: routePaths.HOME, iconName: iconName.HOUSE },
+  {
+    id: routeNames.FRIENDS,
+    name: t.lang.common.routes.friends,
+    path: routePaths.FRIENDS,
+    iconName: iconName.USER
+  }
 ])
 </script>
 
@@ -25,7 +30,7 @@ const menus = computed<NavbarMenuItems>(() => [
       <Col v-for="menu in menus" :key="menu.id" :lg="12" :span="12">
         <RouterLink :to="menu.path">
           <Tooltip
-            :rootClassName="`navbar-item ${menu.path === currentRoute.fullPath ? 'navbar-item-active' : ''}`"
+            :rootClassName="`navbar-item ${menu.id === currentRoute.name ? 'navbar-item-active' : ''}`"
             titleClassName="item-title"
           >
             <template #title>
