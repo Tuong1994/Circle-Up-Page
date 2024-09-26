@@ -22,6 +22,12 @@ const menus = computed<RouterItems>(() => [
     iconName: iconName.USER
   }
 ])
+
+const getActiveClass = (name: string) => {
+  const activeClass = 'navbar-item-active'
+  if (name === routeNames.HOME) return currentRoute.value.name === name ? activeClass : ''
+  return currentRoute.value.fullPath.includes(name) ? activeClass : ''
+}
 </script>
 
 <template>
@@ -30,7 +36,7 @@ const menus = computed<RouterItems>(() => [
       <Col v-for="menu in menus" :key="menu.id" :lg="12" :span="12">
         <RouterLink :to="menu.path">
           <Tooltip
-            :rootClassName="`navbar-item ${menu.id === currentRoute.name ? 'navbar-item-active' : ''}`"
+            :rootClassName="`navbar-item ${getActiveClass(menu.id)}`"
             titleClassName="item-title"
           >
             <template #title>
