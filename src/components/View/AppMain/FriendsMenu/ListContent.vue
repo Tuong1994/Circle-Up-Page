@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ContentHead from './ContentHead.vue'
+import ContentHead from '../Components/ContentHead.vue'
 </script>
 
 <template>

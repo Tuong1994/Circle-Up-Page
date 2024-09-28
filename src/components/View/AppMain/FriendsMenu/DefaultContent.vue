@@ -4,7 +4,7 @@ import { Divider, Typography } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import { routePaths } from '@/router'
 import type { RouterItems } from '@/router/type'
-import MenuItem from '../MenuItem.vue'
+import MenuItem from '../Components/MenuItem.vue'
 
 const { Paragraph } = Typography
 
@@ -16,9 +16,11 @@ const items = computed<RouterItems>(() => [
 </script>
 
 <template>
-  <Paragraph :weight="600" :size="22">Friends</Paragraph>
-  <Divider />
-  <MenuItem v-for="item in items" :key="item.id" :path="item.path" :icon="item.iconName">
-    {{ item.name }}
-  </MenuItem>
+  <div class="p-3">
+    <Paragraph :weight="600" :size="22">Friends</Paragraph>
+    <Divider />
+    <MenuItem v-for="item in items" :key="item.id" :path="item.path" :icon="item.iconName">
+      {{ item.name }}
+    </MenuItem>
+  </div>
 </template>

@@ -3,8 +3,9 @@ import { computed } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant'
 import { routePaths } from '@/router'
 import type { RouterItems } from '@/router/type'
+import MenuItem from './Components/MenuItem.vue'
+import ContentBody from './Components/ContentBody.vue'
 import useLangStore from '@/stores/LangStore'
-import MenuItem from './MenuItem.vue'
 
 const t = useLangStore()
 
@@ -22,7 +23,9 @@ const items = computed<RouterItems>(() => [
 </script>
 
 <template>
-  <MenuItem v-for="item in items" :key="item.id" :path="item.path" :icon="item.iconName">
-    {{ item.name }}
-  </MenuItem>
+  <ContentBody>
+    <MenuItem v-for="item in items" :key="item.id" :path="item.path" :icon="item.iconName">
+      {{ item.name }}
+    </MenuItem>
+  </ContentBody>
 </template>

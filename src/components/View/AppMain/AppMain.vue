@@ -24,10 +24,8 @@ const isMobile = computed<boolean>(() => Boolean(isPhone.value || isTablet.value
     </Head>
     <Body>
       <Side v-if="!isMobile" :hasCollapseButton="false">
-        <div class="side-menu">
-          <HomeMenu v-if="currentRoute.name === routeNames.HOME" />
-          <FriendsMenu v-if="currentRoute.fullPath.includes(routeNames.FRIENDS)" />
-        </div>
+        <HomeMenu v-if="currentRoute.name === routeNames.HOME" />
+        <FriendsMenu v-if="currentRoute.fullPath.includes(routeNames.FRIENDS)" />
       </Side>
       <Content>
         <slot></slot>

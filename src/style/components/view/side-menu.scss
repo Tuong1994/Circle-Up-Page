@@ -1,3 +1,31 @@
 .side-menu {
   padding: 0 $p-1;
 }
+
+.side-content-head {
+  padding: 0 $p-1;
+  height: $h-6;
+}
+
+.side-content-body {
+  height: $h-screen;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  &:hover {
+    overflow-y: auto;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: $rounded-xxl;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .body-inner {
+    padding: $p-1;
+    height: $h-full;
+  }
+}
+
+.side-content-body-height {
+  height: calc($h-screen - ($h-10 + 4rem));
+}

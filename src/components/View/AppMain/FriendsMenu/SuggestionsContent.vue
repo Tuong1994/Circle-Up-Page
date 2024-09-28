@@ -1,26 +1,35 @@
 <script setup lang="ts">
-import { Typography, Space, Avatar, Button } from '@/components/UI'
-import ContentHead from './ContentHead.vue'
+import { Typography, Grid, Space, Avatar, Button } from '@/components/UI'
+import ContentHead from '../Components/ContentHead.vue'
+import ContentBody from '../Components/ContentBody.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
+
+const { Row, Col } = Grid
 
 const layout = useLayoutStore()
 </script>
 
 <template>
   <ContentHead> Suggestions </ContentHead>
-  <div>
+  <ContentBody>
     <Paragraph :weight="600" :size="16" rootClassName="py-5">People you may know</Paragraph>
-    <Space v-for="item in 100">
-      <Avatar :size="50" />
-      <div>
+    <Row v-for="item in 100" rootClassName="py-5">
+      <Col :span="5">
+        <Avatar :size="50" />
+      </Col>
+      <Col :span="19">
         <Paragraph :weight="600">People</Paragraph>
-        <Space>
-          <Button :color="layout.color">Add friend</Button>
-          <Button>Remove</Button>
-        </Space>
-      </div>
-    </Space>
-  </div>
+        <Row>
+          <Col :span="12">
+            <Button :color="layout.color" rootClassName="w-full">Add friend</Button>
+          </Col>
+          <Col :span="12">
+            <Button rootClassName="w-full">Remove</Button>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
+  </ContentBody>
 </template>
