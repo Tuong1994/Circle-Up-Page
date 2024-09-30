@@ -1,31 +1,61 @@
 <script setup lang="ts">
-import { watchEffect } from 'vue'
+import { watchEffect, defineProps, ref } from 'vue'
 import { Space, Button, Icon, Typography } from '@/components/UI'
+import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { routePaths } from '@/router'
+import type { ControlShape, ControlColor } from '@/components/Control/type'
 import useAppMainStore from '../AppMainStore'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
 
+interface ContentHeadProps {
+  hasSearch?: boolean
+}
+
+defineProps<ContentHeadProps>()
+
 const app = useAppMainStore()
 
-watchEffect(() => app.setHasContentMenuHead(true))
+const layout = useLayoutStore()
+
+const contentHeadRef = ref<HTMLDivElement | null>(null)
+
+watchEffect(() => {
+  const height = contentHeadRef.value?.scrollHeight ?? 0
+  app.setHasContentMenuHead(true)
+  app.setContentMenuHeadHeight(height)
+})
 </script>
 
 <template>
-  <Space aligns="middle" rootClassName="side-content-head">
-    <RouterLink :to="routePaths.FRIENDS">
-      <Button shape="round">
-        <Icon :iconName="iconName.ANGLE_LEFT" />
-      </Button>
-    </RouterLink>
-    <div>
+  <div ref="contentHeadRef" class="side-content-head">
+    <Space aligns="middle">
       <RouterLink :to="routePaths.FRIENDS">
-        <Button text sizes="sm" rootClassName="!p-0">Friends</Button>
+        <Button shape="round">
+          <Icon :iconName="iconName.ANGLE_LEFT" />
+        </Button>
       </RouterLink>
-      <Paragraph :size="20" :weight="600">
-        <slot>Title</slot>
-      </Paragraph>
-    </div>
-  </Space>
+      <div>
+        <RouterLink :to="routePaths.FRIENDS">
+          <Button text sizes="sm" rootClassName="!p-0">Friends</Button>
+        </RouterLink>
+        <Paragraph :size="20" :weight="600">
+          <slot>Title</slot>
+        </Paragraph>
+      </div>
+    </Space>
+    <Input
+      v-if="hasSearch"
+      rootClassName="mt-5"
+      placeholder="Search friend"
+      :shape="(layout.shape as ControlShape)"
+      :color="(layout.color as ControlColor)"
+    >
+      <template #addonBefore>
+        <Icon :iconName="iconName.SEARCH" />
+      </template>
+    </Input>
+  </div>
 </template>

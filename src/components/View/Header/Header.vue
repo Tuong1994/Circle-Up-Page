@@ -23,6 +23,8 @@ const type = ref<FeatureType | undefined>(undefined)
 
 const colorClassName = computed<string>(() => `header-${layout.color}`)
 
+const shapeClassName = computed<string>(() => `header-${layout.shape}`)
+
 const isRenderFeatures = computed<boolean>(() => {
   if (screenWidth.value >= 320 && screenWidth.value < 480) return !header.openSearch
   return true
@@ -36,7 +38,7 @@ const handleOpenFeatures = (featureType: FeatureType) => {
 </script>
 
 <template>
-  <Row aligns="middle" justify="between" :rootClassName="`header ${colorClassName}`">
+  <Row aligns="middle" justify="between" :rootClassName="`header ${shapeClassName} ${colorClassName}`">
     <Col :xs="3" :span="6">
       <SearchInput />
     </Col>

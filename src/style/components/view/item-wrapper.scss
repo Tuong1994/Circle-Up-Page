@@ -1,9 +1,16 @@
 .item-wrapper {
   cursor: pointer;
   padding: $p-1;
-  border-radius: $rounded-xxl;
   transition: all $transition-time-sm $transition-fn;
   &:hover {
     background: $bg-slate;
   }
+}
+
+.item-wrapper-square {
+  border-radius: $rounded;
+}
+
+.item-wrapper-round {
+  border-radius: $rounded-xxl;
 }

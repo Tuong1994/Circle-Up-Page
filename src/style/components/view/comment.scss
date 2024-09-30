@@ -64,7 +64,6 @@
     .main-content {
       padding: $p-1;
       background: $bg-slate;
-      border-radius: $rounded-xxl;
       & > p {
         line-height: $h-2 !important;
       }
@@ -111,5 +110,21 @@
   }
   .item-child {
     padding-left: $p-4;
+  }
+}
+
+.comment-item-square {
+  .item-main {
+    .main-content {
+      border-radius: $rounded;
+    }
+  }
+}
+
+.comment-item-round {
+  .item-main {
+    .main-content {
+      border-radius: $rounded-xxl;
+    }
   }
 }

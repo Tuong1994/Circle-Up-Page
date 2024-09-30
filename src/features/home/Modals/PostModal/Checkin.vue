@@ -3,7 +3,7 @@ import { defineEmits, defineProps } from 'vue'
 import { Button, Icon, Typography } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
-import type { ControlColor } from '@/components/Control/type'
+import type { ControlShape, ControlColor } from '@/components/Control/type'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
@@ -35,7 +35,7 @@ const handleBack = () => emits('onBack')
     <div class="py-5">
       <Input
         :color="(layout.color as ControlColor)"
-        shape="round"
+        :shape="(layout.shape as ControlShape)"
         :placeholder="`${t.lang.home.modal.checkin.placeholder}?`"
       >
         <template #addonBefore>

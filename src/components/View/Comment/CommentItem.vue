@@ -32,6 +32,8 @@ const childComments = props.comments.filter((childComment) => childComment.paren
 
 const actionClassName = computed<string>(() => `main-action main-action-${layout.color}`)
 
+const shapeClassName = computed<string>(() => `comment-item-${layout.shape}`)
+
 const isReply = computed<boolean>(
   () => props.activeComment.id === props.comment.id && props.activeComment.type === 'reply'
 )
@@ -42,7 +44,7 @@ const handleCancelReply = () => emits('onCancelReply')
 </script>
 
 <template>
-  <div class="comment-item">
+  <div :class="['comment-item', shapeClassName]">
     <div class="item-main">
       <Space>
         <HoverInfo>

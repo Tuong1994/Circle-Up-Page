@@ -33,9 +33,9 @@ const slided = ref<boolean>(false)
 const actionType = ref<ActionType>(EActionType.PHOTO)
 
 const buttonProps = computed<ButtonProps>(() => ({
-  shape: 'round',
   sizes: 'lg',
   rootClassName: 'w-full',
+  shape: layout.shape,
   color: layout.color
 }))
 

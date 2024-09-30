@@ -3,7 +3,7 @@ import { defineEmits, defineProps } from 'vue'
 import { Icon, Grid, Typography, Space, Avatar, Button, Divider } from '@/components/UI'
 import { Input, CheckBox } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
-import type { ControlColor, ClickBoxColor } from '@/components/Control/type'
+import type { ControlColor, ClickBoxColor, ControlShape } from '@/components/Control/type'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
@@ -14,7 +14,7 @@ import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
-const { Paragraph } = Typography;
+const { Paragraph } = Typography
 
 interface TagPeopleProps {
   buttonProps: ButtonProps
@@ -34,7 +34,11 @@ const handleBack = () => emits('onBack')
 <template>
   <ModalNavigator type="sub" :title="t.lang.home.modal.tag.title" @onBack="handleBack" />
   <ModalBody>
-    <Input :color="(layout.color as ControlColor)" shape="round" :placeholder="t.lang.common.form.placeholder.search">
+    <Input
+      :color="(layout.color as ControlColor)"
+      :shape="(layout.shape as ControlShape)"
+      :placeholder="t.lang.common.form.placeholder.search"
+    >
       <template #addonBefore>
         <Icon :iconName="iconName.SEARCH" />
       </template>

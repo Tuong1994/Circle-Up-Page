@@ -3,8 +3,7 @@
 }
 
 .side-content-head {
-  padding: 0 $p-1;
-  height: $h-6;
+  padding: $p-1;
 }
 
 .side-content-body {
@@ -24,8 +23,4 @@
     padding: $p-1;
     height: $h-full;
   }
-}
-
-.side-content-body-height {
-  height: calc($h-screen - ($h-10 + 4rem));
 }

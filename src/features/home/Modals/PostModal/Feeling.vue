@@ -4,7 +4,7 @@ import { Button, Icon, Grid, Space, Avatar } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EFeeling } from './enum'
-import type { ControlColor } from '@/components/Control/type'
+import type { ControlColor, ControlShape } from '@/components/Control/type'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalNavigator from '../Components/ModalNavigator.vue'
 import ModalBody from '../Components/ModalBody.vue'
@@ -16,7 +16,7 @@ import useLangStore from '@/stores/LangStore'
 const { Row, Col } = Grid
 
 interface FeelingProps {
-  buttonProps: ButtonProps;
+  buttonProps: ButtonProps
 }
 
 defineProps<FeelingProps>()
@@ -121,7 +121,11 @@ const handleBack = () => emits('onBack')
   <ModalNavigator type="sub" :title="`${t.lang.home.modal.feeling.title}?`" @onBack="handleBack" />
   <ModalBody>
     <div class="py-5">
-      <Input :color="(layout.color as ControlColor)" shape="round" :placeholder="t.lang.common.form.placeholder.search">
+      <Input
+        :color="(layout.color as ControlColor)"
+        :shape="(layout.shape as ControlShape)"
+        :placeholder="t.lang.common.form.placeholder.search"
+      >
         <template #addonBefore>
           <Icon :iconName="iconName.SEARCH" />
         </template>

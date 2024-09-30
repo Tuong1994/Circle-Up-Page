@@ -4,7 +4,7 @@ import { Avatar, Space, Grid, Icon, Tooltip, Button, Image, Dropdown } from '@/c
 import { InputMention as CommentBox } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EFeatureType } from '../enum'
-import type { ControlColor } from '@/components/Control/type'
+import type { ControlShape, ControlColor } from '@/components/Control/type'
 import type { MentionItems } from '@/components/Control/InputMention/type'
 import EmojiPicker from 'vue3-emoji-picker'
 import InputSticker from './InputSticker.vue'
@@ -74,12 +74,12 @@ const handleRemoveImage = () => {
     </Col>
     <Col :xs="20" :md="22" :lg="22" :span="22">
       <CommentBox
-        shape="round"
         placement="top"
         rootClassName="mb-3"
         :rows="1"
-        :color="(layout.color as ControlColor)"
         :mentions="mentions"
+        :color="(layout.color as ControlColor)"
+        :shape="(layout.shape as ControlShape)"
         :placeholder="t.lang.common.form.placeholder.comment"
       />
       <Row justify="between" aligns="middle">

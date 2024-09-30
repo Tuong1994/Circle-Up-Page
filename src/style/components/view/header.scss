@@ -76,7 +76,6 @@
     width: $w-full;
     .item-title {
       padding: $p-1;
-      border-radius: $rounded-xxl;
       transition: all $transition-time-sm $transition-fn;
       &:hover {
         background: $bg-slate;
@@ -116,7 +115,24 @@
     animation: features $transition-time-xs $transition-fn;
   }
 }
+// Shape
+.header-square {
+  .navbar-item {
+    .item-title {
+      border-radius: $rounded;
+    }
+  }
+}
 
+.header-round {
+  .navbar-item {
+    .item-title {
+      border-radius: $rounded-xxl;
+    }
+  }
+}
+
+// Color
 .header-blue {
   .navbar-item-active {
     .item-title {

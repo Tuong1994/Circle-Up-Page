@@ -4,7 +4,7 @@ import { Avatar, Icon, Space, Button, Grid, Typography } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { useRender, useViewPoint } from '@/hooks'
-import type { ControlColor } from '@/components/Control/type'
+import type { ControlShape, ControlColor } from '@/components/Control/type'
 import Logo from '../Logo/Logo.vue'
 import ItemWrapper from './../ItemWrapper/ItemWrapper.vue'
 import useClickOutSide from '@/hooks/useClickOutside'
@@ -65,9 +65,9 @@ watch(open, (newValue) => {
           <Icon :size="18" :iconName="iconName.ANGLE_DOUBLE_LEFT" @click="handleClose" />
         </div>
         <Input
-          shape="round"
           rootClassName="control-box"
           :color="(layout.color as ControlColor)"
+          :shape="(layout.shape as ControlShape)"
           :placeholder="t.lang.common.header.searchInput.placeholder"
           @click="handleOpen"
         >
