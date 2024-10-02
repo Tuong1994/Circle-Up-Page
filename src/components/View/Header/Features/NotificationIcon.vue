@@ -1,9 +1,18 @@
 <script setup lang="ts">
-import { defineEmits } from 'vue'
+import { computed, defineEmits, defineProps, withDefaults } from 'vue'
 import { Icon, Avatar, Tooltip } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import useLangStore from '@/stores/LangStore'
-import useLayoutStore from '@/components/UI/Layout/LayoutStore';
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+
+interface HeaderNotificationProps {
+  responsive?: boolean;
+  iconSize?: number
+}
+
+const props = withDefaults(defineProps<HeaderNotificationProps>(), {
+  iconSize: 18
+})
 
 const emits = defineEmits(['onClick'])
 
@@ -11,14 +20,16 @@ const layout = useLayoutStore()
 
 const t = useLangStore()
 
+const avatarSize = computed<number>(() => (props.responsive ? 30 : 40))
+
 const handleClick = () => emits('onClick', 'notification')
 </script>
 
 <template>
   <Tooltip rootClassName="header-icon" @onClick="handleClick">
     <template #title>
-      <Avatar :size="40" :color="layout.color">
-        <Icon :iconName="iconName.BELL" />
+      <Avatar :size="avatarSize" :color="layout.color">
+        <Icon :iconName="iconName.BELL" :size="iconSize" />
       </Avatar>
     </template>
     <template #content>{{ t.lang.common.header.features.notification.title }}</template>

@@ -1,4 +1,5 @@
 .header {
+  width: $w-full;
   .header-icon {
     cursor: pointer;
   }
@@ -40,6 +41,7 @@
         transition: all $transition-time-sm $transition-fn;
         @include respond(mdPhone) {
           left: -1rem;
+          position: unset;
         }
       }
       .control-dropdown-active {
@@ -48,8 +50,11 @@
         animation: open $transition-time-sm $transition-fn;
       }
       @include respond(mdPhone) {
+        position: fixed;
+        top: 0;
         opacity: 0;
         visibility: hidden;
+        background: $bg-white;
       }
     }
     .input-control-active {
@@ -72,21 +77,26 @@
       animation: fading $transition-time-sm $transition-fn;
     }
   }
-  .navbar-item {
-    width: $w-full;
-    .item-title {
-      padding: $p-1;
-      transition: all $transition-time-sm $transition-fn;
-      &:hover {
-        background: $bg-slate;
+  .header-navbar {
+    .navbar-item {
+      width: $w-full;
+      .item-title {
+        padding: $p-1;
+        transition: all $transition-time-sm $transition-fn;
+        &:hover {
+          background: $bg-slate;
+        }
       }
     }
-  }
-  .navbar-item-active {
-    .item-title {
-      path {
-        color: $text-white;
+    .navbar-item-active {
+      .item-title {
+        path {
+          color: $text-white;
+        }
       }
+    }
+    @include respond(mdPhone) {
+      padding: $p-1 0;
     }
   }
   .features {

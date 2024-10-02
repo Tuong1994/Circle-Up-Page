@@ -8,16 +8,13 @@ import SearchInput from './SearchInput.vue'
 import Notification from './Features/NotificationIcon.vue'
 import Profile from './Features/ProfileIcon.vue'
 import Features from './Features/Features.vue'
-import useHeaderStore from './HeaderStore'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
 
+const { isPhone } = useViewPoint()
+
 const layout = useLayoutStore()
-
-const header = useHeaderStore()
-
-const { screenWidth } = useViewPoint()
 
 const type = ref<FeatureType | undefined>(undefined)
 
@@ -25,10 +22,7 @@ const colorClassName = computed<string>(() => `header-${layout.color}`)
 
 const shapeClassName = computed<string>(() => `header-${layout.shape}`)
 
-const isRenderFeatures = computed<boolean>(() => {
-  if (screenWidth.value >= 320 && screenWidth.value < 480) return !header.openSearch
-  return true
-})
+const iconSize = computed<number>(() => (isPhone.value ? 14 : 18))
 
 const handleOpenFeatures = (featureType: FeatureType) => {
   if (!featureType) return
@@ -38,19 +32,22 @@ const handleOpenFeatures = (featureType: FeatureType) => {
 </script>
 
 <template>
-  <Row aligns="middle" justify="between" :rootClassName="`header ${shapeClassName} ${colorClassName}`">
-    <Col :xs="3" :span="6">
-      <SearchInput />
-    </Col>
-    <Col :xs="0" :md="0" :lg="8" :span="10">
-      <Navbar />
-    </Col>
-    <Col :span="6">
-      <Space v-if="isRenderFeatures" justify="end" aligns="middle">
-        <Notification @onClick="handleOpenFeatures" />
-        <Profile @onClick="handleOpenFeatures" />
-      </Space>
-    </Col>
-    <Features :open="type !== undefined" :type="type" @onClick="handleOpenFeatures" />
-  </Row>
+  <div :class="['header', shapeClassName, colorClassName]">
+    <Navbar v-if="isPhone" :iconSize="iconSize" />
+    <Row aligns="middle" justify="between">
+      <Col :xs="3" :span="6">
+        <SearchInput :responsive="isPhone" />
+      </Col>
+      <Col :xs="0" :md="0" :lg="8" :span="10">
+        <Navbar />
+      </Col>
+      <Col :span="6">
+        <Space justify="end" aligns="middle">
+          <Notification :responsive="isPhone" :iconSize="iconSize" @onClick="handleOpenFeatures" />
+          <Profile :responsive="isPhone" :iconSize="iconSize" @onClick="handleOpenFeatures" />
+        </Space>
+      </Col>
+      <Features :open="type !== undefined" :type="type" @onClick="handleOpenFeatures" />
+    </Row>
+  </div>
 </template>

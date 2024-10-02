@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, defineProps } from 'vue'
 import { Avatar, Icon, Space, Button, Grid, Typography } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
-import { useRender, useViewPoint } from '@/hooks'
+import { useRender } from '@/hooks'
 import type { ControlShape, ControlColor } from '@/components/Control/type'
 import Logo from '../Logo/Logo.vue'
 import ItemWrapper from './../ItemWrapper/ItemWrapper.vue'
 import useClickOutSide from '@/hooks/useClickOutside'
-import useHeaderStore from './HeaderStore'
 import useLangStore from '@/stores/LangStore'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
@@ -16,7 +15,11 @@ const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
-const { isPhone } = useViewPoint()
+interface HeaderSearchInputProps {
+  responsive?: boolean
+}
+
+const props = defineProps<HeaderSearchInputProps>()
 
 const layout = useLayoutStore()
 
@@ -26,36 +29,38 @@ const open = ref<boolean>(false)
 
 const t = useLangStore()
 
-const header = useHeaderStore()
-
 const render = useRender(open)
 
 useClickOutSide(inputRef, open)
 
-const logoClassName = computed<string>(() => (header.openSearch ? 'input-logo-render' : ''))
+const logoClassName = computed<string>(() => (open.value ? 'input-logo-render' : ''))
 
 const inputClassName = computed<string>(() => (open.value ? 'input-control-active' : ''))
 
 const dropdownClassName = computed<string>(() => (open.value ? 'control-dropdown-active' : ''))
 
 const responsiveClassName = computed<string>(() =>
-  isPhone.value && open.value ? 'input-control-responsive' : ''
+  props.responsive && open.value ? 'input-control-responsive' : ''
 )
+
+const avatarSize = computed<number>(() => (props.responsive ? 30 : 40))
 
 const handleOpen = () => (open.value = true)
 
 const handleClose = () => (open.value = false)
 
 watch(open, (newValue) => {
-  header.setOpenSearch(newValue)
+  if (!props.responsive) return
+  if (newValue) document.body.style.overflow = 'hidden'
+  else document.body.style.overflow = 'unset'
 })
 </script>
 
 <template>
   <Space aligns="middle" rootClassName="search-input">
-    <Space v-if="!render" aligns="middle" :rootClassName="`input-logo ${logoClassName}`">
-      <Logo />
-      <Avatar v-if="isPhone" :size="40" @click="handleOpen">
+    <Space aligns="middle" :rootClassName="`input-logo ${logoClassName}`">
+      <Logo :responsive="responsive" />
+      <Avatar v-if="responsive" :size="avatarSize" @click="handleOpen">
         <Icon :iconName="iconName.SEARCH" />
       </Avatar>
     </Space>

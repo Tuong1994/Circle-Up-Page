@@ -1,0 +1,21 @@
+.friend-grid {
+  padding: $p-5 $p-3;
+  .grid-wrap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    @include respond(mdPhone) {
+      grid-template-columns: auto;
+    }
+  }
+}
+
+.friend-card {
+  .card-body {
+    padding: $p-1;
+  }
+  .card-image {
+    width: $w-full;
+    height: $h-10 * 2;
+  }
+}

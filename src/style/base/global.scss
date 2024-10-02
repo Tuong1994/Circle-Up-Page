@@ -1,5 +1,8 @@
 .head.head-fixed {
   z-index: 2;
+  @include respond(mdPhone) {
+    height: auto;
+  }
 }
 
 .side {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, defineProps, withDefaults } from 'vue'
 import { Grid, Icon, Space, Tooltip } from '@/components/UI'
 import { RouterLink, useRouter } from 'vue-router'
 import { iconName } from '@/components/UI/Icon/constant'
@@ -8,6 +8,15 @@ import type { RouterItems } from '@/router/type'
 import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
+
+interface HeaderNavbarProps {
+  responsive?: boolean
+  iconSize?: number
+}
+
+withDefaults(defineProps<HeaderNavbarProps>(), {
+  iconSize: 18
+})
 
 const { currentRoute } = useRouter()
 
@@ -31,17 +40,14 @@ const getActiveClass = (name: string) => {
 </script>
 
 <template>
-  <nav>
-    <Row>
-      <Col v-for="menu in menus" :key="menu.id" :lg="12" :span="12">
+  <nav class="header-navbar">
+    <Row justify="between">
+      <Col v-for="menu in menus" :key="menu.id" :xs="12" :md="12" :lg="12" :span="12">
         <RouterLink :to="menu.path">
-          <Tooltip
-            :rootClassName="`navbar-item ${getActiveClass(menu.id)}`"
-            titleClassName="item-title"
-          >
+          <Tooltip :rootClassName="`navbar-item ${getActiveClass(menu.id)}`" titleClassName="item-title">
             <template #title>
               <Space justify="center">
-                <Icon :iconName="(menu.iconName as string)" :size="18" />
+                <Icon :iconName="(menu.iconName as string)" :size="iconSize" />
               </Space>
             </template>
             <template #content>{{ menu.name }}</template>
