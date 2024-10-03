@@ -16,6 +16,8 @@ const { isPhone } = useViewPoint()
 
 const layout = useLayoutStore()
 
+const featureRef = ref<HTMLDivElement | null>(null)
+
 const type = ref<FeatureType | undefined>(undefined)
 
 const colorClassName = computed<string>(() => `header-${layout.color}`)
@@ -47,7 +49,7 @@ const handleOpenFeatures = (featureType: FeatureType) => {
           <Profile :responsive="isPhone" :iconSize="iconSize" @onClick="handleOpenFeatures" />
         </Space>
       </Col>
-      <Features :open="type !== undefined" :type="type" @onClick="handleOpenFeatures" />
+      <Features ref="featureRef" :open="type !== undefined" :type="type" @onClick="handleOpenFeatures" />
     </Row>
   </div>
 </template>

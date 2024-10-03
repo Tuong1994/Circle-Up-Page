@@ -23,7 +23,7 @@
 .content.content-layout {
   background: $bg-light-slate;
   @include respond(mdTablet) {
-    padding-top: $p-5 + 1;
+    padding-top: $p-5 + 5;
   }
 }
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { Grid, Space, Icon, Avatar, Typography, Dropdown, Divider } from '@/components/UI'
+import { computed, ref, defineEmits } from 'vue'
+import { Grid, Space, Button, Icon, Avatar, Typography, Dropdown, Divider } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import ItemWrapper from '../../ItemWrapper/ItemWrapper.vue'
 import useLangStore from '@/stores/LangStore'
@@ -8,6 +8,8 @@ import useLangStore from '@/stores/LangStore'
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
+
+const emits = defineEmits(['onBack'])
 
 const t = useLangStore()
 
@@ -42,12 +44,19 @@ const handleSelect = (selected: boolean, id: string) => {
   if (!selected) return (selectedItem.value = '')
   selectedItem.value = id
 }
+
+const handleBack = () => emits('onBack')
 </script>
 
 <template>
   <Row justify="between" aligns="middle">
     <Col>
-      <Paragraph :weight="600" :size="18">{{ t.lang.common.header.features.notification.title }}</Paragraph>
+      <Space aligns="middle">
+        <Button shape="round" @click="handleBack">
+          <Icon :iconName="iconName.ANGLE_LEFT" />
+        </Button>
+        <Paragraph :weight="600" :size="18">{{ t.lang.common.header.features.notification.title }}</Paragraph>
+      </Space>
     </Col>
     <Col>
       <Dropdown placement="right">
@@ -68,7 +77,11 @@ const handleSelect = (selected: boolean, id: string) => {
     </Col>
   </Row>
   <Divider />
-  <ItemWrapper v-for="item in items" :key="item.id" @onSelect="(selected) => handleSelect(selected, item.id)">
+  <ItemWrapper
+    v-for="(item, idx) in items"
+    :key="item.id"
+    @onSelect="(selected) => handleSelect(selected, item.id)"
+  >
     <Row justify="between" aligns="middle">
       <Col>
         <Space aligns="middle">
@@ -80,7 +93,7 @@ const handleSelect = (selected: boolean, id: string) => {
         </Space>
       </Col>
       <Col>
-        <Dropdown v-if="selectedItem === item.id" placement="right">
+        <Dropdown v-if="selectedItem === item.id" placement="right" :isBottom="idx === items.length - 1">
           <template #label>
             <Icon :iconName="iconName.ELLIPSIS_H" :size="iconSize" />
           </template>

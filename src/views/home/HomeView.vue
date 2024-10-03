@@ -6,6 +6,9 @@ import HomeActions from '@/features/home/HomeActions.vue'
 import HomePost from '@/features/home/HomePost/HomePost.vue'
 import HomeSide from '@/features/home/HomeSide/HomeSide.vue'
 import PostModal from '@/features/home/Modals/PostModal/PostModal.vue'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+
+const layout = useLayoutStore()
 
 const { isPhone, screenWidth } = useViewPoint()
 
@@ -17,13 +20,15 @@ const isTablet = computed<boolean>(() => screenWidth.value > MD_PHONE && screenW
 
 const isMobile = computed<boolean>(() => Boolean(isPhone.value || isTablet.value))
 
+const colorClassName = computed<string>(() => `home-${layout.color}`)
+
 const handleOpenPostModal = () => (openPostModal.value = true)
 
 const handleClosePostModal = () => (openPostModal.value = false)
 </script>
 
 <template>
-  <div class="home">
+  <div :class="['home', colorClassName]">
     <div class="home-wrap">
       <HomeActions @onClick="handleOpenPostModal" />
       <HomePost v-for="item in 100" />

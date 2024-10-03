@@ -38,6 +38,9 @@
       height: $h-1 * 5;
       .head-icon {
         cursor: pointer;
+        & > * {
+          transition: all $transition-time-sm $transition-fn;
+        }
       }
     }
     .side-input {
@@ -46,9 +49,6 @@
         cursor: pointer;
         & > * {
           transition: all $transition-time-sm $transition-fn;
-        }
-        &:hover * {
-          color: $text-orange;
         }
       }
       .input-box {
@@ -77,6 +77,69 @@
   }
   @include respond(mdPhone) {
     width: $w-full;
+  }
+}
+
+// Color
+.home-blue {
+  .head-icon,
+  .input-icon {
+    &:hover * {
+      color: $text-blue;
+    }
+  }
+}
+
+.home-red {
+  .head-icon,
+  .input-icon {
+    &:hover * {
+      color: $text-red;
+    }
+  }
+}
+
+.home-green {
+  .head-icon,
+  .input-icon {
+    &:hover * {
+      color: $text-green;
+    }
+  }
+}
+
+.home-orange {
+  .head-icon,
+  .input-icon {
+    &:hover * {
+      color: $text-orange;
+    }
+  }
+}
+
+.home-yellow {
+  .head-icon,
+  .input-icon {
+    &:hover * {
+      color: $text-yellow;
+    }
+  }
+}
+.home-pink {
+  .head-icon,
+  .input-icon {
+    &:hover * {
+      color: $text-pink;
+    }
+  }
+}
+
+.home-purple {
+  .head-icon,
+  .input-icon {
+    &:hover * {
+      color: $text-purple;
+    }
   }
 }
 

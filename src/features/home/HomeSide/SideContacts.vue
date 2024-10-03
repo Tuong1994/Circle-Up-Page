@@ -1,16 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { Typography, Grid, Avatar, Space, Icon } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
+import type { ControlColor, ControlShape } from '@/components/Control/type'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLangStore from '@/stores/LangStore'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
 const t = useLangStore()
+
+const layout = useLayoutStore()
 
 const open = ref<boolean>(false)
 
@@ -39,8 +43,8 @@ const handleCloseSearch = () => (open.value = false)
     />
     <Input
       rootClassName="input-box"
-      shape="round"
-      color="orange"
+      :shape="(layout.shape as ControlShape)"
+      :color="(layout.color as ControlColor)"
       :placeholder="t.lang.home.side.contacts.placeholder"
     />
   </Space>
