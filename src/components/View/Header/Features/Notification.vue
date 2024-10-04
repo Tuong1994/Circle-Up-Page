@@ -1,13 +1,20 @@
 <script setup lang="ts">
-import { computed, ref, defineEmits } from 'vue'
+import { computed, ref, defineEmits, defineProps } from 'vue'
 import { Grid, Space, Button, Icon, Avatar, Typography, Dropdown, Divider } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
+import { EHeaderFeatureType } from '../enum'
 import ItemWrapper from '../../ItemWrapper/ItemWrapper.vue'
 import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
+
+interface FeatureNotificationProps {
+  responsive?: boolean;
+}
+
+defineProps<FeatureNotificationProps>()
 
 const emits = defineEmits(['onBack'])
 
@@ -45,14 +52,14 @@ const handleSelect = (selected: boolean, id: string) => {
   selectedItem.value = id
 }
 
-const handleBack = () => emits('onBack')
+const handleBack = () => emits('onBack', EHeaderFeatureType.NOTIFICATION)
 </script>
 
 <template>
   <Row justify="between" aligns="middle">
     <Col>
       <Space aligns="middle">
-        <Button shape="round" @click="handleBack">
+        <Button shape="round" @click="handleBack" v-if="responsive">
           <Icon :iconName="iconName.ANGLE_LEFT" />
         </Button>
         <Paragraph :weight="600" :size="18">{{ t.lang.common.header.features.notification.title }}</Paragraph>

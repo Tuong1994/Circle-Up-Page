@@ -4,6 +4,7 @@ import { Layout } from '@/components/UI'
 import { routeNames } from '@/router'
 import { useRouter } from 'vue-router'
 import { useViewPoint } from '@/hooks'
+import { screen } from '@/hooks/useViewPoint'
 import Header from '../Header/Header.vue'
 import HomeMenu from './HomeMenu.vue'
 import FriendsMenu from './FriendsMenu/FriendsMenu.vue'
@@ -13,11 +14,13 @@ const { Container, Head, Body, Side, Content } = Layout
 
 const { currentRoute } = useRouter()
 
-const { isPhone, isTablet } = useViewPoint()
+const { screenWidth } = useViewPoint()
 
 const app = useAppMainStore()
 
-const isMobile = computed<boolean>(() => Boolean(isPhone.value || isTablet.value))
+const responsive = computed<boolean>(
+  () => screenWidth.value >= screen.SM_PHONE && screenWidth.value < screen.SM_TABLET
+)
 
 watchEffect(() => {
   if (currentRoute.value.name === routeNames.HOME) app.setHasContentMenuHead(false)
@@ -30,7 +33,7 @@ watchEffect(() => {
       <Header />
     </Head>
     <Body>
-      <Side v-if="!isMobile" :hasCollapseButton="false">
+      <Side v-if="!responsive" :hasCollapseButton="false">
         <HomeMenu v-if="currentRoute.name === routeNames.HOME" />
         <FriendsMenu v-if="currentRoute.fullPath.includes(routeNames.FRIENDS)" />
       </Side>

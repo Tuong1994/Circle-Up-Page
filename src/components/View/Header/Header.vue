@@ -12,7 +12,7 @@ import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
 
-const { isPhone } = useViewPoint()
+const { isPhone, isTablet } = useViewPoint()
 
 const layout = useLayoutStore()
 
@@ -35,7 +35,7 @@ const handleOpenFeatures = (featureType: FeatureType) => {
 
 <template>
   <div :class="['header', shapeClassName, colorClassName]">
-    <Navbar v-if="isPhone" :iconSize="iconSize" />
+    <Navbar v-if="isPhone || isTablet" :iconSize="iconSize" />
     <Row aligns="middle" justify="between">
       <Col :xs="3" :span="6">
         <SearchInput :responsive="isPhone" />
@@ -49,7 +49,13 @@ const handleOpenFeatures = (featureType: FeatureType) => {
           <Profile :responsive="isPhone" :iconSize="iconSize" @onClick="handleOpenFeatures" />
         </Space>
       </Col>
-      <Features ref="featureRef" :open="type !== undefined" :type="type" @onClick="handleOpenFeatures" />
+      <Features
+        ref="featureRef"
+        :open="type !== undefined"
+        :type="type"
+        @onClick="handleOpenFeatures"
+        @onBack="handleOpenFeatures"
+      />
     </Row>
   </div>
 </template>
