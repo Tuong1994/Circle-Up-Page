@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { toRefs, withDefaults, defineProps, defineEmits, defineExpose, ref, computed } from 'vue'
-import { useRender, useViewPoint } from '@/hooks'
+import { useOverflow, useRender, useViewPoint } from '@/hooks'
 import { screen } from '@/hooks/useViewPoint'
 import type { FeatureType } from '../type'
 import Profile from './Profile.vue'
@@ -24,6 +24,8 @@ const { open } = toRefs(props)
 const featuresRef = ref<HTMLDivElement>()
 
 const render = useRender(open)
+
+useOverflow(open)
 
 const activeClassName = computed<string>(() => (props.open ? 'features-active' : ''))
 

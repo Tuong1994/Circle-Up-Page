@@ -18,9 +18,7 @@ const { screenWidth } = useViewPoint()
 
 const app = useAppMainStore()
 
-const responsive = computed<boolean>(
-  () => screenWidth.value >= screen.SM_PHONE && screenWidth.value < screen.SM_TABLET
-)
+const responsive = computed<boolean>(() => screenWidth.value < screen.MD_TABLET)
 
 watchEffect(() => {
   if (currentRoute.value.name === routeNames.HOME) app.setHasContentMenuHead(false)

@@ -18,6 +18,10 @@
   @include respond(laptop) {
     width: $w-10 * 2.5;
   }
+  @include respond(mdTablet) {
+    left: 0;
+    padding-top: $p-5 + 8;
+  }
 }
 
 .content.content-layout {
@@ -35,7 +39,7 @@
   @include respond(laptop) {
     padding-left: $w-10 * 2.5;
   }
-  @include respond(mdTablet) {
+  @include respond(smTablet) {
     padding-left: 0;
   }
 }
