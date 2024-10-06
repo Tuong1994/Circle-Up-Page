@@ -4,7 +4,7 @@ import { Layout } from '@/components/UI'
 import { routeNames } from '@/router'
 import { useRouter } from 'vue-router'
 import { useViewPoint } from '@/hooks'
-import { screen } from '@/hooks/useViewPoint'
+import { breakpoint } from '@/hooks/useViewPoint'
 import Header from '../Header/Header.vue'
 import HomeMenu from './HomeMenu.vue'
 import FriendsMenu from './FriendsMenu/FriendsMenu.vue'
@@ -12,13 +12,15 @@ import useAppMainStore from './AppMainStore'
 
 const { Container, Head, Body, Side, Content } = Layout
 
+const { MD_TABLET } = breakpoint
+
 const { currentRoute } = useRouter()
 
 const { screenWidth } = useViewPoint()
 
 const app = useAppMainStore()
 
-const responsive = computed<boolean>(() => screenWidth.value < screen.MD_TABLET)
+const responsive = computed<boolean>(() => screenWidth.value < MD_TABLET)
 
 watchEffect(() => {
   if (currentRoute.value.name === routeNames.HOME) app.setHasContentMenuHead(false)

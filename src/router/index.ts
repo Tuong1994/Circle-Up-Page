@@ -3,21 +3,23 @@ import HomeView from '@/views/home/HomeView.vue'
 
 export const routePaths = {
   HOME: '/',
-  USER: '/user',
+  PROFILE: '/profile',
   FRIENDS: '/friends',
   FRIENDS_LIST: '/friends/list',
   FRIENDS_SUGGESTIONS: '/friends/suggestions',
-  FRIENDS_REQUESTS: '/friends/requests'
+  FRIENDS_REQUESTS: '/friends/requests',
+  FRIENDS_PROFILE: '/friends/profile'
 }
 
 export const routeNames = {
   HOME: 'home',
-  USER: 'user',
+  PROFILE: 'profile',
   FRIENDS: 'friends',
   FRIENDS_MAY_KNOW: 'friends-may-know',
   FRIENDS_LIST: 'friends-list',
   FRIENDS_SUGGESTIONS: 'friends-suggestions',
-  FRIENDS_REQUESTS: 'friends-requests'
+  FRIENDS_REQUESTS: 'friends-requests',
+  FRIENDS_PROFILE: 'friends-profile'
 }
 
 const router = createRouter({
@@ -31,37 +33,42 @@ const router = createRouter({
     {
       path: routePaths.FRIENDS,
       name: routeNames.FRIENDS,
-      component: () => import('@/views/friends/Friends.vue'),
+      component: () => import('@/views/friends/FriendsView.vue'),
       children: [
         {
           path: '',
           name: routeNames.FRIENDS_MAY_KNOW,
-          component: () => import('@/views/friends/FriendsMayKnow.vue')
+          component: () => import('@/views/friends/FriendsList.vue')
         },
         {
           path: routePaths.FRIENDS_LIST,
           name: routeNames.FRIENDS_LIST,
-          component: () => import('@/views/friends/FriendsList.vue')
+          component: () => import('@/views/friends/FriendsProfile.vue')
         },
         {
           path: routePaths.FRIENDS_SUGGESTIONS,
           name: routeNames.FRIENDS_SUGGESTIONS,
-          component: () => import('@/views/friends/FriendsSuggestions.vue')
+          component: () => import('@/views/friends/FriendsProfile.vue')
         },
         {
           path: routePaths.FRIENDS_REQUESTS,
           name: routeNames.FRIENDS_REQUESTS,
-          component: () => import('@/views/friends/FriendsRequests.vue')
+          component: () => import('@/views/friends/FriendsProfile.vue')
+        },
+        {
+          path: routePaths.FRIENDS_PROFILE,
+          name: routeNames.FRIENDS_PROFILE,
+          component: () => import('@/views/profile/ProfileView.vue')
         }
       ]
     },
     {
-      path: routePaths.USER,
-      name: routeNames.USER,
+      path: routePaths.PROFILE,
+      name: routeNames.PROFILE,
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('@/views/user/User.vue')
+      component: () => import('@/views/profile/ProfileView.vue')
     }
   ]
 })

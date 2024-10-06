@@ -1,5 +1,5 @@
-.friend-grid {
-  padding: $p-5 $p-3;
+.friends-grid {
+  padding: $p-3;
   .grid-wrap {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -8,14 +8,36 @@
       grid-template-columns: auto;
     }
   }
+  @include respond(mdPhone) {
+    padding: $p-3 $p-1;
+  }
 }
 
-.friend-card {
+.friends-card {
   .card-body {
     padding: $p-1;
   }
   .card-image {
     width: $w-full;
     height: $h-10 * 2;
+  }
+}
+
+.friends-empty {
+  width: $w-full;
+  height: $h-screen;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.friends-mobile {
+  width: $w-full;
+  padding: 0 $p-1;
+  @include respond(smTablet) {
+    padding-top: $p-5;
+  }
+  @include respond(mdPhone) {
+    padding-top: $p-3;
   }
 }

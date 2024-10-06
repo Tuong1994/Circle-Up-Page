@@ -1,6 +1,6 @@
 import { computed, ref, watchEffect } from 'vue'
 
-export const screen = {
+export const breakpoint = {
   SM_PHONE: 320,
   MD_PHONE: 480,
   LG_PHONE: 576,
@@ -11,7 +11,7 @@ export const screen = {
 }
 
 const useViewPoint = () => {
-  const { SM_PHONE, MD_PHONE, MD_TABLET } = screen
+  const { SM_PHONE, MD_PHONE, MD_TABLET } = breakpoint
 
   const screenWidth = ref<number>(window.innerWidth)
 

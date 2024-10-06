@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useViewPoint } from '@/hooks'
-import { screen } from '@/hooks/useViewPoint'
+import { breakpoint } from '@/hooks/useViewPoint'
 import HomeActions from '@/features/home/HomeActions.vue'
 import HomePost from '@/features/home/HomePost/HomePost.vue'
 import HomeSide from '@/features/home/HomeSide/HomeSide.vue'
@@ -12,7 +12,7 @@ const layout = useLayoutStore()
 
 const { isPhone, screenWidth } = useViewPoint()
 
-const { MD_PHONE, LG_TABLET } = screen
+const { MD_PHONE, LG_TABLET } = breakpoint
 
 const openPostModal = ref<boolean>(false)
 

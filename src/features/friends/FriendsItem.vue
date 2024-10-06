@@ -3,8 +3,9 @@ import { defineProps, defineEmits, withDefaults, computed, toRefs } from 'vue'
 import { Grid, Typography, Avatar, Button, Image } from '@/components/UI'
 import { routePaths } from '@/router'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
-import ItemWrapper from '../../ItemWrapper/ItemWrapper.vue'
+import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useViewPoint, { breakpoint } from '@/hooks/useViewPoint'
 
 const { Row, Col } = Grid
 
@@ -12,7 +13,7 @@ const { Paragraph } = Typography
 
 interface FriendItemProps {
   rootClassName?: string
-  hasTime?: boolean;
+  hasTime?: boolean
   confirmButtonProps?: ButtonProps
   cancelButtonProps?: ButtonProps
 }
@@ -27,6 +28,14 @@ const { confirmButtonProps, cancelButtonProps } = toRefs(props)
 
 const layout = useLayoutStore()
 
+const { screenWidth } = useViewPoint()
+
+const { MD_PHONE, SM_TABLET, MD_TABLET, LAPTOP } = breakpoint
+
+const isPhone = computed<boolean>(() => screenWidth.value >= MD_PHONE && screenWidth.value <= SM_TABLET)
+
+const isTablet = computed<boolean>(() => screenWidth.value >= MD_TABLET && screenWidth.value <= LAPTOP)
+
 const confirmProps = computed<ButtonProps>(() => ({
   ...(confirmButtonProps as object),
   color: layout.color,
@@ -38,23 +47,29 @@ const cancelProps = computed<ButtonProps>(() => ({
   rootClassName: 'w-full'
 }))
 
+const avatarSize = computed<number>(() => {
+  if (isPhone.value) return 80
+  if (isTablet.value) return 40
+  return 50
+})
+
 const handleConfirm = () => emits('onConfirm')
 
 const handleCancel = () => emits('onCancel')
 </script>
 
 <template>
-  <RouterLink :to="routePaths.FRIENDS" :class="rootClassName">
+  <RouterLink :to="routePaths.FRIENDS_PROFILE" :class="rootClassName">
     <ItemWrapper>
-      <Row>
-        <Col :span="5">
-          <Avatar :size="50">
+      <Row justify="between">
+        <Col :xs="5" :md="4" :span="5">
+          <Avatar :size="avatarSize">
             <slot name="avatar">
-              <Image :imgWidth="60" :imgHeight="60" />
+              <Image :imgWidth="avatarSize" :imgHeight="avatarSize" />
             </slot>
           </Avatar>
         </Col>
-        <Col :span="19">
+        <Col :xs="19" :md="20" :span="19">
           <Row aligns="middle" justify="between">
             <Col>
               <Paragraph :weight="600">
@@ -67,12 +82,12 @@ const handleCancel = () => emits('onCancel')
           </Row>
           <Paragraph variant="secondary" :size="12">Followed by 1k</Paragraph>
           <Row>
-            <Col :span="12">
+            <Col :xs="12" :md="12" :span="12">
               <Button v-bind="confirmProps" @click="handleConfirm">
                 <slot name="confirm">Add friend</slot>
               </Button>
             </Col>
-            <Col :span="12">
+            <Col :xs="12" :md="12" :span="12">
               <Button v-bind="cancelProps" @click="handleCancel">
                 <slot name="cancel"> Remove </slot>
               </Button>

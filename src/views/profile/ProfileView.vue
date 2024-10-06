@@ -1,3 +1,3 @@
 <script setup lang="ts"></script>
 
-<template>User</template>
+<template>Profile</template>

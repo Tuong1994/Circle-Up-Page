@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { toRefs, withDefaults, defineProps, defineEmits, defineExpose, ref, computed } from 'vue'
 import { useOverflow, useRender, useViewPoint } from '@/hooks'
-import { screen } from '@/hooks/useViewPoint'
+import { breakpoint } from '@/hooks/useViewPoint'
 import type { FeatureType } from '../type'
 import Profile from './Profile.vue'
 import Notification from './Notification.vue'
@@ -19,6 +19,8 @@ const emits = defineEmits(['onClick', 'onBack'])
 
 const { screenWidth } = useViewPoint()
 
+const { SM_PHONE, SM_TABLET } = breakpoint
+
 const { open } = toRefs(props)
 
 const featuresRef = ref<HTMLDivElement>()
@@ -29,9 +31,7 @@ useOverflow(open)
 
 const activeClassName = computed<string>(() => (props.open ? 'features-active' : ''))
 
-const responsive = computed<boolean>(
-  () => screenWidth.value >= screen.SM_PHONE && screenWidth.value <= screen.SM_TABLET
-)
+const responsive = computed<boolean>(() => screenWidth.value >= SM_PHONE && screenWidth.value <= SM_TABLET)
 
 const handleClick = () => emits('onClick')
 

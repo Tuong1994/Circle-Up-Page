@@ -14,7 +14,7 @@ withDefaults(defineProps<FriendGridProps>(), {
 </script>
 
 <template>
-  <div class="friend-grid">
+  <div class="friends-grid">
     <Paragraph :weight="600" :size="18" rootClassName="pb-5">{{ title }}</Paragraph>
     <div class="grid-wrap">
       <slot></slot>
