@@ -23,4 +23,7 @@
     padding: $p-1;
     height: $h-full;
   }
+  @include respond(laptop) {
+    overflow-y: auto;
+  }
 }

@@ -39,12 +39,14 @@ const isTablet = computed<boolean>(() => screenWidth.value >= MD_TABLET && scree
 const confirmProps = computed<ButtonProps>(() => ({
   ...(confirmButtonProps as object),
   color: layout.color,
-  rootClassName: 'w-full'
+  rootClassName: 'w-full',
+  sizes: 'sm'
 }))
 
 const cancelProps = computed<ButtonProps>(() => ({
   ...(cancelButtonProps as object),
-  rootClassName: 'w-full'
+  rootClassName: 'w-full',
+  sizes: 'sm'
 }))
 
 const avatarSize = computed<number>(() => {

@@ -20,6 +20,10 @@
   }
   @include respond(mdTablet) {
     left: 0;
+    padding-top: $p-5 + 2;
+  }
+  @include respond(smTablet) {
+    left: 0;
     padding-top: $p-5 + 8;
   }
 }
@@ -27,6 +31,9 @@
 .content.content-layout {
   background: $bg-light-slate;
   @include respond(mdTablet) {
+    padding-top: $p-5 + 3;
+  }
+  @include respond(smTablet) {
     padding-top: $p-5 + 8;
   }
   @include respond(mdPhone) {

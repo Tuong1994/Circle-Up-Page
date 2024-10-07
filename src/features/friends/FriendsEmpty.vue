@@ -21,7 +21,7 @@ const layout = useLayoutStore()
       <Space justify="center" rootClassName="mb-5">
         <Icon :size="50" :iconName="iconName.USER_GROUP" :color="layout.color" />
       </Space>
-      <Paragraph :size="20" :weight="600" variant="secondary">
+      <Paragraph :size="18" :weight="600" variant="secondary" aligns="center">
         {{ content }}
       </Paragraph>
     </div>
