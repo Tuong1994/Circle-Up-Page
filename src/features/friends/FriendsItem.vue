@@ -6,6 +6,7 @@ import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useViewPoint, { breakpoint } from '@/hooks/useViewPoint'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
@@ -26,11 +27,13 @@ const emits = defineEmits(['onConfirm', 'onCancel'])
 
 const { confirmButtonProps, cancelButtonProps } = toRefs(props)
 
-const layout = useLayoutStore()
+const { MD_PHONE, SM_TABLET, MD_TABLET, LAPTOP } = breakpoint
 
 const { screenWidth } = useViewPoint()
 
-const { MD_PHONE, SM_TABLET, MD_TABLET, LAPTOP } = breakpoint
+const layout = useLayoutStore()
+
+const t = useLangStore()
 
 const isPhone = computed<boolean>(() => screenWidth.value >= MD_PHONE && screenWidth.value <= SM_TABLET)
 
@@ -82,16 +85,16 @@ const handleCancel = () => emits('onCancel')
               <Paragraph variant="secondary" :size="12">35w</Paragraph>
             </Col>
           </Row>
-          <Paragraph variant="secondary" :size="12">Followed by 1k</Paragraph>
+          <Paragraph variant="secondary" :size="12">{{ t.lang.friends.item.followedBy }} 1k</Paragraph>
           <Row>
             <Col :xs="12" :md="12" :span="12">
               <Button v-bind="confirmProps" @click="handleConfirm">
-                <slot name="confirm">Add friend</slot>
+                <slot name="confirm">{{ t.lang.friends.item.add }}</slot>
               </Button>
             </Col>
             <Col :xs="12" :md="12" :span="12">
               <Button v-bind="cancelProps" @click="handleCancel">
-                <slot name="cancel"> Remove </slot>
+                <slot name="cancel">{{ t.lang.common.actions.remove }}</slot>
               </Button>
             </Col>
           </Row>

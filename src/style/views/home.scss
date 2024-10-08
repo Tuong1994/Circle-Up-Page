@@ -21,9 +21,6 @@
       justify-content: left;
     }
   }
-  .home-post {
-    margin: $m-1 0;
-  }
   .home-side {
     width: $w-10 * 3.3;
     height: $h-screen;
@@ -173,66 +170,6 @@
 
 .post-modal {
   overflow: hidden;
-}
-
-.post-image {
-  width: $w-full;
-}
-
-.post-setting {
-  max-height: $h-10 * 3;
-  padding: $p-1;
-  overflow-y: auto;
-}
-
-.post-action {
-  cursor: pointer;
-  * {
-    color: $text-gray;
-    transition: all $transition-time-sm $transition-fn;
-  }
-}
-
-.post-action-blue {
-  &:hover * {
-    color: $text-blue;
-  }
-}
-
-.post-action-red {
-  &:hover * {
-    color: $text-red;
-  }
-}
-
-.post-action-orange {
-  &:hover * {
-    color: $text-orange;
-  }
-}
-
-.post-action-green {
-  &:hover * {
-    color: $text-green;
-  }
-}
-
-.post-action-yellow {
-  &:hover * {
-    color: $text-yellow;
-  }
-}
-
-.post-action-purple {
-  &:hover * {
-    color: $text-purple;
-  }
-}
-
-.post-action-pink {
-  &:hover * {
-    color: $text-pink;
-  }
 }
 
 // Post modal content

@@ -1,0 +1,50 @@
+.profile-head {
+  width: $w-full;
+  background: $bg-white;
+  padding: 0 $p-5 * 3;
+  .head-banner {
+    position: relative;
+  }
+}
+
+.banner-upload {
+  width: $w-full;
+  height: $h-10 * 3;
+  position: relative;
+  .upload-image {
+    width: $w-full;
+    height: $h-full;
+    background: $bg-gray;
+    border-bottom-left-radius: $rounded-lg;
+    border-bottom-right-radius: $rounded-lg;
+  }
+  .upload-action {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+  }
+}
+
+.avatar-upload {
+  position: absolute;
+  bottom: -10rem;
+  left: 5rem;
+  .upload-wrap {
+    width: $w-10 * 2;
+    height: $h-10 * 2;
+    border: 5px solid $bg-white;
+    border-radius: $rounded-full;
+    position: relative;
+    .wrap-image {
+      width: $w-full;
+      height: $h-full;
+      background: $bg-gray;
+      border-radius: $rounded-full;
+    }
+    .wrap-action {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+    }
+  }
+}

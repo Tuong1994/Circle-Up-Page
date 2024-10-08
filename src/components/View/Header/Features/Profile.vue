@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed, defineEmits, defineProps } from 'vue'
+import { RouterLink } from 'vue-router'
 import { Grid, Icon, Space, Avatar, Card, Button, Typography, Divider } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EHeaderFeatureType } from '../enum'
+import { routePaths } from '@/router'
 import ItemWrapper from '../../ItemWrapper/ItemWrapper.vue'
 import useLangStore from '@/stores/LangStore'
 
@@ -11,7 +13,7 @@ const { Row, Col } = Grid
 const { Paragraph } = Typography
 
 interface FeatureProfileProps {
-  responsive?: boolean;
+  responsive?: boolean
 }
 
 defineProps<FeatureProfileProps>()
@@ -32,19 +34,21 @@ const handleBack = () => emits('onBack', EHeaderFeatureType.PROFILE)
 <template>
   <Card>
     <template #body>
-      <Row aligns="middle" justify="between">
-        <Col>
-          <Space aligns="middle">
-            <Avatar :size="35" />
-            <Paragraph>Profile</Paragraph>
-          </Space>
-        </Col>
-        <Col v-if="responsive">
-          <Button shape="round" @click="handleBack">
-            <Icon :iconName="iconName.X_MARK" />
-          </Button>
-        </Col>
-      </Row>
+      <RouterLink :to="routePaths.PROFILE">
+        <Row aligns="middle" justify="between">
+          <Col>
+            <Space aligns="middle">
+              <Avatar :size="35" />
+              <Paragraph>Profile</Paragraph>
+            </Space>
+          </Col>
+          <Col v-if="responsive">
+            <Button shape="round" @click="handleBack">
+              <Icon :iconName="iconName.X_MARK" />
+            </Button>
+          </Col>
+        </Row>
+      </RouterLink>
     </template>
   </Card>
   <Divider />

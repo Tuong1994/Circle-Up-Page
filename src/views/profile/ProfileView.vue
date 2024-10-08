@@ -1,3 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ProfileHead from '@/features/profile/ProfileHead/ProfileHead.vue'
+</script>
 
-<template>Profile</template>
+<template>
+  <ProfileHead />
+</template>

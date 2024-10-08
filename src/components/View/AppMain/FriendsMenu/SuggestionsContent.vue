@@ -2,15 +2,22 @@
 import { Typography } from '@/components/UI'
 import ContentHead from '../Components/ContentHead.vue'
 import ContentBody from '../Components/ContentBody.vue'
-import FriendsItem from '@/features/friends/FriendsItem.vue';
+import FriendsItem from '@/features/friends/FriendsItem.vue'
+import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
+
+const t = useLangStore()
 </script>
 
 <template>
-  <ContentHead> Suggestions </ContentHead>
+  <ContentHead>
+    {{ t.lang.friends.sideMenu.suggestions.title }}
+  </ContentHead>
   <ContentBody>
-    <Paragraph :weight="600" :size="16" rootClassName="py-5">People you may know</Paragraph>
+    <Paragraph :weight="600" :size="16" rootClassName="py-5">
+      {{ t.lang.friends.subTitle }}
+    </Paragraph>
     <FriendsItem v-for="item in 100"> </FriendsItem>
   </ContentBody>
 </template>

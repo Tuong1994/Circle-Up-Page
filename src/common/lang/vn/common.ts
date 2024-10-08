@@ -3,7 +3,10 @@ const common_vn = {
     home: 'Trang chủ',
     friends: 'Bạn bè',
     saved: 'Đã lưu',
-    events: 'Sự kiện'
+    events: 'Sự kiện',
+    friendRequests: 'Yêu cầu kết bạn',
+    friendSuggestions: 'Gợi ý',
+    friendList: 'Tất cả bạn bè'
   },
   header: {
     searchInput: {
@@ -118,7 +121,9 @@ const common_vn = {
     update: 'Cập nhật',
     remove: 'Xóa',
     filter: 'Lọc',
-    cancel: 'Hủy'
+    cancel: 'Hủy',
+    confirm: 'Xác nhận',
+    delete: 'Xóa'
   },
   table: {
     head: {

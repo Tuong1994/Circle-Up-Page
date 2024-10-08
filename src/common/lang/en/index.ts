@@ -1,9 +1,11 @@
 import common_en from './common'
+import friends_en from './friends'
 import home_en from './home'
 
 const en = {
   common: common_en,
-  home: home_en
+  home: home_en,
+  friends: friends_en,
 }
 
 export type EN = typeof en

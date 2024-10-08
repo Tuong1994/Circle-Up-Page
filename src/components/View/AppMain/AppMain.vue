@@ -22,6 +22,10 @@ const app = useAppMainStore()
 
 const responsive = computed<boolean>(() => screenWidth.value < MD_TABLET)
 
+const isHide = computed<boolean>(() => (currentRoute.value.name === routeNames.PROFILE ? true : false))
+
+const contentClassName = computed<string>(() => (isHide.value ? 'content-full' : ''))
+
 watchEffect(() => {
   if (currentRoute.value.name === routeNames.HOME) app.setHasContentMenuHead(false)
 })
@@ -33,11 +37,11 @@ watchEffect(() => {
       <Header />
     </Head>
     <Body>
-      <Side v-if="!responsive" :hasCollapseButton="false">
+      <Side v-if="!responsive && !isHide" :hasCollapseButton="false">
         <HomeMenu v-if="currentRoute.name === routeNames.HOME" />
         <FriendsMenu v-if="currentRoute.fullPath.includes(routeNames.FRIENDS)" />
       </Side>
-      <Content>
+      <Content :rootClassName="contentClassName">
         <slot></slot>
       </Content>
     </Body>

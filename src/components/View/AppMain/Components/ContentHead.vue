@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watchEffect, defineProps, ref } from 'vue'
+import { watchEffect, withDefaults, defineProps, ref } from 'vue'
 import { Space, Button, Icon, Typography } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
@@ -7,18 +7,24 @@ import { routePaths } from '@/router'
 import type { ControlShape, ControlColor } from '@/components/Control/type'
 import useAppMainStore from '../AppMainStore'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
 
 interface ContentHeadProps {
   hasSearch?: boolean
+  placeholder?: string
 }
 
-defineProps<ContentHeadProps>()
+withDefaults(defineProps<ContentHeadProps>(), {
+  placeholder: 'Search'
+})
 
 const app = useAppMainStore()
 
 const layout = useLayoutStore()
+
+const t = useLangStore()
 
 const contentHeadRef = ref<HTMLDivElement | null>(null)
 
@@ -39,7 +45,9 @@ watchEffect(() => {
       </RouterLink>
       <div>
         <RouterLink :to="routePaths.FRIENDS">
-          <Button text sizes="sm" rootClassName="!p-0">Friends</Button>
+          <Button text sizes="sm" rootClassName="!p-0">
+            {{ t.lang.friends.sideMenu.friends }}
+          </Button>
         </RouterLink>
         <Paragraph :size="20" :weight="600">
           <slot>Title</slot>
@@ -49,7 +57,7 @@ watchEffect(() => {
     <Input
       v-if="hasSearch"
       rootClassName="mt-5"
-      placeholder="Search friend"
+      :placeholder="placeholder"
       :shape="(layout.shape as ControlShape)"
       :color="(layout.color as ControlColor)"
     >

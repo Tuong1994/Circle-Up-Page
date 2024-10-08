@@ -3,7 +3,10 @@ const common_en = {
     home: 'Home',
     friends: 'Friends',
     saved: 'Saved',
-    events: 'Events'
+    events: 'Events',
+    friendRequests: 'Friend requests',
+    friendSuggestions: 'Suggestions',
+    friendList: 'All friends'
   },
   header: {
     searchInput: {
@@ -118,7 +121,9 @@ const common_en = {
     update: 'Update',
     remove: 'Remove',
     filter: 'Filter',
-    cancel: 'Cancel'
+    cancel: 'Cancel',
+    confirm: 'Confirm',
+    delete: 'Delete'
   },
   table: {
     head: {
