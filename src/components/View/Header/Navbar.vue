@@ -34,8 +34,11 @@ const menus = computed<RouterItems>(() => [
 
 const getActiveClass = (name: string) => {
   const activeClass = 'navbar-item-active'
+  const fullPath = currentRoute.value.fullPath
+  const pathName = currentRoute.value.name
   if (name === routeNames.HOME) return currentRoute.value.name === name ? activeClass : ''
-  return currentRoute.value.fullPath.includes(name) ? activeClass : ''
+  if (pathName === routeNames.PROFILE_FRIENDS) return
+  return fullPath.includes(name) ? activeClass : ''
 }
 </script>
 

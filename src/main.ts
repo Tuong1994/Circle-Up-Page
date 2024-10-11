@@ -50,7 +50,8 @@ import {
   faMapMarkerAlt,
   faGlobe,
   faLock,
-  faPaperPlane
+  faPaperPlane,
+  faPencilAlt,
 } from '@fortawesome/free-solid-svg-icons'
 
 import App from './App.vue'
@@ -106,7 +107,8 @@ library.add(
   faMapMarkerAlt,
   faGlobe,
   faLock,
-  faPaperPlane
+  faPaperPlane,
+  faPencilAlt,
 )
 
 const app = createApp(App)

@@ -3,23 +3,30 @@ import HomeView from '@/views/home/HomeView.vue'
 
 export const routePaths = {
   HOME: '/',
-  PROFILE: '/profile',
   FRIENDS: '/friends',
   FRIENDS_LIST: '/friends/list',
   FRIENDS_SUGGESTIONS: '/friends/suggestions',
   FRIENDS_REQUESTS: '/friends/requests',
-  FRIENDS_PROFILE: '/friends/profile'
+  FRIENDS_PROFILE: '/friends/profile',
+  PROFILE: '/profile',
+  PROFILE_PHOTOS: '/profile/photos',
+  PROFILE_FRIENDS: '/profile/friends',
+  PROFILE_ABOUT: '/profile/about'
 }
 
 export const routeNames = {
   HOME: 'home',
-  PROFILE: 'profile',
   FRIENDS: 'friends',
   FRIENDS_MAY_KNOW: 'friends-may-know',
   FRIENDS_LIST: 'friends-list',
   FRIENDS_SUGGESTIONS: 'friends-suggestions',
   FRIENDS_REQUESTS: 'friends-requests',
-  FRIENDS_PROFILE: 'friends-profile'
+  FRIENDS_PROFILE: 'friends-profile',
+  PROFILE: 'profile',
+  PROFILE_POST: 'profile-post',
+  PROFILE_PHOTOS: 'profile-photos',
+  PROFILE_FRIENDS: 'profile-friends',
+  PROFILE_ABOUT: 'profile-about'
 }
 
 const router = createRouter({
@@ -68,7 +75,29 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('@/views/profile/ProfileView.vue')
+      component: () => import('@/views/profile/ProfileView.vue'),
+      children: [
+        {
+          path: '',
+          name: routeNames.PROFILE_POST,
+          component: () => import('@/views/profile/ProfilePost.vue')
+        },
+        {
+          path: routePaths.PROFILE_ABOUT,
+          name: routeNames.PROFILE_ABOUT,
+          component: () => import('@/views/profile/ProfileAbout.vue')
+        },
+        {
+          path: routePaths.PROFILE_PHOTOS,
+          name: routeNames.PROFILE_PHOTOS,
+          component: () => import('@/views/profile/ProfilePhotos.vue')
+        },
+        {
+          path: routePaths.PROFILE_FRIENDS,
+          name: routeNames.PROFILE_FRIENDS,
+          component: () => import('@/views/profile/ProfileFriends.vue')
+        }
+      ]
     }
   ]
 })

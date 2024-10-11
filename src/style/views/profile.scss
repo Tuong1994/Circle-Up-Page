@@ -1,50 +1,139 @@
-.profile-head {
-  width: $w-full;
-  background: $bg-white;
-  padding: 0 $p-5 * 3;
-  .head-banner {
-    position: relative;
-  }
-}
-
-.banner-upload {
-  width: $w-full;
-  height: $h-10 * 3;
-  position: relative;
-  .upload-image {
+.profile {
+  .profile-head {
     width: $w-full;
-    height: $h-full;
-    background: $bg-gray;
-    border-bottom-left-radius: $rounded-lg;
-    border-bottom-right-radius: $rounded-lg;
-  }
-  .upload-action {
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
+    background: $bg-white;
+    padding: 0 $p-5 * 3;
+    .head-image {
+      position: relative;
+      .image-banner {
+        width: $w-full;
+        height: $h-10 * 3;
+        position: relative;
+        .banner-image {
+          width: $w-full;
+          height: $h-full;
+          background: $bg-gray;
+          border-bottom-left-radius: $rounded-lg;
+          border-bottom-right-radius: $rounded-lg;
+        }
+        .banner-action {
+          position: absolute;
+          bottom: 2rem;
+          right: 2rem;
+        }
+      }
+      .image-avatar {
+        position: absolute;
+        bottom: -10rem;
+        left: 3rem;
+        .avatar-wrap {
+          width: $w-10 * 2;
+          height: $h-10 * 2;
+          border: 5px solid $bg-white;
+          border-radius: $rounded-full;
+          position: relative;
+          .wrap-image {
+            width: $w-full;
+            height: $h-full;
+            background: $bg-gray;
+            border-radius: $rounded-full;
+          }
+          .wrap-action {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+          }
+        }
+      }
+    }
+    .head-content {
+      padding: 0 $p-3;
+      .content-info {
+        padding-top: $p-5;
+        padding-left: $p-5 * 5;
+      }
+      .content-navbar {
+        display: flex;
+        .navbar-item {
+          padding: $p-1 + 0.5 $p-2;
+          cursor: pointer;
+          border-bottom: 4px solid transparent;
+          transition: all $transition-time-xs $transition-fn;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
   }
 }
 
-.avatar-upload {
-  position: absolute;
-  bottom: -10rem;
-  left: 5rem;
-  .upload-wrap {
-    width: $w-10 * 2;
-    height: $h-10 * 2;
-    border: 5px solid $bg-white;
-    border-radius: $rounded-full;
-    position: relative;
-    .wrap-image {
-      width: $w-full;
-      height: $h-full;
-      background: $bg-gray;
-      border-radius: $rounded-full;
+.profile-full {
+  .profile-head {
+    padding: 0 $p-3;
+  }
+}
+
+// Color
+.profile-blue {
+  .navbar-item-active {
+    border-color: $bg-blue !important;
+    & > * {
+      color: $text-blue;
     }
-    .wrap-action {
-      position: absolute;
-      bottom: 1rem;
-      right: 1rem;
+  }
+}
+
+.profile-red {
+  .navbar-item-active {
+    border-color: $bg-red !important;
+    & > * {
+      color: $text-red;
+    }
+  }
+}
+
+.profile-orange {
+  .navbar-item-active {
+    border-color: $bg-orange !important;
+    & > * {
+      color: $text-orange;
+    }
+  }
+}
+
+.profile-green {
+  .navbar-item-active {
+    border-color: $bg-green !important;
+    & > * {
+      color: $text-green;
+    }
+  }
+}
+
+.profile-yellow {
+  .navbar-item-active {
+    border-color: $bg-yellow !important;
+    & > * {
+      color: $text-yellow;
+    }
+  }
+}
+
+.profile-purple {
+  .navbar-item-active {
+    border-color: $bg-purple !important;
+    & > * {
+      color: $text-purple;
+    }
+  }
+}
+
+.profile-pink {
+  .navbar-item-active {
+    border-color: $bg-pink !important;
+    & > * {
+      color: $text-pink;
     }
   }
 }

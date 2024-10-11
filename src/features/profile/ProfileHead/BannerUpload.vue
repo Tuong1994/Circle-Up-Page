@@ -9,9 +9,9 @@ const layout = useLayoutStore()
 </script>
 
 <template>
-  <div class="banner-upload">
-    <div class="upload-image"></div>
-    <Button :color="layout.color" rootClassName="upload-action">
+  <div class="image-banner">
+    <div class="banner-image"></div>
+    <Button :color="layout.color" rootClassName="banner-action">
       <Space aligns="middle">
         <Icon :iconName="iconName.IMAGE" />
         <Paragraph>Add Cover photo</Paragraph>

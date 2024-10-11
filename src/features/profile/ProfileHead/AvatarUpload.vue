@@ -7,8 +7,8 @@ const layout = useLayoutStore()
 </script>
 
 <template>
-  <div class="avatar-upload">
-    <div class="upload-wrap">
+  <div class="image-avatar">
+    <div class="avatar-wrap">
       <div class="wrap-image"></div>
       <Button :color="layout.color" shape="round" rootClassName="wrap-action">
         <Icon :iconName="iconName.IMAGE" />
