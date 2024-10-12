@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { Button, Icon, Space, Typography } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
+import { useViewPoint } from '@/hooks'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
+
+const { isPhone } = useViewPoint()
 
 const layout = useLayoutStore()
 </script>
@@ -14,7 +17,7 @@ const layout = useLayoutStore()
     <Button :color="layout.color" rootClassName="banner-action">
       <Space aligns="middle">
         <Icon :iconName="iconName.IMAGE" />
-        <Paragraph>Add Cover photo</Paragraph>
+        <Paragraph v-if="!isPhone">Add Cover photo</Paragraph>
       </Space>
     </Button>
   </div>

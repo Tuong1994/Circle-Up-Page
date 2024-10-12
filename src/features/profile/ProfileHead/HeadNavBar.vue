@@ -3,11 +3,16 @@ import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { routeNames, routePaths } from '@/router'
 import { Typography } from '@/components/UI'
+import { useViewPoint } from '@/hooks'
 import type { RouterItems } from '@/router/type'
 
 const { Paragraph } = Typography
 
+const { isPhone } = useViewPoint()
+
 const activeId = ref<string>(routeNames.PROFILE_POST)
+
+const textSize = computed<number>(() => (isPhone.value ? 14 : 16))
 
 const items = computed<RouterItems>(() => [
   { id: routeNames.PROFILE_POST, name: 'Post', path: routePaths.PROFILE },
@@ -30,7 +35,7 @@ const handleSelect = (id: string) => (activeId.value = id)
       :class="['navbar-item', getActiveClass(item.id)]"
       @click="() => handleSelect(item.id)"
     >
-      <Paragraph :weight="600" :size="16" variant="secondary">{{ item.name }}</Paragraph>
+      <Paragraph :weight="600" :size="textSize" variant="secondary">{{ item.name }}</Paragraph>
     </RouterLink>
   </div>
 </template>

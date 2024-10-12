@@ -1,20 +1,26 @@
 <script setup lang="ts">
 import { Grid, Typography, Space, Button, Icon } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
+import { useViewPoint } from '@/hooks'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import { computed } from 'vue'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
+const { isPhone } = useViewPoint()
+
 const layout = useLayoutStore()
+
+const textSize = computed<number>(() => (isPhone.value ? 20 : 25))
 </script>
 
 <template>
   <div class="content-info">
     <Row aligns="middle" justify="between">
       <Col>
-        <Paragraph :size="25" :weight="600">User name</Paragraph>
+        <Paragraph :size="textSize" :weight="600">User name</Paragraph>
       </Col>
       <Col>
         <Space aligns="middle">

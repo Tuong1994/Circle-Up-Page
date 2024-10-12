@@ -1,0 +1,100 @@
+.profile-head {
+  width: $w-full;
+  background: $bg-white;
+  padding: 0 $p-5 * 3;
+  .head-image {
+    position: relative;
+    .image-banner {
+      width: $w-full;
+      height: $h-10 * 3;
+      position: relative;
+      .banner-image {
+        width: $w-full;
+        height: $h-full;
+        background: $bg-gray;
+        border-bottom-left-radius: $rounded-lg;
+        border-bottom-right-radius: $rounded-lg;
+      }
+      .banner-action {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+      }
+    }
+    .image-avatar {
+      position: absolute;
+      bottom: -10rem;
+      left: 3rem;
+      .avatar-wrap {
+        width: $w-10 * 2;
+        height: $h-10 * 2;
+        border: 5px solid $bg-white;
+        border-radius: $rounded-full;
+        position: relative;
+        .wrap-image {
+          width: $w-full;
+          height: $h-full;
+          background: $bg-gray;
+          border-radius: $rounded-full;
+        }
+        .wrap-action {
+          position: absolute;
+          bottom: 1rem;
+          right: 1rem;
+        }
+        @include respond(smTablet) {
+          width: $w-10 + 5;
+          height: $h-10 + 5;
+        }
+        @include respond(lgPhone) {
+          width: $w-10 + 3;
+          height: $h-10 + 3;
+        }
+      }
+      @include respond(smTablet) {
+        bottom: -4rem;
+        left: 1rem;
+      }
+    }
+  }
+  .head-content {
+    padding: 0 $p-3;
+    .content-info {
+      padding-top: $p-5;
+      padding-left: $p-5 * 5;
+      @include respond(lgTablet) {
+        padding-right: $p-1;
+      }
+      @include respond(smTablet) {
+        padding-left: 0;
+      }
+    }
+    .content-navbar {
+      display: flex;
+      .navbar-item {
+        padding: $p-1 + 0.5 $p-2;
+        cursor: pointer;
+        border-bottom: 4px solid transparent;
+        transition: all $transition-time-xs $transition-fn;
+        &:hover {
+          opacity: 0.8;
+        }
+        @include respond(smTablet) {
+          padding: $p-1;
+        }
+      }
+    }
+    @include respond(lgTablet) {
+      padding: 0 $p-1;
+    }
+    @include respond(smTablet) {
+      padding: 0;
+    }
+  }
+  @include respond(laptop) {
+    padding: 0 $p-5;
+  }
+  @include respond(smTablet) {
+    padding: 0 $p-1;
+  }
+}
