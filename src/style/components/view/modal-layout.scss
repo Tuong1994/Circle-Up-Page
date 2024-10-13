@@ -27,3 +27,30 @@
     height: $h-screen;
   }
 }
+
+.modal-layout-head {
+  padding: $p-1 $p-2;
+  border-bottom: 1px solid $bg-gray;
+}
+
+.modal-layout-body {
+  max-height: calc($h-screen - 150px);
+  padding: $p-1 $p-2;
+  overflow-y: auto;
+  @include respond(mdTablet) {
+    max-height: calc($h-screen - 100px);
+  }
+  @include respond(mdPhone) {
+    max-height: calc($h-screen - 100px);
+  }
+}
+
+.modal-layout-foot {
+  width: $w-full;
+  padding: $p-1 $p-2;
+  @include respond(lgPhone) {
+    background: $bg-white;
+    position: absolute;
+    z-index: 5;
+  }
+}

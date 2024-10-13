@@ -4,3 +4,8 @@ export enum EFriendMenuType {
   REQUESTS = 'requests',
   LIST = 'list'
 }
+
+export enum EFriendItemType {
+  FRIEND = 'friend',
+  REQUEST = 'request'
+}

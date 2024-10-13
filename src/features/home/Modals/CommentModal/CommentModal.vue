@@ -2,9 +2,9 @@
 import { computed, defineEmits, defineProps } from 'vue'
 import { Divider } from '@/components/UI'
 import ModalLayout from '@/components/View/ModalLayout/ModalLayout.vue'
-import ModalNavigator from '../Components/ModalNavigator.vue'
-import ModalBody from '../Components/ModalBody.vue'
-import ModalFoot from '../Components/ModalFoot.vue'
+import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
+import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
+import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
 import PostHead from '@/components/View/PostCard/PostHead.vue'
 import PostBody from '@/components/View/PostCard/PostBody.vue'
 import PostSummary from '@/components/View/PostCard/PostSummary.vue'
@@ -30,8 +30,8 @@ const handleClose = () => emits('onClose')
 
 <template>
   <ModalLayout rootClassName="comment-modal" :open="open" sizes="lg" @onClose="handleClose">
-    <ModalNavigator title="User's post" @onClose="handleClose" />
-    <ModalBody :rootClassName="uploadedClassName">
+    <ModalLayoutHead title="User's post" @onClose="handleClose" />
+    <ModalLayoutBody :rootClassName="uploadedClassName">
       <PostHead :hasRemove="false" />
       <PostBody />
       <PostSummary />
@@ -39,9 +39,9 @@ const handleClose = () => emits('onClose')
       <PostActions />
       <Divider />
       <Comment />
-    </ModalBody>
-    <ModalFoot>
+    </ModalLayoutBody>
+    <ModalLayoutFoot>
       <CommentInput />
-    </ModalFoot>
+    </ModalLayoutFoot>
   </ModalLayout>
 </template>

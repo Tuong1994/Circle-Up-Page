@@ -7,12 +7,12 @@ import { EActionType } from './enum'
 import type { ActionType } from './PostModal.vue'
 import type { ComponentColor } from '@/common/type'
 import type { ControlColor } from '@/components/Control/type'
-import ModalNavigator from '../Components/ModalNavigator.vue'
-import ModalBody from '../Components/ModalBody.vue'
-import ModalFoot from '../Components/ModalFoot.vue'
+import type { ButtonProps } from '@/components/UI/Button/Button.vue'
+import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
+import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
+import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
-import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 
 const { Row, Col } = Grid
 
@@ -77,8 +77,8 @@ const handleAction = (type: ActionType) => {
 </script>
 
 <template>
-  <ModalNavigator title="Create post" @onBack="handleBack" @onClose="handleClose" />
-  <ModalBody>
+  <ModalLayoutHead :title="t.lang.home.modal.createPost.title" @onBack="handleBack" @onClose="handleClose" />
+  <ModalLayoutBody>
     <Space>
       <Avatar :size="45" />
       <div>
@@ -131,10 +131,10 @@ const handleAction = (type: ActionType) => {
         </Row>
       </template>
     </Card>
-  </ModalBody>
-  <ModalFoot>
+  </ModalLayoutBody>
+  <ModalLayoutFoot>
     <Button v-bind="buttonProps">
       {{ t.lang.common.actions.post }}
     </Button>
-  </ModalFoot>
+  </ModalLayoutFoot>
 </template>

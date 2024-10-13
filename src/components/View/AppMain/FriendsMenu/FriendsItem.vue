@@ -3,6 +3,8 @@ import { defineProps, defineEmits, withDefaults, computed, toRefs } from 'vue'
 import { Grid, Typography, Avatar, Button, Image } from '@/components/UI'
 import { routePaths } from '@/router'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
+import type { FriendItemType } from '../type'
+import { EFriendItemType } from '../enum'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useViewPoint, { breakpoint } from '@/hooks/useViewPoint'
@@ -15,12 +17,14 @@ const { Paragraph } = Typography
 interface FriendItemProps {
   rootClassName?: string
   hasTime?: boolean
+  type?: FriendItemType
   confirmButtonProps?: ButtonProps
   cancelButtonProps?: ButtonProps
 }
 
 const props = withDefaults(defineProps<FriendItemProps>(), {
-  rootClassName: ''
+  rootClassName: '',
+  type: EFriendItemType.FRIEND
 })
 
 const emits = defineEmits(['onConfirm', 'onCancel'])
@@ -67,26 +71,27 @@ const handleCancel = () => emits('onCancel')
   <RouterLink :to="routePaths.FRIENDS_PROFILE" :class="rootClassName">
     <ItemWrapper>
       <Row justify="between">
-        <Col :xs="5" :md="4" :span="5">
+        <Col :xs="5" :md="4" :span="type === EFriendItemType.FRIEND ? 4 : 3">
           <Avatar :size="avatarSize">
             <slot name="avatar">
               <Image :imgWidth="avatarSize" :imgHeight="avatarSize" />
             </slot>
           </Avatar>
         </Col>
-        <Col :xs="19" :md="20" :span="19">
+        <Col :xs="19" :md="20" :span="type === EFriendItemType.FRIEND ? 20 : 21">
           <Row aligns="middle" justify="between">
             <Col>
               <Paragraph :weight="600">
                 <slot name="people">People</slot>
               </Paragraph>
+              <Paragraph variant="secondary" :size="12">{{ t.lang.friends.item.followedBy }} 1k</Paragraph>
             </Col>
-            <Col v-if="hasTime">
-              <Paragraph variant="secondary" :size="12">35w</Paragraph>
+            <Col>
+              <Paragraph v-if="hasTime" variant="secondary" :size="12" aligns="right">35w</Paragraph>
+              <Button v-if="type === EFriendItemType.REQUEST">Cancel request</Button>
             </Col>
           </Row>
-          <Paragraph variant="secondary" :size="12">{{ t.lang.friends.item.followedBy }} 1k</Paragraph>
-          <Row>
+          <Row v-if="type === EFriendItemType.FRIEND">
             <Col :xs="12" :md="12" :span="12">
               <Button v-bind="confirmProps" @click="handleConfirm">
                 <slot name="confirm">{{ t.lang.friends.item.add }}</slot>

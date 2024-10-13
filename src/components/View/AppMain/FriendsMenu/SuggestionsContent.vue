@@ -2,7 +2,7 @@
 import { Typography } from '@/components/UI'
 import ContentHead from '../Components/ContentHead.vue'
 import ContentBody from '../Components/ContentBody.vue'
-import FriendsItem from '@/features/friends/FriendsItem.vue'
+import FriendsItem from './FriendsItem.vue'
 import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography

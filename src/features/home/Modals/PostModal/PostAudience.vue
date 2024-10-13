@@ -5,9 +5,9 @@ import { Radio } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import type { ClickBoxColor } from '@/components/Control/type'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
-import ModalNavigator from '../Components/ModalNavigator.vue'
-import ModalBody from '../Components/ModalBody.vue'
-import ModalFoot from '../Components/ModalFoot.vue'
+import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
+import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
+import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
@@ -57,8 +57,8 @@ const handleBack = () => emits('onBack')
 </script>
 
 <template>
-  <ModalNavigator type="sub" :title="t.lang.home.modal.audience.title" @onBack="handleBack" />
-  <ModalBody>
+  <ModalLayoutHead type="sub" :title="t.lang.home.modal.audience.title" @onBack="handleBack" />
+  <ModalLayoutBody>
     <Paragraph rootClassName="mb-5" :weight="600" :size="16">
       {{ t.lang.home.modal.audience.subTitle }}?
     </Paragraph>
@@ -87,10 +87,10 @@ const handleBack = () => emits('onBack')
         </Row>
       </ItemWrapper>
     </div>
-  </ModalBody>
-  <ModalFoot>
+  </ModalLayoutBody>
+  <ModalLayoutFoot>
     <Button v-bind="buttonProps">
       {{ t.lang.common.actions.done }}
     </Button>
-  </ModalFoot>
+  </ModalLayoutFoot>
 </template>
