@@ -18,6 +18,6 @@ const t = useLangStore()
     <Paragraph :weight="600" :size="16" rootClassName="py-5">
       {{ t.lang.friends.sideMenu.friends }}
     </Paragraph>
-    <FriendsItem v-for="item in 100"></FriendsItem>
+    <FriendsItem v-for="item in 10"></FriendsItem>
   </ContentBody>
 </template>

@@ -1,0 +1,25 @@
+.profile-post {
+  position: relative;
+  display: flex;
+  .post-left-side {
+    width: $w-10 * 4;
+    height: min-content
+  }
+  .post-right-side {
+    width: calc($w-full - ($w-10 * 4));
+    margin-left: $m-1;
+  }
+}
+
+.profile-photos {
+  margin-bottom: $m-1;
+  .photos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    .grid-image {
+      width: $w-full;
+      height: $h-10;
+    }
+  }
+}

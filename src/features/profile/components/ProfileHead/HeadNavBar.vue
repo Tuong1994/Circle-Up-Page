@@ -12,7 +12,7 @@ const { isPhone } = useViewPoint()
 
 const activeId = ref<string>(routeNames.PROFILE_POST)
 
-const textSize = computed<number>(() => (isPhone.value ? 14 : 16))
+const textSize = computed<number>(() => (isPhone.value ? 13 : 15))
 
 const items = computed<RouterItems>(() => [
   { id: routeNames.PROFILE_POST, name: 'Post', path: routePaths.PROFILE },

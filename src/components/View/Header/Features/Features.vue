@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { toRefs, withDefaults, defineProps, defineEmits, defineExpose, ref, computed } from 'vue'
-import { useOverflow, useRender, useViewPoint } from '@/hooks'
+import { toRefs, watch, withDefaults, defineProps, defineEmits, defineExpose, ref, computed } from 'vue'
+import { useRender, useViewPoint } from '@/hooks'
 import { breakpoint } from '@/hooks/useViewPoint'
 import type { FeatureType } from '../type'
 import Profile from './Profile.vue'
@@ -27,8 +27,6 @@ const featuresRef = ref<HTMLDivElement>()
 
 const render = useRender(open)
 
-useOverflow(open)
-
 const activeClassName = computed<string>(() => (props.open ? 'features-active' : ''))
 
 const responsive = computed<boolean>(() => screenWidth.value >= SM_PHONE && screenWidth.value <= SM_TABLET)
@@ -38,6 +36,12 @@ const handleClick = () => emits('onClick')
 const handleBack = (type: FeatureType) => emits('onBack', type)
 
 defineExpose({ featuresRef })
+
+watch(open, (newVal) => {
+  if (!responsive.value) return
+  if (newVal) document.body.style.overflow = 'hidden'
+  else document.body.style.overflow = 'unset'
+})
 </script>
 
 <template>

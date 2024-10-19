@@ -25,7 +25,7 @@ const handleOpenModal = () => (openModal.value = !openModal.value)
     <Button text sizes="sm" rootClassName="mb-5" @click="handleOpenModal">
       {{ t.lang.friends.sideMenu.requests.view }}
     </Button>
-    <FriendsItem v-for="item in 100">
+    <FriendsItem v-for="item in 10">
       <template #confirm>{{ t.lang.common.actions.confirm }}</template>
       <template #cancel>{{ t.lang.common.actions.delete }}</template>
     </FriendsItem>

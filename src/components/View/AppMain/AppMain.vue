@@ -29,9 +29,10 @@ const contentClassName = computed<string>(() => (isHide.value ? 'content-full' :
 watchEffect(() => {
   const pathName = currentRoute.value.name
   const path = currentRoute.value.fullPath
-  if (responsive.value) return isHide.value = true
+  if (responsive.value) return (isHide.value = true)
   if (pathName === routeNames.HOME) app.setHasContentMenuHead(false)
-  if (pathName === routeNames.FRIENDS_PROFILE) return (isHide.value = false)
+  if (pathName === routeNames.FRIENDS_PROFILE || pathName === routeNames.FRIENDS_PROFILE_POST)
+    return (isHide.value = false)
   if (!path.includes(routeNames.PROFILE)) isHide.value = false
   else isHide.value = true
 })

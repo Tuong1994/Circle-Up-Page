@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { routePaths } from '@/router'
 import { RouterView, useRouter } from 'vue-router'
-import ProfileHead from '@/features/profile/ProfileHead/ProfileHead.vue'
+import ProfileHead from '@/features/profile/components/ProfileHead/ProfileHead.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const layout = useLayoutStore()
@@ -19,6 +19,8 @@ const colorClassName = computed<string>(() => `profile-${layout.color}`)
 <template>
   <div :class="['profile', screenSizeClassName, colorClassName]">
     <ProfileHead />
-    <RouterView />
+    <div class="profile-content">
+      <RouterView />
+    </div>
   </div>
 </template>

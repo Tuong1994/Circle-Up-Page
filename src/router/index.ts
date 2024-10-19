@@ -8,6 +8,7 @@ export const routePaths = {
   FRIENDS_SUGGESTIONS: '/friends/suggestions',
   FRIENDS_REQUESTS: '/friends/requests',
   FRIENDS_PROFILE: '/friends/profile',
+  FRIENDS_PROFILE_POST: '/friends/profile/post',
   PROFILE: '/profile',
   PROFILE_PHOTOS: '/profile/photos',
   PROFILE_FRIENDS: '/profile/friends',
@@ -22,6 +23,7 @@ export const routeNames = {
   FRIENDS_SUGGESTIONS: 'friends-suggestions',
   FRIENDS_REQUESTS: 'friends-requests',
   FRIENDS_PROFILE: 'friends-profile',
+  FRIENDS_PROFILE_POST: 'friends-profile-post',
   PROFILE: 'profile',
   PROFILE_POST: 'profile-post',
   PROFILE_PHOTOS: 'profile-photos',
@@ -65,7 +67,14 @@ const router = createRouter({
         {
           path: routePaths.FRIENDS_PROFILE,
           name: routeNames.FRIENDS_PROFILE,
-          component: () => import('@/views/profile/ProfileView.vue')
+          component: () => import('@/views/profile/ProfileView.vue'),
+          children: [
+            {
+              path: '',
+              name: routeNames.FRIENDS_PROFILE_POST,
+              component: () => import('@/views/profile/ProfilePost.vue')
+            }
+          ]
         }
       ]
     },

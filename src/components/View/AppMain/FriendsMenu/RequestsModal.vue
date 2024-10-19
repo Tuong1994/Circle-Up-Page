@@ -27,7 +27,7 @@ const handleClose = () => emits('onClose')
       <!-- <Paragraph variant="secondary" aligns="center">
         When you send someone a friend request, it will appear here.
       </Paragraph> -->
-      <FriendsItem v-for="item in 100" :type="EFriendItemType.REQUEST" />
+      <FriendsItem v-for="item in 10" :type="EFriendItemType.REQUEST" />
     </ModalLayoutBody>
   </ModalLayout>
 </template>

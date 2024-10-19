@@ -34,21 +34,21 @@ const handleBack = () => emits('onBack', EHeaderFeatureType.PROFILE)
 <template>
   <Card>
     <template #body>
-      <RouterLink :to="routePaths.PROFILE">
-        <Row aligns="middle" justify="between">
-          <Col>
+      <Row aligns="middle" justify="between">
+        <Col>
+          <RouterLink :to="routePaths.PROFILE">
             <Space aligns="middle">
               <Avatar :size="35" />
               <Paragraph>Profile</Paragraph>
             </Space>
-          </Col>
-          <Col v-if="responsive">
-            <Button shape="round" @click="handleBack">
-              <Icon :iconName="iconName.X_MARK" />
-            </Button>
-          </Col>
-        </Row>
-      </RouterLink>
+          </RouterLink>
+        </Col>
+        <Col v-if="responsive">
+          <Button shape="round" @click="handleBack">
+            <Icon :iconName="iconName.X_MARK" />
+          </Button>
+        </Col>
+      </Row>
     </template>
   </Card>
   <Divider />

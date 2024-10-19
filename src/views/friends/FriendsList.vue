@@ -8,6 +8,6 @@ const t = useLangStore()
 
 <template>
   <FriendsGrid :title="t.lang.friends.subTitle">
-    <FriendsCard v-for="item in 100" />
+    <FriendsCard v-for="item in 10" />
   </FriendsGrid>
 </template>
