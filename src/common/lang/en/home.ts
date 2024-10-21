@@ -15,9 +15,9 @@ const home_en = {
       hideAll: 'Hide all from',
       desc_1: 'More suggested posts in your feed will be like this',
       desc_2: 'Less suggested posts in your feed will be like this',
-      desc_3: "Add this to your saved items",
+      desc_3: 'Add this to your saved items',
       desc_4: 'See fewer posts like this',
-      desc_5: 'Stop seeing posts from this page',
+      desc_5: 'Stop seeing posts from this page'
     }
   },
   side: {
@@ -25,6 +25,10 @@ const home_en = {
       title: 'Contacts',
       placeholder: 'Search contacts'
     }
+  },
+  empty: {
+    message: 'There are no more posts',
+    action: 'Find more friends'
   },
   modal: {
     common: {

@@ -3,11 +3,28 @@
   display: flex;
   .post-left-side {
     width: $w-10 * 4;
-    height: min-content
+    height: min-content;
+    @include respond(lgTablet) {
+      width: $w-10 * 3.5;
+    }
+    @include respond(smTablet) {
+      width: $w-full;
+      height: auto;
+    }
   }
   .post-right-side {
     width: calc($w-full - ($w-10 * 4));
     margin-left: $m-1;
+    @include respond(lgTablet) {
+      width: calc($w-full - ($w-10 * 3.5));
+    }
+    @include respond(smTablet) {
+      width: $w-full;
+      margin-left: 0;
+    }
+  }
+  @include respond(smTablet) {
+    display: block;
   }
 }
 

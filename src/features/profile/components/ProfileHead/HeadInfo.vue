@@ -1,17 +1,22 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Grid, Typography, Space, Button, Icon } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import { useViewPoint } from '@/hooks'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
-import { computed } from 'vue'
+import { breakpoint } from '@/hooks/useViewPoint'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
-const { isPhone } = useViewPoint()
+const { isPhone, screenWidth } = useViewPoint()
 
 const layout = useLayoutStore()
+
+const { SM_PHONE, SM_TABLET } = breakpoint
+
+const responsive = computed<boolean>(() => screenWidth.value >= SM_PHONE && screenWidth.value <= SM_TABLET)
 
 const textSize = computed<number>(() => (isPhone.value ? 20 : 25))
 </script>
@@ -36,7 +41,7 @@ const textSize = computed<number>(() => (isPhone.value ? 20 : 25))
               <Paragraph>Edit profile</Paragraph>
             </Space>
           </Button>
-          <Button>
+          <Button v-if="!responsive">
             <Icon :iconName="iconName.ANGLE_DOWN" />
           </Button>
         </Space>

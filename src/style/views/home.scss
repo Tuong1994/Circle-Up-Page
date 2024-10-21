@@ -15,48 +15,58 @@
     }
   }
   .home-actions {
-    margin: $m-1 0;
+    margin-bottom: $m-1;
     .actions-button {
       width: calc($w-full - $w-5);
       justify-content: left;
+    }
+    @include respond(smTablet) {
+      margin-top: $m-1;
     }
   }
   .home-side {
     width: $w-10 * 3.3;
     height: $h-screen;
-    margin-top: $m-5 + 1;
-    background: $bg-light-slate;
     padding: $p-1;
+    background: transparent;
     position: fixed;
     top: 0;
     right: 0;
-    .side-head {
-      padding: 0 $p-1;
-      height: $h-1 * 5;
-      .head-icon {
-        cursor: pointer;
-        & > * {
-          transition: all $transition-time-sm $transition-fn;
+    .side-inner {
+      height: calc($h-screen - $h-1 * 8);
+      margin-top: $m-5 + 1;
+      background: $bg-white;
+      border-radius: $rounded-lg;
+      overflow: hidden;
+      .side-head {
+        padding: $p-1 $p-2;
+        height: $h-1 * 6;
+        .head-icon {
+          cursor: pointer;
+          & > * {
+            transition: all $transition-time-sm $transition-fn;
+          }
         }
       }
-    }
-    .side-input {
-      .input-icon {
-        width: $w-4;
-        cursor: pointer;
-        & > * {
-          transition: all $transition-time-sm $transition-fn;
+      .side-input {
+        padding: $p-1;
+        .input-icon {
+          width: $w-4;
+          cursor: pointer;
+          & > * {
+            transition: all $transition-time-sm $transition-fn;
+          }
+        }
+        .input-box {
+          width: calc($w-full - $w-5);
         }
       }
-      .input-box {
-        width: calc($w-full - $w-5);
-      }
-    }
-    .side-contacts {
-      padding: $p-1 0;
-      height: calc($h-screen - $h-1 * 5);
-      &:hover {
-        overflow-y: auto;
+      .side-contacts {
+        padding: $p-1;
+        height: calc($h-full - $h-1 * 6);
+        &:hover {
+          overflow-y: auto;
+        }
       }
     }
     @include respond(laptop) {

@@ -7,8 +7,18 @@
 
 .side {
   z-index: 1 !important;
+  background: transparent !important;
   .side-content {
     overflow-y: hidden !important;
+    height: calc($h-screen - $h-1 * 8) !important;
+    background: $bg-white;
+    margin-top: $m-1;
+    margin-left: $m-1;
+    border-radius: $rounded-lg;
+    @include respond(mdTablet) {
+      margin-top: $m-2;
+      height: calc($h-screen - $h-1 * 10) !important;
+    }
   }
 }
 
@@ -29,7 +39,6 @@
 }
 
 .content.content-layout {
-  background: $bg-light-slate;
   @include respond(mdTablet) {
     padding-top: $p-5 + 3;
   }
@@ -57,4 +66,57 @@
 
 .button.button-text {
   padding: 0;
+}
+
+.card {
+  border: unset !important;
+  border-radius: $rounded-lg !important;
+  box-shadow: 0 0 5px $bg-gray;
+  .card-head,
+  .card-body,
+  .card-foot {
+    border: unset;
+  }
+}
+
+.container-blue {
+  .content.content-layout {
+    background: $bg-blue-rgba-sm;
+  }
+}
+
+.container-red {
+  .content.content-layout {
+    background: $bg-red-rgba-sm;
+  }
+}
+
+.container-green {
+  .content.content-layout {
+    background: $bg-green-rgba-sm;
+  }
+}
+
+.container-orange {
+  .content.content-layout {
+    background: $bg-orange-rgba-sm;
+  }
+}
+
+.container-yellow {
+  .content.content-layout {
+    background: $bg-yellow-rgba-sm;
+  }
+}
+
+.container-purple {
+  .content.content-layout {
+    background: $bg-purple-rgba-sm;
+  }
+}
+
+.container-pink {
+  .content.content-layout {
+    background: $bg-pink-rgba-sm;
+  }
 }

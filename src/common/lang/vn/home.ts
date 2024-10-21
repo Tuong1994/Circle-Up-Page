@@ -26,6 +26,10 @@ const home_vn = {
       placeholder: 'Tìm kiếm liên hệ'
     }
   },
+  empty: {
+    message: 'Không còn bài viết nào nữa',
+    action: 'Tìm thêm bạn bè'
+  },
   modal: {
     common: {
       friends: 'Bạn bè',

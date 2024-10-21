@@ -9,6 +9,7 @@ import Header from '../Header/Header.vue'
 import HomeMenu from './HomeMenu.vue'
 import FriendsMenu from './FriendsMenu/FriendsMenu.vue'
 import useAppMainStore from './AppMainStore'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Container, Head, Body, Side, Content } = Layout
 
@@ -18,11 +19,15 @@ const { currentRoute } = useRouter()
 
 const { screenWidth } = useViewPoint()
 
+const layout = useLayoutStore()
+
 const app = useAppMainStore()
 
 const isHide = ref<boolean>(false)
 
 const responsive = computed<boolean>(() => screenWidth.value < MD_TABLET)
+
+const colorClassName = computed<string>(() => `container-${layout.color}`)
 
 const contentClassName = computed<string>(() => (isHide.value ? 'content-full' : ''))
 
@@ -39,7 +44,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <Container>
+  <Container :rootClassName="colorClassName">
     <Head>
       <Header />
     </Head>

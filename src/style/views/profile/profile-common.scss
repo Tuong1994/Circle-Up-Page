@@ -1,5 +1,14 @@
 .profile-content {
   padding: $p-2 $p-5 * 3.5;
+  @include respond(laptop) {
+    padding: $p-2 $p-5;
+  }
+  @include respond(lgTablet) {
+    padding: $p-2;
+  }
+  @include respond(smTablet) {
+    padding: $p-1;
+  }
 }
 
 .profile-full {

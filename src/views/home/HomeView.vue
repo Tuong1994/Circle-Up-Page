@@ -7,6 +7,7 @@ import HomeSide from '@/features/home/HomeSide/HomeSide.vue'
 import PostModal from '@/features/home/Modals/PostModal/PostModal.vue'
 import PostCard from '@/components/View/PostCard/PostCard.vue'
 import CommentModal from '@/features/home/Modals/CommentModal/CommentModal.vue'
+import HomeEmpty from '@/features/home/HomeEmpty.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const layout = useLayoutStore()
@@ -38,7 +39,8 @@ const handleCloseCommentModal = () => (openCommentModal.value = false)
   <div :class="['home', colorClassName]">
     <div class="home-wrap">
       <HomeActions @onClick="handleOpenPostModal" />
-      <PostCard v-for="item in 100" @onComment="handleOpenCommentModal" />
+      <PostCard v-for="item in 10" @onComment="handleOpenCommentModal" />
+      <HomeEmpty />
     </div>
     <HomeSide v-if="!isMobile" />
   </div>

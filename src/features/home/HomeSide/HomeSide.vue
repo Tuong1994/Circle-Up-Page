@@ -4,6 +4,8 @@ import SideContacts from './SideContacts.vue'
 
 <template>
   <div class="home-side">
-    <SideContacts />
+    <div class="side-inner">
+      <SideContacts />
+    </div>
   </div>
 </template>
