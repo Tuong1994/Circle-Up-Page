@@ -2,8 +2,8 @@
 import { computed, ref, defineEmits, defineProps } from 'vue'
 import { Grid, Space, Button, Icon, Avatar, Typography, Dropdown, Divider } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
-import { EHeaderFeatureType } from '../enum'
-import ItemWrapper from '../../ItemWrapper/ItemWrapper.vue'
+import { EHeaderFeatureType } from '../../enum'
+import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid

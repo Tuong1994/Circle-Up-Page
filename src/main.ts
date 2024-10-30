@@ -52,6 +52,7 @@ import {
   faLock,
   faPaperPlane,
   faPencilAlt,
+  faSlidersH
 } from '@fortawesome/free-solid-svg-icons'
 
 import App from './App.vue'
@@ -109,6 +110,7 @@ library.add(
   faLock,
   faPaperPlane,
   faPencilAlt,
+  faSlidersH,
 )
 
 const app = createApp(App)

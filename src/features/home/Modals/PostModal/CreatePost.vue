@@ -83,7 +83,7 @@ const handleAction = (type: ActionType) => {
       <Avatar :size="45" />
       <div>
         <Paragraph>User name</Paragraph>
-        <Button sizes="sm" @click="() => handleAction(EActionType.AUDIENCE)">
+        <Button :color="layout.color" ghost sizes="sm" @click="() => handleAction(EActionType.AUDIENCE)">
           <Space aligns="middle">
             <Icon :iconName="iconName.USER_GROUP" />
             <span>{{ t.lang.home.modal.common.friends }}</span>

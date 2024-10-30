@@ -2,7 +2,7 @@
 import { computed, defineEmits, defineProps, withDefaults } from 'vue'
 import { Icon, Avatar, Tooltip } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
-import { EHeaderFeatureType } from '../enum'
+import { EHeaderFeatureType } from '../../enum'
 import useLangStore from '@/stores/LangStore'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 

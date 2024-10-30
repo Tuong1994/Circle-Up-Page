@@ -17,8 +17,8 @@ const handleClick = () => emits('onClick')
   <Card rootClassName="home-actions">
     <template #body>
       <Space aligns="middle">
-        <Avatar :size="40" />
-        <Button :shape="layout.shape" rootClassName="actions-button" @click="handleClick">
+        <Avatar :size="40" :color="layout.color" />
+        <Button :shape="layout.shape" :color="layout.color" ghost rootClassName="actions-button" @click="handleClick">
           {{ t.lang.home.actions.placeholder }}?
         </Button>
       </Space>

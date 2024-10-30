@@ -24,8 +24,12 @@ const common_vn = {
       profile: {
         title: 'Tài khoản',
         setting: 'Cài đặt',
+        language: 'Ngôn ngữ',
         display: 'Hiển thị',
-        logout: 'Đăng xuất'
+        logout: 'Đăng xuất',
+        english: 'Tiếng Anh',
+        vietnamese: 'Tiếng Việt',
+        theme: 'Chủ đề'
       }
     }
   },

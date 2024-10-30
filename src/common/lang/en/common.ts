@@ -24,8 +24,12 @@ const common_en = {
       profile: {
         title: 'Profile',
         setting: 'Setting',
+        language: 'Language',
         display: 'Display',
-        logout: 'Logout'
+        logout: 'Logout',
+        english: 'English',
+        vietnamese: 'Vietnamese',
+        theme: 'Theme',
       }
     }
   },

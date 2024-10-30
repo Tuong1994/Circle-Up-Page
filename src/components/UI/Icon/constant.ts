@@ -52,5 +52,6 @@ export const iconName = {
   GLOBE: 'globe',
   LOCK: 'lock',
   PAPER_PLANE: 'paper-plane',
-  PENCIL_ALT: 'pencil-alt'
+  PENCIL_ALT: 'pencil-alt',
+  SLIDERS_H: 'sliders-h'
 }
