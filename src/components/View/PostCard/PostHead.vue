@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, withDefaults, defineProps } from 'vue'
+import { computed, withDefaults, defineProps, defineEmits } from 'vue'
 import { Grid, Space, Avatar, Dropdown, Icon, Typography, Button } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import HoverInfo from '@/components/View/HoverInfo/HoverInfo.vue'
@@ -18,6 +18,8 @@ interface PostHeadProps {
 withDefaults(defineProps<PostHeadProps>(), {
   hasRemove: true
 })
+
+const emits = defineEmits(['onRemove'])
 
 const t = useLangStore()
 
@@ -57,6 +59,8 @@ const settings = computed(() => [
 ])
 
 const iconSize = 18
+
+const handleRemove = () => emits('onRemove')
 </script>
 
 <template>
@@ -99,7 +103,7 @@ const iconSize = 18
             </div>
           </template>
         </Dropdown>
-        <Icon v-if="hasRemove" :size="iconSize" :iconName="iconName.X_MARK" />
+        <Icon v-if="hasRemove" :size="iconSize" :iconName="iconName.X_MARK" @click="handleRemove" />
       </Space>
     </Col>
   </Row>

@@ -4,17 +4,19 @@ import { useViewPoint } from '@/hooks'
 import { breakpoint } from '@/hooks/useViewPoint'
 import HomeActions from '@/features/home/HomeActions.vue'
 import HomeSide from '@/features/home/HomeSide/HomeSide.vue'
-import PostModal from '@/features/home/Modals/PostModal/PostModal.vue'
+import PostModal from '@/features/home/PostModal/PostModal.vue'
 import PostCard from '@/components/View/PostCard/PostCard.vue'
-import CommentModal from '@/features/home/Modals/CommentModal/CommentModal.vue'
 import HomeEmpty from '@/features/home/HomeEmpty.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useCommentStore from '@/components/View/Comment/CommentStore'
 
 const layout = useLayoutStore()
 
 const { isPhone, screenWidth } = useViewPoint()
 
 const { MD_PHONE, LG_TABLET } = breakpoint
+
+const comment = useCommentStore()
 
 const openPostModal = ref<boolean>(false)
 
@@ -30,9 +32,7 @@ const handleOpenPostModal = () => (openPostModal.value = true)
 
 const handleClosePostModal = () => (openPostModal.value = false)
 
-const handleOpenCommentModal = () => (openCommentModal.value = true)
-
-const handleCloseCommentModal = () => (openCommentModal.value = false)
+const handleOpenCommentModal = () => comment.setOpenModal(true)
 </script>
 
 <template>
@@ -45,5 +45,4 @@ const handleCloseCommentModal = () => (openCommentModal.value = false)
     <HomeSide v-if="!isMobile" />
   </div>
   <PostModal :open="openPostModal" @onClose="handleClosePostModal" />
-  <CommentModal :open="openCommentModal" @onClose="handleCloseCommentModal" />
 </template>

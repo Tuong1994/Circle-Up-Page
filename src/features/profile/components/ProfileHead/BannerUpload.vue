@@ -14,7 +14,7 @@ const layout = useLayoutStore()
 <template>
   <div class="image-banner">
     <div class="banner-image"></div>
-    <Button :color="layout.color" rootClassName="banner-action">
+    <Button :color="layout.color" :shape="layout.shape" rootClassName="banner-action">
       <Space aligns="middle">
         <Icon :iconName="iconName.IMAGE" />
         <Paragraph v-if="!isPhone">Add Cover photo</Paragraph>

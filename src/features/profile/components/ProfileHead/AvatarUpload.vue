@@ -10,7 +10,7 @@ const layout = useLayoutStore()
   <div class="image-avatar">
     <div class="avatar-wrap">
       <div class="wrap-image"></div>
-      <Button :color="layout.color" shape="round" rootClassName="wrap-action">
+      <Button :color="layout.color" :shape="layout.shape" rootClassName="wrap-action">
         <Icon :iconName="iconName.IMAGE" />
       </Button>
     </div>

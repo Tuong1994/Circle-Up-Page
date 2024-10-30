@@ -8,8 +8,10 @@ import { breakpoint } from '@/hooks/useViewPoint'
 import Header from '../Header/Header.vue'
 import HomeMenu from './HomeMenu.vue'
 import FriendsMenu from './FriendsMenu/FriendsMenu.vue'
+import CommentModal from '../Comment/CommentModal.vue'
 import useAppMainStore from './AppMainStore'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useCommentStore from '../Comment/CommentStore'
 
 const { Container, Head, Body, Side, Content } = Layout
 
@@ -23,6 +25,8 @@ const layout = useLayoutStore()
 
 const app = useAppMainStore()
 
+const comment = useCommentStore()
+
 const isHide = ref<boolean>(false)
 
 const responsive = computed<boolean>(() => screenWidth.value < MD_TABLET)
@@ -30,6 +34,8 @@ const responsive = computed<boolean>(() => screenWidth.value < MD_TABLET)
 const colorClassName = computed<string>(() => `container-${layout.color}`)
 
 const contentClassName = computed<string>(() => (isHide.value ? 'content-full' : ''))
+
+const handleCloseModal = () => comment.setOpenModal(false)
 
 watchEffect(() => {
   const pathName = currentRoute.value.name
@@ -58,4 +64,5 @@ watchEffect(() => {
       </Content>
     </Body>
   </Container>
+  <CommentModal :open="comment.openModal" @onClose="handleCloseModal" />
 </template>

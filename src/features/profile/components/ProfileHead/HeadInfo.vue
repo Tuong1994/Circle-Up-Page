@@ -3,16 +3,16 @@ import { computed } from 'vue'
 import { Grid, Typography, Space, Button, Icon } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import { useViewPoint } from '@/hooks'
-import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import { breakpoint } from '@/hooks/useViewPoint'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
-const { isPhone, screenWidth } = useViewPoint()
-
 const layout = useLayoutStore()
+
+const { isPhone, screenWidth } = useViewPoint()
 
 const { SM_PHONE, SM_TABLET } = breakpoint
 
@@ -29,19 +29,19 @@ const textSize = computed<number>(() => (isPhone.value ? 20 : 25))
       </Col>
       <Col>
         <Space aligns="middle">
-          <Button :color="layout.color">
+          <Button :shape="layout.shape" :color="layout.color">
             <Space aligns="middle">
               <Icon :iconName="iconName.PLUS" />
               <Paragraph>Add to story</Paragraph>
             </Space>
           </Button>
-          <Button>
+          <Button :shape="layout.shape" :color="layout.color" ghost>
             <Space aligns="middle">
               <Icon :iconName="iconName.PENCIL_ALT" />
               <Paragraph>Edit profile</Paragraph>
             </Space>
           </Button>
-          <Button v-if="!responsive">
+          <Button v-if="!responsive" :shape="layout.shape" :color="layout.color" ghost>
             <Icon :iconName="iconName.ANGLE_DOWN" />
           </Button>
         </Space>
