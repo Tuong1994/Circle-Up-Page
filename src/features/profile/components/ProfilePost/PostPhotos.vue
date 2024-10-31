@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { Card, Image, Button, Grid, Typography } from '@/components/UI'
+import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
 
 const { Row, Col } = Grid
+
+const t = useLangStore()
 </script>
 
 <template>
@@ -11,10 +14,14 @@ const { Row, Col } = Grid
     <template #head>
       <Row justify="between" aligns="middle">
         <Col>
-          <Paragraph :size="18" :weight="600">Photos</Paragraph>
+          <Paragraph :size="18" :weight="600">
+            {{ t.lang.profile.post.photos.title }}
+          </Paragraph>
         </Col>
         <Col>
-          <Button text>See all photos</Button>
+          <Button text>
+            {{ t.lang.profile.post.photos.action }}
+          </Button>
         </Col>
       </Row>
     </template>

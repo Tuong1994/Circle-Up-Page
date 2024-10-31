@@ -1,5 +1,6 @@
 .modal-layout {
   width: $w-10 * 5;
+  border-radius: $rounded-lg;
   overflow: unset;
   .modal-body {
     max-height: $h-screen;
@@ -17,14 +18,17 @@
   @include respond(lgPhone) {
     width: $w-10 * 5 !important;
     height: $h-screen;
+    border-radius: unset
   }
   @include respond(mdPhone) {
     width: $w-full !important;
     height: $h-screen;
+    border-radius: unset
   }
   @include respond(smPhone) {
     width: $w-full !important;
     height: $h-screen;
+    border-radius: unset
   }
 }
 

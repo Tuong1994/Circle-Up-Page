@@ -5,20 +5,27 @@ import { routeNames, routePaths } from '@/router'
 import { Typography } from '@/components/UI'
 import { useViewPoint } from '@/hooks'
 import type { RouterItems } from '@/router/type'
+import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
 
 const { isPhone } = useViewPoint()
+
+const t = useLangStore()
 
 const activeId = ref<string>(routeNames.PROFILE_POST)
 
 const textSize = computed<number>(() => (isPhone.value ? 13 : 15))
 
 const items = computed<RouterItems>(() => [
-  { id: routeNames.PROFILE_POST, name: 'Post', path: routePaths.PROFILE },
-  { id: routeNames.PROFILE_ABOUT, name: 'About', path: routePaths.PROFILE_ABOUT },
-  { id: routeNames.PROFILE_FRIENDS, name: 'Friends', path: routePaths.PROFILE_FRIENDS },
-  { id: routeNames.PROFILE_PHOTOS, name: 'Photos', path: routePaths.PROFILE_PHOTOS }
+  { id: routeNames.PROFILE_POST, name: t.lang.common.routes.profilePost, path: routePaths.PROFILE },
+  { id: routeNames.PROFILE_ABOUT, name: t.lang.common.routes.profileAbout, path: routePaths.PROFILE_ABOUT },
+  {
+    id: routeNames.PROFILE_FRIENDS,
+    name: t.lang.common.routes.profileFriends,
+    path: routePaths.PROFILE_FRIENDS
+  },
+  { id: routeNames.PROFILE_PHOTOS, name: t.lang.common.routes.profilePhotos, path: routePaths.PROFILE_PHOTOS }
 ])
 
 const getActiveClass = (id: string) => (activeId.value === id ? 'navbar-item-active' : '')

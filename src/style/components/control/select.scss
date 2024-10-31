@@ -101,7 +101,7 @@
       left: 0;
       z-index: 10;
       opacity: 0;
-      transition: all $transition-time-xs $transition-fn;
+      transition: opacity $transition-time-xs $transition-fn, top $transition-time-xs $transition-fn;
       .option-list {
         width: $w-full;
         .list-item {

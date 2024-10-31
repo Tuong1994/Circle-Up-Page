@@ -6,7 +6,11 @@ const common_vn = {
     events: 'Sự kiện',
     friendRequests: 'Yêu cầu kết bạn',
     friendSuggestions: 'Gợi ý',
-    friendList: 'Tất cả bạn bè'
+    friendList: 'Tất cả bạn bè',
+    profilePost: 'Bài viết',
+    profileAbout: 'Giới thiệu',
+    profileFriends: 'Bạn bè',
+    profilePhotos: 'Ảnh'
   },
   header: {
     searchInput: {

@@ -11,7 +11,7 @@ withDefaults(defineProps<ModalBodyProps>(), {
 </script>
 
 <template>
-  <div :class="['post-modal-body', rootClassName]">
+  <div :class="['modal-layout-body', rootClassName]">
     <slot></slot>
   </div>
 </template>

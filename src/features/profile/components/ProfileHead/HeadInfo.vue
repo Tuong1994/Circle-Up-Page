@@ -5,10 +5,13 @@ import { iconName } from '@/components/UI/Icon/constant'
 import { useViewPoint } from '@/hooks'
 import { breakpoint } from '@/hooks/useViewPoint'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
+
+const t = useLangStore()
 
 const layout = useLayoutStore()
 
@@ -32,13 +35,13 @@ const textSize = computed<number>(() => (isPhone.value ? 20 : 25))
           <Button :shape="layout.shape" :color="layout.color">
             <Space aligns="middle">
               <Icon :iconName="iconName.PLUS" />
-              <Paragraph>Add to story</Paragraph>
+              <Paragraph>{{ t.lang.profile.actions.story }}</Paragraph>
             </Space>
           </Button>
           <Button :shape="layout.shape" :color="layout.color" ghost>
             <Space aligns="middle">
               <Icon :iconName="iconName.PENCIL_ALT" />
-              <Paragraph>Edit profile</Paragraph>
+              <Paragraph>{{ t.lang.profile.actions.edit }}</Paragraph>
             </Space>
           </Button>
           <Button v-if="!responsive" :shape="layout.shape" :color="layout.color" ghost>

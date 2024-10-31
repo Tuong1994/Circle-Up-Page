@@ -11,7 +11,7 @@ withDefaults(defineProps<ModalFootProps>(), {
 </script>
 
 <template>
-  <div :class="['post-modal-foot', rootClassName]">
+  <div :class="['modal-layout-foot', rootClassName]">
     <slot></slot>
   </div>
 </template>

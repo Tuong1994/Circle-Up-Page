@@ -6,6 +6,7 @@ import { useViewPoint } from '@/hooks'
 import { ACCEPT_IMAGE_FILE_TYPE } from '@/components/Control/Upload/constant'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useUpload from '../../hooks/useUpload'
+import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
 
@@ -14,6 +15,8 @@ const { Spinner } = Loading
 const { isPhone } = useViewPoint()
 
 const { image, viewURL, loading, dragged, handleChange, handleDrag, handleDrop } = useUpload()
+
+const t = useLangStore()
 
 const layout = useLayoutStore()
 
@@ -52,7 +55,7 @@ const handleTriggerInput = () => {
     >
       <Space aligns="middle">
         <Icon :iconName="iconName.IMAGE" />
-        <Paragraph v-if="!isPhone">Add Cover photo</Paragraph>
+        <Paragraph v-if="!isPhone">{{ t.lang.profile.actions.banner }}</Paragraph>
       </Space>
     </Button>
   </div>

@@ -6,7 +6,11 @@ const common_en = {
     events: 'Events',
     friendRequests: 'Friend requests',
     friendSuggestions: 'Suggestions',
-    friendList: 'All friends'
+    friendList: 'All friends',
+    profilePost: 'Post',
+    profileAbout: 'About',
+    profileFriends: 'Friends',
+    profilePhotos: 'Photos'
   },
   header: {
     searchInput: {
@@ -29,7 +33,7 @@ const common_en = {
         logout: 'Logout',
         english: 'English',
         vietnamese: 'Vietnamese',
-        theme: 'Theme',
+        theme: 'Theme'
       }
     }
   },

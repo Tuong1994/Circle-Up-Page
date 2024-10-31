@@ -28,7 +28,7 @@ const handleClose = () => emits('onClose')
 </script>
 
 <template>
-  <Row justify="between" aligns="middle" :rootClassName="`post-modal-head ${rootClassName}`">
+  <Row justify="between" aligns="middle" :rootClassName="`modal-layout-head ${rootClassName}`">
     <Col :span="2">
       <Button v-if="type === 'sub'" shape="round" @click="handleBack">
         <Icon :iconName="iconName.ANGLE_LEFT" :size="16" />

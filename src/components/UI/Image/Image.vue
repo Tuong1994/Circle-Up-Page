@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<ImageProps>(), {
   rootClassName: '',
   objectFit: 'fill',
   lazyType: 'lazy',
-  src: 'https://cdn.hswstatic.com/gif/space-smell-2.jpg',
+  src: 'default.jpg',
   hasView: false,
   hasRemove: false,
   hasCheck: false
