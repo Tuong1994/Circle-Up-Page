@@ -18,11 +18,22 @@
           background: $bg-gray;
           border-bottom-left-radius: $rounded-lg;
           border-bottom-right-radius: $rounded-lg;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          transition: opacity $transition-time-sm $transition-fn;
         }
         .banner-action {
+          display: inline-block;
           position: absolute;
           bottom: 2rem;
           right: 2rem;
+        }
+      }
+      .image-banner-dragged {
+        .banner-image {
+          opacity: 0.8;
         }
       }
       .image-avatar {
@@ -40,11 +51,20 @@
             height: $h-full;
             background: $bg-gray;
             border-radius: $rounded-full;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: opacity $transition-time-sm $transition-fn;
           }
           .wrap-action {
+            display: inline-block;
             position: absolute;
             bottom: 1rem;
             right: 1rem;
+            @include respond(smTablet) {
+              right: 0;
+            }
           }
           @include respond(smTablet) {
             width: $w-10 + 5;
@@ -58,6 +78,11 @@
         @include respond(smTablet) {
           bottom: -4rem;
           left: 1rem;
+        }
+      }
+      .image-avatar-dragged {
+        .wrap-image {
+          opacity: 0.8;
         }
       }
     }

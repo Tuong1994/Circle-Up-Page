@@ -10,10 +10,6 @@ const useScrollSticky = () => {
 
   const isSmTablet = computed<boolean>(() => screenWidth.value === MD_TABLET)
 
-  const onScrollDesktopMode = () => {
-    
-  }
-
   watchEffect((onStop) => {
     const handleScroll = () => {
       if (responsive.value) return
