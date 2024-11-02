@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import { Space, Grid } from '@/components/UI'
 import { useViewPoint } from '@/hooks'
 import { breakpoint } from '@/hooks/useViewPoint'
@@ -19,7 +19,7 @@ const { isPhone, screenWidth } = useViewPoint()
 
 const layout = useLayoutStore()
 
-const featureRef = ref<HTMLDivElement | null>(null)
+const headerRef = ref<HTMLDivElement>()
 
 const type = ref<FeatureType | undefined>(undefined)
 
@@ -36,10 +36,19 @@ const handleOpenFeatures = (featureType: FeatureType) => {
   if (type.value === featureType) return (type.value = undefined)
   type.value = featureType
 }
+
+watchEffect((onStop) => {
+  const handleClickOutside = (e: any) => {
+    if (!headerRef.value) return
+    if (!headerRef.value.contains(e.target)) type.value = undefined
+  }
+  window.addEventListener('mousedown', handleClickOutside)
+  onStop(() => window.removeEventListener('mousedown', handleClickOutside))
+})
 </script>
 
 <template>
-  <div :class="['header', shapeClassName, colorClassName]">
+  <div ref="headerRef" :class="['header', shapeClassName, colorClassName]">
     <Navbar v-if="responsive" :iconSize="iconSize" />
     <Row aligns="middle" justify="between">
       <Col :xs="3" :span="6">
@@ -55,7 +64,6 @@ const handleOpenFeatures = (featureType: FeatureType) => {
         </Space>
       </Col>
       <Features
-        ref="featureRef"
         :open="type !== undefined"
         :type="type"
         @onClick="handleOpenFeatures"

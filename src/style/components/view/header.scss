@@ -173,6 +173,12 @@
       background: $bg-blue;
     }
   }
+  .profile-lang-selected {
+    background: $bg-blue-rgba-xs;
+    & * {
+      color: $text-blue;
+    }
+  }
 }
 
 .header-green {
@@ -184,6 +190,12 @@
   .navbar-item-active {
     .item-title {
       background: $bg-green;
+    }
+  }
+  .profile-lang-selected {
+    background: $bg-green-rgba-xs;
+    & * {
+      color: $text-green;
     }
   }
 }
@@ -199,6 +211,12 @@
       background: $bg-red;
     }
   }
+  .profile-lang-selected {
+    background: $bg-red-rgba-xs;
+    & * {
+      color: $text-red;
+    }
+  }
 }
 
 .header-orange {
@@ -210,6 +228,12 @@
   .navbar-item-active {
     .item-title {
       background: $bg-orange;
+    }
+  }
+  .profile-lang-selected {
+    background: $bg-orange-rgba-xs;
+    & * {
+      color: $text-orange;
     }
   }
 }
@@ -225,6 +249,12 @@
       background: $bg-yellow;
     }
   }
+  .profile-lang-selected {
+    background: $bg-yellow-rgba-xs;
+    & * {
+      color: $text-yellow;
+    }
+  }
 }
 
 .header-purple {
@@ -238,6 +268,12 @@
       background: $bg-purple;
     }
   }
+  .profile-lang-selected {
+    background: $bg-purple-rgba-xs;
+    & * {
+      color: $text-purple;
+    }
+  }
 }
 
 .header-pink {
@@ -249,6 +285,12 @@
   .navbar-item-active {
     .item-title {
       background: $bg-pink;
+    }
+  }
+  .profile-lang-selected {
+    background: $bg-pink-rgba-xs;
+    & * {
+      color: $text-pink;
     }
   }
 }

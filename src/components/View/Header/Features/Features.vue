@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toRefs, watch, withDefaults, defineProps, defineEmits, defineExpose, ref, computed } from 'vue'
+import { toRefs, watch, withDefaults, defineProps, defineEmits, computed } from 'vue'
 import { useRender, useViewPoint } from '@/hooks'
 import { breakpoint } from '@/hooks/useViewPoint'
 import type { FeatureType } from '../type'
@@ -23,8 +23,6 @@ const { SM_PHONE, SM_TABLET } = breakpoint
 
 const { open } = toRefs(props)
 
-const featuresRef = ref<HTMLDivElement>()
-
 const render = useRender(open)
 
 const activeClassName = computed<string>(() => (props.open ? 'features-active' : ''))
@@ -35,8 +33,6 @@ const handleClick = () => emits('onClick')
 
 const handleBack = (type: FeatureType) => emits('onBack', type)
 
-defineExpose({ featuresRef })
-
 watch(open, (newVal) => {
   if (!responsive.value) return
   if (newVal) document.body.style.overflow = 'hidden'
@@ -45,7 +41,7 @@ watch(open, (newVal) => {
 </script>
 
 <template>
-  <div ref="featuresRef" v-if="render" :class="['features', activeClassName]" @click="handleClick">
+  <div v-if="render" :class="['features', activeClassName]" @click="handleClick">
     <Notification v-if="type === 'notification'" :responsive="responsive" @onBack="handleBack" />
     <Profile v-if="type === 'profile'" :responsive="responsive" @onBack="handleBack" />
   </div>

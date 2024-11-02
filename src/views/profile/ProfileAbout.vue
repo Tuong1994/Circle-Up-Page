@@ -1,3 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AboutTabs from '@/features/profile/components/ProfileAbout/AboutTabs.vue'
+</script>
 
-<template>Profile About</template>
+<template>
+  <AboutTabs />
+</template>
