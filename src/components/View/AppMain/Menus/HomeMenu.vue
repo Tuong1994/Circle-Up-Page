@@ -3,14 +3,14 @@ import { computed } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant'
 import { routePaths } from '@/router'
 import type { RouterItems } from '@/router/type'
-import MenuItem from './Components/MenuItem.vue'
-import ContentBody from './Components/ContentBody.vue'
+import MenuItem from '../Components/MenuItem.vue'
+import ContentBody from '../Components/ContentBody.vue'
 import useLangStore from '@/stores/LangStore'
 
 const t = useLangStore()
 
 const items = computed<RouterItems>(() => [
-  { id: 'profile', name: 'User name', path: routePaths.HOME, iconName: iconName.USER },
+  { id: 'profile', name: 'User name', path: routePaths.PROFILE, iconName: iconName.USER },
   {
     id: 'friends',
     name: t.lang.common.routes.friends,

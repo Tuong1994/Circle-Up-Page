@@ -1,5 +1,10 @@
 .friends-grid {
-  padding: $p-3;
+  padding: $p-1 $p-3;
+  .grid-title {
+    .card-body {
+      padding: $p-1;
+    }
+  }
   .grid-wrap {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

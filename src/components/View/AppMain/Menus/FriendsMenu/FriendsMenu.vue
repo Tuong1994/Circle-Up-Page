@@ -2,12 +2,12 @@
 import { watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import { routePaths } from '@/router'
-import { EFriendMenuType } from '../enum'
+import { EFriendMenuType } from '../../enum'
 import DefaultContent from './DefaultContent.vue'
 import RequestsContent from './RequestsContent.vue'
 import SuggestionsContent from './SuggestionsContent.vue'
 import ListContent from './ListContent.vue'
-import useAppMainStore from '../AppMainStore'
+import useAppMainStore from '../../AppMainStore'
 
 const { currentRoute } = useRouter()
 

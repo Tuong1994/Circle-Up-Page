@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Typography, Divider, Button, Space } from '@/components/UI'
-import FriendsItem from '@/components/View/AppMain/FriendsMenu/FriendsItem.vue';
+import FriendsItem from '@/components/View/AppMain/Menus/FriendsMenu/FriendsItem.vue';
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 

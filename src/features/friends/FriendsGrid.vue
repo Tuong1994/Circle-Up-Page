@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, withDefaults } from 'vue'
-import { Typography } from '@/components/UI'
+import { Typography, Card } from '@/components/UI'
 
 const { Paragraph } = Typography
 
@@ -15,7 +15,11 @@ withDefaults(defineProps<FriendGridProps>(), {
 
 <template>
   <div class="friends-grid">
-    <Paragraph :weight="600" :size="18" rootClassName="pb-5">{{ title }}</Paragraph>
+    <Card rootClassName="mb-5 grid-title">
+      <template #body>
+        <Paragraph :weight="600" :size="18">{{ title }}</Paragraph>
+      </template>
+    </Card>
     <div class="grid-wrap">
       <slot></slot>
     </div>

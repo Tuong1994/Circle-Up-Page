@@ -20,8 +20,6 @@ const comment = useCommentStore()
 
 const openPostModal = ref<boolean>(false)
 
-const openCommentModal = ref<boolean>(false)
-
 const isTablet = computed<boolean>(() => screenWidth.value > MD_PHONE && screenWidth.value <= LG_TABLET)
 
 const isMobile = computed<boolean>(() => Boolean(isPhone.value || isTablet.value))

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
 import { Typography } from '@/components/UI'
-import { EFriendItemType } from '../enum'
-import ModalLayout from '../../ModalLayout/ModalLayout.vue'
-import ModalLayoutHead from '../../ModalLayout/ModalLayoutHead.vue'
-import ModalLayoutBody from '../../ModalLayout/ModalLayoutBody.vue'
+import { EFriendItemType } from '../../enum'
+import ModalLayout from '@/components/View/ModalLayout/ModalLayout.vue'
+import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
+import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
 import FriendsItem from './FriendsItem.vue'
 
 const { Paragraph } = Typography

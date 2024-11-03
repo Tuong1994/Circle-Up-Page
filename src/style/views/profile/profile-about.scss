@@ -1,0 +1,131 @@
+.profile-about {
+  .about-tabs {
+    display: flex;
+    justify-content: space-between;
+    .tabs-titles {
+      .titles-item {
+        padding: $p-1;
+        margin: $m-1 0;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color $transition-time-xs $transition-fn,
+          color $transition-time-xs $transition-fn;
+      }
+    }
+    .tabs-divider {
+      width: 1px;
+      background: $bg-gray;
+      margin: 0 $m-2;
+    }
+    .tabs-content {
+      & > * {
+        animation: fade $transition-time-sm $transition-fn;
+      }
+    }
+  }
+}
+
+// Shape
+.profile-about-square {
+  .titles-item {
+    border-radius: $rounded-lg;
+  }
+}
+
+.profile-about-round {
+  .titles-item {
+    border-radius: $rounded-xxl;
+  }
+}
+
+// Color
+.profile-about-blue {
+  .titles-item {
+    &:hover {
+      background: $bg-blue-rgba-xs;
+      color: $text-blue;
+    }
+  }
+  .titles-item-selected {
+    background: $bg-blue-rgba-xs;
+    color: $text-blue;
+  }
+}
+
+.profile-about-red {
+  .titles-item {
+    &:hover {
+      background: $bg-red-rgba-xs;
+      color: $text-red;
+    }
+  }
+  .titles-item-selected {
+    background: $bg-red-rgba-xs;
+    color: $text-red;
+  }
+}
+
+.profile-about-green {
+  .titles-item {
+    &:hover {
+      background: $bg-green-rgba-xs;
+      color: $text-green;
+    }
+  }
+  .titles-item-selected {
+    background: $bg-green-rgba-xs;
+    color: $text-green;
+  }
+}
+
+.profile-about-orange {
+  .titles-item {
+    &:hover {
+      background: $bg-orange-rgba-xs;
+      color: $text-orange;
+    }
+  }
+  .titles-item-selected {
+    background: $bg-orange-rgba-xs;
+    color: $text-orange;
+  }
+}
+
+.profile-about-yellow {
+  .titles-item {
+    &:hover {
+      background: $bg-yellow-rgba-xs;
+      color: $text-yellow;
+    }
+  }
+  .titles-item-selected {
+    background: $bg-yellow-rgba-xs;
+    color: $text-yellow;
+  }
+}
+
+.profile-about-pink {
+  .titles-item {
+    &:hover {
+      background: $bg-pink-rgba-xs;
+      color: $text-pink;
+    }
+  }
+  .titles-item-selected {
+    background: $bg-pink-rgba-xs;
+    color: $text-pink;
+  }
+}
+
+.profile-about-purple {
+  .titles-item {
+    &:hover {
+      background: $bg-purple-rgba-xs;
+      color: $text-purple;
+    }
+  }
+  .titles-item-selected {
+    background: $bg-purple-rgba-xs;
+    color: $text-purple;
+  }
+}

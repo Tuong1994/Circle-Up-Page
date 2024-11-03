@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Typography, Button } from '@/components/UI'
-import ContentBody from '../Components/ContentBody.vue'
-import ContentHead from '../Components/ContentHead.vue'
+import ContentBody from '../../Components/ContentBody.vue'
+import ContentHead from '../../Components/ContentHead.vue'
 import FriendsItem from './FriendsItem.vue'
 import RequestsModal from './RequestsModal.vue'
 import useLangStore from '@/stores/LangStore'

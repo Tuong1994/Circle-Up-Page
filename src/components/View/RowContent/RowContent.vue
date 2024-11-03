@@ -17,8 +17,8 @@ const props = withDefaults(defineProps<RowContentProps>(), {
 })
 
 const rowProps = computed<GridRowProps>(() => ({
-  ...(props.gridRowProps as object),
-  aligns: 'middle'
+  aligns: 'middle',
+  ...(props.gridRowProps as object)
 }))
 </script>
 

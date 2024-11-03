@@ -4,7 +4,7 @@ import { Divider, Typography } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import { routePaths } from '@/router'
 import type { RouterItems } from '@/router/type'
-import MenuItem from '../Components/MenuItem.vue'
+import MenuItem from '../../Components/MenuItem.vue'
 import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
