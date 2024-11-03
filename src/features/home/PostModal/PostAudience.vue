@@ -1,57 +1,24 @@
 <script setup lang="ts">
 import { defineEmits, defineProps } from 'vue'
-import { Typography, Space, Grid, Icon, Button, Divider } from '@/components/UI'
-import { Radio } from '@/components/Control'
-import { iconName } from '@/components/UI/Icon/constant'
-import type { ClickBoxColor } from '@/components/Control/type'
+import { Typography, Button, Divider } from '@/components/UI'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
 import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
 import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
-import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
-import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import Audiences from '@/components/View/Audiences/Audiences.vue'
 import useLangStore from '@/stores/LangStore'
 
-type AudienceType = 'public' | 'friends' | 'only'
-
-type Audience = { type: AudienceType; name: string; content: string; icon: string }
-
 interface PostAudienceProps {
-  buttonProps: ButtonProps;
+  buttonProps: ButtonProps
 }
 
 defineProps<PostAudienceProps>()
 
 const { Paragraph } = Typography
 
-const { Row, Col } = Grid
-
 const emits = defineEmits(['onBack'])
 
 const t = useLangStore()
-
-const layout = useLayoutStore()
-
-const audiences: Audience[] = [
-  {
-    type: 'public',
-    name: t.lang.home.modal.common.public,
-    content: t.lang.home.modal.audience.desc_1,
-    icon: iconName.GLOBE
-  },
-  {
-    type: 'friends',
-    name: t.lang.home.modal.common.friends,
-    content: t.lang.home.modal.audience.desc_2,
-    icon: iconName.USER_GROUP
-  },
-  {
-    type: 'only',
-    name: t.lang.home.modal.common.private,
-    content: t.lang.home.modal.audience.desc_3,
-    icon: iconName.LOCK
-  }
-]
 
 const handleBack = () => emits('onBack')
 </script>
@@ -70,22 +37,7 @@ const handleBack = () => emits('onBack')
     </Paragraph>
     <Divider />
     <div class="post-content">
-      <ItemWrapper v-for="audience in audiences" :key="audience.type">
-        <Row justify="between" aligns="middle">
-          <Col>
-            <Space size="md" aligns="middle">
-              <Icon rootClassName="w-12" :iconName="audience.icon" :size="30" />
-              <div>
-                <Paragraph>{{ audience.name }}</Paragraph>
-                <Paragraph variant="secondary" :size="12">{{ audience.content }}</Paragraph>
-              </div>
-            </Space>
-          </Col>
-          <Col>
-            <Radio :color="(layout.color as ClickBoxColor)" name="audience" />
-          </Col>
-        </Row>
-      </ItemWrapper>
+      <Audiences />
     </div>
   </ModalLayoutBody>
   <ModalLayoutFoot>

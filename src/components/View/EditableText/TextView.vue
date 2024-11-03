@@ -4,6 +4,7 @@ import { Grid, Typography, Icon, Button } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import RowContent from '../RowContent/RowContent.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useEditableTextStore from './EditableTextStore'
 
 const { Row, Col } = Grid
 
@@ -22,6 +23,10 @@ withDefaults(defineProps<TextViewProps>(), {
 })
 
 const layout = useLayoutStore()
+
+const editable = useEditableTextStore()
+
+const handleEditText = () => editable.setEditText(true)
 </script>
 
 <template>
@@ -38,7 +43,7 @@ const layout = useLayoutStore()
       </RowContent>
     </Col>
     <Col>
-      <Button :color="layout.color" :shape="layout.shape" ghost>
+      <Button :color="layout.color" :shape="layout.shape" ghost @click="handleEditText">
         <Icon :iconName="iconName.PENCIL_ALT" />
       </Button>
     </Col>

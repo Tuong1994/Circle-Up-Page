@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { defineProps, withDefaults } from 'vue'
-import { iconName } from '@/components/UI/Icon/constant'
+import { computed, defineProps, withDefaults } from 'vue'
 import TextControl from './TextControl.vue'
 import TextView from './TextView.vue'
 import TextAddAction from './TextAddAction.vue'
+import useEditableTextStore from './EditableTextStore'
 
 interface EditableTextProps {
   icon?: string
@@ -11,15 +11,20 @@ interface EditableTextProps {
   subText?: string
 }
 
-withDefaults(defineProps<EditableTextProps>(), {
-  icon: iconName.BOOKMARK,
-  text: 'Editable text',
-  subText: 'Label'
+const props = withDefaults(defineProps<EditableTextProps>(), {
+  text: '',
+  subText: ''
 })
+
+const editable = useEditableTextStore()
+
+const showAddAction = computed<boolean>(() => Boolean(!props.text && !editable.editText))
+
+const showTextView = computed<boolean>(() => Boolean(props.text && !editable.editText))
 </script>
 
 <template>
-  <TextAddAction />
-  <TextView />
-  <TextControl />
+  <TextAddAction v-if="showAddAction" />
+  <TextView v-if="showTextView" :icon="icon" :text="text" :subText="subText" />
+  <TextControl v-if="editable.editText" :textValue="text" />
 </template>

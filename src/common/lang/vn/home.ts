@@ -52,9 +52,6 @@ const home_vn = {
         'Bài viết của bạn sẽ xuất hiện trong Bảng tin, trên trang cá nhân và trong kết quả tìm kiếm.',
       content_2:
         'Đối tượng mặc định của bạn được đặt là Bạn bè, nhưng bạn có thể thay đổi đối tượng cho bài viết cụ thể này.',
-      desc_1: 'Bất kỳ ai trên hoặc ngoài Circle Up',
-      desc_2: 'Bạn bè của bạn trên Circle Up',
-      desc_3: 'Chỉ mình bạn có thể xem'
     },
     tag: {
       title: 'Gắn thẻ mọi người',

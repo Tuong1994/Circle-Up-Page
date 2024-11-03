@@ -4,6 +4,6 @@ import EditableText from '@/components/View/EditableText/EditableText.vue';
 
 <template>
   <div>
-    <EditableText />
+    <EditableText text="User name" />
   </div>
 </template>

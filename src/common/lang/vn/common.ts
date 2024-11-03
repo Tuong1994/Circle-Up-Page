@@ -46,6 +46,20 @@ const common_vn = {
     invite: 'Mời bạn bè',
     follow: 'Theo dõi'
   },
+  audiences: {
+    friends: {
+      title: 'Bạn bè',
+      desc: 'Bất kỳ ai trên hoặc ngoài Circle Up'
+    },
+    public: {
+      title: 'Công khai',
+      desc: 'Bạn bè của bạn trên Circle Up'
+    },
+    private: {
+      title: 'Chỉ mình tôi',
+      desc: 'Chỉ mình bạn có thể xem'
+    }
+  },
   comment: {
     comment: 'Bình luận',
     like: 'Thích',

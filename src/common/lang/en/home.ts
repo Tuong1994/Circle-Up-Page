@@ -51,9 +51,6 @@ const home_en = {
       content_1: 'Your post will appear in Feed, on your profile and in search results.',
       content_2:
         'Your default audience is set to Friends, but you can change the audience of this specific post.',
-      desc_1: 'Anyone on or off Circle Up',
-      desc_2: 'Your friends on Circle Up',
-      desc_3: 'Only you can see'
     },
     tag: {
       title: 'Tag people',

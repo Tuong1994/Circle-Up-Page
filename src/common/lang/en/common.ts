@@ -46,6 +46,20 @@ const common_en = {
     invite: 'Invite friends',
     follow: 'Follow'
   },
+  audiences: {
+    friends: {
+      title: 'Friends',
+      desc: 'Anyone on or off Circle Up'
+    },
+    public: {
+      title: 'Public',
+      desc: 'Your friends on Circle Up'
+    },
+    private: {
+      title: 'Only me',
+      desc: 'Only you can see'
+    }
+  },
   comment: {
     comment: 'Comment',
     like: 'Like',
