@@ -25,7 +25,6 @@ const items = computed(() => [
 const getTabsContentWidth = () => {
   if (!tabsTitlesRef.value) return
   const tabsTitlesWidth = tabsTitlesRef.value.clientWidth + 60
-  console.log(tabsTitlesWidth)
   return { width: `calc(100% - (${tabsTitlesWidth}px)` }
 }
 

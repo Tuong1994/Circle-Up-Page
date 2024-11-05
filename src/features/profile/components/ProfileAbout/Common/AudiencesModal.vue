@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
 import { Space, Button } from '@/components/UI'
-import ModalLayout from '../ModalLayout/ModalLayout.vue'
-import ModalLayoutBody from '../ModalLayout/ModalLayoutBody.vue'
-import ModalLayoutFoot from '../ModalLayout/ModalLayoutFoot.vue'
-import ModalLayoutHead from '../ModalLayout/ModalLayoutHead.vue'
-import Audiences from '../Audiences/Audiences.vue'
+import ModalLayout from '@/components/View/ModalLayout/ModalLayout.vue'
+import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
+import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
+import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
+import Audiences from '@/components/View/Audiences/Audiences.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 interface AudiencesModalProps {

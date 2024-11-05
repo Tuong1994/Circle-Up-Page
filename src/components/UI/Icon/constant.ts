@@ -53,5 +53,9 @@ export const iconName = {
   LOCK: 'lock',
   PAPER_PLANE: 'paper-plane',
   PENCIL_ALT: 'pencil-alt',
-  SLIDERS_H: 'sliders-h'
+  SLIDERS_H: 'sliders-h',
+  PHONE: 'phone',
+  ENVELOPE: 'envelope',
+  BIRTHDAY_CAKE: 'birthday-cake',
+  TRANSGENDER: 'transgender'
 }
