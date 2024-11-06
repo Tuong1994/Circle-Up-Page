@@ -1,42 +1,43 @@
 <script setup lang="ts">
-import { computed, defineProps, defineEmits, ref, withDefaults, watch } from 'vue'
-import { Input } from '@/components/Control'
+import { computed, defineProps, defineEmits, ref, withDefaults} from 'vue'
+import { Select } from '@/components/Control'
 import type { ControlShape, ControlColor } from '@/components/Control/type'
-import type { InputProps } from '@/components/Control/Input/Input.vue'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
+import type { SelectProps } from '@/components/Control/Select/Select.vue'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
-interface CommonFormProps {
-  value?: string
-  inputProps?: InputProps
+interface GenderFormProps {
+  value?: string | number
+  selectProps?: SelectProps
 }
 
-const props = withDefaults(defineProps<CommonFormProps>(), {
+const props = withDefaults(defineProps<GenderFormProps>(), {
   value: ''
 })
 
-const emits = defineEmits(['onChange', 'onSelectAudience', 'onSave', 'onCancel'])
+const emits = defineEmits(['onSelect', 'onSelectAudience', 'onSave', 'onCancel'])
 
 const layout = useLayoutStore()
 
-const text = ref<string>(props.value)
+const text = ref<string | number>(props.value)
 
-const inputDefaultProps = computed<InputProps>(() => ({
-  ...(props.inputProps as object),
+const selectDefaultProps = computed<SelectProps>(() => ({
+  ...(props.selectProps as object),
   color: layout.color as ControlColor,
-  shape: layout.shape as ControlShape
+  shape: layout.shape as ControlShape,
+  value: text.value
 }))
 
 const saveButtonProps = computed<ButtonProps>(() => ({ disabled: text.value === '' }))
+
+const handleSelect = (value: string | number) => emits('onSelect', value)
 
 const handleSelectAudience = () => emits('onSelectAudience')
 
 const handleCancelEdit = () => emits('onCancel')
 
 const handleSaveEdit = () => emits('onSave')
-
-watch(text, (newValue) => emits('onChange', newValue))
 </script>
 
 <template>
@@ -46,6 +47,6 @@ watch(text, (newValue) => emits('onChange', newValue))
     @onSave="handleSaveEdit"
     @onCancel="handleCancelEdit"
   >
-    <Input v-bind="inputDefaultProps" v-model:modelValue="text" />
+    <Select v-bind="selectDefaultProps" @onChangeSelect="handleSelect" />
   </ControlLayout>
 </template>

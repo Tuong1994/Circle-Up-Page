@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { computed, defineProps, defineEmits, ref, withDefaults, watch } from 'vue'
-import { Input } from '@/components/Control'
+import { InputPhone } from '@/components/Control'
 import type { ControlShape, ControlColor } from '@/components/Control/type'
 import type { InputProps } from '@/components/Control/Input/Input.vue'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
-interface CommonFormProps {
+interface PhoneFormProps {
   value?: string
   inputProps?: InputProps
 }
 
-const props = withDefaults(defineProps<CommonFormProps>(), {
+const props = withDefaults(defineProps<PhoneFormProps>(), {
   value: ''
 })
 
@@ -46,6 +46,6 @@ watch(text, (newValue) => emits('onChange', newValue))
     @onSave="handleSaveEdit"
     @onCancel="handleCancelEdit"
   >
-    <Input v-bind="inputDefaultProps" v-model:modelValue="text" />
+    <InputPhone v-bind="inputDefaultProps" v-model:modelValue="text" />
   </ControlLayout>
 </template>

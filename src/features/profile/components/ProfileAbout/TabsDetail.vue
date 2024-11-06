@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { iconName } from '@/components/UI/Icon/constant'
+import { EAboutTabFormType } from '../../enum'
 import ContentView from './Common/ContentView.vue'
 
 const items = [
@@ -7,32 +8,32 @@ const items = [
     id: 'phone',
     text: '0793229970',
     label: 'Phone',
-    controlType: 'phone',
     actionTitle: 'Add Phone',
+    formType: EAboutTabFormType.PHONE,
     icon: iconName.PHONE
   },
   {
     id: 'email',
     text: 'user@example.com',
     label: 'Email',
-    controlType: 'input',
     actionTitle: 'Add Email',
+    formType: EAboutTabFormType.COMMON,
     icon: iconName.ENVELOPE
   },
   {
     id: 'gender',
     text: 'Male',
     label: 'Gender',
-    controlType: 'select',
     actionTitle: 'Add Gender',
+    formType: EAboutTabFormType.GENDER,
     icon: iconName.TRANSGENDER
   },
   {
     id: 'birthday',
-    text: '28/11/1994',
+    text: '1994-11-28',
     label: 'Birthday',
-    controlType: 'datepicker',
     actionTitle: 'Add Birthday',
+    formType: EAboutTabFormType.BIRTHDAY,
     icon: iconName.BIRTHDAY_CAKE
   }
 ]
@@ -40,6 +41,13 @@ const items = [
 
 <template>
   <div class="tabs-detail">
- 
+    <ContentView
+      v-for="item in items"
+      :key="item.id"
+      :text="item.text"
+      :label="item.label"
+      :addActionTitle="item.actionTitle"
+      :formType="item.formType"
+    />
   </div>
 </template>
