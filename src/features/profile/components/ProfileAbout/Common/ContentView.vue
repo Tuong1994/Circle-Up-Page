@@ -52,6 +52,7 @@ const handleOpenAudienceModal = () => profile.setOpenAudienceModal(true)
     />
     <CommonForm
       v-if="editable && formType === EAboutTabFormType.COMMON"
+      label="Email"
       :value="text"
       @onSelectAudience="handleOpenAudienceModal"
       @onCancel="handleCancelEdit"

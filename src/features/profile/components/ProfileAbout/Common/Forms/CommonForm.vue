@@ -9,6 +9,7 @@ import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 interface CommonFormProps {
   value?: string
+  label?: string
   inputProps?: InputProps
 }
 
@@ -46,6 +47,8 @@ watch(text, (newValue) => emits('onChange', newValue))
     @onSave="handleSaveEdit"
     @onCancel="handleCancelEdit"
   >
-    <Input v-bind="inputDefaultProps" v-model:modelValue="text" />
+    <Input v-bind="inputDefaultProps" v-model:modelValue="text">
+      <template #label>{{ label }}</template>
+    </Input>
   </ControlLayout>
 </template>

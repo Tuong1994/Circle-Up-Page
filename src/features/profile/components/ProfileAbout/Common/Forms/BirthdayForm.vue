@@ -43,6 +43,8 @@ const handleSaveEdit = () => emits('onSave')
     @onSave="handleSaveEdit"
     @onCancel="handleCancelEdit"
   >
-    <DatePicker v-bind="datepickerDefaultProps" @onChangeSelect="handleSelect" />
+    <DatePicker v-bind="datepickerDefaultProps" @onChangeSelect="handleSelect">
+      <template #label>Birthday</template>
+    </DatePicker>
   </ControlLayout>
 </template>

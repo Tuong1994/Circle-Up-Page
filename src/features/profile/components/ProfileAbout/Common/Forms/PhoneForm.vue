@@ -46,6 +46,8 @@ watch(text, (newValue) => emits('onChange', newValue))
     @onSave="handleSaveEdit"
     @onCancel="handleCancelEdit"
   >
-    <InputPhone v-bind="inputDefaultProps" v-model:modelValue="text" />
+    <InputPhone v-bind="inputDefaultProps" v-model:modelValue="text">
+      <template #label>Phone</template>
+    </InputPhone>
   </ControlLayout>
 </template>

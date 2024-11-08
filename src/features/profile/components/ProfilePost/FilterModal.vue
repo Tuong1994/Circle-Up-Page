@@ -1,20 +1,13 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, computed, ref } from 'vue'
-import { Button, Space, Typography } from '@/components/UI'
-import { Select } from '@/components/Control'
-import { ELang } from '@/common/enum'
-import { monthsEn, monthsVn } from '@/components/Control/DatePicker/data'
-import { getYears, getDates } from '../../data/postFilter'
-import type { SelectProps } from '@/components/Control/Select/Select.vue'
-import type { ControlColor, ControlShape, SelectOptions } from '@/components/Control/type'
+import { defineProps, defineEmits, ref } from 'vue'
+import { Button, Space } from '@/components/UI'
 import ModalLayout from '@/components/View/ModalLayout/ModalLayout.vue'
 import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
 import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
 import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
-
-const { Paragraph } = Typography
+import DateFilters from '../DateFilters/DateFilters.vue'
 
 interface FilterModalProps {
   open?: boolean
@@ -33,40 +26,6 @@ const currentYear = ref<number>(0)
 const currentMonth = ref<number>(-1)
 
 const currentDate = ref<number>(0)
-
-const selectProps = computed<SelectProps>(() => ({
-  hasSearch: false,
-  hasClear: false,
-  rootClassName: 'content-select',
-  color: layout.color as ControlColor,
-  shape: layout.shape as ControlShape
-}))
-
-const hasSelectYear = computed<boolean>(() => currentYear.value !== 0)
-
-const hasSelectMonth = computed<boolean>(() => currentMonth.value !== -1)
-
-const hasSelected = computed<boolean>(() => Boolean(currentYear.value && currentMonth.value))
-
-const years = computed<number[]>(() => getYears())
-
-const months = computed<string[]>(() => (t.locale === ELang.EN ? monthsEn : monthsVn))
-
-const dates = computed<number[]>(() =>
-  hasSelected.value ? getDates(currentYear.value, currentMonth.value) : []
-)
-
-const yearOptions = computed<SelectOptions>(() =>
-  years.value.reverse().map((year) => ({ label: String(year), value: year }))
-)
-
-const monthOptions = computed<SelectOptions>(() =>
-  months.value.map((month, idx) => ({ label: month, value: idx }))
-)
-
-const dateOptions = computed<SelectOptions>(() =>
-  dates.value.map((date) => ({ label: String(date), value: date }))
-)
 
 const handleSelectYear = (year: number) => (currentYear.value = year)
 
@@ -95,29 +54,15 @@ const handleClose = () => {
   <ModalLayout rootClassName="filter-modal" :open="open" @onClose="handleClose">
     <ModalLayoutHead :title="t.lang.profile.post.filters.modal.title" @onClose="handleClose" />
     <ModalLayoutBody rootClassName="modal-content">
-      <Space aligns="middle">
-        <Paragraph>{{ t.lang.profile.post.filters.modal.range }}:</Paragraph>
-        <Select
-          v-bind="selectProps"
-          :options="yearOptions"
-          :placeholder="t.lang.profile.post.filters.modal.year"
-          @onChangeSelect="handleSelectYear"
-        />
-        <Select
-          v-if="hasSelectYear"
-          v-bind="selectProps"
-          :options="monthOptions"
-          :placeholder="t.lang.profile.post.filters.modal.month"
-          @onChangeSelect="handleSelectMonth"
-        />
-        <Select
-          v-if="hasSelectMonth"
-          v-bind="selectProps"
-          :options="dateOptions"
-          :placeholder="t.lang.profile.post.filters.modal.date"
-          @onChangeSelect="handleSelectDate"
-        />
-      </Space>
+      <DateFilters
+        :prefix="t.lang.profile.post.filters.modal.range"
+        :currentYear="currentYear"
+        :currentMonth="currentMonth"
+        :currentDate="currentDate"
+        @onSelectYear="handleSelectYear"
+        @onSelectMonth="handleSelectMonth"
+        @onSelectDate="handleSelectDate"
+      />
     </ModalLayoutBody>
     <ModalLayoutFoot>
       <Space justify="end" aligns="middle">

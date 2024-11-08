@@ -6,3 +6,8 @@ export type AboutTabFormType =
   | EAboutTabFormType.GENDER
   | EAboutTabFormType.BIRTHDAY
   | EAboutTabFormType.WORK
+
+export type DateRange = {
+  start: number
+  end: number
+}

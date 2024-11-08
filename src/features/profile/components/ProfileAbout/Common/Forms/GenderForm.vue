@@ -47,6 +47,8 @@ const handleSaveEdit = () => emits('onSave')
     @onSave="handleSaveEdit"
     @onCancel="handleCancelEdit"
   >
-    <Select v-bind="selectDefaultProps" @onChangeSelect="handleSelect" />
+    <Select v-bind="selectDefaultProps" @onChangeSelect="handleSelect">
+      <template #label>Gender</template>
+    </Select>
   </ControlLayout>
 </template>
