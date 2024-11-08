@@ -1,5 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { EAboutTabFormType } from '../../enum'
+import ContentView from './Common/ContentView.vue';
+</script>
 
 <template>
-  <div>Relationship</div>
+  <div class="tabs-relationship">
+    <ContentView addActionTitle="Add Relationship" :formType="EAboutTabFormType.RELATIONSHIP" />
+  </div>
 </template>

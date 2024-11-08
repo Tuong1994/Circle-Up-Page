@@ -6,6 +6,9 @@ export type AboutTabFormType =
   | EAboutTabFormType.GENDER
   | EAboutTabFormType.BIRTHDAY
   | EAboutTabFormType.WORK
+  | EAboutTabFormType.EDUCATION
+  | EAboutTabFormType.LIVED
+  | EAboutTabFormType.RELATIONSHIP
 
 export type DateRange = {
   start: number

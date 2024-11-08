@@ -44,6 +44,7 @@ const items = [
     <ContentView
       v-for="item in items"
       :key="item.id"
+      :icon="item.icon"
       :text="item.text"
       :label="item.label"
       :addActionTitle="item.actionTitle"

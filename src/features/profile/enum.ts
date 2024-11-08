@@ -11,5 +11,8 @@ export enum EAboutTabFormType {
   PHONE = 'phone',
   GENDER = 'gender',
   BIRTHDAY = 'birthday',
-  WORK = 'work'
+  WORK = 'work',
+  EDUCATION = 'education',
+  LIVED = 'lived',
+  RELATIONSHIP = 'relationship'
 }

@@ -19,7 +19,7 @@ const items = computed(() => [
   { id: EAboutTabType.WORK, title: 'Work' },
   { id: EAboutTabType.EDUCATION, title: 'Education' },
   { id: EAboutTabType.LIVED, title: 'Places lived' },
-  { id: EAboutTabType.RELATIONSHIP, title: 'Family and relationship' }
+  { id: EAboutTabType.RELATIONSHIP, title: 'Relationship' }
 ])
 
 const getTabsContentWidth = () => {

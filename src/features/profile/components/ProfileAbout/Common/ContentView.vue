@@ -10,6 +10,9 @@ import GenderForm from './Forms/GenderForm.vue'
 import BirthdayForm from './Forms/BirthdayForm.vue'
 import useProfileStore from '@/features/profile/store/useProfileStore'
 import WorkForm from './Forms/WorkForm.vue'
+import EducationForm from './Forms/EducationForm.vue'
+import LivedForm from './Forms/LivedForm.vue'
+import RelationshipForm from './Forms/RelationshipForm.vue'
 
 interface ContentWrapperProps {
   text?: string
@@ -41,7 +44,6 @@ const handleOpenAudienceModal = () => profile.setOpenAudienceModal(true)
 
 <template>
   <div class="mb-5">
-    <AddAction v-if="showAddAction" :title="addActionTitle" @onAdd="handleEditText" />
     <ContentItem
       v-if="showContentItem"
       :text="text"
@@ -50,6 +52,7 @@ const handleOpenAudienceModal = () => profile.setOpenAudienceModal(true)
       @onEdit="handleEditText"
       @onSelectAudience="handleOpenAudienceModal"
     />
+    <AddAction v-if="showAddAction" :title="addActionTitle" @onAdd="handleEditText" />
     <CommonForm
       v-if="editable && formType === EAboutTabFormType.COMMON"
       label="Email"
@@ -77,6 +80,21 @@ const handleOpenAudienceModal = () => profile.setOpenAudienceModal(true)
     />
     <WorkForm
       v-if="editable && formType === EAboutTabFormType.WORK"
+      @onCancel="handleCancelEdit"
+      @onSelectAudience="handleOpenAudienceModal"
+    />
+    <EducationForm
+      v-if="editable && formType === EAboutTabFormType.EDUCATION"
+      @onCancel="handleCancelEdit"
+      @onSelectAudience="handleOpenAudienceModal"
+    />
+    <LivedForm
+      v-if="editable && formType === EAboutTabFormType.LIVED"
+      @onCancel="handleCancelEdit"
+      @onSelectAudience="handleOpenAudienceModal"
+    />
+    <RelationshipForm
+      v-if="editable && formType === EAboutTabFormType.RELATIONSHIP"
       @onCancel="handleCancelEdit"
       @onSelectAudience="handleOpenAudienceModal"
     />
