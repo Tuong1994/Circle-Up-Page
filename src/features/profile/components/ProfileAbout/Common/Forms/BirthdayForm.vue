@@ -6,7 +6,7 @@ import type { DatePickerProps } from '@/components/Control/DatePicker/DatePicker
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
-interface BirthdayFormProps {
+export interface BirthdayFormProps {
   value?: string
   datepickerProps?: DatePickerProps
 }

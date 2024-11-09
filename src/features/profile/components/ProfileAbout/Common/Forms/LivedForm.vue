@@ -5,7 +5,7 @@ import type { ControlColor, ControlShape } from '@/components/Control/type'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
-interface LivedFormProps {}
+export interface LivedFormProps {}
 
 defineProps<LivedFormProps>()
 

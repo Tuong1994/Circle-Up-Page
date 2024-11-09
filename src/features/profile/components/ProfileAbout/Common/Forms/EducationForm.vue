@@ -10,7 +10,7 @@ import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
 
-interface EducationFormProps {}
+export interface EducationFormProps {}
 
 defineProps<EducationFormProps>()
 

@@ -7,7 +7,7 @@ import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
-interface CommonFormProps {
+export interface CommonFormProps {
   value?: string
   label?: string
   inputProps?: InputProps

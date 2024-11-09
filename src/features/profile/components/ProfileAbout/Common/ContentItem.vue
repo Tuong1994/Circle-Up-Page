@@ -13,12 +13,14 @@ interface TextViewProps {
   icon?: string
   text?: string
   label?: string
+  subText?: string
 }
 
 withDefaults(defineProps<TextViewProps>(), {
   icon: iconName.BOOKMARK,
   text: 'Editable text',
-  label: 'Label'
+  label: '',
+  subText: ''
 })
 
 const emits = defineEmits(['onEdit', 'onSelectAudience'])
@@ -38,8 +40,9 @@ const handleSelectAudience = () => emits('onSelectAudience')
           <Icon v-if="icon" :size="18" :iconName="icon" />
         </template>
         <template #content>
-          <span>{{ text }}</span>
-          <Paragraph :size="12" variant="secondary">{{ label }}</Paragraph>
+          <Paragraph :lineHeight="18">{{ text }}</Paragraph>
+          <Paragraph v-if="subText" :size="12" variant="secondary" :lineHeight="18">{{ subText }}</Paragraph>
+          <Paragraph v-if="label" :size="12" variant="secondary" :lineHeight="30">{{ label }}</Paragraph>
         </template>
       </RowContent>
     </Col>

@@ -57,5 +57,6 @@ export const iconName = {
   PHONE: 'phone',
   ENVELOPE: 'envelope',
   BIRTHDAY_CAKE: 'birthday-cake',
-  TRANSGENDER: 'transgender'
+  TRANSGENDER: 'transgender',
+  BRIEFCASE: 'briefcase'
 }

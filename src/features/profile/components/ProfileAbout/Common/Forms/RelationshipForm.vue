@@ -7,7 +7,7 @@ import type { SelectProps } from '@/components/Control/Select/Select.vue'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
-interface RelationshipProps {
+export interface RelationshipProps {
   value?: string | number
   selectProps?: SelectProps
 }

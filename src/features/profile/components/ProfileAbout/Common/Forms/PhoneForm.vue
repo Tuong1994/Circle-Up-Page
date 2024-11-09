@@ -7,7 +7,7 @@ import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
-interface PhoneFormProps {
+export interface PhoneFormProps {
   value?: string
   inputProps?: InputProps
 }

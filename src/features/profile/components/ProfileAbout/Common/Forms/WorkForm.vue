@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, defineEmits, defineProps } from 'vue'
+import { computed, ref, withDefaults, defineEmits, defineProps } from 'vue'
 import { Space, Typography } from '@/components/UI'
 import { Input, Select, TextArea, CheckBox } from '@/components/Control'
 import type { ControlColor, ControlShape } from '@/components/Control/type'
@@ -10,9 +10,13 @@ import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
 
-interface WorkFormProps {}
+export interface WorkFormProps {
+  isCurrentJob?: boolean
+}
 
-defineProps<WorkFormProps>()
+const props = withDefaults(defineProps<WorkFormProps>(), {
+  isCurrentJob: true
+})
 
 const emits = defineEmits(['onSelectAudience', 'onSave', 'onCancel'])
 
@@ -24,9 +28,9 @@ const currentMonth = ref<DateRange>({ start: -1, end: -1 })
 
 const currentDate = ref<DateRange>({ start: 0, end: 0 })
 
-const isCurrentWork = ref<boolean>(true)
+const isCurrentJob = ref<boolean>(props.isCurrentJob)
 
-const filterPrefix = computed<string>(() => (isCurrentWork.value ? 'From' : 'To'))
+const filterPrefix = computed<string>(() => (isCurrentJob.value ? 'From' : 'To'))
 
 const commonProps = computed(() => ({
   rootClassName: 'mb-5',
@@ -38,7 +42,8 @@ const handleSelectYearStart = (year: number) => (currentYear.value = { ...curren
 
 const handleSelectYearEnd = (year: number) => (currentYear.value = { ...currentYear.value, end: year })
 
-const handleSelectMonthStart = (month: number) => (currentMonth.value = { ...currentMonth.value, start: month })
+const handleSelectMonthStart = (month: number) =>
+  (currentMonth.value = { ...currentMonth.value, start: month })
 
 const handleSelectMonthEnd = (month: number) => (currentMonth.value = { ...currentMonth.value, end: month })
 
@@ -46,7 +51,7 @@ const handleSelectDateStart = (date: number) => (currentDate.value = { ...curren
 
 const handleSelectDateEnd = (date: number) => (currentDate.value = { ...currentDate.value, end: date })
 
-const handleCheck = () => (isCurrentWork.value = !isCurrentWork.value)
+const handleCheck = () => (isCurrentJob.value = !isCurrentJob.value)
 
 const handleSelectAudience = () => emits('onSelectAudience')
 
@@ -74,12 +79,12 @@ const handleSaveEdit = () => emits('onSave')
       <template #label>Description</template>
     </TextArea>
     <Paragraph :weight="600" :size="16" rootClassName="mb-5">Time Period</Paragraph>
-    <CheckBox v-bind="commonProps" :checked="isCurrentWork" @onCheck="handleCheck">
+    <CheckBox v-bind="commonProps" :checked="isCurrentJob" @onCheck="handleCheck">
       I currently work here
     </CheckBox>
     <Space>
       <DateFilters
-        v-if="!isCurrentWork"
+        v-if="!isCurrentJob"
         :currentYear="currentYear.start"
         :currentMonth="currentMonth.start"
         :currentDate="currentDate.start"
