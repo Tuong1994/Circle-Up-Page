@@ -1,4 +1,5 @@
 import type { Ref } from 'vue'
+import type { DateFilter } from '@/common/type'
 
 const utils = {
   uuid: () => {
@@ -16,6 +17,12 @@ const utils = {
     const node = ref.value
     if (node.style.maxHeight) node.style.maxHeight = ''
     else node.style.maxHeight = `${node.scrollHeight}px`
+  },
+
+  getDateFilter: (start: DateFilter, end: DateFilter) => {
+    const startDate = new Date(start.year, start.month, start.date)
+    const endDate = new Date(end.year, end.month, end.date)
+    return { startDate, endDate }
   }
 }
 

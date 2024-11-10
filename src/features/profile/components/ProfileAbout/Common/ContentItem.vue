@@ -40,9 +40,9 @@ const handleSelectAudience = () => emits('onSelectAudience')
           <Icon v-if="icon" :size="18" :iconName="icon" />
         </template>
         <template #content>
-          <Paragraph :lineHeight="18">{{ text }}</Paragraph>
-          <Paragraph v-if="subText" :size="12" variant="secondary" :lineHeight="18">{{ subText }}</Paragraph>
-          <Paragraph v-if="label" :size="12" variant="secondary" :lineHeight="30">{{ label }}</Paragraph>
+          <Paragraph :lineHeight="18" :size="15">{{ text }}</Paragraph>
+          <Paragraph v-if="subText" :size="13" variant="secondary">{{ subText }}</Paragraph>
+          <Paragraph v-if="label" :size="13" variant="secondary" :lineHeight="30">{{ label }}</Paragraph>
         </template>
       </RowContent>
     </Col>

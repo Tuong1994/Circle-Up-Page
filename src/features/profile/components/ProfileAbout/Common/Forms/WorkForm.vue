@@ -3,7 +3,7 @@ import { computed, ref, withDefaults, defineEmits, defineProps } from 'vue'
 import { Space, Typography } from '@/components/UI'
 import { Input, Select, TextArea, CheckBox } from '@/components/Control'
 import type { ControlColor, ControlShape } from '@/components/Control/type'
-import type { DateRange } from '@/features/profile/type'
+import type { ProfileWork } from '@/features/profile/type'
 import ControlLayout from './ControlLayout.vue'
 import DateFilters from '../../../DateFilters/DateFilters.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
@@ -11,26 +11,27 @@ import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 const { Paragraph } = Typography
 
 export interface WorkFormProps {
-  isCurrentJob?: boolean
+  profileWork?: ProfileWork
 }
 
 const props = withDefaults(defineProps<WorkFormProps>(), {
-  isCurrentJob: true
+  profileWork: () => ({
+    id: '',
+    company: '',
+    position: '',
+    city: '',
+    desc: '',
+    isCurrentJob: true,
+    startDate: { year: new Date().getFullYear(), month: new Date().getMonth(), date: new Date().getDate() },
+    endDate: { year: new Date().getFullYear(), month: new Date().getMonth(), date: new Date().getDate() }
+  })
 })
 
 const emits = defineEmits(['onSelectAudience', 'onSave', 'onCancel'])
 
 const layout = useLayoutStore()
 
-const currentYear = ref<DateRange>({ start: 0, end: 0 })
-
-const currentMonth = ref<DateRange>({ start: -1, end: -1 })
-
-const currentDate = ref<DateRange>({ start: 0, end: 0 })
-
-const isCurrentJob = ref<boolean>(props.isCurrentJob)
-
-const filterPrefix = computed<string>(() => (isCurrentJob.value ? 'From' : 'To'))
+const formData = ref<ProfileWork>(props.profileWork)
 
 const commonProps = computed(() => ({
   rootClassName: 'mb-5',
@@ -38,20 +39,25 @@ const commonProps = computed(() => ({
   shape: layout.shape as ControlShape
 }))
 
-const handleSelectYearStart = (year: number) => (currentYear.value = { ...currentYear.value, start: year })
+const handleSelectYearStart = (year: number) =>
+  (formData.value = { ...formData.value, startDate: { ...formData.value.startDate, year } })
 
-const handleSelectYearEnd = (year: number) => (currentYear.value = { ...currentYear.value, end: year })
+const handleSelectYearEnd = (year: number) =>
+  (formData.value = { ...formData.value, endDate: { ...formData.value.endDate, year } })
 
 const handleSelectMonthStart = (month: number) =>
-  (currentMonth.value = { ...currentMonth.value, start: month })
+  (formData.value = { ...formData.value, startDate: { ...formData.value.startDate, month } })
 
-const handleSelectMonthEnd = (month: number) => (currentMonth.value = { ...currentMonth.value, end: month })
+const handleSelectMonthEnd = (month: number) =>
+  (formData.value = { ...formData.value, endDate: { ...formData.value.endDate, month } })
 
-const handleSelectDateStart = (date: number) => (currentDate.value = { ...currentDate.value, start: date })
+const handleSelectDateStart = (date: number) =>
+  (formData.value = { ...formData.value, startDate: { ...formData.value.startDate, date } })
 
-const handleSelectDateEnd = (date: number) => (currentDate.value = { ...currentDate.value, end: date })
+const handleSelectDateEnd = (date: number) =>
+  (formData.value = { ...formData.value, endDate: { ...formData.value.endDate, date } })
 
-const handleCheck = () => (isCurrentJob.value = !isCurrentJob.value)
+const handleCheck = () => (formData.value = { ...formData.value, isCurrentJob: !formData.value.isCurrentJob })
 
 const handleSelectAudience = () => emits('onSelectAudience')
 
@@ -66,37 +72,38 @@ const handleSaveEdit = () => emits('onSave')
     @onSave="handleSaveEdit"
     @onCancel="handleCancelEdit"
   >
-    <Input v-bind="commonProps">
+    <Input v-bind="commonProps" v-model:modelValue="formData.company">
       <template #label>Company</template>
     </Input>
-    <Input v-bind="commonProps">
+    <Input v-bind="commonProps" v-model:modelValue="formData.position">
       <template #label>Position</template>
     </Input>
-    <Select v-bind="commonProps">
+    <Select v-bind="commonProps" :defaultValue="formData.city">
       <template #label>City/Town</template>
     </Select>
-    <TextArea v-bind="commonProps">
+    <TextArea v-bind="commonProps" v-model:modelValue="formData.desc">
       <template #label>Description</template>
     </TextArea>
     <Paragraph :weight="600" :size="16" rootClassName="mb-5">Time Period</Paragraph>
-    <CheckBox v-bind="commonProps" :checked="isCurrentJob" @onCheck="handleCheck">
+    <CheckBox v-bind="commonProps" :checked="formData.isCurrentJob" @onCheck="handleCheck">
       I currently work here
     </CheckBox>
     <Space>
       <DateFilters
-        v-if="!isCurrentJob"
-        :currentYear="currentYear.start"
-        :currentMonth="currentMonth.start"
-        :currentDate="currentDate.start"
+        prefix="From"
+        :currentYear="formData.startDate.year"
+        :currentMonth="formData.startDate.month"
+        :currentDate="formData.startDate.date"
         @onSelectYear="handleSelectYearStart"
         @onSelectMonth="handleSelectMonthStart"
         @onSelectDate="handleSelectDateStart"
       />
       <DateFilters
-        :prefix="filterPrefix"
-        :currentYear="currentYear.end"
-        :currentMonth="currentMonth.end"
-        :currentDate="currentDate.end"
+        v-if="!formData.isCurrentJob"
+        prefix="To"
+        :currentYear="formData.endDate.year"
+        :currentMonth="formData.endDate.month"
+        :currentDate="formData.endDate.date"
         @onSelectYear="handleSelectYearEnd"
         @onSelectMonth="handleSelectMonthEnd"
         @onSelectDate="handleSelectDateEnd"

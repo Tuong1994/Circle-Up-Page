@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineEmits, defineProps, withDefaults } from 'vue'
+import { computed, defineEmits, defineProps, ref, withDefaults } from 'vue'
 import { Space, Typography } from '@/components/UI'
 import { Select } from '@/components/Control'
 import { getDates, getYears, monthsEn, monthsVn } from '../../data/postFilter'
@@ -38,15 +38,21 @@ const selectProps = computed<SelectProps>(() => ({
   shape: layout.shape as ControlShape
 }))
 
-const hasSelectYear = computed<boolean>(() => props.currentYear !== 0)
+const year = ref<number>(props.currentYear)
 
-const hasSelectMonth = computed<boolean>(() => props.currentMonth !== -1)
+const month = ref<number>(props.currentMonth)
+
+const date = ref<number>(props.currentDate)
+
+const hasSelectYear = computed<boolean>(() => year.value !== 0)
+
+const hasSelectMonth = computed<boolean>(() => month.value !== -1)
 
 const years = computed<number[]>(() => getYears())
 
 const months = computed<string[]>(() => (t.locale === ELang.EN ? monthsEn : monthsVn))
 
-const dates = computed<number[]>(() => getDates(props.currentYear, props.currentMonth))
+const dates = computed<number[]>(() => getDates(year.value, month.value))
 
 const yearOptions = computed<SelectOptions>(() =>
   years.value.reverse().map((year) => ({ label: String(year), value: year }))
@@ -60,11 +66,20 @@ const dateOptions = computed<SelectOptions>(() =>
   dates.value.map((date) => ({ label: String(date), value: date }))
 )
 
-const handleSelectYear = (year: number) => emits('onSelectYear', year)
+const handleSelectYear = (yearValue: number) => {
+  year.value = yearValue
+  emits('onSelectYear', yearValue)
+}
 
-const handleSelectMonth = (month: number) => emits('onSelectMonth', month)
+const handleSelectMonth = (monthValue: number) => {
+  month.value = monthValue
+  emits('onSelectMonth', monthValue)
+}
 
-const handleSelectDate = (date: number) => emits('onSelectDate', date)
+const handleSelectDate = (dateValue: number) => {
+  date.value = dateValue
+  emits('onSelectDate', dateValue)
+}
 </script>
 
 <template>
@@ -72,6 +87,7 @@ const handleSelectDate = (date: number) => emits('onSelectDate', date)
     <Paragraph v-if="prefix">{{ prefix }}</Paragraph>
     <Select
       v-bind="selectProps"
+      :defaultValue="year"
       :options="yearOptions"
       :placeholder="t.lang.profile.post.filters.modal.year"
       @onChangeSelect="handleSelectYear"
@@ -79,6 +95,7 @@ const handleSelectDate = (date: number) => emits('onSelectDate', date)
     <Select
       v-if="hasSelectYear"
       v-bind="selectProps"
+      :defaultValue="month"
       :options="monthOptions"
       :placeholder="t.lang.profile.post.filters.modal.month"
       @onChangeSelect="handleSelectMonth"
@@ -86,6 +103,7 @@ const handleSelectDate = (date: number) => emits('onSelectDate', date)
     <Select
       v-if="hasSelectMonth"
       v-bind="selectProps"
+      :defaultValue="date"
       :options="dateOptions"
       :placeholder="t.lang.profile.post.filters.modal.date"
       @onChangeSelect="handleSelectDate"

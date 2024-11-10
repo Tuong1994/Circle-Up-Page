@@ -1,30 +1,35 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, ref, computed } from 'vue'
+import { defineProps, defineEmits, withDefaults, ref, computed } from 'vue'
 import { Input, TextArea, CheckBox } from '@/components/Control'
 import { Typography, Space } from '@/components/UI'
 import type { ControlColor, ControlShape } from '@/components/Control/type'
-import type { DateRange } from '@/features/profile/type'
+import type { ProfileEducation } from '@/features/profile/type'
 import ControlLayout from './ControlLayout.vue'
 import DateFilters from '../../../DateFilters/DateFilters.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
 
-export interface EducationFormProps {}
+export interface EducationFormProps {
+  profileEducation?: ProfileEducation
+}
 
-defineProps<EducationFormProps>()
+const props = withDefaults(defineProps<EducationFormProps>(), {
+  profileEducation: () => ({
+    id: '',
+    school: '',
+    desc: '',
+    isGraduated: false,
+    startDate: { year: new Date().getFullYear(), month: new Date().getMonth(), date: new Date().getDate() },
+    endDate: { year: new Date().getFullYear(), month: new Date().getMonth(), date: new Date().getDate() }
+  })
+})
 
 const emits = defineEmits(['onSelectAudience', 'onSave', 'onCancel'])
 
 const layout = useLayoutStore()
 
-const currentYear = ref<DateRange>({ start: 0, end: 0 })
-
-const currentMonth = ref<DateRange>({ start: -1, end: -1 })
-
-const currentDate = ref<DateRange>({ start: 0, end: 0 })
-
-const isGraduated = ref<boolean>(true)
+const formData = ref<ProfileEducation>(props.profileEducation)
 
 const commonProps = computed(() => ({
   rootClassName: 'mb-5',
@@ -32,18 +37,25 @@ const commonProps = computed(() => ({
   shape: layout.shape as ControlShape
 }))
 
-const handleSelectYearStart = (year: number) => (currentYear.value = { ...currentYear.value, start: year })
+const handleSelectYearStart = (year: number) =>
+  (formData.value = { ...formData.value, startDate: { ...formData.value.startDate, year } })
 
-const handleSelectYearEnd = (year: number) => (currentYear.value = { ...currentYear.value, end: year })
+const handleSelectYearEnd = (year: number) =>
+  (formData.value = { ...formData.value, endDate: { ...formData.value.endDate, year } })
 
 const handleSelectMonthStart = (month: number) =>
-  (currentMonth.value = { ...currentMonth.value, start: month })
+  (formData.value = { ...formData.value, startDate: { ...formData.value.startDate, month } })
 
-const handleSelectMonthEnd = (month: number) => (currentMonth.value = { ...currentMonth.value, end: month })
+const handleSelectMonthEnd = (month: number) =>
+  (formData.value = { ...formData.value, endDate: { ...formData.value.endDate, month } })
 
-const handleSelectDateStart = (date: number) => (currentDate.value = { ...currentDate.value, start: date })
+const handleSelectDateStart = (date: number) =>
+  (formData.value = { ...formData.value, startDate: { ...formData.value.startDate, date } })
 
-const handleSelectDateEnd = (date: number) => (currentDate.value = { ...currentDate.value, end: date })
+const handleSelectDateEnd = (date: number) =>
+  (formData.value = { ...formData.value, endDate: { ...formData.value.endDate, date } })
+
+const handleCheck = () => (formData.value = { ...formData.value, isGraduated: !formData.value.isGraduated })
 
 const handleSelectAudience = () => emits('onSelectAudience')
 
@@ -58,31 +70,34 @@ const handleSaveEdit = () => emits('onSave')
     @onSave="handleSaveEdit"
     @onCancel="handleCancelEdit"
   >
-    <Input v-bind="commonProps">
+    <Input v-bind="commonProps" v-model:modelValue="formData.school">
       <template #label>School</template>
     </Input>
     <Paragraph :weight="600" :size="16" rootClassName="mb-5">Time period</Paragraph>
     <Space rootClassName="mb-5">
       <DateFilters
-        :currentYear="currentYear.start"
-        :currentMonth="currentMonth.start"
-        :currentDate="currentDate.start"
+        prefix="From"
+        :currentYear="formData.startDate.year"
+        :currentMonth="formData.startDate.month"
+        :currentDate="formData.startDate.date"
         @onSelectYear="handleSelectYearStart"
         @onSelectMonth="handleSelectMonthStart"
         @onSelectDate="handleSelectDateStart"
       />
       <DateFilters
         prefix="To"
-        :currentYear="currentYear.end"
-        :currentMonth="currentMonth.end"
-        :currentDate="currentDate.end"
+        :currentYear="formData.endDate.year"
+        :currentMonth="formData.endDate.month"
+        :currentDate="formData.endDate.date"
         @onSelectYear="handleSelectYearEnd"
         @onSelectMonth="handleSelectMonthEnd"
         @onSelectDate="handleSelectDateEnd"
       />
     </Space>
-    <CheckBox v-bind="commonProps" :checked="isGraduated"> Graduated </CheckBox>
-    <TextArea v-bind="commonProps">
+    <CheckBox v-bind="commonProps" :checked="formData.isGraduated" @onCheck="handleCheck">
+      Graduated
+    </CheckBox>
+    <TextArea v-bind="commonProps" v-model:modelValue="formData.desc">
       <template #label>Description</template>
     </TextArea>
   </ControlLayout>

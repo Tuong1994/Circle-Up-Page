@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { iconName } from '@/components/UI/Icon/constant'
 import { EAboutTabFormType } from '../../enum'
+import { Divider } from '@/components/UI'
+import type { ProfileWork } from '../../type'
 import ContentView from './Common/ContentView.vue'
+import moment from 'moment'
+import utils from '@/utils'
 
-const items = [
+const items: ProfileWork[] = [
   {
     id: '1',
     company: 'CNV Loyalty',
@@ -12,7 +16,7 @@ const items = [
     desc: 'Maintain, fix bug',
     startDate: {
       year: 2024,
-      month: 1,
+      month: 0,
       date: 1
     },
     endDate: {
@@ -24,24 +28,33 @@ const items = [
   }
 ]
 
-const getText = (item: any) => `${item.position} at ${item.company}`
+const isShow = items.length > 0
 
-const getSubText = (item: any) =>
-  `From ${item.startDate.year}/${item.startDate.month}/${item.startDate.date} to ${item.endDate.year}/${item.endDate.month}/${item.endDate.date} `
+const getText = (item: ProfileWork) => `${item.position} at ${item.company}`
+
+const getSubText = (item: ProfileWork) => {
+  const { startDate: start, endDate: end, isCurrentJob } = item
+  const { startDate, endDate } = utils.getDateFilter(start, end)
+  return `From ${moment(startDate).format('DD/MM/YYYY')} to ${
+    !isCurrentJob ? moment(endDate).format('DD/MM/YYYY') : 'Present'
+  }`
+}
 </script>
 
 <template>
   <div class="tabs-work">
-    <ContentView
-      v-for="item in items"
-      :key="item.id"
-      :text="getText(item)"
-      :subText="getSubText(item)"
-      :label="item.desc"
-      :icon="iconName.BRIEFCASE"
-      :formType="EAboutTabFormType.WORK"
-      addActionTitle="Add Work"
-    />
-    <ContentView v-if="items.length > 0" addActionTitle="Add More Work" :formType="EAboutTabFormType.WORK" />
+    <template v-for="item in items" :key="item.id">
+      <ContentView
+        :text="getText(item)"
+        :subText="getSubText(item)"
+        :label="item.desc"
+        :icon="iconName.BRIEFCASE"
+        :formType="EAboutTabFormType.WORK"
+        :workFormProps="{ profileWork: item }"
+        addActionTitle="Add Work"
+      />
+      <Divider v-if="isShow" />
+    </template>
+    <ContentView v-if="isShow" addActionTitle="Add More Work" :formType="EAboutTabFormType.WORK" />
   </div>
 </template>
