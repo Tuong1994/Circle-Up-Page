@@ -2,36 +2,35 @@
 import { computed, defineProps, defineEmits, ref, withDefaults } from 'vue'
 import { Select } from '@/components/Control'
 import type { ControlShape, ControlColor } from '@/components/Control/type'
-import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import type { SelectProps } from '@/components/Control/Select/Select.vue'
+import type { ProfileRelationship } from '@/features/profile/type'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 export interface RelationshipProps {
-  value?: string | number
-  selectProps?: SelectProps
+  profileRelationship?: ProfileRelationship
 }
 
 const props = withDefaults(defineProps<RelationshipProps>(), {
-  value: ''
+  profileRelationship: () => ({
+    id: '',
+    relationship: ''
+  })
 })
 
-const emits = defineEmits(['onSelect', 'onSelectAudience', 'onSave', 'onCancel'])
+const emits = defineEmits(['onSelectAudience', 'onSave', 'onCancel'])
 
 const layout = useLayoutStore()
 
-const text = ref<string | number>(props.value)
+const formData = ref<ProfileRelationship>(props.profileRelationship)
 
 const selectDefaultProps = computed<SelectProps>(() => ({
-  ...(props.selectProps as object),
   color: layout.color as ControlColor,
   shape: layout.shape as ControlShape,
-  value: text.value
+  defaultValue: formData.value.relationship
 }))
 
-const saveButtonProps = computed<ButtonProps>(() => ({ disabled: text.value === '' }))
-
-const handleSelect = (value: string | number) => emits('onSelect', value)
+const handleSelect = (relationship: string) => (formData.value = { ...formData.value, relationship })
 
 const handleSelectAudience = () => emits('onSelectAudience')
 
@@ -42,7 +41,6 @@ const handleSaveEdit = () => emits('onSave')
 
 <template>
   <ControlLayout
-    :saveButtonProps="saveButtonProps"
     @onSelectAudience="handleSelectAudience"
     @onSave="handleSaveEdit"
     @onCancel="handleCancelEdit"

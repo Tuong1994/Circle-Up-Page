@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import AboutTabs from '@/features/profile/components/ProfileAbout/AboutTabs.vue'
 import AudiencesModal from '@/features/profile/components/ProfileAbout/Common/AudiencesModal.vue'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useProfileStore from '@/features/profile/store/ProfileStore'
 
 const layout = useLayoutStore()
@@ -22,4 +22,3 @@ const handleCloseAudienceModal = () => profile.setOpenAudienceModal(false)
   </div>
   <AudiencesModal :open="profile.openAudienceModal" @onClose="handleCloseAudienceModal" />
 </template>
-@/features/profile/store/ProfileStore

@@ -28,6 +28,7 @@ const getText = () => `Live at ${item.town}, ${item.city}`
       :text="getText()"
       :icon="iconName.MAP_MARKER_ALT"
       :formType="EAboutTabFormType.LIVED"
+      :livedFormProps="{ profileLived: item }"
       addActionTitle="Add Place Lived"
     />
   </div>

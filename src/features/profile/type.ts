@@ -36,3 +36,8 @@ export type ProfileLived = {
   city: string
   town: string
 }
+
+export type ProfileRelationship = {
+  id: string
+  relationship: string
+}

@@ -59,5 +59,6 @@ export const iconName = {
   BIRTHDAY_CAKE: 'birthday-cake',
   TRANSGENDER: 'transgender',
   BRIEFCASE: 'briefcase',
-  GRADUATION_CAP: 'graduation-cap'
+  GRADUATION_CAP: 'graduation-cap',
+  HEART: 'heart'
 }

@@ -42,7 +42,7 @@ const items = [
   }
 ]
 
-const isEmpty = (item: any) => !auth.isAuth && item.text
+const isEmpty = (item: any) => !auth.isAuth && !item.text
 
 const getEmptyText = (item: any) => {
   let label = ''

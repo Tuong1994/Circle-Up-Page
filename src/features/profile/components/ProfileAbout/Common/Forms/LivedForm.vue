@@ -3,6 +3,7 @@ import { withDefaults, defineProps, defineEmits, computed, ref } from 'vue'
 import { Select } from '@/components/Control'
 import type { ControlColor, ControlShape } from '@/components/Control/type'
 import type { ProfileLived } from '@/features/profile/type'
+import type { SelectProps } from '@/components/Control/Select/Select.vue'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
@@ -24,7 +25,7 @@ const layout = useLayoutStore()
 
 const formData = ref<ProfileLived>(props.profileLived)
 
-const commonProps = computed(() => ({
+const commonProps = computed<SelectProps>(() => ({
   rootClassName: 'mb-5',
   color: layout.color as ControlColor,
   shape: layout.shape as ControlShape
