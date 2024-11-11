@@ -12,7 +12,8 @@ import WorkForm, { type WorkFormProps } from './Forms/WorkForm.vue'
 import EducationForm, { type EducationFormProps } from './Forms/EducationForm.vue'
 import LivedForm, { type LivedFormProps } from './Forms/LivedForm.vue'
 import RelationshipForm, { type RelationshipProps } from './Forms/RelationshipForm.vue'
-import useProfileStore from '@/features/profile/store/useProfileStore'
+import useProfileStore from '@/features/profile/store/ProfileStore'
+import useAuthStore from '@/stores/AuthStore'
 
 interface ContentWrapperProps {
   text?: string
@@ -38,9 +39,11 @@ const props = withDefaults(defineProps<ContentWrapperProps>(), {
 
 const profile = useProfileStore()
 
+const auth = useAuthStore()
+
 const editable = ref<boolean>(false)
 
-const showAddAction = computed<boolean>(() => Boolean(!props.text && !editable.value))
+const showAddAction = computed<boolean>(() => Boolean(auth.isAuth && !props.text && !editable.value))
 
 const showContentItem = computed<boolean>(() => Boolean(props.text && !editable.value))
 
@@ -117,3 +120,4 @@ const handleOpenAudienceModal = () => profile.setOpenAudienceModal(true)
     />
   </div>
 </template>
+@/features/profile/store/ProfileStore

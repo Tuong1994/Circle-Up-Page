@@ -2,6 +2,10 @@
 import { iconName } from '@/components/UI/Icon/constant'
 import { EAboutTabFormType } from '../../enum'
 import ContentView from './Common/ContentView.vue'
+import ContentEmpty from './Common/ContentEmpty.vue'
+import useAuthStore from '@/stores/AuthStore'
+
+const auth = useAuthStore()
 
 const items = [
   {
@@ -37,18 +41,31 @@ const items = [
     icon: iconName.BIRTHDAY_CAKE
   }
 ]
+
+const isEmpty = (item: any) => !auth.isAuth && item.text
+
+const getEmptyText = (item: any) => {
+  let label = ''
+  if (item.formType === EAboutTabFormType.COMMON) label = 'Email'
+  if (item.formType === EAboutTabFormType.PHONE) label = 'Phone'
+  if (item.formType === EAboutTabFormType.GENDER) label = 'Gender'
+  if (item.formType === EAboutTabFormType.BIRTHDAY) label = 'Birthday'
+  return `No ${label} to show`
+}
 </script>
 
 <template>
   <div class="tabs-detail">
-    <ContentView
-      v-for="item in items"
-      :key="item.id"
-      :icon="item.icon"
-      :text="item.text"
-      :label="item.label"
-      :addActionTitle="item.actionTitle"
-      :formType="item.formType"
-    />
+    <template v-for="item in items" :key="item.id">
+      <ContentEmpty v-if="isEmpty(item)" :message="getEmptyText(item)" :icon="item.icon" />
+      <ContentView
+        v-else
+        :icon="item.icon"
+        :text="item.text"
+        :label="item.label"
+        :addActionTitle="item.actionTitle"
+        :formType="item.formType"
+      />
+    </template>
   </div>
 </template>

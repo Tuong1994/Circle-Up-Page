@@ -30,3 +30,9 @@ export type ProfileEducation = {
   startDate: DateFilter
   endDate: DateFilter
 }
+
+export type ProfileLived = {
+  id: string
+  city: string
+  town: string
+}

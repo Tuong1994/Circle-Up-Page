@@ -1,11 +1,16 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EAboutTabFormType } from '../../enum'
 import { Divider } from '@/components/UI'
 import type { ProfileWork } from '../../type'
 import ContentView from './Common/ContentView.vue'
+import ContentEmpty from './Common/ContentEmpty.vue'
+import useAuthStore from '@/stores/AuthStore'
 import moment from 'moment'
 import utils from '@/utils'
+
+const auth = useAuthStore()
 
 const items: ProfileWork[] = [
   {
@@ -28,7 +33,7 @@ const items: ProfileWork[] = [
   }
 ]
 
-const isShow = items.length > 0
+const isEmpty = computed<boolean>(() => Boolean(!auth.isAuth && !items.length))
 
 const getText = (item: ProfileWork) => `${item.position} at ${item.company}`
 
@@ -43,18 +48,25 @@ const getSubText = (item: ProfileWork) => {
 
 <template>
   <div class="tabs-work">
-    <template v-for="item in items" :key="item.id">
+    <ContentEmpty v-if="isEmpty" :icon="iconName.BRIEFCASE" message="No works to show" />
+    <template v-if="!isEmpty">
+      <template v-for="item in items" :key="item.id">
+        <ContentView
+          :text="getText(item)"
+          :subText="getSubText(item)"
+          :label="item.desc"
+          :icon="iconName.BRIEFCASE"
+          :formType="EAboutTabFormType.WORK"
+          :workFormProps="{ profileWork: item }"
+          addActionTitle="Add Work"
+        />
+        <Divider v-if="items.length > 0" />
+      </template>
       <ContentView
-        :text="getText(item)"
-        :subText="getSubText(item)"
-        :label="item.desc"
-        :icon="iconName.BRIEFCASE"
+        v-if="items.length > 0"
+        addActionTitle="Add More Work"
         :formType="EAboutTabFormType.WORK"
-        :workFormProps="{ profileWork: item }"
-        addActionTitle="Add Work"
       />
-      <Divider v-if="isShow" />
     </template>
-    <ContentView v-if="isShow" addActionTitle="Add More Work" :formType="EAboutTabFormType.WORK" />
   </div>
 </template>

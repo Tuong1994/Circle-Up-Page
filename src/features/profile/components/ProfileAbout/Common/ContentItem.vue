@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, withDefaults } from 'vue'
+import { defineProps, defineEmits, withDefaults, computed } from 'vue'
 import { Grid, Typography, Icon, Space, Button, Tooltip } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import RowContent from '@/components/View/RowContent/RowContent.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useAuthStore from '@/stores/AuthStore'
 
 const { Row, Col } = Grid
 
@@ -16,16 +17,15 @@ interface TextViewProps {
   subText?: string
 }
 
-withDefaults(defineProps<TextViewProps>(), {
-  icon: iconName.BOOKMARK,
-  text: 'Editable text',
-  label: '',
-  subText: ''
+const props = withDefaults(defineProps<TextViewProps>(), {
+  icon: iconName.BOOKMARK
 })
 
 const emits = defineEmits(['onEdit', 'onSelectAudience'])
 
 const layout = useLayoutStore()
+
+const auth = useAuthStore()
 
 const handleEditText = () => emits('onEdit')
 
@@ -46,7 +46,7 @@ const handleSelectAudience = () => emits('onSelectAudience')
         </template>
       </RowContent>
     </Col>
-    <Col>
+    <Col v-if="auth.isAuth">
       <Space aligns="middle">
         <Tooltip>
           <template #title>
