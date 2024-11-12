@@ -6,6 +6,7 @@ import type { ProfileLived } from '@/features/profile/type'
 import type { SelectProps } from '@/components/Control/Select/Select.vue'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 export interface LivedFormProps {
   profileLived?: ProfileLived
@@ -22,6 +23,8 @@ const props = withDefaults(defineProps<LivedFormProps>(), {
 const emits = defineEmits(['onSelectAudience', 'onSave', 'onCancel'])
 
 const layout = useLayoutStore()
+
+const t = useLangStore()
 
 const formData = ref<ProfileLived>(props.profileLived)
 
@@ -49,10 +52,14 @@ const handleSaveEdit = () => emits('onSave')
     @onCancel="handleCancelEdit"
   >
     <Select v-bind="commonProps" :defaultValue="formData.city" @onChangeSelect="handleSelectCity">
-      <template #label>City</template>
+      <template #label>
+        {{ t.lang.common.form.label.city }}
+      </template>
     </Select>
     <Select v-bind="commonProps" :defaultValue="formData.town" @onChangeSelect="handleSelectTown">
-      <template #label>Town</template>
+      <template #label>
+        {{ t.lang.common.form.label.district }}
+      </template>
     </Select>
   </ControlLayout>
 </template>

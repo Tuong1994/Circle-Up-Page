@@ -7,19 +7,22 @@ import TabsWork from './TabsWork.vue'
 import TabsEducation from './TabsEducation.vue'
 import TabsLived from './TabsLived.vue'
 import TabsRelationship from './TabsRelationship.vue'
+import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
+
+const t = useLangStore()
 
 const tabsTitlesRef = ref<HTMLDivElement>()
 
 const tabSelected = ref<EAboutTabType>(EAboutTabType.DETAIL)
 
 const items = computed(() => [
-  { id: EAboutTabType.DETAIL, title: 'Details about you' },
-  { id: EAboutTabType.WORK, title: 'Work' },
-  { id: EAboutTabType.EDUCATION, title: 'Education' },
-  { id: EAboutTabType.LIVED, title: 'Places lived' },
-  { id: EAboutTabType.RELATIONSHIP, title: 'Relationship' }
+  { id: EAboutTabType.DETAIL, title: t.lang.profile.about.tabsTitle.detail },
+  { id: EAboutTabType.WORK, title: t.lang.profile.about.tabsTitle.work },
+  { id: EAboutTabType.EDUCATION, title: t.lang.profile.about.tabsTitle.education },
+  { id: EAboutTabType.LIVED, title: t.lang.profile.about.tabsTitle.lived },
+  { id: EAboutTabType.RELATIONSHIP, title: t.lang.profile.about.tabsTitle.relationship }
 ])
 
 const getTabsContentWidth = () => {
@@ -34,7 +37,9 @@ const handleSelectTab = (id: EAboutTabType) => (tabSelected.value = id)
 <template>
   <Card>
     <template #body>
-      <Paragraph rootClassName="mb-5" :size="18" :weight="600">About</Paragraph>
+      <Paragraph rootClassName="mb-5" :size="18" :weight="600">
+        {{ t.lang.common.routes.profileAbout }}
+      </Paragraph>
       <div class="about-tabs">
         <div ref="tabsTitlesRef" class="tabs-titles">
           <div

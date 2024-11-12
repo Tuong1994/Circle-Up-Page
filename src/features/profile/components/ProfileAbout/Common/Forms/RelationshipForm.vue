@@ -6,6 +6,7 @@ import type { SelectProps } from '@/components/Control/Select/Select.vue'
 import type { ProfileRelationship } from '@/features/profile/type'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 export interface RelationshipProps {
   profileRelationship?: ProfileRelationship
@@ -21,6 +22,8 @@ const props = withDefaults(defineProps<RelationshipProps>(), {
 const emits = defineEmits(['onSelectAudience', 'onSave', 'onCancel'])
 
 const layout = useLayoutStore()
+
+const t = useLangStore()
 
 const formData = ref<ProfileRelationship>(props.profileRelationship)
 
@@ -46,7 +49,9 @@ const handleSaveEdit = () => emits('onSave')
     @onCancel="handleCancelEdit"
   >
     <Select v-bind="selectDefaultProps" @onChangeSelect="handleSelect">
-      <template #label>Relationship</template>
+      <template #label>
+        {{ t.lang.common.form.label.relationship }}
+      </template>
     </Select>
   </ControlLayout>
 </template>

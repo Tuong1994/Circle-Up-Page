@@ -6,6 +6,7 @@ import type { InputProps } from '@/components/Control/Input/Input.vue'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 export interface PhoneFormProps {
   value?: string
@@ -19,6 +20,8 @@ const props = withDefaults(defineProps<PhoneFormProps>(), {
 const emits = defineEmits(['onChange', 'onSelectAudience', 'onSave', 'onCancel'])
 
 const layout = useLayoutStore()
+
+const t = useLangStore()
 
 const text = ref<string>(props.value)
 
@@ -47,7 +50,9 @@ watch(text, (newValue) => emits('onChange', newValue))
     @onCancel="handleCancelEdit"
   >
     <InputPhone v-bind="inputDefaultProps" v-model:modelValue="text">
-      <template #label>Phone</template>
+      <template #label>
+        {{ t.lang.common.form.label.phone }}
+      </template>
     </InputPhone>
   </ControlLayout>
 </template>

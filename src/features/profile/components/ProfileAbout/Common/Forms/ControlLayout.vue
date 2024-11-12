@@ -2,8 +2,9 @@
 import { defineProps, defineEmits } from 'vue'
 import { Divider, Grid, Space, Button, Icon } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
-import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
@@ -17,6 +18,8 @@ defineProps<TextControlProps>()
 const emits = defineEmits(['onSelectAudience', 'onSave', 'onCancel'])
 
 const layout = useLayoutStore()
+
+const t = useLangStore()
 
 const handleSelectAudience = () => emits('onSelectAudience')
 
@@ -33,7 +36,9 @@ const handleSaveEdit = () => emits('onSave')
       <Button :color="layout.color" :shape="layout.shape" @click="handleSelectAudience">
         <Space aligns="middle">
           <Icon :iconName="iconName.GLOBE" />
-          <span>Public</span>
+          <span>
+            {{ t.lang.home.modal.common.public }}
+          </span>
         </Space>
       </Button>
     </Col>
@@ -46,10 +51,10 @@ const handleSaveEdit = () => emits('onSave')
           ghost
           @click="handleCancelEdit"
         >
-          Cancel
+          {{ t.lang.common.actions.cancel }}
         </Button>
         <Button v-bind="saveButtonProps" :color="layout.color" :shape="layout.shape" @click="handleSaveEdit">
-          Save
+          {{ t.lang.common.actions.save }}
         </Button>
       </Space>
     </Col>

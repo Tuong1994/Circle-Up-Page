@@ -102,7 +102,12 @@ const common_vn = {
       ward: 'Phường/Xã',
       note: 'Ghi chú',
       status: 'Trạng thái',
-      optional: 'Không bắt buộc'
+      optional: 'Không bắt buộc',
+      company: 'Công ty',
+      school: 'Trường học',
+      relationship: 'Mối quan hệ',
+      position: 'Chức vụ',
+      desc: 'Mô tả'
     },
     placeholder: {
       enter: 'Nhập thông tin',

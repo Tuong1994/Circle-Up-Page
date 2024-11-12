@@ -7,6 +7,7 @@ import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
 import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
 import Audiences from '@/components/View/Audiences/Audiences.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 interface AudiencesModalProps {
   open?: boolean
@@ -18,6 +19,8 @@ const emits = defineEmits(['onDone', 'onClose'])
 
 const layout = useLayoutStore()
 
+const t = useLangStore()
+
 const handleDone = () => emits('onDone')
 
 const handleClose = () => emits('onClose')
@@ -25,14 +28,18 @@ const handleClose = () => emits('onClose')
 
 <template>
   <ModalLayout :open="open" @onClose="handleClose">
-    <ModalLayoutHead title="Select audience" @onClose="handleClose" />
+    <ModalLayoutHead :title="t.lang.profile.about.audience" @onClose="handleClose" />
     <ModalLayoutBody>
       <Audiences />
     </ModalLayoutBody>
     <ModalLayoutFoot>
       <Space justify="end">
-        <Button :color="layout.color" :shape="layout.shape" ghost @click="handleClose">Cancel</Button>
-        <Button :color="layout.color" :shape="layout.shape" @click="handleDone">Done</Button>
+        <Button :color="layout.color" :shape="layout.shape" ghost @click="handleClose">
+          {{ t.lang.common.actions.cancel }}
+        </Button>
+        <Button :color="layout.color" :shape="layout.shape" @click="handleDone">
+          {{ t.lang.common.actions.done }}
+        </Button>
       </Space>
     </ModalLayoutFoot>
   </ModalLayout>

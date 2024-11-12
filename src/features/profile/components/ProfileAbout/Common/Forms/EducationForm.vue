@@ -7,6 +7,7 @@ import type { ProfileEducation } from '@/features/profile/type'
 import ControlLayout from './ControlLayout.vue'
 import DateFilters from '../../../DateFilters/DateFilters.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
 
@@ -28,6 +29,8 @@ const props = withDefaults(defineProps<EducationFormProps>(), {
 const emits = defineEmits(['onSelectAudience', 'onSave', 'onCancel'])
 
 const layout = useLayoutStore()
+
+const t = useLangStore()
 
 const formData = ref<ProfileEducation>(props.profileEducation)
 
@@ -71,12 +74,16 @@ const handleSaveEdit = () => emits('onSave')
     @onCancel="handleCancelEdit"
   >
     <Input v-bind="commonProps" v-model:modelValue="formData.school">
-      <template #label>School</template>
+      <template #label>
+        {{ t.lang.common.form.label.school }}
+      </template>
     </Input>
-    <Paragraph :weight="600" :size="16" rootClassName="mb-5">Time period</Paragraph>
+    <Paragraph :weight="600" :size="16" rootClassName="mb-5">
+      {{ t.lang.profile.about.tabsContent.period }}
+    </Paragraph>
     <Space rootClassName="mb-5">
       <DateFilters
-        prefix="From"
+        :prefix="t.lang.profile.about.tabsContent.range.from"
         :currentYear="formData.startDate.year"
         :currentMonth="formData.startDate.month"
         :currentDate="formData.startDate.date"
@@ -85,7 +92,7 @@ const handleSaveEdit = () => emits('onSave')
         @onSelectDate="handleSelectDateStart"
       />
       <DateFilters
-        prefix="To"
+        :prefix="t.lang.profile.about.tabsContent.range.to"
         :currentYear="formData.endDate.year"
         :currentMonth="formData.endDate.month"
         :currentDate="formData.endDate.date"
@@ -95,10 +102,12 @@ const handleSaveEdit = () => emits('onSave')
       />
     </Space>
     <CheckBox v-bind="commonProps" :checked="formData.isGraduated" @onCheck="handleCheck">
-      Graduated
+      {{ t.lang.profile.about.tabsContent.graduated }}
     </CheckBox>
     <TextArea v-bind="commonProps" v-model:modelValue="formData.desc">
-      <template #label>Description</template>
+      <template #label>
+        {{ t.lang.common.form.label.desc }}
+      </template>
     </TextArea>
   </ControlLayout>
 </template>

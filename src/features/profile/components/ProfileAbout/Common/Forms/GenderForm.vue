@@ -6,6 +6,7 @@ import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import type { SelectProps } from '@/components/Control/Select/Select.vue'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 export interface GenderFormProps {
   value?: string | number
@@ -19,6 +20,8 @@ const props = withDefaults(defineProps<GenderFormProps>(), {
 const emits = defineEmits(['onSelect', 'onSelectAudience', 'onSave', 'onCancel'])
 
 const layout = useLayoutStore()
+
+const t = useLangStore()
 
 const text = ref<string | number>(props.value)
 
@@ -48,7 +51,9 @@ const handleSaveEdit = () => emits('onSave')
     @onCancel="handleCancelEdit"
   >
     <Select v-bind="selectDefaultProps" @onChangeSelect="handleSelect">
-      <template #label>Gender</template>
+      <template #label>
+        {{ t.lang.common.form.label.gender }}
+      </template>
     </Select>
   </ControlLayout>
 </template>

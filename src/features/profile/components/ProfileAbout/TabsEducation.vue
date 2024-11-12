@@ -7,10 +7,13 @@ import type { ProfileEducation } from '../../type'
 import ContentView from './Common/ContentView.vue'
 import ContentEmpty from './Common/ContentEmpty.vue'
 import useAuthStore from '@/stores/AuthStore'
+import useLangStore from '@/stores/LangStore'
 import utils from '@/utils'
 import moment from 'moment'
 
 const auth = useAuthStore()
+
+const t = useLangStore()
 
 const items: ProfileEducation[] = [
   {
@@ -50,17 +53,24 @@ const items: ProfileEducation[] = [
 const isEmpty = computed<boolean>(() => Boolean(!auth.isAuth && !items.length))
 
 const getSubText = (item: ProfileEducation) => {
+  const from = t.lang.profile.about.tabsContent.range.from
+  const to = t.lang.profile.about.tabsContent.range.to
+  const present = t.lang.profile.about.tabsContent.range.present
   const { startDate: start, endDate: end, isGraduated } = item
   const { startDate, endDate } = utils.getDateFilter(start, end)
-  return `From ${moment(startDate).format('DD/MM/YYYY')} to ${
-    isGraduated ? moment(endDate).format('DD/MM/YYYY') : 'Present'
+  return `${from} ${moment(startDate).format('DD/MM/YYYY')} ${to} ${
+    isGraduated ? moment(endDate).format('DD/MM/YYYY') : present
   }`
 }
 </script>
 
 <template>
   <div class="tabs-education">
-    <ContentEmpty v-if="isEmpty" />
+    <ContentEmpty
+      v-if="isEmpty"
+      :icon="iconName.GRADUATION_CAP"
+      :message="t.lang.profile.about.tabsContent.empty.education"
+    />
     <template v-if="!isEmpty">
       <template v-for="item in items" :key="item.id">
         <ContentView
@@ -70,14 +80,14 @@ const getSubText = (item: ProfileEducation) => {
           :formType="EAboutTabFormType.EDUCATION"
           :icon="iconName.GRADUATION_CAP"
           :educationFormProps="{ profileEducation: item }"
-          addActionTitle="Add Education"
+          :addActionTitle="t.lang.profile.actions.addEducation"
         />
         <Divider v-if="items.length > 0" />
       </template>
       <ContentView
         v-if="items.length > 0"
         :formType="EAboutTabFormType.EDUCATION"
-        addActionTitle="Add More Education"
+        :addActionTitle="t.lang.profile.actions.addMoreEducation"
       />
     </template>
   </div>

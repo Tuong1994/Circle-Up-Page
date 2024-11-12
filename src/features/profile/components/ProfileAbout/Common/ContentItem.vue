@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, withDefaults, computed } from 'vue'
+import { defineProps, defineEmits, withDefaults } from 'vue'
 import { Grid, Typography, Icon, Space, Button, Tooltip } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import RowContent from '@/components/View/RowContent/RowContent.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useAuthStore from '@/stores/AuthStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
@@ -17,11 +18,13 @@ interface TextViewProps {
   subText?: string
 }
 
-const props = withDefaults(defineProps<TextViewProps>(), {
+withDefaults(defineProps<TextViewProps>(), {
   icon: iconName.BOOKMARK
 })
 
 const emits = defineEmits(['onEdit', 'onSelectAudience'])
+
+const t = useLangStore()
 
 const layout = useLayoutStore()
 
@@ -54,7 +57,9 @@ const handleSelectAudience = () => emits('onSelectAudience')
               <Icon :iconName="iconName.GLOBE" />
             </Button>
           </template>
-          <template #content>Public</template>
+          <template #content>
+            {{ t.lang.home.modal.common.public }}
+          </template>
         </Tooltip>
         <Tooltip>
           <template #title>
@@ -62,7 +67,9 @@ const handleSelectAudience = () => emits('onSelectAudience')
               <Icon :iconName="iconName.PENCIL_ALT" />
             </Button>
           </template>
-          <template #content>Edit</template>
+          <template #content>
+            {{ t.lang.common.actions.edit }}
+          </template>
         </Tooltip>
       </Space>
     </Col>

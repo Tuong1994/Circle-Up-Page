@@ -7,6 +7,7 @@ import type { ProfileWork } from '@/features/profile/type'
 import ControlLayout from './ControlLayout.vue'
 import DateFilters from '../../../DateFilters/DateFilters.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
 
@@ -30,6 +31,8 @@ const props = withDefaults(defineProps<WorkFormProps>(), {
 const emits = defineEmits(['onSelectAudience', 'onSave', 'onCancel'])
 
 const layout = useLayoutStore()
+
+const t = useLangStore()
 
 const formData = ref<ProfileWork>(props.profileWork)
 
@@ -73,24 +76,34 @@ const handleSaveEdit = () => emits('onSave')
     @onCancel="handleCancelEdit"
   >
     <Input v-bind="commonProps" v-model:modelValue="formData.company">
-      <template #label>Company</template>
+      <template #label>
+        {{ t.lang.common.form.label.company }}
+      </template>
     </Input>
     <Input v-bind="commonProps" v-model:modelValue="formData.position">
-      <template #label>Position</template>
+      <template #label>
+        {{ t.lang.common.form.label.position }}
+      </template>
     </Input>
     <Select v-bind="commonProps" :defaultValue="formData.city">
-      <template #label>City/Town</template>
+      <template #label>
+        {{ t.lang.common.form.label.city }}
+      </template>
     </Select>
     <TextArea v-bind="commonProps" v-model:modelValue="formData.desc">
-      <template #label>Description</template>
+      <template #label>
+        {{ t.lang.common.form.label.desc }}
+      </template>
     </TextArea>
-    <Paragraph :weight="600" :size="16" rootClassName="mb-5">Time Period</Paragraph>
+    <Paragraph :weight="600" :size="16" rootClassName="mb-5">
+      {{ t.lang.profile.about.tabsContent.period }}
+    </Paragraph>
     <CheckBox v-bind="commonProps" :checked="formData.isCurrentJob" @onCheck="handleCheck">
-      I currently work here
+      {{ t.lang.profile.about.tabsContent.currentJob }}
     </CheckBox>
     <Space>
       <DateFilters
-        prefix="From"
+        :prefix="t.lang.profile.about.tabsContent.range.from"
         :currentYear="formData.startDate.year"
         :currentMonth="formData.startDate.month"
         :currentDate="formData.startDate.date"
@@ -100,7 +113,7 @@ const handleSaveEdit = () => emits('onSave')
       />
       <DateFilters
         v-if="!formData.isCurrentJob"
-        prefix="To"
+        :prefix="t.lang.profile.about.tabsContent.range.to"
         :currentYear="formData.endDate.year"
         :currentMonth="formData.endDate.month"
         :currentDate="formData.endDate.date"

@@ -5,8 +5,11 @@ import type { ProfileRelationship } from '../../type'
 import ContentEmpty from './Common/ContentEmpty.vue'
 import ContentView from './Common/ContentView.vue'
 import useAuthStore from '@/stores/AuthStore'
+import useLangStore from '@/stores/LangStore'
 
 const auth = useAuthStore()
+
+const t = useLangStore()
 
 const item: ProfileRelationship = {
   id: '1',
@@ -18,13 +21,17 @@ const isEmpty = () => !auth.isAuth && !item.relationship
 
 <template>
   <div class="tabs-relationship">
-    <ContentEmpty v-if="isEmpty()" :icon="iconName.HEART" message="No relationship to show" />
+    <ContentEmpty
+      v-if="isEmpty()"
+      :icon="iconName.HEART"
+      :message="t.lang.profile.about.tabsContent.empty.relationship"
+    />
     <ContentView
       v-else
       :text="item.relationship"
       :icon="iconName.HEART"
       :formType="EAboutTabFormType.RELATIONSHIP"
-      addActionTitle="Add Relationship"
+      :addActionTitle="t.lang.profile.actions.addRelationship"
     />
   </div>
 </template>

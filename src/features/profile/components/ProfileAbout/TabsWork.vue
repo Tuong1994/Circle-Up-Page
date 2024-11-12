@@ -7,10 +7,13 @@ import type { ProfileWork } from '../../type'
 import ContentView from './Common/ContentView.vue'
 import ContentEmpty from './Common/ContentEmpty.vue'
 import useAuthStore from '@/stores/AuthStore'
+import useLangStore from '@/stores/LangStore'
 import moment from 'moment'
 import utils from '@/utils'
 
 const auth = useAuthStore()
+
+const t = useLangStore()
 
 const items: ProfileWork[] = [
   {
@@ -35,20 +38,28 @@ const items: ProfileWork[] = [
 
 const isEmpty = computed<boolean>(() => Boolean(!auth.isAuth && !items.length))
 
-const getText = (item: ProfileWork) => `${item.position} at ${item.company}`
+const getText = (item: ProfileWork) =>
+  `${item.position} ${t.lang.profile.about.tabsContent.at} ${item.company}`
 
 const getSubText = (item: ProfileWork) => {
+  const from = t.lang.profile.about.tabsContent.range.from
+  const to = t.lang.profile.about.tabsContent.range.to
+  const present = t.lang.profile.about.tabsContent.range.present
   const { startDate: start, endDate: end, isCurrentJob } = item
   const { startDate, endDate } = utils.getDateFilter(start, end)
-  return `From ${moment(startDate).format('DD/MM/YYYY')} to ${
-    !isCurrentJob ? moment(endDate).format('DD/MM/YYYY') : 'Present'
+  return `${from} ${moment(startDate).format('DD/MM/YYYY')} ${to} ${
+    !isCurrentJob ? moment(endDate).format('DD/MM/YYYY') : present
   }`
 }
 </script>
 
 <template>
   <div class="tabs-work">
-    <ContentEmpty v-if="isEmpty" :icon="iconName.BRIEFCASE" message="No works to show" />
+    <ContentEmpty
+      v-if="isEmpty"
+      :icon="iconName.BRIEFCASE"
+      :message="t.lang.profile.about.tabsContent.empty.work"
+    />
     <template v-if="!isEmpty">
       <template v-for="item in items" :key="item.id">
         <ContentView
@@ -58,14 +69,14 @@ const getSubText = (item: ProfileWork) => {
           :icon="iconName.BRIEFCASE"
           :formType="EAboutTabFormType.WORK"
           :workFormProps="{ profileWork: item }"
-          addActionTitle="Add Work"
+          :addActionTitle="t.lang.profile.actions.addWork"
         />
         <Divider v-if="items.length > 0" />
       </template>
       <ContentView
         v-if="items.length > 0"
-        addActionTitle="Add More Work"
         :formType="EAboutTabFormType.WORK"
+        :addActionTitle="t.lang.profile.actions.addMoreWork"
       />
     </template>
   </div>

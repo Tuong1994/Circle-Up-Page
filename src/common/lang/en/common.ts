@@ -102,7 +102,12 @@ const common_en = {
       ward: 'Ward',
       note: 'Note',
       status: 'Status',
-      optional: 'Optional'
+      optional: 'Optional',
+      company: 'Company',
+      school: 'School',
+      relationship: 'Relationship',
+      position: 'Position',
+      desc: 'Description',
     },
     placeholder: {
       enter: 'Enter infomation',

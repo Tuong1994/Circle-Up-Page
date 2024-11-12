@@ -5,6 +5,7 @@ import type { ControlShape, ControlColor } from '@/components/Control/type'
 import type { DatePickerProps } from '@/components/Control/DatePicker/DatePicker.vue'
 import ControlLayout from './ControlLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 export interface BirthdayFormProps {
   value?: string
@@ -18,6 +19,8 @@ const props = withDefaults(defineProps<BirthdayFormProps>(), {
 const emits = defineEmits(['onSelect', 'onSelectAudience', 'onSave', 'onCancel'])
 
 const layout = useLayoutStore()
+
+const t = useLangStore()
 
 const date = ref<Date>(new Date(props.value))
 
@@ -44,7 +47,9 @@ const handleSaveEdit = () => emits('onSave')
     @onCancel="handleCancelEdit"
   >
     <DatePicker v-bind="datepickerDefaultProps" @onChangeSelect="handleSelect">
-      <template #label>Birthday</template>
+      <template #label>
+        {{ t.lang.common.form.label.birthday }}
+      </template>
     </DatePicker>
   </ControlLayout>
 </template>
