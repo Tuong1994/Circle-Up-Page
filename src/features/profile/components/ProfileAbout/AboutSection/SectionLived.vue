@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant'
-import { EAboutTabFormType } from '../../enum'
-import type { ProfileLived } from '../../type'
-import ContentView from './Common/ContentView.vue'
-import ContentEmpty from './Common/ContentEmpty.vue'
+import { EAboutTabFormType } from '../../../enum'
+import type { ProfileLived } from '../../../type'
+import ContentView from '../Common/ContentView.vue'
+import ContentEmpty from '../Common/ContentEmpty.vue'
 import useAuthStore from '@/stores/AuthStore'
 import useLangStore from '@/stores/LangStore'
 

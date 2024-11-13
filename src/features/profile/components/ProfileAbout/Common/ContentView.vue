@@ -14,6 +14,7 @@ import LivedForm, { type LivedFormProps } from './Forms/LivedForm.vue'
 import RelationshipForm, { type RelationshipProps } from './Forms/RelationshipForm.vue'
 import useProfileStore from '@/features/profile/store/ProfileStore'
 import useAuthStore from '@/stores/AuthStore'
+import useLangStore from '@/stores/LangStore'
 
 interface ContentWrapperProps {
   text?: string
@@ -40,6 +41,8 @@ const props = withDefaults(defineProps<ContentWrapperProps>(), {
 const profile = useProfileStore()
 
 const auth = useAuthStore()
+
+const t = useLangStore()
 
 const editable = ref<boolean>(false)
 
@@ -69,10 +72,10 @@ const handleOpenAudienceModal = () => profile.setOpenAudienceModal(true)
     <CommonForm
       v-if="editable && formType === EAboutTabFormType.COMMON"
       v-bind="commonFormProps"
-      label="Email"
+      :label="t.lang.common.form.label.email"
       :value="text"
-      @onSelectAudience="handleOpenAudienceModal"
       @onCancel="handleCancelEdit"
+      @onSelectAudience="handleOpenAudienceModal"
     />
     <PhoneForm
       v-if="editable && formType === EAboutTabFormType.PHONE"

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { Card, Typography } from '@/components/UI'
-import { EAboutTabType } from '../../enum'
-import TabsDetail from './TabsDetail.vue'
-import TabsWork from './TabsWork.vue'
-import TabsEducation from './TabsEducation.vue'
-import TabsLived from './TabsLived.vue'
-import TabsRelationship from './TabsRelationship.vue'
+import { EAboutTabType } from '../../../enum'
+import SectionDetail from '../AboutSection/SectionDetail.vue'
+import SectionWork from '../AboutSection/SectionWork.vue'
+import SectionEducation from '../AboutSection/SectionEducation.vue'
+import SectionLived from '../AboutSection/SectionLived.vue'
+import SectionRelationship from '../AboutSection/SectionRelationship.vue'
 import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
@@ -53,11 +53,11 @@ const handleSelectTab = (id: EAboutTabType) => (tabSelected.value = id)
         </div>
         <div class="tabs-divider" />
         <div :style="getTabsContentWidth()" class="tabs-content">
-          <TabsDetail v-if="tabSelected === EAboutTabType.DETAIL" />
-          <TabsWork v-if="tabSelected === EAboutTabType.WORK" />
-          <TabsEducation v-if="tabSelected === EAboutTabType.EDUCATION" />
-          <TabsLived v-if="tabSelected === EAboutTabType.LIVED" />
-          <TabsRelationship v-if="tabSelected === EAboutTabType.RELATIONSHIP" />
+          <SectionDetail v-if="tabSelected === EAboutTabType.DETAIL" />
+          <SectionWork v-if="tabSelected === EAboutTabType.WORK" />
+          <SectionEducation v-if="tabSelected === EAboutTabType.EDUCATION" />
+          <SectionLived v-if="tabSelected === EAboutTabType.LIVED" />
+          <SectionRelationship v-if="tabSelected === EAboutTabType.RELATIONSHIP" />
         </div>
       </div>
     </template>

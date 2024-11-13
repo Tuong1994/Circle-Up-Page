@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { iconName } from '@/components/UI/Icon/constant'
-import { EAboutTabFormType } from '../../enum'
-import type { ProfileRelationship } from '../../type'
-import ContentEmpty from './Common/ContentEmpty.vue'
-import ContentView from './Common/ContentView.vue'
+import { EAboutTabFormType } from '../../../enum'
+import type { ProfileRelationship } from '../../../type'
+import ContentEmpty from '../Common/ContentEmpty.vue'
+import ContentView from '../Common/ContentView.vue'
 import useAuthStore from '@/stores/AuthStore'
 import useLangStore from '@/stores/LangStore'
 

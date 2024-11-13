@@ -9,7 +9,8 @@ const { Row, Col } = Grid
 interface RowContentProps {
   rootClassName?: string
   gridRowProps?: GridRowProps
-  gridColProps?: GridColProps
+  gridLeftColProps?: GridColProps
+  gridRightColProps?: GridColProps
 }
 
 const props = withDefaults(defineProps<RowContentProps>(), {
@@ -25,10 +26,10 @@ const rowProps = computed<GridRowProps>(() => ({
 <template>
   <div :class="['row-content', rootClassName]">
     <Row v-bind="rowProps">
-      <Col v-bind="gridColProps">
+      <Col v-bind="gridLeftColProps">
         <slot name="label">Label</slot>
       </Col>
-      <Col v-bind="gridColProps">
+      <Col v-bind="gridRightColProps">
         <slot name="content">Content</slot>
       </Col>
     </Row>

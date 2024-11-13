@@ -115,8 +115,13 @@
         @include respond(lgTablet) {
           padding: 0 $p-1;
         }
+        @include respond(mdTablet) {
+          padding: 0 $p-1;
+          justify-content: center;
+        }
         @include respond(smTablet) {
           padding: 0;
+          justify-content: center;
         }
       }
       @include respond(smTablet) {

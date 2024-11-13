@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { computed, watchEffect, ref } from 'vue'
+import { RouterLink, useRouter } from 'vue-router'
 import { routeNames, routePaths } from '@/router'
 import { Typography } from '@/components/UI'
 import { useViewPoint } from '@/hooks'
@@ -9,13 +9,15 @@ import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
 
+const { currentRoute } = useRouter()
+
 const { isPhone } = useViewPoint()
 
 const t = useLangStore()
 
 const activeId = ref<string>(routeNames.PROFILE_POST)
 
-const textSize = computed<number>(() => (isPhone.value ? 13 : 15))
+const textSize = computed<number>(() => (isPhone.value ? 14 : 15))
 
 const items = computed<RouterItems>(() => [
   { id: routeNames.PROFILE_POST, name: t.lang.common.routes.profilePost, path: routePaths.PROFILE },
@@ -31,6 +33,8 @@ const items = computed<RouterItems>(() => [
 const getActiveClass = (id: string) => (activeId.value === id ? 'navbar-item-active' : '')
 
 const handleSelect = (id: string) => (activeId.value = id)
+
+watchEffect(() => handleSelect(currentRoute.value.name as string))
 </script>
 
 <template>

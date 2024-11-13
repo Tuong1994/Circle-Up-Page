@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, defineEmits, defineProps, ref, withDefaults } from 'vue'
-import { Space, Typography } from '@/components/UI'
+import { Space, Grid, Typography } from '@/components/UI'
 import { Select } from '@/components/Control'
 import { getDates, getYears, monthsEn, monthsVn } from '../../data/postFilter'
 import { ELang } from '@/common/enum'
@@ -10,6 +10,8 @@ import useLangStore from '@/stores/LangStore'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
+
+const { Row, Col } = Grid
 
 interface DateFiltersProps {
   prefix?: string
@@ -83,30 +85,38 @@ const handleSelectDate = (dateValue: number) => {
 </script>
 
 <template>
-  <Space aligns="middle" rootClassName="date-filters">
-    <Paragraph v-if="prefix">{{ prefix }}</Paragraph>
-    <Select
-      v-bind="selectProps"
-      :defaultValue="year"
-      :options="yearOptions"
-      :placeholder="t.lang.profile.post.filters.modal.year"
-      @onChangeSelect="handleSelectYear"
-    />
-    <Select
-      v-if="hasSelectYear"
-      v-bind="selectProps"
-      :defaultValue="month"
-      :options="monthOptions"
-      :placeholder="t.lang.profile.post.filters.modal.month"
-      @onChangeSelect="handleSelectMonth"
-    />
-    <Select
-      v-if="hasSelectMonth"
-      v-bind="selectProps"
-      :defaultValue="date"
-      :options="dateOptions"
-      :placeholder="t.lang.profile.post.filters.modal.date"
-      @onChangeSelect="handleSelectDate"
-    />
-  </Space>
+  <Row aligns="middle" rootClassName="date-filters">
+    <Col :xs="24" :md="3" :lg="3" :span="3">
+      <Paragraph v-if="prefix" :weight="600">{{ prefix }}</Paragraph>
+    </Col>
+    <Col :xs="24" :md="6" :lg="5" :span="6">
+      <Select
+        v-bind="selectProps"
+        :defaultValue="year"
+        :options="yearOptions"
+        :placeholder="t.lang.profile.post.filters.modal.year"
+        @onChangeSelect="handleSelectYear"
+      />
+    </Col>
+    <Col :xs="24" :md="6" :lg="5" :span="6">
+      <Select
+        v-if="hasSelectYear"
+        v-bind="selectProps"
+        :defaultValue="month"
+        :options="monthOptions"
+        :placeholder="t.lang.profile.post.filters.modal.month"
+        @onChangeSelect="handleSelectMonth"
+      />
+    </Col>
+    <Col :xs="24" :md="6" :lg="5" :span="6">
+      <Select
+        v-if="hasSelectMonth"
+        v-bind="selectProps"
+        :defaultValue="date"
+        :options="dateOptions"
+        :placeholder="t.lang.profile.post.filters.modal.date"
+        @onChangeSelect="handleSelectDate"
+      />
+    </Col>
+  </Row>
 </template>
