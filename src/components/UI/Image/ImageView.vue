@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref, computed, type StyleValue } from 'vue'
+import { ref, withDefaults, computed, type StyleValue } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant.ts'
 import type { ImageLazyType } from './Image.vue'
 import Icon from '@/components/UI/Icon/Icon.vue'
 import CheckBox from '@/components/Control/CheckBox/CheckBox.vue'
 import ImageViewer from './ImageViewer.vue'
 import vLazyload from './directive.ts'
+import defaultImg from "/default.jpg"
 
 type OpenViewer = {
   active: boolean
@@ -23,7 +24,9 @@ interface ImageViewProps {
   isChecked: boolean
 }
 
-const props = defineProps<ImageViewProps>()
+const props = withDefaults(defineProps<ImageViewProps>(), {
+  src: defaultImg
+})
 
 const emits = defineEmits(['onLoad', 'onRemove', 'onCheck'])
 
@@ -49,11 +52,18 @@ const handleCheck = (checked: boolean) => emits('onCheck', checked)
 <template>
   <div :style="imageSize" :class="['image-view', loadedClassName]">
     <img
+      v-if="lazyType === 'lazy'"
       v-lazyload="lazyType"
       :style="imageSize"
       :data-src="src"
       :class="['view-area', viewCheckedClassName]"
-      @load="handleLoad"
+      @load="handleLoad()"
+    />
+    <img
+      v-if="lazyType === 'immediate'"
+      :style="imageSize"
+      :src="src"
+      :class="['view-area', viewCheckedClassName]"
     />
 
     <div v-if="hasView" class="view-actions">

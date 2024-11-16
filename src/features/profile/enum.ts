@@ -1,9 +1,11 @@
-export enum EAboutTabType {
+export enum EProfileTabType {
   DETAIL = 'detail',
   WORK = 'work',
   EDUCATION = 'education',
   LIVED = 'lived',
-  RELATIONSHIP = 'relationship'
+  RELATIONSHIP = 'relationship',
+  ALL_FRIENDS = 'all-friends',
+  FOLLOWING = 'following'
 }
 
 export enum EAboutTabFormType {

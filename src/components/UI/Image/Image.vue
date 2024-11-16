@@ -81,7 +81,7 @@ const handleCheck = (checked: boolean) => {
     :class="['image', fitClassName, rootCheckedClassName, rootClassName]"
     @click="handleClick"
   >
-    <ImageLoading v-if="loading" :imageSize="imageSize" />
+    <ImageLoading v-if="loading && lazyType === 'lazy'" :imageSize="imageSize" />
     <ImageView
       :src="src"
       :imageSize="imageSize"

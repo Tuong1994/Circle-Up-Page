@@ -16,7 +16,8 @@ const friends_vn = {
   },
   item: {
     followedBy: 'Được theo dõi bởi',
-    add: 'Kết bạn'
+    add: 'Kết bạn',
+    cancelRequest: 'Hủy yêu cầu'
   },
   empty: {
     list: 'Khi bạn kết bạn với mọi người trên Circle Up, họ sẽ xuất hiện ở đây.',

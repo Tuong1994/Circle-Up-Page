@@ -1,5 +1,5 @@
 .head.head-fixed {
-  z-index: 2;
+  z-index: 4;
   @include respond(mdTablet) {
     height: auto;
   }

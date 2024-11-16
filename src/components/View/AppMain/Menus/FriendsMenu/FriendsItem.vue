@@ -46,12 +46,16 @@ const isTablet = computed<boolean>(() => screenWidth.value >= MD_TABLET && scree
 const confirmProps = computed<ButtonProps>(() => ({
   ...(confirmButtonProps as object),
   color: layout.color,
+  shape: layout.shape,
   rootClassName: 'w-full',
   sizes: 'sm'
 }))
 
 const cancelProps = computed<ButtonProps>(() => ({
   ...(cancelButtonProps as object),
+  color: layout.color,
+  shape: layout.shape,
+  ghost: true,
   rootClassName: 'w-full',
   sizes: 'sm'
 }))
@@ -88,7 +92,9 @@ const handleCancel = () => emits('onCancel')
             </Col>
             <Col>
               <Paragraph v-if="hasTime" variant="secondary" :size="12" aligns="right">35w</Paragraph>
-              <Button v-if="type === EFriendItemType.REQUEST">Cancel request</Button>
+              <Button v-if="type === EFriendItemType.REQUEST">
+                {{ t.lang.friends.item.cancelRequest }}
+              </Button>
             </Col>
           </Row>
           <Row v-if="type === EFriendItemType.FRIEND">

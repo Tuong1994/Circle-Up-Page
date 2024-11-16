@@ -16,7 +16,8 @@ const friends_en = {
   },
   item: {
     followedBy: 'Followed by',
-    add: 'Add friend'
+    add: 'Add friend',
+    cancelRequest: 'Cancel request',
   },
   empty: {
     list: "When you become friends with people on Circle Up, they'll appear here.",

@@ -40,8 +40,7 @@
 }
 
 .friends-mobile {
-  width: $w-full;
-  padding: 0 $p-1;
+  padding: $p-1;
   @include respond(smTablet) {
     padding-top: $p-5;
   }

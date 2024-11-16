@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { Card, Typography } from '@/components/UI'
-import { EAboutTabType } from '../../../enum'
+import { EProfileTabType } from '../../../enum'
+import type { ProfileTab } from '@/features/profile/type'
 import SectionDetail from '../AboutSection/SectionDetail.vue'
 import SectionWork from '../AboutSection/SectionWork.vue'
 import SectionEducation from '../AboutSection/SectionEducation.vue'
@@ -15,14 +16,14 @@ const t = useLangStore()
 
 const tabsTitlesRef = ref<HTMLDivElement>()
 
-const tabSelected = ref<EAboutTabType>(EAboutTabType.DETAIL)
+const tabSelected = ref<EProfileTabType>(EProfileTabType.DETAIL)
 
-const items = computed(() => [
-  { id: EAboutTabType.DETAIL, title: t.lang.profile.about.tabsTitle.detail },
-  { id: EAboutTabType.WORK, title: t.lang.profile.about.tabsTitle.work },
-  { id: EAboutTabType.EDUCATION, title: t.lang.profile.about.tabsTitle.education },
-  { id: EAboutTabType.LIVED, title: t.lang.profile.about.tabsTitle.lived },
-  { id: EAboutTabType.RELATIONSHIP, title: t.lang.profile.about.tabsTitle.relationship }
+const items = computed<ProfileTab[]>(() => [
+  { id: EProfileTabType.DETAIL, title: t.lang.profile.about.tabsTitle.detail },
+  { id: EProfileTabType.WORK, title: t.lang.profile.about.tabsTitle.work },
+  { id: EProfileTabType.EDUCATION, title: t.lang.profile.about.tabsTitle.education },
+  { id: EProfileTabType.LIVED, title: t.lang.profile.about.tabsTitle.lived },
+  { id: EProfileTabType.RELATIONSHIP, title: t.lang.profile.about.tabsTitle.relationship }
 ])
 
 const getTabsContentWidth = () => {
@@ -31,7 +32,7 @@ const getTabsContentWidth = () => {
   return { width: `calc(100% - (${tabsTitlesWidth}px)` }
 }
 
-const handleSelectTab = (id: EAboutTabType) => (tabSelected.value = id)
+const handleSelectTab = (id: EProfileTabType) => (tabSelected.value = id)
 </script>
 
 <template>
@@ -53,11 +54,11 @@ const handleSelectTab = (id: EAboutTabType) => (tabSelected.value = id)
         </div>
         <div class="tabs-divider" />
         <div :style="getTabsContentWidth()" class="tabs-content">
-          <SectionDetail v-if="tabSelected === EAboutTabType.DETAIL" />
-          <SectionWork v-if="tabSelected === EAboutTabType.WORK" />
-          <SectionEducation v-if="tabSelected === EAboutTabType.EDUCATION" />
-          <SectionLived v-if="tabSelected === EAboutTabType.LIVED" />
-          <SectionRelationship v-if="tabSelected === EAboutTabType.RELATIONSHIP" />
+          <SectionDetail v-if="tabSelected === EProfileTabType.DETAIL" />
+          <SectionWork v-if="tabSelected === EProfileTabType.WORK" />
+          <SectionEducation v-if="tabSelected === EProfileTabType.EDUCATION" />
+          <SectionLived v-if="tabSelected === EProfileTabType.LIVED" />
+          <SectionRelationship v-if="tabSelected === EProfileTabType.RELATIONSHIP" />
         </div>
       </div>
     </template>
