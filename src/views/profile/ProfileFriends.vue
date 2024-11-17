@@ -3,10 +3,8 @@ import { computed } from 'vue'
 import { Card } from '@/components/UI'
 import FriendsHead from '@/features/profile/components/ProfileFriends/FriendsHead.vue'
 import FriendsTabs from '@/features/profile/components/ProfileFriends/FriendsTabs.vue'
+import FriendsNote from '@/features/profile/components/ProfileFriends/FriendsNote.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
-import useLangStore from '@/stores/LangStore'
-
-const t = useLangStore()
 
 const layout = useLayoutStore()
 
@@ -24,6 +22,7 @@ const rootClassName = computed<string>(
     <template #body>
       <FriendsHead />
       <FriendsTabs />
+      <!-- <FriendsNote message="No friend to show" /> -->
     </template>
   </Card>
 </template>

@@ -92,7 +92,12 @@ const handleCancel = () => emits('onCancel')
             </Col>
             <Col>
               <Paragraph v-if="hasTime" variant="secondary" :size="12" aligns="right">35w</Paragraph>
-              <Button v-if="type === EFriendItemType.REQUEST">
+              <Button
+                v-if="type === EFriendItemType.REQUEST"
+                :color="layout.color"
+                :shape="layout.shape"
+                ghost
+              >
                 {{ t.lang.friends.item.cancelRequest }}
               </Button>
             </Col>
