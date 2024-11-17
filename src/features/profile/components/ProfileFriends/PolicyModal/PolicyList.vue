@@ -5,6 +5,7 @@ import { Grid, Typography, Space, Button, Icon } from '@/components/UI'
 import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
 import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
@@ -12,12 +13,26 @@ const { Paragraph } = Typography
 
 const emits = defineEmits(['onClose', 'onEditAudience'])
 
+const t = useLangStore()
+
 const layout = useLayoutStore()
 
 const policies = computed(() => [
-  { id: 'list', title: 'Friends List', content: 'Who can see your friends list?' },
-  { id: 'following', title: 'Following', content: 'Who can see the people and pages you follow?' },
-  { id: 'followers', title: 'Followers', content: 'Who can see your followers on your timeline?' }
+  {
+    id: 'list',
+    title: t.lang.profile.friends.modal.list.title,
+    content: t.lang.profile.friends.modal.list.content
+  },
+  {
+    id: 'following',
+    title: t.lang.profile.friends.modal.following.title,
+    content: t.lang.profile.friends.modal.following.content
+  },
+  {
+    id: 'followers',
+    title: t.lang.profile.friends.modal.followers.title,
+    content: t.lang.profile.friends.modal.followers.content
+  }
 ])
 
 const handleEditAudience = () => emits('onEditAudience')
@@ -26,7 +41,7 @@ const handleClose = () => emits('onClose')
 </script>
 
 <template>
-  <ModalLayoutHead title="Edit policy" @onClose="handleClose" />
+  <ModalLayoutHead :title="t.lang.profile.friends.head.editPolicy" @onClose="handleClose" />
   <ModalLayoutBody>
     <Row v-for="policy in policies" :key="policy.id" justify="between" rootClassName="my-8">
       <Col :xs="14" :md="16" :span="14">
@@ -41,7 +56,9 @@ const handleClose = () => emits('onClose')
         <Button :color="layout.color" :shape="layout.shape" @click="handleEditAudience">
           <Space aligns="middle">
             <Icon :iconName="iconName.GLOBE" />
-            <Paragraph>Public</Paragraph>
+            <Paragraph>
+              {{ t.lang.home.modal.common.public }}
+            </Paragraph>
           </Space>
         </Button>
       </Col>

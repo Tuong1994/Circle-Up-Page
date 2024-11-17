@@ -50,6 +50,34 @@ const profile_en = {
       }
     }
   },
+  friends: {
+    head: {
+      findFriends: 'Find friends',
+      editPolicy: 'Edit policy'
+    },
+    tabs: {
+      allFriends: 'All friends',
+      following: 'Following',
+      followers: 'Followers'
+    },
+    note: {
+      friends: 'No friend to show'
+    },
+    modal: {
+      list: {
+        title: 'Friends List',
+        content: 'Who can see your friends list?'
+      },
+      following: {
+        title: 'Following',
+        content: 'Who can see the people and pages you follow?'
+      },
+      followers: {
+        title: 'Followers',
+        content: 'Who can see your followers on your timeline?'
+      }
+    }
+  },
   actions: {
     banner: 'Add Cover Photo',
     story: 'Add to story',
@@ -66,7 +94,8 @@ const profile_en = {
     addEducation: 'Add Education',
     addMoreEducation: 'Add More Education',
     addLived: 'Add Place Lived',
-    addRelationship: 'Add Relationship'
+    addRelationship: 'Add Relationship',
+    addFriend: 'Add Friend'
   }
 }
 

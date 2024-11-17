@@ -5,6 +5,7 @@ import { RouterLink } from 'vue-router'
 import { Grid, Typography, Space, Image, Button } from '@/components/UI'
 import HoverInfo from '@/components/View/HoverInfo/HoverInfo.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 import defaultImg from '/default.jpg'
 
 const { Row, Col } = Grid
@@ -14,6 +15,8 @@ const { Paragraph } = Typography
 interface FriendsItemProps {}
 
 defineProps<FriendsItemProps>()
+
+const t = useLangStore()
 
 const layout = useLayoutStore()
 </script>
@@ -36,7 +39,9 @@ const layout = useLayoutStore()
       </Space>
     </Col>
     <Col>
-      <Button :color="layout.color" :shape="layout.shape">Add Friend</Button>
+      <Button :color="layout.color" :shape="layout.shape">
+        {{ t.lang.profile.actions.addFriend }}
+      </Button>
     </Col>
   </Row>
 </template>

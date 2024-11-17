@@ -50,6 +50,34 @@ const profile_vn = {
       }
     }
   },
+  friends: {
+    head: {
+      findFriends: 'Tìm bạn bè',
+      editPolicy: 'Chỉnh sửa chính sách'
+    },
+    tabs: {
+      allFriends: 'Tất cả bạn bè',
+      following: 'Đang theo dõi',
+      followers: 'Người theo dõi'
+    },
+    note: {
+      friends: 'Không có bạn nào để hiển thị'
+    },
+    modal: {
+      list: {
+        title: 'Danh sách bạn bè',
+        content: 'Ai có thể xem danh sách bạn bè của bạn?'
+      },
+      following: {
+        title: 'Đang theo dõi',
+        content: 'Ai có thể xem những người và trang bạn đang theo dõi?'
+      },
+      followers: {
+        title: 'Người theo dõi',
+        content: 'Ai có thể xem những người theo dõi bạn trên dòng thời gian?'
+      }
+    }
+  },
   actions: {
     banner: 'Thêm ảnh bìa',
     story: 'Thêm vào tin',
@@ -66,7 +94,8 @@ const profile_vn = {
     addEducation: 'Thêm Học vấn',
     addMoreEducation: 'Thêm Học vấn khác',
     addLived: 'Thêm Nơi đã sống',
-    addRelationship: 'Thêm Mối quan hệ'
+    addRelationship: 'Thêm Mối quan hệ',
+    addFriend: 'Thêm bạn bè'
   }
 }
 

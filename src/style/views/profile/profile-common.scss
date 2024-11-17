@@ -29,6 +29,26 @@
   }
 }
 
+// Profile Tabs
+.profile-tabs {
+  .tabs-titles {
+    margin-bottom: $m-2;
+    .titles-item {
+      padding: $p-1;
+      margin: $m-1 0;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color $transition-time-xs $transition-fn,
+        color $transition-time-xs $transition-fn;
+    }
+  }
+  .tabs-content {
+    & > * {
+      animation: fade $transition-time-sm $transition-fn;
+    }
+  }
+}
+
 // Color
 .profile-blue {
   .navbar-item-active {

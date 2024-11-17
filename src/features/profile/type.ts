@@ -16,6 +16,8 @@ export type ProfileTab = {
   title: string
 }
 
+export type ProfileTabs = ProfileTab[]
+
 export type ProfileWork = {
   id: string
   company: string

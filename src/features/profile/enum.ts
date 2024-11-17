@@ -5,7 +5,10 @@ export enum EProfileTabType {
   LIVED = 'lived',
   RELATIONSHIP = 'relationship',
   ALL_FRIENDS = 'all-friends',
-  FOLLOWING = 'following'
+  FOLLOWING = 'following',
+  FOLLOWERS = 'followers',
+  PHOTOS = 'photos',
+  ALBUMS = 'albums'
 }
 
 export enum EAboutTabFormType {

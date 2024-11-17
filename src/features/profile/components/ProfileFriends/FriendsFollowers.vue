@@ -6,11 +6,11 @@ import FriendsItem from '@/components/View/AppMain/Menus/FriendsMenu/FriendsItem
 
 const { Row, Col } = Grid
 
-interface FriendsFollowingProps {
+interface FriendsFollowersProps {
   responsive?: boolean
 }
 
-defineProps<FriendsFollowingProps>()
+defineProps<FriendsFollowersProps>()
 </script>
 
 <template>

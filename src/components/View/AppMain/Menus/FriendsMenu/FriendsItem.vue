@@ -9,6 +9,7 @@ import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useViewPoint, { breakpoint } from '@/hooks/useViewPoint'
 import useLangStore from '@/stores/LangStore'
+import defaultImg from '/default.jpg'
 
 const { Row, Col } = Grid
 
@@ -78,7 +79,7 @@ const handleCancel = () => emits('onCancel')
         <Col :xs="5" :md="4" :span="type === EFriendItemType.FRIEND ? 4 : 3">
           <Avatar :size="avatarSize">
             <slot name="avatar">
-              <Image :imgWidth="avatarSize" :imgHeight="avatarSize" />
+              <Image :src="defaultImg" :imgWidth="avatarSize" :imgHeight="avatarSize" />
             </slot>
           </Avatar>
         </Col>

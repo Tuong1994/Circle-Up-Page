@@ -33,13 +33,19 @@ const handleOpenModal = () => (openModal.value = !openModal.value)
     </Col>
     <Col :xs="24">
       <Space aligns="middle">
-        <Input :color="(layout.color as ControlColor)" :shape="(layout.shape as ControlShape)">
+        <Input
+          :color="(layout.color as ControlColor)"
+          :shape="(layout.shape as ControlShape)"
+          :placeholder="t.lang.common.form.placeholder.search"
+        >
           <template #addonBefore>
             <Icon :iconName="iconName.SEARCH" />
           </template>
         </Input>
         <RouterLink :to="routePaths.FRIENDS">
-          <Button :color="layout.color" :shape="layout.shape">Find friends</Button>
+          <Button :color="layout.color" :shape="layout.shape">
+            {{ t.lang.profile.friends.head.findFriends }}
+          </Button>
         </RouterLink>
         <Dropdown placement="right">
           <template #label>
@@ -48,7 +54,9 @@ const handleOpenModal = () => (openModal.value = !openModal.value)
             </Button>
           </template>
           <template #dropdown>
-            <ItemWrapper rootClassName="m-1" @click="handleOpenModal"> Edit policy </ItemWrapper>
+            <ItemWrapper rootClassName="m-1" @click="handleOpenModal">
+              {{ t.lang.profile.friends.head.editPolicy }}
+            </ItemWrapper>
           </template>
         </Dropdown>
       </Space>
