@@ -14,10 +14,12 @@ const screenSizeClassName = computed<string>(() =>
 )
 
 const colorClassName = computed<string>(() => `profile-${layout.color}`)
+
+const shapeClassName = computed<string>(() => `profile-${layout.shape}`)
 </script>
 
 <template>
-  <div :class="['profile', screenSizeClassName, colorClassName]">
+  <div :class="['profile', screenSizeClassName, colorClassName, shapeClassName]">
     <ProfileHead />
     <div class="profile-content">
       <RouterView />

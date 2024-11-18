@@ -1,16 +1,19 @@
 <script setup lang="ts">
-import { defineProps, ref } from 'vue'
+import { withDefaults, defineProps, ref } from 'vue'
 import { Space } from '@/components/UI'
 import { EProfileTabType } from '../../enum'
 import type { ProfileTabs } from '../../type'
 
 interface ProfileTabsProps {
+  defaultTab?: EProfileTabType
   items: ProfileTabs
 }
 
-defineProps<ProfileTabsProps>()
+const props = withDefaults(defineProps<ProfileTabsProps>(), {
+  defaultTab: EProfileTabType.ALL_FRIENDS
+})
 
-const tabSelected = ref<EProfileTabType>(EProfileTabType.ALL_FRIENDS)
+const tabSelected = ref<EProfileTabType>(props.defaultTab)
 
 const handleSelectTab = (id: EProfileTabType) => (tabSelected.value = id)
 </script>

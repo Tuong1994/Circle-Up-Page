@@ -1,21 +1,5 @@
-.friends-grid {
+.friends-list {
   padding: $p-1 $p-3;
-  .grid-title {
-    .card-body {
-      padding: $p-1;
-    }
-  }
-  .grid-wrap {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1rem;
-    @include respond(lgTablet) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    @include respond(mdPhone) {
-      grid-template-columns: auto;
-    }
-  }
   @include respond(mdPhone) {
     padding: $p-3 $p-1;
   }

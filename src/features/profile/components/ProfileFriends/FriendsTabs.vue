@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { EProfileTabType } from '../../enum'
 import { useViewPoint } from '@/hooks'
 import { breakpoint } from '@/hooks/useViewPoint'
-import type { ProfileTab } from '../../type'
+import type { ProfileTabs as FriendsTabs } from '../../type'
 import ProfileTabs from '../ProfileTabs/ProfileTabs.vue'
 import FriendsList from './FriendsList.vue'
 import FriendsFollowing from './FriendsFollowing.vue'
@@ -20,7 +20,7 @@ const responsive = computed<boolean>(() =>
   Boolean(screenWidth.value >= SM_PHONE && screenWidth.value <= SM_TABLET)
 )
 
-const items = computed<ProfileTab[]>(() => [
+const items = computed<FriendsTabs>(() => [
   { id: EProfileTabType.ALL_FRIENDS, title: t.lang.profile.friends.tabs.allFriends },
   { id: EProfileTabType.FOLLOWING, title: t.lang.profile.friends.tabs.following },
   { id: EProfileTabType.FOLLOWERS, title: t.lang.profile.friends.tabs.followers }

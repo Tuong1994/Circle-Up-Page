@@ -11,8 +11,11 @@ export const routePaths = {
   FRIENDS_PROFILE_POST: '/friends/profile/post',
   PROFILE: '/profile',
   PROFILE_PHOTOS: '/profile/photos',
+  PROFILE_ALBUM: '/profile/album',
   PROFILE_FRIENDS: '/profile/friends',
-  PROFILE_ABOUT: '/profile/about'
+  PROFILE_ABOUT: '/profile/about',
+  MEDIA_PHOTO: '/media/photo',
+  MEDIA_ALBUM: '/media/album'
 }
 
 export const routeNames = {
@@ -27,8 +30,11 @@ export const routeNames = {
   PROFILE: 'profile',
   PROFILE_POST: 'profile-post',
   PROFILE_PHOTOS: 'profile-photos',
+  PROFILE_ALBUM: 'profile-album',
   PROFILE_FRIENDS: 'profile-friends',
-  PROFILE_ABOUT: 'profile-about'
+  PROFILE_ABOUT: 'profile-about',
+  MEDIA_PHOTO: 'media-photo',
+  MEDIA_ALBUM: 'media-album'
 }
 
 const router = createRouter({
@@ -97,14 +103,19 @@ const router = createRouter({
           component: () => import('@/views/profile/ProfileAbout.vue')
         },
         {
+          path: routePaths.PROFILE_FRIENDS,
+          name: routeNames.PROFILE_FRIENDS,
+          component: () => import('@/views/profile/ProfileFriends.vue')
+        },
+        {
           path: routePaths.PROFILE_PHOTOS,
           name: routeNames.PROFILE_PHOTOS,
           component: () => import('@/views/profile/ProfilePhotos.vue')
         },
         {
-          path: routePaths.PROFILE_FRIENDS,
-          name: routeNames.PROFILE_FRIENDS,
-          component: () => import('@/views/profile/ProfileFriends.vue'),
+          path: routePaths.PROFILE_ALBUM,
+          name: routeNames.PROFILE_ALBUM,
+          component: () => import('@/views/profile/ProfileAlbum.vue')
         }
       ]
     }

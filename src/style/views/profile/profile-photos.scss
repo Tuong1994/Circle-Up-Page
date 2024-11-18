@@ -1,0 +1,154 @@
+.photos-item {
+  width: $w-10 * 1.5;
+  .item-image {
+    width: $w-full;
+    height: $h-10 * 1.5;
+    margin-bottom: $m-1;
+    border-radius: $rounded-lg;
+    .image-view {
+      width: $w-full;
+      height: $h-full;
+    }
+  }
+  .item-desc {
+  }
+}
+
+.photos-control {
+  width: $w-10 * 1.5;
+  cursor: pointer;
+  .control-icon {
+    width: $w-full;
+    height: $h-10 * 1.5;
+    margin-bottom: $m-1;
+    border: 2px solid $bg-gray;
+    border-radius: $rounded-lg;
+    position: relative;
+    transition: border-color $transition-time-sm $transition-fn;
+    .icon {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      * {
+        color: $text-gray;
+        transition: color $transition-time-sm $transition-fn;
+      }
+    }
+  }
+  .control-label {
+    transition: color $transition-time-sm $transition-fn;
+  }
+}
+
+// Color
+.photos-control-blue {
+  &:hover {
+    .control-icon {
+      border-color: $bg-blue;
+      .icon {
+        * {
+          color: $text-blue;
+        }
+      }
+    }
+    .control-label {
+      color: $text-blue;
+    }
+  }
+}
+
+.photos-control-red {
+  &:hover {
+    .control-icon {
+      border-color: $bg-red;
+      .icon {
+        * {
+          color: $text-red;
+        }
+      }
+    }
+    .control-label {
+      color: $text-red;
+    }
+  }
+}
+
+.photos-control-orange {
+  &:hover {
+    .control-icon {
+      border-color: $bg-orange;
+      .icon {
+        * {
+          color: $text-orange;
+        }
+      }
+    }
+    .control-label {
+      color: $text-orange;
+    }
+  }
+}
+
+.photos-control-green {
+  &:hover {
+    .control-icon {
+      border-color: $bg-green;
+      .icon {
+        * {
+          color: $text-green;
+        }
+      }
+    }
+    .control-label {
+      color: $text-green;
+    }
+  }
+}
+
+.photos-control-yellow {
+  &:hover {
+    .control-icon {
+      border-color: $bg-yellow;
+      .icon {
+        * {
+          color: $text-yellow;
+        }
+      }
+    }
+    .control-label {
+      color: $text-yellow;
+    }
+  }
+}
+
+.photos-control-pink {
+  &:hover {
+    .control-icon {
+      border-color: $bg-pink;
+      .icon {
+        * {
+          color: $text-pink;
+        }
+      }
+    }
+    .control-label {
+      color: $text-pink;
+    }
+  }
+}
+
+.photos-control-purple {
+  &:hover {
+    .control-icon {
+      border-color: $bg-purple;
+      .icon {
+        * {
+          color: $text-purple;
+        }
+      }
+    }
+    .control-label {
+      color: $text-purple;
+    }
+  }
+}

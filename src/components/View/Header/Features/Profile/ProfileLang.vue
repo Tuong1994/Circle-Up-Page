@@ -17,7 +17,8 @@ const items = computed<FeatureLangItems>(() => [
   { id: 'vn', title: t.lang.common.header.features.profile.vietnamese, type: ELang.VN }
 ])
 
-const getSelectedClassName = (item: FeatureLangItem) => (item.type === t.locale ? 'profile-lang-selected' : '')
+const getSelectedClassName = (item: FeatureLangItem) =>
+  item.type === t.locale ? 'my-3 profile-lang-selected' : 'my-3'
 
 const handleSelect = (lang: ELang) => t.switchLang(lang)
 
