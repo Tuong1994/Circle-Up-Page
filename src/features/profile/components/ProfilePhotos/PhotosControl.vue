@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed, defineProps } from 'vue'
+import { defineProps } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Icon, Typography } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
-import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
 
@@ -13,14 +12,10 @@ interface PhotosControlProps {
 }
 
 defineProps<PhotosControlProps>()
-
-const layout = useLayoutStore()
-
-const colorClassName = computed<string>(() => `photos-control-${layout.color}`)
 </script>
 
 <template>
-  <RouterLink :to="path" :class="['photos-control', colorClassName]">
+  <RouterLink :to="path" class="photos-control">
     <div class="control-icon">
       <Icon :iconName="iconName.PLUS" :size="30" rootClassName="icon" />
     </div>

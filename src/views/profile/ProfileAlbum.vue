@@ -1,3 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Card } from '@/components/UI'
+import AlbumHead from '@/features/profile/components/ProfileAlbum/AlbumHead.vue'
+</script>
 
-<template>Album</template>
+<template>
+  <Card>
+    <template #body>
+      <AlbumHead />
+    </template>
+  </Card>
+</template>

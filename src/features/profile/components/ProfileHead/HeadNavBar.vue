@@ -34,7 +34,11 @@ const getActiveClass = (id: string) => (activeId.value === id ? 'navbar-item-act
 
 const handleSelect = (id: string) => (activeId.value = id)
 
-watchEffect(() => handleSelect(currentRoute.value.name as string))
+watchEffect(() => {
+  let name = currentRoute.value.name as string
+  if (name === routeNames.PROFILE_ALBUM) name = routeNames.PROFILE_PHOTOS
+  handleSelect(name)
+})
 </script>
 
 <template>

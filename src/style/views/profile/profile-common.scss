@@ -80,6 +80,26 @@
     background: $bg-blue-rgba-xs;
     color: $text-blue;
   }
+  .photos-control {
+    &:hover {
+      .control-icon {
+        border-color: $bg-blue;
+        .icon {
+          * {
+            color: $text-blue;
+          }
+        }
+      }
+      .control-label {
+        color: $text-blue;
+      }
+    }
+  }
+  .photos-item {
+    &:hover .desc-content {
+      color: $text-blue;
+    }
+  }
 }
 
 .profile-red {
@@ -98,6 +118,26 @@
   .titles-item-selected {
     background: $bg-red-rgba-xs;
     color: $text-red;
+  }
+  .photos-control {
+    &:hover {
+      .control-icon {
+        border-color: $bg-red;
+        .icon {
+          * {
+            color: $text-red;
+          }
+        }
+      }
+      .control-label {
+        color: $text-red;
+      }
+    }
+  }
+  .photos-item {
+    &:hover .desc-content {
+      color: $text-red;
+    }
   }
 }
 
@@ -118,6 +158,26 @@
     background: $bg-orange-rgba-xs;
     color: $text-orange;
   }
+  .photos-control {
+    &:hover {
+      .control-icon {
+        border-color: $bg-orange;
+        .icon {
+          * {
+            color: $text-orange;
+          }
+        }
+      }
+      .control-label {
+        color: $text-orange;
+      }
+    }
+  }
+  .photos-item {
+    &:hover .desc-content {
+      color: $text-orange;
+    }
+  }
 }
 
 .profile-green {
@@ -136,6 +196,26 @@
   .titles-item-selected {
     background: $bg-green-rgba-xs;
     color: $text-green;
+  }
+  .photos-control {
+    &:hover {
+      .control-icon {
+        border-color: $bg-green;
+        .icon {
+          * {
+            color: $text-green;
+          }
+        }
+      }
+      .control-label {
+        color: $text-green;
+      }
+    }
+  }
+  .photos-item {
+    &:hover .desc-content {
+      color: $text-green;
+    }
   }
 }
 
@@ -156,6 +236,26 @@
     background: $bg-yellow-rgba-xs;
     color: $text-yellow;
   }
+  .photos-control {
+    &:hover {
+      .control-icon {
+        border-color: $bg-yellow;
+        .icon {
+          * {
+            color: $text-yellow;
+          }
+        }
+      }
+      .control-label {
+        color: $text-yellow;
+      }
+    }
+  }
+  .photos-item {
+    &:hover .desc-content {
+      color: $text-yellow;
+    }
+  }
 }
 
 .profile-purple {
@@ -175,6 +275,26 @@
     background: $bg-purple-rgba-xs;
     color: $text-purple;
   }
+  .photos-control {
+    &:hover {
+      .control-icon {
+        border-color: $bg-purple;
+        .icon {
+          * {
+            color: $text-purple;
+          }
+        }
+      }
+      .control-label {
+        color: $text-purple;
+      }
+    }
+  }
+  .photos-item {
+    &:hover .desc-content {
+      color: $text-purple;
+    }
+  }
 }
 
 .profile-pink {
@@ -193,5 +313,25 @@
   .titles-item-selected {
     background: $bg-pink-rgba-xs;
     color: $text-pink;
+  }
+  .photos-control {
+    &:hover {
+      .control-icon {
+        border-color: $bg-pink;
+        .icon {
+          * {
+            color: $text-pink;
+          }
+        }
+      }
+      .control-label {
+        color: $text-pink;
+      }
+    }
+  }
+  .photos-item {
+    &:hover .desc-content {
+      color: $text-pink;
+    }
   }
 }

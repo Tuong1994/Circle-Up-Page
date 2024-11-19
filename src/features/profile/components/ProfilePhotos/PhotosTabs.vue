@@ -13,7 +13,7 @@ const items = computed<PhotosTabs>(() => [
 </script>
 
 <template>
-  <ProfileTabs :defaultTab="EProfileTabType.PHOTOS" :items="items">
+  <ProfileTabs :defaultTab="EProfileTabType.ALBUMS" :items="items">
     <template #content="tab">
       <PhotosList v-if="tab.id === EProfileTabType.PHOTOS" />
       <PhotosAlbums v-if="tab.id === EProfileTabType.ALBUMS" />
