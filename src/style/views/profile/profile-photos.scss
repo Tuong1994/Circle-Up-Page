@@ -43,3 +43,7 @@
     transition: color $transition-time-sm $transition-fn;
   }
 }
+
+.album-photo {
+  width: $w-full;
+}

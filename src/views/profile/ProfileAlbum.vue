@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { Card } from '@/components/UI'
 import AlbumHead from '@/features/profile/components/ProfileAlbum/AlbumHead.vue'
+import AlbumPhotos from '@/features/profile/components/ProfileAlbum/AlbumPhotos.vue'
 </script>
 
 <template>
-  <Card>
-    <template #body>
-      <AlbumHead />
-    </template>
-  </Card>
+  <AlbumHead />
+  <AlbumPhotos />
 </template>

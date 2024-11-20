@@ -1,5 +1,5 @@
 import type { DateFilter } from '@/common/type'
-import type { EAboutTabFormType, EProfileTabType } from './enum'
+import type { EAboutTabFormType, EPhotoViewType, EProfileTabType } from './enum'
 
 export type AboutTabFormType =
   | EAboutTabFormType.COMMON
@@ -10,6 +10,8 @@ export type AboutTabFormType =
   | EAboutTabFormType.EDUCATION
   | EAboutTabFormType.LIVED
   | EAboutTabFormType.RELATIONSHIP
+
+export type PhotoViewType = EPhotoViewType.GRID | EPhotoViewType.FEED
 
 export type ProfileTab = {
   id: EProfileTabType

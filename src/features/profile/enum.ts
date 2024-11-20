@@ -21,3 +21,8 @@ export enum EAboutTabFormType {
   LIVED = 'lived',
   RELATIONSHIP = 'relationship'
 }
+
+export enum EPhotoViewType {
+  GRID = 'grid',
+  FEED = 'feed'
+}
