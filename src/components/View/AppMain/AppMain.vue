@@ -12,6 +12,7 @@ import CommentModal from '../Comment/CommentModal.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useCommentStore from '../Comment/CommentStore'
 import useRenderSide from './hooks/useRenderSide'
+import PhotosViewer from '../PhotosViewer/PhotosViewer.vue'
 
 const { Container, Head, Body, Side, Content } = Layout
 
@@ -51,5 +52,6 @@ const handleCloseCommentModal = () => comment.setOpenModal(false)
       </Content>
     </Body>
   </Container>
+  <PhotosViewer />
   <CommentModal :open="comment.openModal" @onClose="handleCloseCommentModal" />
 </template>

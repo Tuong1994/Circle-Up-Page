@@ -1,0 +1,10 @@
+.dynamic-grid {
+  display: grid;
+  gap: 1rem;
+  .grid-item {
+    .item-image {
+      width: $w-full;
+      height: $h-full;
+    }
+  }
+}

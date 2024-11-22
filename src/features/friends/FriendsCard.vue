@@ -15,7 +15,7 @@ const t = useLangStore()
 <template>
   <Card rootClassName="friends-card" hoverable>
     <template #body>
-      <RouterLink :to="routePaths.FRIENDS">
+      <RouterLink :to="routePaths.PROFILE">
         <Image rootClassName="card-image" imgWidth="100%" imgHeight="100%" objectFit="cover" />
       </RouterLink>
       <Paragraph :weight="600" :size="16" rootClassName="pt-3">Friend name</Paragraph>
