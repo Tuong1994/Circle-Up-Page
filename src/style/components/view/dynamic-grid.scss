@@ -2,9 +2,23 @@
   display: grid;
   gap: 1rem;
   .grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: $rounded-lg;
     .item-image {
       width: $w-full;
       height: $h-full;
+    }
+    .item-layer {
+      position: absolute;
+      inset: 0;
+      background: $bg-black-rgba-md;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      * {
+        color: $text-white;
+      }
     }
   }
 }

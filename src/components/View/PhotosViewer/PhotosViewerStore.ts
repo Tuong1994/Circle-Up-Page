@@ -1,12 +1,14 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { ViewerActivate } from './type'
+import type { CarouselItems } from '@/components/UI/Carousel/type'
 
 const usePhotosViewerStore = defineStore('photos-viewer', () => {
-  const openViewer = ref<ViewerActivate>({ activate: false, items: [] })
-  const setOpenViewer = (activate: ViewerActivate) => (openViewer.value = { ...activate })
+  const openViewer = ref<boolean>(false)
+  const viewerItems = ref<CarouselItems>([])
+  const setOpenViewer = (open: boolean) => (openViewer.value = open)
+  const setViewerItems = (items: CarouselItems) => (viewerItems.value = [...items])
 
-  return { openViewer, setOpenViewer }
+  return { openViewer, viewerItems, setOpenViewer, setViewerItems }
 })
 
 export default usePhotosViewerStore

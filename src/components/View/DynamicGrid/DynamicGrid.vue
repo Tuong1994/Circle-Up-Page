@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { computed, withDefaults, defineProps, defineEmits, type StyleValue } from 'vue'
-import { Image } from '@/components/UI'
+import { Space, Image, Icon, Typography } from '@/components/UI'
+import { iconName } from '@/components/UI/Icon/constant'
 import type { DynamicItems } from './type'
+
+const { Paragraph } = Typography
 
 interface DynamicGridProps {
   items: DynamicItems
@@ -55,6 +58,8 @@ const gridItemStyle = (idx: number): StyleValue => {
   return style
 }
 
+const hasLayer = (idx: number) => idx === 3
+
 const handleSelectItem = (id: string) => emits('onSelectItem', id)
 </script>
 
@@ -67,6 +72,12 @@ const handleSelectItem = (id: string) => emits('onSelectItem', id)
       @click="() => handleSelectItem(item.id)"
     >
       <Image :src="item.url" rootClassName="item-image" imgWidth="100%" imgHeight="100%" objectFit="cover" />
+      <div v-if="hasLayer(idx)" class="item-layer">
+        <Space aligns="middle">
+          <Icon :size="20" :iconName="iconName.PLUS" />
+          <Paragraph :size="30">{{ items.length }}</Paragraph>
+        </Space>
+      </div>
     </div>
   </div>
 </template>

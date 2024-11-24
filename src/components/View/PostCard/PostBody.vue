@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Typography } from '@/components/UI'
-import usePhotosViewerStore from '../PhotosViewer/PhotosViewerStore'
 import DynamicGrid from '../DynamicGrid/DynamicGrid.vue'
+import usePhotosViewerStore from '../PhotosViewer/PhotosViewerStore'
 
 const { Paragraph } = Typography
 
@@ -11,14 +11,17 @@ const viewer = usePhotosViewerStore()
 const items = computed(() => [
   { id: '1', url: '/default.jpg' },
   { id: '2', url: '/default.jpg' },
-  // { id: '3', url: '/default.jpg' },
-  // { id: '4', url: '/default.jpg' },
-  // { id: '5', url: '/default.jpg' },
-  // { id: '6', url: '/default.jpg' },
-  // { id: '7', url: '/default.jpg' }
+  { id: '3', url: '/default.jpg' },
+  { id: '4', url: '/default.jpg' },
+  { id: '5', url: '/default.jpg' },
+  { id: '6', url: '/default.jpg' },
+  { id: '7', url: '/default.jpg' }
 ])
 
-const handleOpenViewer = () => viewer.setOpenViewer({ activate: true, items: [] })
+const handleOpenViewer = () => {
+  viewer.setOpenViewer(true)
+  viewer.setViewerItems([...items.value].map((item) => ({ ...item, comName: '' })))
+}
 </script>
 
 <template>
