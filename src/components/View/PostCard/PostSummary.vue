@@ -8,7 +8,7 @@ const { Paragraph } = Typography
 </script>
 
 <template>
-  <Row>
+  <Row rootClassName="my-5">
     <Col>
       <Space aligns="middle">
         <Icon :iconName="iconName.THUMBS_UP" />

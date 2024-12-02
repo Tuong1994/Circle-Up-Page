@@ -73,7 +73,7 @@ const handleCancel = () => emits('onCancel')
 </script>
 
 <template>
-  <RouterLink :to="routePaths.FRIENDS_PROFILE" :class="rootClassName">
+  <RouterLink :to="routePaths.FRIENDS_DETAIL" :class="rootClassName">
     <ItemWrapper>
       <Row justify="between">
         <Col :xs="5" :md="4" :span="type === EFriendItemType.FRIEND ? 4 : 3">

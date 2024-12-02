@@ -1,0 +1,19 @@
+.post-detail {
+  width: $w-full;
+  height: $h-screen;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  .detail-carousel {
+    background: $bg-black;
+  }
+  .detail-content {
+    width: $w-full;
+    height: $h-screen;
+    padding: $p-1;
+    background: $bg-white;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}

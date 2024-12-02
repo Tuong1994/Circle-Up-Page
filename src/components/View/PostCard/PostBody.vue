@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, withDefaults, defineProps } from 'vue'
 import { Typography } from '@/components/UI'
-import DynamicGrid from '../DynamicGrid/DynamicGrid.vue'
-import usePhotosViewerStore from '../PhotosViewer/PhotosViewerStore'
+import DynamicGrid from './DynamicGrid.vue'
 
 const { Paragraph } = Typography
 
-const viewer = usePhotosViewerStore()
+interface PostBodyProps {
+  hasMediaContent?: boolean
+}
+
+withDefaults(defineProps<PostBodyProps>(), {
+  hasMediaContent: true
+})
 
 const items = computed(() => [
   { id: '1', url: '/default.jpg' },
@@ -17,11 +22,6 @@ const items = computed(() => [
   { id: '6', url: '/default.jpg' },
   { id: '7', url: '/default.jpg' }
 ])
-
-const handleOpenViewer = () => {
-  viewer.setOpenViewer(true)
-  viewer.setViewerItems([...items.value].map((item) => ({ ...item, comName: '' })))
-}
 </script>
 
 <template>
@@ -30,7 +30,7 @@ const handleOpenViewer = () => {
     accusantium libero doloribus neque ducimus ab unde quam delectus assumenda aperiam deleniti sapiente, fuga
     recusandae laborum blanditiis nihil.
   </Paragraph>
-  <div class="mt-5 mb-5" @click="handleOpenViewer">
+  <div v-if="hasMediaContent" class="mt-5 mb-5">
     <DynamicGrid :items="items" />
   </div>
 </template>

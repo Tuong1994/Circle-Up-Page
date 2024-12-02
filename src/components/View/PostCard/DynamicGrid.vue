@@ -2,6 +2,8 @@
 import { computed, withDefaults, defineProps, defineEmits, type StyleValue } from 'vue'
 import { Space, Image, Icon, Typography } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
+import { RouterLink } from 'vue-router'
+import { routePaths } from '@/router'
 import type { DynamicItems } from './type'
 
 const { Paragraph } = Typography
@@ -65,9 +67,10 @@ const handleSelectItem = (id: string) => emits('onSelectItem', id)
 
 <template>
   <div :style="gridStyle" class="dynamic-grid">
-    <div
+    <RouterLink
       v-for="(item, idx) in items"
       class="grid-item"
+      :to="routePaths.POST_DETAIL"
       :style="gridItemStyle(idx)"
       @click="() => handleSelectItem(item.id)"
     >
@@ -78,6 +81,6 @@ const handleSelectItem = (id: string) => emits('onSelectItem', id)
           <Paragraph :size="30">{{ items.length }}</Paragraph>
         </Space>
       </div>
-    </div>
+    </RouterLink>
   </div>
 </template>

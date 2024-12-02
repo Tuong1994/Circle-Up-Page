@@ -3,12 +3,13 @@ import HomeView from '@/views/home/HomeView.vue'
 
 export const routePaths = {
   HOME: '/',
+  POST_DETAIL: '/post/detail',
   FRIENDS: '/friends',
   FRIENDS_LIST: '/friends/list',
   FRIENDS_SUGGESTIONS: '/friends/suggestions',
   FRIENDS_REQUESTS: '/friends/requests',
-  FRIENDS_PROFILE: '/friends/profile',
-  FRIENDS_PROFILE_POST: '/friends/profile/post',
+  FRIENDS_DETAIL: '/friends/detail',
+  FRIENDS_DETAIL_POST: '/friends/detail/post',
   PROFILE: '/profile',
   PROFILE_PHOTOS: '/profile/photos',
   PROFILE_ALBUM: '/profile/album',
@@ -16,17 +17,18 @@ export const routePaths = {
   PROFILE_ABOUT: '/profile/about',
   MEDIA_PHOTO: '/media/photo',
   MEDIA_ALBUM: '/media/album'
-}
+} as const
 
 export const routeNames = {
   HOME: 'home',
+  POST_DETAIL: 'post-detail',
   FRIENDS: 'friends',
   FRIENDS_MAY_KNOW: 'friends-may-know',
   FRIENDS_LIST: 'friends-list',
   FRIENDS_SUGGESTIONS: 'friends-suggestions',
   FRIENDS_REQUESTS: 'friends-requests',
-  FRIENDS_PROFILE: 'friends-profile',
-  FRIENDS_PROFILE_POST: 'friends-profile-post',
+  FRIENDS_DETAIL: 'friends-detail',
+  FRIENDS_DETAIL_POST: 'friends-detail-post',
   PROFILE: 'profile',
   PROFILE_POST: 'profile-post',
   PROFILE_PHOTOS: 'profile-photos',
@@ -35,7 +37,7 @@ export const routeNames = {
   PROFILE_ABOUT: 'profile-about',
   MEDIA_PHOTO: 'media-photo',
   MEDIA_ALBUM: 'media-album'
-}
+} as const
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -71,13 +73,13 @@ const router = createRouter({
           component: () => import('@/views/friends/FriendsProfile.vue')
         },
         {
-          path: routePaths.FRIENDS_PROFILE,
-          name: routeNames.FRIENDS_PROFILE,
+          path: routePaths.FRIENDS_DETAIL,
+          name: routeNames.FRIENDS_DETAIL,
           component: () => import('@/views/profile/ProfileView.vue'),
           children: [
             {
               path: '',
-              name: routeNames.FRIENDS_PROFILE_POST,
+              name: routeNames.FRIENDS_DETAIL_POST,
               component: () => import('@/views/profile/ProfilePost.vue')
             }
           ]
@@ -118,6 +120,11 @@ const router = createRouter({
           component: () => import('@/views/profile/ProfileAlbum.vue')
         }
       ]
+    },
+    {
+      path: routePaths.POST_DETAIL,
+      name: routeNames.POST_DETAIL,
+      component: () => import('@/views/post/PostView.vue')
     }
   ]
 })

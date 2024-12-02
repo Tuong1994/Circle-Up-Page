@@ -13,7 +13,8 @@
     height: 8px;
   }
   &::-webkit-scrollbar-thumb {
-    background: $bg-gray;
+    background: $bg-deep-blue;
+    border-radius: $rounded-xxl;
   }
   &::-webkit-scrollbar-track {
     background: $bg-slate;

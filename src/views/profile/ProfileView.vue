@@ -10,7 +10,7 @@ const layout = useLayoutStore()
 const { currentRoute } = useRouter()
 
 const screenSizeClassName = computed<string>(() =>
-  currentRoute.value.fullPath === routePaths.FRIENDS_PROFILE ? 'profile-full' : ''
+  currentRoute.value.fullPath === routePaths.FRIENDS_DETAIL ? 'profile-full' : ''
 )
 
 const colorClassName = computed<string>(() => `profile-${layout.color}`)

@@ -1,5 +1,5 @@
 import { routeNames } from '@/router'
-import { ref, watchEffect, type Ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import useAppMainStore from '../AppMainStore'
 
@@ -8,19 +8,20 @@ const useRenderSide = (responsive: boolean) => {
 
   const app = useAppMainStore()
 
-  const renderSide = ref<boolean>(false)
+  const renderSide = ref<boolean>(true)
 
-  watchEffect(() => {
-    const pathName = currentRoute.value.name
-    const path = currentRoute.value.fullPath
-
-    if (responsive) return (renderSide.value = true)
-    if (pathName === routeNames.HOME) app.setHasContentMenuHead(false)
-    if (pathName === routeNames.FRIENDS_PROFILE || pathName === routeNames.FRIENDS_PROFILE_POST)
-      return (renderSide.value = false)
-    if (!path.includes(routeNames.PROFILE)) renderSide.value = false
-    else renderSide.value = true
-  })
+  watch(
+    currentRoute,
+    (newRoute) => {
+      const pathName = newRoute.name
+      const path = newRoute.fullPath
+      renderSide.value = true
+      if (pathName === routeNames.HOME) app.setHasContentMenuHead(false)
+      if (path.includes(routeNames.PROFILE) || pathName === routeNames.POST_DETAIL) renderSide.value = false
+      if (responsive) renderSide.value = false
+    },
+    { immediate: true }
+  )
 
   return renderSide
 }
