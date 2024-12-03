@@ -52,7 +52,7 @@ const handleSelect = (type: EProfileMenuType) => emits('onSelect', type)
 </script>
 
 <template>
-  <div class="p-3">
+  <div class="p-5">
     <Card>
       <template #body>
         <Row aligns="middle" justify="between">

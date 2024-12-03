@@ -6,7 +6,15 @@
   left: 0;
   z-index: 10;
   .detail-carousel {
+    position: relative;
     background: $bg-black;
+    .carousel-header {
+      padding: 0 $p-1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
   }
   .detail-content {
     width: $w-full;

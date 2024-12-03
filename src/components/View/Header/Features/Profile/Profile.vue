@@ -19,7 +19,7 @@ const slided = ref<boolean>(false)
 const type = ref<EProfileMenuType>(EProfileMenuType.LOGOUT)
 
 const handleSlided = (menuType: EProfileMenuType) => {
-  slided.value = true
+  if(menuType !== EProfileMenuType.LOGOUT) slided.value = true
   type.value = menuType
 }
 

@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import { computed, defineProps } from 'vue'
+import { computed, withDefaults, defineProps } from 'vue'
 import { Image } from '@/components/UI'
 import { RouterLink } from 'vue-router'
 
 interface LogoProps {
   responsive?: boolean
+  size?: number
 }
 
-const props = defineProps<LogoProps>()
+const props = withDefaults(defineProps<LogoProps>(), {
+  size: 80
+})
 
-const size = computed<number>(() => (props.responsive ? 60 : 80))
+const size = computed<number>(() => (props.responsive ? 60 : props.size))
 </script>
 
 <template>

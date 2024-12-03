@@ -26,7 +26,7 @@ const handleBack = () => emits('onBack')
 </script>
 
 <template>
-  <div class="p-3">
+  <div class="p-5">
     <MenuHead :title="t.lang.common.header.features.profile.language" @onBack="handleBack" />
     <ItemWrapper
       v-for="item in items"
