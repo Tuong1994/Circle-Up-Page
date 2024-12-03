@@ -112,18 +112,20 @@
   .features {
     width: $w-10 * 4;
     max-height: $h-10 * 4;
-    padding: $p-1;
     background: $bg-white;
     border-radius: $rounded;
     box-shadow: 0 0 5px $bg-black-rgba-xs;
     position: absolute;
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
     top: 95%;
     right: 1rem;
     opacity: 0;
     z-index: 11;
     transition: all $transition-time-xs $transition-fn;
+    &:hover {
+      overflow-y: auto;
+    }
     @include respond(smTablet) {
       width: calc($w-full - 100px);
       height: $h-screen;

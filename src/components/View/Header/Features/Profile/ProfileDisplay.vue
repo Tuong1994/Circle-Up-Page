@@ -21,14 +21,16 @@ const handleSelect = (color: LayoutColor) => layout.switchColor(color)
 </script>
 
 <template>
-  <MenuHead :title="t.lang.common.header.features.profile.display" @onBack="handleBack" />
-  <Paragraph :weight="600">{{ t.lang.common.header.features.profile.theme }}</Paragraph>
-  <Space>
-    <Button
-      v-for="color in colors"
-      :color="color"
-      rootClassName="w-10 h-10"
-      @click="() => handleSelect(color as LayoutColor)"
-    ></Button>
-  </Space>
+  <div class="p-3">
+    <MenuHead :title="t.lang.common.header.features.profile.display" @onBack="handleBack" />
+    <Paragraph :weight="600">{{ t.lang.common.header.features.profile.theme }}</Paragraph>
+    <Space>
+      <Button
+        v-for="color in colors"
+        :color="color"
+        rootClassName="w-10 h-10"
+        @click="() => handleSelect(color as LayoutColor)"
+      ></Button>
+    </Space>
+  </div>
 </template>

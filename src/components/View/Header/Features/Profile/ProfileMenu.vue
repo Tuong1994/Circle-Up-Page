@@ -52,39 +52,41 @@ const handleSelect = (type: EProfileMenuType) => emits('onSelect', type)
 </script>
 
 <template>
-  <Card>
-    <template #body>
-      <Row aligns="middle" justify="between">
+  <div class="p-3">
+    <Card>
+      <template #body>
+        <Row aligns="middle" justify="between">
+          <Col>
+            <RouterLink :to="routePaths.PROFILE">
+              <Space aligns="middle">
+                <Avatar :size="35" :color="layout.color" />
+                <Paragraph>Profile</Paragraph>
+              </Space>
+            </RouterLink>
+          </Col>
+          <Col v-if="responsive">
+            <Button :shape="layout.shape" @click="handleBack">
+              <Icon :iconName="iconName.X_MARK" />
+            </Button>
+          </Col>
+        </Row>
+      </template>
+    </Card>
+    <Divider />
+    <ItemWrapper v-for="item in items" :key="item.id" @click="() => handleSelect(item.type)">
+      <Row justify="between" aligns="middle">
         <Col>
-          <RouterLink :to="routePaths.PROFILE">
-            <Space aligns="middle">
-              <Avatar :size="35" :color="layout.color" />
-              <Paragraph>Profile</Paragraph>
-            </Space>
-          </RouterLink>
+          <Space aligns="middle">
+            <Avatar :size="30">
+              <Icon :iconName="item.icon" />
+            </Avatar>
+            <Paragraph>{{ item.name }}</Paragraph>
+          </Space>
         </Col>
-        <Col v-if="responsive">
-          <Button :shape="layout.shape" @click="handleBack">
-            <Icon :iconName="iconName.X_MARK" />
-          </Button>
+        <Col>
+          <Icon v-if="item.type !== EProfileMenuType.LOGOUT" :size="18" :iconName="iconName.ANGLE_RIGHT" />
         </Col>
       </Row>
-    </template>
-  </Card>
-  <Divider />
-  <ItemWrapper v-for="item in items" :key="item.id" @click="() => handleSelect(item.type)">
-    <Row justify="between" aligns="middle">
-      <Col>
-        <Space aligns="middle">
-          <Avatar :size="30">
-            <Icon :iconName="item.icon" />
-          </Avatar>
-          <Paragraph>{{ item.name }}</Paragraph>
-        </Space>
-      </Col>
-      <Col>
-        <Icon v-if="item.type !== EProfileMenuType.LOGOUT" :size="18" :iconName="iconName.ANGLE_RIGHT" />
-      </Col>
-    </Row>
-  </ItemWrapper>
+    </ItemWrapper>
+  </div>
 </template>

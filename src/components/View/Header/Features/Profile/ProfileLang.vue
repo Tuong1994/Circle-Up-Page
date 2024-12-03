@@ -26,16 +26,18 @@ const handleBack = () => emits('onBack')
 </script>
 
 <template>
-  <MenuHead :title="t.lang.common.header.features.profile.language" @onBack="handleBack" />
-  <ItemWrapper
-    v-for="item in items"
-    :key="item.id"
-    :rootClassName="getSelectedClassName(item)"
-    @click="() => handleSelect(item.type)"
-  >
-    <Space aligns="middle">
-      <Icon :iconName="iconName.GLOBE" />
-      <span>{{ item.title }}</span>
-    </Space>
-  </ItemWrapper>
+  <div class="p-3">
+    <MenuHead :title="t.lang.common.header.features.profile.language" @onBack="handleBack" />
+    <ItemWrapper
+      v-for="item in items"
+      :key="item.id"
+      :rootClassName="getSelectedClassName(item)"
+      @click="() => handleSelect(item.type)"
+    >
+      <Space aligns="middle">
+        <Icon :iconName="iconName.GLOBE" />
+        <span>{{ item.title }}</span>
+      </Space>
+    </ItemWrapper>
+  </div>
 </template>

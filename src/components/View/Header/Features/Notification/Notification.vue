@@ -11,7 +11,7 @@ const { Row, Col } = Grid
 const { Paragraph } = Typography
 
 interface FeatureNotificationProps {
-  responsive?: boolean;
+  responsive?: boolean
 }
 
 defineProps<FeatureNotificationProps>()
@@ -56,57 +56,26 @@ const handleBack = () => emits('onBack', EHeaderFeatureType.NOTIFICATION)
 </script>
 
 <template>
-  <Row justify="between" aligns="middle">
-    <Col>
-      <Space aligns="middle">
-        <Button shape="round" @click="handleBack" v-if="responsive">
-          <Icon :iconName="iconName.ANGLE_LEFT" />
-        </Button>
-        <Paragraph :weight="600" :size="18">{{ t.lang.common.header.features.notification.title }}</Paragraph>
-      </Space>
-    </Col>
-    <Col>
-      <Dropdown placement="right">
-        <template #label>
-          <Icon :iconName="iconName.ELLIPSIS_H" :size="iconSize" />
-        </template>
-        <template #dropdown>
-          <div class="p-2">
-            <ItemWrapper v-for="setting in settings" :key="setting.id">
-              <Space aligns="middle">
-                <Icon :iconName="setting.iconName" />
-                <span>{{ setting.title }}</span>
-              </Space>
-            </ItemWrapper>
-          </div>
-        </template>
-      </Dropdown>
-    </Col>
-  </Row>
-  <Divider />
-  <ItemWrapper
-    v-for="(item, idx) in items"
-    :key="item.id"
-    @onSelect="(selected) => handleSelect(selected, item.id)"
-  >
+  <div class="p-5">
     <Row justify="between" aligns="middle">
       <Col>
         <Space aligns="middle">
-          <Avatar :size="40" />
-          <div>
-            <Paragraph>Notification</Paragraph>
-            <Paragraph :size="11" :weight="600" variant="secondary">1h</Paragraph>
-          </div>
+          <Button shape="round" @click="handleBack" v-if="responsive">
+            <Icon :iconName="iconName.ANGLE_LEFT" />
+          </Button>
+          <Paragraph :weight="600" :size="18">{{
+            t.lang.common.header.features.notification.title
+          }}</Paragraph>
         </Space>
       </Col>
       <Col>
-        <Dropdown v-if="selectedItem === item.id" placement="right" :isBottom="idx === items.length - 1">
+        <Dropdown placement="right">
           <template #label>
             <Icon :iconName="iconName.ELLIPSIS_H" :size="iconSize" />
           </template>
           <template #dropdown>
             <div class="p-2">
-              <ItemWrapper v-for="setting in itemSettings" :key="setting.id">
+              <ItemWrapper v-for="setting in settings" :key="setting.id">
                 <Space aligns="middle">
                   <Icon :iconName="setting.iconName" />
                   <span>{{ setting.title }}</span>
@@ -117,5 +86,40 @@ const handleBack = () => emits('onBack', EHeaderFeatureType.NOTIFICATION)
         </Dropdown>
       </Col>
     </Row>
-  </ItemWrapper>
+    <Divider />
+    <ItemWrapper
+      v-for="(item, idx) in items"
+      :key="item.id"
+      @onSelect="(selected) => handleSelect(selected, item.id)"
+    >
+      <Row justify="between" aligns="middle">
+        <Col>
+          <Space aligns="middle">
+            <Avatar :size="40" />
+            <div>
+              <Paragraph>Notification</Paragraph>
+              <Paragraph :size="11" :weight="600" variant="secondary">1h</Paragraph>
+            </div>
+          </Space>
+        </Col>
+        <Col>
+          <Dropdown v-if="selectedItem === item.id" placement="right" :isBottom="idx === items.length - 1">
+            <template #label>
+              <Icon :iconName="iconName.ELLIPSIS_H" :size="iconSize" />
+            </template>
+            <template #dropdown>
+              <div class="p-2">
+                <ItemWrapper v-for="setting in itemSettings" :key="setting.id">
+                  <Space aligns="middle">
+                    <Icon :iconName="setting.iconName" />
+                    <span>{{ setting.title }}</span>
+                  </Space>
+                </ItemWrapper>
+              </div>
+            </template>
+          </Dropdown>
+        </Col>
+      </Row>
+    </ItemWrapper>
+  </div>
 </template>
