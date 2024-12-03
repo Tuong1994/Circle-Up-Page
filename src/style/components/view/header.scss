@@ -109,6 +109,10 @@
       border-bottom: 1px solid $bg-slate;
     }
   }
+}
+
+.header-features {
+  position: relative;
   .features {
     width: $w-10 * 4;
     max-height: $h-10 * 4;
@@ -116,9 +120,8 @@
     border-radius: $rounded;
     box-shadow: 0 0 5px $bg-black-rgba-xs;
     position: absolute;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    top: 95%;
+    overflow: hidden;
+    top: 100%;
     right: 1rem;
     opacity: 0;
     z-index: 11;
@@ -137,7 +140,7 @@
   }
   .features-active {
     opacity: 1;
-    top: 100%;
+    top: calc(100% + 5px);
     animation: features $transition-time-xs $transition-fn;
     @include respond(smTablet) {
       width: $w-full;
@@ -146,6 +149,7 @@
     }
   }
 }
+
 // Shape
 .header-square {
   .navbar-item {
@@ -309,11 +313,11 @@
 @keyframes features {
   from {
     opacity: 0;
-    top: 95%;
+    top: 100%;
   }
   to {
     opacity: 1;
-    top: 100%;
+    top: calc(100% + 5px);
   }
 }
 

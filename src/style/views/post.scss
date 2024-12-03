@@ -13,7 +13,18 @@
     height: $h-screen;
     padding: $p-1;
     background: $bg-white;
-    overflow-x: hidden;
-    overflow-y: auto;
+    .content-header {
+      height: $h-5;
+      border-bottom: 1px solid $bg-gray;
+    }
+    .content-main {
+      margin-top: $m-1;
+      padding-right: $p-1;
+      height: calc($h-screen - $h-8);
+      overflow: hidden;
+      &:hover {
+        overflow-y: auto;
+      }
+    }
   }
 }

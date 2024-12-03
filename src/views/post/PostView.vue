@@ -6,6 +6,7 @@ import PostHead from '@/components/View/PostCard/PostHead.vue'
 import PostBody from '@/components/View/PostCard/PostBody.vue'
 import PostSummary from '@/components/View/PostCard/PostSummary.vue'
 import PostActions from '@/components/View/PostCard/PostActions.vue'
+import PostContentHeader from '@/features/post/PostContentHeader.vue'
 import Comment from '@/components/View/Comment/Comment.vue'
 
 const { Row, Col } = Grid
@@ -37,12 +38,15 @@ const items = computed<CarouselItems>(() => [
       </Col>
       <Col :span="8">
         <div class="detail-content">
-          <PostHead :hasRemove="false" />
-          <PostBody :hasMediaContent="false" />
-          <PostSummary />
-          <PostActions />
-          <Divider />
-          <Comment />
+          <PostContentHeader />
+          <div class="content-main">
+            <PostHead :hasRemove="false" />
+            <PostBody :hasMediaContent="false" />
+            <PostSummary />
+            <PostActions />
+            <Divider />
+            <Comment />
+          </div>
         </div>
       </Col>
     </Row>
