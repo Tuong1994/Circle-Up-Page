@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, defineEmits } from 'vue'
 import { Carousel, Image } from '@/components/UI'
 import type { CarouselItems } from '@/components/UI/Carousel/type'
 import CarouselHeader from './CarouselHeader.vue'
-import PostContentMobile from '@/features/post/PostContentMobile.vue'
 
 const { Horizontal } = Carousel
 
-const openContent = ref<boolean>(false)
+const emits = defineEmits(['onOpenContent'])
 
 const items = computed<CarouselItems>(() => [
   { id: '1', comName: 'item-1', url: '/default.jpg' },
@@ -15,21 +14,20 @@ const items = computed<CarouselItems>(() => [
   { id: '3', comName: 'item-3', url: '/default.jpg' }
 ])
 
-const handleOpen = () => (openContent.value = true)
+const handleOpenContent = () => emits('onOpenContent')
 </script>
 
 <template>
   <div class="detail-carousel">
-    <CarouselHeader @onOpen="handleOpen" />
+    <CarouselHeader @onOpen="handleOpenContent" />
     <Horizontal :items="items" mode="light">
       <template #content="item">
         <template v-for="(slide, idx) in items">
-          <div :key="`item-${idx}`" v-if="item.slide === slide.comName">
-            <Image :src="slide.url" />
+          <div :key="`item-${idx}`" v-if="item.slide === slide.comName" class="carousel-item">
+            <Image rootClassName="item-image" :src="slide.url" />
           </div>
         </template>
       </template>
     </Horizontal>
   </div>
-  <PostContentMobile :open="openContent" />
 </template>

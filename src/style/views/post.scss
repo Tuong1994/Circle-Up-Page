@@ -15,6 +15,16 @@
       right: 1rem;
       z-index: 10;
     }
+    .carousel-item {
+      .item-image {
+        @include respond(lgTablet) {
+          width: $w-full;
+        }
+      }
+      @include respond(lgTablet) {
+        width: calc($w-full - 1rem);
+      }
+    }
   }
   .detail-content {
     width: $w-full;
@@ -31,6 +41,9 @@
       height: calc($h-screen - $h-9);
       overflow: hidden;
       &:hover {
+        overflow-y: auto;
+      }
+      @include respond(laptop) {
         overflow-y: auto;
       }
     }

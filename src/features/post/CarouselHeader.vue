@@ -1,14 +1,19 @@
 <script setup lang="ts">
-import { defineEmits } from 'vue'
+import { computed, defineEmits } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Button, Icon, Space } from '@/components/UI'
 import { routePaths } from '@/router'
 import { iconName } from '@/components/UI/Icon/constant'
+import { useViewPoint } from '@/hooks'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+
+const { isPhone, isTablet } = useViewPoint()
 
 const layout = useLayoutStore()
 
 const emits = defineEmits(['onOpen'])
+
+const responsive = computed<boolean>(() => isPhone.value || isTablet.value)
 
 const handleOpen = () => emits('onOpen')
 </script>
@@ -16,7 +21,7 @@ const handleOpen = () => emits('onOpen')
 <template>
   <div class="carousel-header">
     <Space aligns="middle">
-      <Button :color="layout.color" :shape="layout.shape" @click="handleOpen">
+      <Button v-if="responsive" :color="layout.color" :shape="layout.shape" @click="handleOpen">
         <Icon :iconName="iconName.ELLIPSIS_H" />
       </Button>
       <RouterLink :to="routePaths.HOME">

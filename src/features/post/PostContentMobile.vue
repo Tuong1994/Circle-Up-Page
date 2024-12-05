@@ -15,9 +15,9 @@ const handleClose = () => emits('onClose')
 </script>
 
 <template>
-  <Drawer full :hasHead="false" :open="open" @onClose="handleClose">
+  <Drawer full :hasHead="false" :open="open">
     <template #body>
-      <PostContent />
+      <PostContent @onBack="handleClose" />
     </template>
   </Drawer>
 </template>
