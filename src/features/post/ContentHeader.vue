@@ -8,11 +8,11 @@ import Logo from '@/components/View/Logo/Logo.vue'
 
 const { Row, Col } = Grid
 
-const { isPhone, isTablet } = useViewPoint()
+const { isPhone, isTablet, isLgTablet } = useViewPoint()
 
 const emits = defineEmits(['onBack'])
 
-const responsive = computed<boolean>(() => isPhone.value || isTablet.value)
+const responsive = computed<boolean>(() => isPhone.value || isTablet.value || isLgTablet.value)
 
 const handleBack = () => emits('onBack')
 </script>

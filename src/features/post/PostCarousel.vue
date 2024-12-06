@@ -24,7 +24,7 @@ const handleOpenContent = () => emits('onOpenContent')
       <template #content="item">
         <template v-for="(slide, idx) in items">
           <div :key="`item-${idx}`" v-if="item.slide === slide.comName" class="carousel-item">
-            <Image rootClassName="item-image" :src="slide.url" />
+            <Image rootClassName="item-image" imgWidth="100%" :src="slide.url" />
           </div>
         </template>
       </template>

@@ -7,13 +7,13 @@ import { iconName } from '@/components/UI/Icon/constant'
 import { useViewPoint } from '@/hooks'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
-const { isPhone, isTablet } = useViewPoint()
+const { isPhone, isTablet, isLgTablet } = useViewPoint()
 
 const layout = useLayoutStore()
 
 const emits = defineEmits(['onOpen'])
 
-const responsive = computed<boolean>(() => isPhone.value || isTablet.value)
+const responsive = computed<boolean>(() => isPhone.value || isTablet.value || isLgTablet.value)
 
 const handleOpen = () => emits('onOpen')
 </script>

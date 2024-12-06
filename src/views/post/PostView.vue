@@ -8,11 +8,11 @@ import PostContentMobile from '@/features/post/PostContentMobile.vue'
 
 const { Row, Col } = Grid
 
-const { isPhone, isTablet } = useViewPoint()
+const { isPhone, isTablet, isLgTablet } = useViewPoint()
 
 const openContent = ref<boolean>(false)
 
-const responsive = computed<boolean>(() => isPhone.value || isTablet.value)
+const responsive = computed<boolean>(() => isPhone.value || isTablet.value || isLgTablet.value)
 
 const handleOpenContent = () => (openContent.value = !openContent.value)
 </script>
@@ -20,10 +20,10 @@ const handleOpenContent = () => (openContent.value = !openContent.value)
 <template>
   <div class="post-detail">
     <Row :gutters="[0]">
-      <Col :xs="24" :md="24" :lg="16" :span="16">
+      <Col :xs="24" :md="24" :lg="isLgTablet ? 24 : 16" :span="16">
         <PostCarousel @onOpenContent="handleOpenContent" />
       </Col>
-      <Col :xs="0" :md="0" :lg="8" :span="8">
+      <Col :xs="0" :md="0" :lg="isLgTablet ? 0 : 8" :span="8">
         <PostContent />
       </Col>
     </Row>
