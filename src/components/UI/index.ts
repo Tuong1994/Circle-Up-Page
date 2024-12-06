@@ -29,6 +29,7 @@ import NoteMessage from './NoteMessage/NoteMessage.vue'
 import ToastMessage from './ToastMessage/ToastMessage.vue'
 import InfoRow from './InfoRow/InfoRow.vue'
 import TypingText from './TypingText/TypingText.vue'
+import DynamicGrid from './DynamicGrid/DynamicGrid.vue'
 
 export {
   Grid,
@@ -61,5 +62,6 @@ export {
   ToastMessage,
   Alert,
   InfoRow,
-  TypingText
+  TypingText,
+  DynamicGrid
 }
