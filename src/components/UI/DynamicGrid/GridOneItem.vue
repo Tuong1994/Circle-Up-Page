@@ -11,7 +11,7 @@ defineProps<GridOneItemProps>()
 
 <template>
   <div className="grid-one-item">
-    <div v-for="item in items" :key="item.id" className="item-wrapper">
+    <div v-for="item in items" :key="item.id" className="item-content">
         <slot name="content" :comName="item.comName"></slot>
     </div>
   </div>

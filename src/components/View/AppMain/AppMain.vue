@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, watchEffect } from 'vue'
+import { computed, } from 'vue'
 import { Layout } from '@/components/UI'
 import { routeNames } from '@/router'
 import { useRouter } from 'vue-router'

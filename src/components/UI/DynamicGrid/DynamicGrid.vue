@@ -16,14 +16,37 @@ defineProps<DynamicGridProps>()
 
 <template>
   <div class="dynamic-grid">
-    <GridOneItem :items="items">
+    <GridOneItem v-if="items.length === 1" :items="items">
       <template #content="content">
-        <slot name="content" :content="content.comName"></slot>
+        <slot name="content" :comName="content.comName"></slot>
       </template>
     </GridOneItem>
-    <!-- <GridTwoItems />
-    <GridThreeItems />
-    <GridFourItems />
-    <GridFiveItems /> -->
+
+    <GridTwoItems v-if="items.length === 2" :items="items">
+      <template #content="content">
+        <slot name="content" :comName="content.comName"></slot>
+      </template>
+    </GridTwoItems>
+
+    <GridThreeItems v-if="items.length === 3" :items="items">
+      <template #content="content">
+        <slot name="content" :comName="content.comName"></slot>
+      </template>
+    </GridThreeItems>
+
+    <GridFourItems v-if="items.length === 4" :items="items">
+      <template #content="content">
+        <slot name="content" :comName="content.comName"></slot>
+      </template>
+    </GridFourItems>
+
+    <GridFiveItems v-if="items.length >= 5" :items="items">
+      <template #contentLeft="content">
+        <slot name="contentLeft" :comName="content.comName" :items="content.items"></slot>
+      </template>
+      <template #contentRight="content">
+        <slot name="contentRight" :comName="content.comName" :items="content.items"></slot>
+      </template>
+    </GridFiveItems>
   </div>
 </template>

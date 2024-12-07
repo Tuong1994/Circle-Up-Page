@@ -1,7 +1,6 @@
 .dynamic-grid {
   width: $w-full;
-  .item-wrapper {
-    width: max-content;
+  .item-content {
     border-radius: 0.8rem;
     overflow: hidden;
   }
@@ -18,14 +17,14 @@
   }
   .grid-two-items {
     grid-template-columns: 1fr 1fr;
-    .item-wrapper {
+    .item-content {
       width: auto;
     }
   }
   .grid-three-items {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 2;
-    .item-wrapper {
+    .item-content {
       width: auto;
       &:first-child {
         grid-column: span 2;
@@ -35,7 +34,7 @@
   .grid-four-items {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 2;
-    .item-wrapper {
+    .item-content {
       width: auto;
       &:first-child {
         grid-column: span 3;
@@ -58,11 +57,11 @@
       &:last-child {
         width: calc($w-full - 65%);
       }
-      .item-wrapper {
+      .item-content {
         width: auto;
         flex-grow: 1;
         position: relative;
-        .wrapper-layer {
+        .content-layer {
           width: $w-full;
           height: $h-full;
           background: $bg-black-rgba-md;
