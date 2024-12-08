@@ -43,7 +43,10 @@ const home_vn = {
       tag: 'Gắn thẻ mọi người',
       feeling: 'Cảm xúc',
       checkin: 'Địa điểm',
-      placeholder: 'Bạn đang nghĩ gì?'
+      placeholder: 'Bạn đang nghĩ gì?',
+      upload: {
+        add: 'Thêm ảnh'
+      }
     },
     audience: {
       title: 'Đối tượng bài viết',
@@ -51,7 +54,7 @@ const home_vn = {
       content_1:
         'Bài viết của bạn sẽ xuất hiện trong Bảng tin, trên trang cá nhân và trong kết quả tìm kiếm.',
       content_2:
-        'Đối tượng mặc định của bạn được đặt là Bạn bè, nhưng bạn có thể thay đổi đối tượng cho bài viết cụ thể này.',
+        'Đối tượng mặc định của bạn được đặt là Bạn bè, nhưng bạn có thể thay đổi đối tượng cho bài viết cụ thể này.'
     },
     tag: {
       title: 'Gắn thẻ mọi người',

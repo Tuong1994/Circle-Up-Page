@@ -210,3 +210,77 @@
     }
   }
 }
+
+// Post upload
+.post-upload {
+  padding: 1rem;
+  border-radius: $rounded-lg;
+  border: 1px solid $bg-gray;
+  position: relative;
+  transition: border-color $transition-time-xs $transition-fn;
+  &:hover .upload-box {
+    background: $bg-gray;
+  }
+  .upload-actions {
+    margin-bottom: $m-1;
+  }
+  .upload-box {
+    height: $h-10 + 2rem;
+    border-radius: $rounded-lg;
+    transition: background-color $transition-time-xs $transition-fn,
+      opacity $transition-time-xs $transition-fn;
+
+    .box-content {
+      height: $h-full;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      * {
+        transition: color $transition-time-xs $transition-fn;
+      }
+      .content-control {
+        display: none;
+      }
+    }
+  }
+  .upload-box-dragged {
+    opacity: 0.6;
+  }
+  .upload-item {
+    position: relative;
+    .item-remove {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1;
+    }
+    .item-media {
+      width: $w-full;
+      height: $h-full;
+    }
+  }
+}
+
+.post-upload-blue {
+  &:hover {
+    border-color: $bg-blue;
+    .box-content {
+      * {
+        color: $text-blue;
+      }
+    }
+  }
+}
+
+.post-upload-purple {
+  &:hover {
+    border-color: $bg-purple;
+    .box-content {
+      * {
+        color: $text-purple;
+      }
+    }
+  }
+}

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, withDefaults, defineProps } from 'vue'
-import { Typography, DynamicGrid, Image } from '@/components/UI'
-import { RouterLink } from 'vue-router'
-import { routePaths } from '@/router'
+import { Typography, DynamicGrid } from '@/components/UI'
+import PostMedia from './PostMedia.vue'
 
 const { Paragraph } = Typography
 
@@ -24,7 +23,7 @@ const items = computed(() => [
   { id: '7', comName: 'item-7', url: '/default.jpg' },
   { id: '8', comName: 'item-8', url: '/default.jpg' },
   { id: '9', comName: 'item-9', url: '/default.jpg' },
-  { id: '10', comName: 'item-10', url: '/default.jpg' },
+  { id: '10', comName: 'item-10', url: '/default.jpg' }
 ])
 </script>
 
@@ -38,25 +37,19 @@ const items = computed(() => [
     <DynamicGrid :items="items">
       <template #content="content">
         <template v-for="item in items" :key="item.id">
-          <RouterLink v-if="content.comName === item.comName" :to="routePaths.POST_DETAIL">
-            <Image :src="item.url" rootClassName="post-image" imgWidth="100%" imgHeight="100%" />
-          </RouterLink>
+          <PostMedia v-if="content.comName === item.comName" :url="item.url" />
         </template>
       </template>
 
       <template #contentLeft="content">
         <template v-for="item in content.items" :key="item.id">
-          <RouterLink v-if="content.comName === item.comName" :to="routePaths.POST_DETAIL">
-            <Image :src="item.url" rootClassName="post-image" imgWidth="100%" imgHeight="100%" />
-          </RouterLink>
+          <PostMedia v-if="content.comName === item.comName" :url="item.url" />
         </template>
       </template>
 
       <template #contentRight="content">
         <template v-for="item in content.items" :key="item.id">
-          <RouterLink v-if="content.comName === item.comName" :to="routePaths.POST_DETAIL">
-            <Image :src="item.url" rootClassName="post-image" imgWidth="100%" imgHeight="100%" />
-          </RouterLink>
+          <PostMedia v-if="content.comName === item.comName" :url="item.url" />
         </template>
       </template>
     </DynamicGrid>

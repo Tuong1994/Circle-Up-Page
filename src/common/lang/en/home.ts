@@ -43,14 +43,17 @@ const home_en = {
       tag: 'Tag people',
       feeling: 'Feeling',
       checkin: 'Check in',
-      placeholder: "What's on your mind"
+      placeholder: "What's on your mind",
+      upload: {
+        add: 'Add photo'
+      }
     },
     audience: {
       title: 'Post audience',
       subTitle: 'Who can see your post',
       content_1: 'Your post will appear in Feed, on your profile and in search results.',
       content_2:
-        'Your default audience is set to Friends, but you can change the audience of this specific post.',
+        'Your default audience is set to Friends, but you can change the audience of this specific post.'
     },
     tag: {
       title: 'Tag people',

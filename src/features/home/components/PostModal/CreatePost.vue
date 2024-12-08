@@ -11,6 +11,7 @@ import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
 import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
 import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
+import PostUpload from './PostUpload.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 
@@ -97,6 +98,7 @@ const handleAction = (type: ActionType) => {
         :color="(layout.color as ControlColor)"
         :placeholder="`${t.lang.home.modal.createPost.placeholder}, User name?`"
       />
+      <PostUpload />
       <div class="content-upload" v-if="isUpload">
         <Button shape="round" rootClassName="upload-close" @click="() => handleAction(EActionType.PHOTO)">
           <Icon :iconName="iconName.X_MARK" :size="16" />
