@@ -173,14 +173,6 @@
   max-height: calc($h-screen - 300px);
   overflow-y: auto;
   overflow-x: hidden;
-  .content-upload {
-    position: relative;
-    .upload-close {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-    }
-  }
   @include respond(mdTablet) {
     max-height: calc($h-screen - 150px);
   }
@@ -221,6 +213,9 @@
   &:hover .upload-box {
     background: $bg-gray;
   }
+  .upload-control {
+    display: none;
+  }
   .upload-actions {
     margin-bottom: $m-1;
   }
@@ -229,7 +224,6 @@
     border-radius: $rounded-lg;
     transition: background-color $transition-time-xs $transition-fn,
       opacity $transition-time-xs $transition-fn;
-
     .box-content {
       height: $h-full;
       display: flex;
@@ -240,21 +234,20 @@
       * {
         transition: color $transition-time-xs $transition-fn;
       }
-      .content-control {
-        display: none;
-      }
     }
   }
   .upload-box-dragged {
     opacity: 0.6;
   }
   .upload-item {
+    width: $w-full;
+    height: $h-full;
     position: relative;
     .item-remove {
       position: absolute;
       top: 1rem;
       right: 1rem;
-      z-index: 1;
+      z-index: 5;
     }
     .item-media {
       width: $w-full;

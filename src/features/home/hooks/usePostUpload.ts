@@ -9,17 +9,33 @@ const usePostUpload = (inputRef: Ref<HTMLInputElement | null>) => {
 
   const dragged = ref<boolean>(false)
 
-  const handleUpload = (imageFiles: File[]) => {
+  const onUpload = (imageFiles: File[]) => {
     const files: UploadItems = imageFiles.map((image) => ({ id: utils.uuid(), file: image }))
     if (!imageFiles.length) images.value = files
     else images.value = [...images.value, ...files]
+  }
+
+  const onRemoveInputFile = (image: UploadItem) => {
+    const inputEl = inputRef.value
+    if (images.value.length && inputEl && inputEl.files) {
+      const fileTransfer = new DataTransfer()
+      const UploadItems: File[] = Array.from(inputEl.files)
+      const filterImages: File[] = UploadItems.filter((img) => img.name !== image.file?.name)
+
+      filterImages.forEach((file) => {
+        const remainFile = new File([file.name], file.name)
+        fileTransfer.items.add(remainFile)
+      })
+      inputEl.files = fileTransfer.files
+    }
   }
 
   const handleChange = (e: Event) => {
     const target = e.target as HTMLInputElement
     if (!target.files) return
     const imageFiles: File[] = Array.from(target.files)
-    handleUpload(imageFiles)
+    onUpload(imageFiles)
+    target.value = ''
   }
 
   const handleDrag = (e: DragEvent) => {
@@ -35,23 +51,12 @@ const usePostUpload = (inputRef: Ref<HTMLInputElement | null>) => {
     dragged.value = false
     if (e.dataTransfer && e.dataTransfer.files) {
       const imageFiles: File[] = Array.from(e.dataTransfer.files)
-      handleUpload(imageFiles)
+      onUpload(imageFiles)
     }
   }
 
   const handleRemove = (image: UploadItem) => {
-    const inputEl = inputRef.value
-    if (images.value.length && inputEl && inputEl.files) {
-      const fileTransfer = new DataTransfer()
-      const UploadItems: File[] = Array.from(inputEl.files)
-      const filterImages: File[] = UploadItems.filter((img) => img.name !== image.file?.name)
-
-      filterImages.forEach((file) => {
-        const remainFile = new File([file.name], file.name)
-        fileTransfer.items.add(remainFile)
-      })
-      inputEl.files = fileTransfer.files
-    }
+    onRemoveInputFile(image)
     viewImages.value = [...viewImages.value].filter((img) => img.id !== image.id)
     images.value = [...images.value].filter((img) => img.id !== image.id)
   }

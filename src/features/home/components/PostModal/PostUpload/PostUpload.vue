@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { computed, ref, defineEmits, defineProps } from 'vue'
-import { Grid, Icon, Typography, Button, DynamicGrid, Image, Space } from '@/components/UI'
+import { Icon, Typography, DynamicGrid } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import type { DynamicGridItems } from '@/components/UI/DynamicGrid/type'
+import type { UploadItem } from '@/components/Control/type'
+import UploadedItem from './UploadedItem.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
-import usePostUpload from '../../hooks/usePostUpload'
-import type { UploadItem } from '@/components/Control/type'
+import usePostUpload from '../../../hooks/usePostUpload'
+import UploadActions from './UploadActions.vue'
 
 const { Paragraph } = Typography
-
-const { Row, Col } = Grid
 
 interface PostUploadProps {}
 
@@ -43,8 +43,7 @@ const dragClassName = computed<string>(() => (dragged.value ? `upload-box-dragge
 
 const handleClose = () => emits('onClose')
 
-const handleAdd = () => {
-  console.log(inputRef.value)
+const handleTriggerInput = () => {
   if (!inputRef.value) return
   inputRef.value.click()
 }
@@ -57,21 +56,8 @@ const handleRemoveImage = (data?: UploadItem) => {
 
 <template>
   <div :class="['post-upload', colorClassName]">
-    <Row rootClassName="upload-actions" aligns="middle" justify="between">
-      <Col>
-        <Button v-if="isRenderGrid" :color="layout.color" :shape="layout.shape" @click="handleAdd">
-          <Space aligns="middle">
-            <Icon :iconName="iconName.PLUS" />
-            <span>{{ t.lang.home.modal.createPost.upload.add }}</span>
-          </Space>
-        </Button>
-      </Col>
-      <Col>
-        <Button :color="layout.color" :shape="layout.shape" @click="handleClose">
-          <Icon :iconName="iconName.X_MARK" />
-        </Button>
-      </Col>
-    </Row>
+    <UploadActions :isRenderGrid="isRenderGrid" @onAdd="handleTriggerInput" @onClose="handleClose" />
+    <input multiple ref="inputRef" type="file" class="upload-control" @input="handleChange" />
     <div
       v-if="!isRenderGrid"
       :class="['upload-box', dragClassName]"
@@ -80,27 +66,42 @@ const handleRemoveImage = (data?: UploadItem) => {
       @dragleave="handleDrag"
       @drop="handleDrop"
     >
-      <label class="box-content">
-        <input ref="inputRef" type="file" multiple class="content-control" @input="handleChange" />
+      <div class="box-content" @click="handleTriggerInput">
         <Icon :size="24" :iconName="iconName.CLOUD_UPLOAD" class="mb-5" />
         <Paragraph>{{ t.lang.common.form.placeholder.imagesUpload }}</Paragraph>
-      </label>
+      </div>
     </div>
 
     <DynamicGrid v-if="isRenderGrid" :items="gridItems">
       <template #content="content">
-        <div v-for="item in gridItems" class="upload-item">
-          <Button text rootClassName="item-remove" @click="() => handleRemoveImage(item.data)">
-            <Icon :iconName="iconName.X_MARK" :size="18" />
-          </Button>
-          <Image
+        <template v-for="item in gridItems" :key="item.id">
+          <UploadedItem
             v-if="content.comName === item.comName"
-            :src="item.data?.url"
-            rootClassName="item-media"
-            imgWidth="100%"
-            imgHeight="100%"
+            :item="item"
+            @onRemove="() => handleRemoveImage(item.data)"
           />
-        </div>
+        </template>
+      </template>
+
+      <template #contentLeft="content">
+        <template v-for="item in content.items" :key="item.id">
+          <UploadedItem
+            v-if="content.comName === item.comName"
+            :item="item"
+            @onRemove="() => handleRemoveImage(item.data)"
+          />
+        </template>
+      </template>
+
+      <template #contentRight="content">
+        <template v-for="(item, idx) in content.items" :key="item.id">
+          <UploadedItem
+            v-if="content.comName === item.comName"
+            :item="item"
+            :hasClose="idx < 2"
+            @onRemove="() => handleRemoveImage(item.data)"
+          />
+        </template>
       </template>
     </DynamicGrid>
   </div>
