@@ -2,7 +2,7 @@
 import { defineProps } from 'vue'
 import { Grid } from '@/components/UI'
 import FriendsListItem from './FriendsListItem.vue'
-import FriendsItem from '@/components/View/AppMain/Menus/FriendsMenu/FriendsItem.vue'
+import FriendsItem from '@/components/View/AppMain/Side/FriendsMenu/FriendsItem.vue'
 
 const { Row, Col } = Grid
 
