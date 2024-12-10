@@ -243,11 +243,16 @@
     width: $w-full;
     height: $h-full;
     position: relative;
+    &:hover .item-remove {
+      opacity: 1;
+    }
     .item-remove {
       position: absolute;
       top: 1rem;
       right: 1rem;
+      opacity: 0;
       z-index: 5;
+      transition: opacity $transition-time-xs $transition-fn;
     }
     .item-media {
       width: $w-full;

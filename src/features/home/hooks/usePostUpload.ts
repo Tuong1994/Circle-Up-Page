@@ -62,7 +62,6 @@ const usePostUpload = (inputRef: Ref<HTMLInputElement | null>) => {
     media.setFilterImages(filterImages)
   }
 
-  // Generate view images
   watch(
     images,
     (newImages) => {
@@ -72,7 +71,6 @@ const usePostUpload = (inputRef: Ref<HTMLInputElement | null>) => {
       }))
       media.setViewImages(views)
     },
-    { deep: true }
   )
 
   return { dragged, handleChange, handleDrag, handleDrop, handleRemove }

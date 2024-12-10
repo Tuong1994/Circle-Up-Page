@@ -22,8 +22,8 @@ const handleRemove = () => emits('onRemove', props.item)
 <template>
   <div class="upload-item">
     <Button v-if="hasRemove" text rootClassName="item-remove" @click="handleRemove">
-      <Icon :iconName="iconName.X_MARK" :size="18" />
+      <Icon :iconName="iconName.X_MARK" :size="24" />
     </Button>
-    <Image :src="item.data?.url" rootClassName="item-media" imgWidth="100%" imgHeight="100%" />
+    <Image :src="item.data?.url" objectFit="cover" rootClassName="item-media" imgWidth="100%" imgHeight="100%" />
   </div>
 </template>

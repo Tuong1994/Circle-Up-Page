@@ -15,6 +15,6 @@ withDefaults(defineProps<PostMediaProps>(), {
 
 <template>
   <RouterLink :to="routePaths.POST_DETAIL">
-    <Image :src="url" rootClassName="post-image" imgWidth="100%" imgHeight="100%" />
+    <Image :src="url" objectFit="cover" rootClassName="post-image" imgWidth="100%" imgHeight="100%" />
   </RouterLink>
 </template>

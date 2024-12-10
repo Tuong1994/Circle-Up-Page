@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, defineEmits, defineProps, watchEffect } from 'vue'
+import { computed, ref, defineEmits, defineProps } from 'vue'
 import { Icon, Typography, DynamicGrid } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import type { DynamicGridItems } from '@/components/UI/DynamicGrid/type'
@@ -56,10 +56,6 @@ const handleRemoveImage = (data?: UploadItem) => {
   if (!data) return
   handleRemove(data)
 }
-
-// watchEffect(() => {
-//   console.log(media.viewImages)
-// })
 </script>
 
 <template>
