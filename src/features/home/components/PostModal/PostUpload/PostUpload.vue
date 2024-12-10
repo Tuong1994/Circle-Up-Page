@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, defineEmits, defineProps } from 'vue'
+import { computed, ref, defineEmits, defineProps, watchEffect } from 'vue'
 import { Icon, Typography, DynamicGrid } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import type { DynamicGridItems } from '@/components/UI/DynamicGrid/type'
@@ -9,6 +9,7 @@ import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 import usePostUpload from '../../../hooks/usePostUpload'
 import UploadActions from './UploadActions.vue'
+import useMediaStore from '@/stores/MediaStore'
 
 const { Paragraph } = Typography
 
@@ -22,13 +23,14 @@ const t = useLangStore()
 
 const layout = useLayoutStore()
 
+const media = useMediaStore()
+
 const inputRef = ref<HTMLInputElement | null>(null)
 
-const { images, viewImages, dragged, handleChange, handleDrag, handleDrop, handleRemove } =
-  usePostUpload(inputRef)
+const { dragged, handleChange, handleDrag, handleDrop, handleRemove } = usePostUpload(inputRef)
 
 const gridItems = computed<DynamicGridItems<UploadItem>>(() =>
-  [...viewImages.value].map((item) => ({
+  [...media.viewImages].map((item) => ({
     id: item.id,
     comName: `item-${item.id}`,
     data: item
@@ -41,6 +43,8 @@ const colorClassName = computed<string>(() => `post-upload-${layout.color}`)
 
 const dragClassName = computed<string>(() => (dragged.value ? `upload-box-dragged` : ''))
 
+const uploadItemHasRemove = (idx: number) => {}
+
 const handleClose = () => emits('onClose')
 
 const handleTriggerInput = () => {
@@ -52,6 +56,10 @@ const handleRemoveImage = (data?: UploadItem) => {
   if (!data) return
   handleRemove(data)
 }
+
+// watchEffect(() => {
+//   console.log(media.viewImages)
+// })
 </script>
 
 <template>
@@ -98,7 +106,7 @@ const handleRemoveImage = (data?: UploadItem) => {
           <UploadedItem
             v-if="content.comName === item.comName"
             :item="item"
-            :hasClose="idx < 2"
+            :hasRemove="uploadItemHasRemove(idx)"
             @onRemove="() => handleRemoveImage(item.data)"
           />
         </template>

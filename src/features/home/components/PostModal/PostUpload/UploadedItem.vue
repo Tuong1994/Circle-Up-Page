@@ -7,11 +7,11 @@ import type { DynamicGridItem } from '@/components/UI/DynamicGrid/type'
 
 interface UploadedItemProps {
   item: DynamicGridItem<UploadItem>
-  hasClose?: boolean
+  hasRemove?: boolean
 }
 
 const props = withDefaults(defineProps<UploadedItemProps>(), {
-  hasClose: true
+  hasRemove: true
 })
 
 const emits = defineEmits(['onRemove'])
@@ -21,7 +21,7 @@ const handleRemove = () => emits('onRemove', props.item)
 
 <template>
   <div class="upload-item">
-    <Button v-if="hasClose" text rootClassName="item-remove" @click="handleRemove">
+    <Button v-if="hasRemove" text rootClassName="item-remove" @click="handleRemove">
       <Icon :iconName="iconName.X_MARK" :size="18" />
     </Button>
     <Image :src="item.data?.url" rootClassName="item-media" imgWidth="100%" imgHeight="100%" />

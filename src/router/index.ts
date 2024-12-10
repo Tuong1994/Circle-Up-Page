@@ -122,6 +122,16 @@ const router = createRouter({
       ]
     },
     {
+      path: routePaths.MEDIA_ALBUM,
+      name: routeNames.MEDIA_ALBUM,
+      component: () => import('@/views/media/MediaAlbum.vue')
+    },
+    {
+      path: routePaths.MEDIA_PHOTO,
+      name: routeNames.MEDIA_PHOTO,
+      component: () => import('@/views/media/MediaPhoto.vue')
+    },
+    {
       path: routePaths.POST_DETAIL,
       name: routeNames.POST_DETAIL,
       component: () => import('@/views/post/PostView.vue')
