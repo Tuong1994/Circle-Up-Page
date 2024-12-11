@@ -272,12 +272,67 @@
   }
 }
 
+.post-upload-red {
+  &:hover {
+    border-color: $bg-red;
+    .box-content {
+      * {
+        color: $text-red;
+      }
+    }
+  }
+}
+
+.post-upload-green {
+  &:hover {
+    border-color: $bg-green;
+    .box-content {
+      * {
+        color: $text-green;
+      }
+    }
+  }
+}
+
+.post-upload-orange {
+  &:hover {
+    border-color: $bg-orange;
+    .box-content {
+      * {
+        color: $text-orange;
+      }
+    }
+  }
+}
+
+.post-upload-yellow {
+  &:hover {
+    border-color: $bg-yellow;
+    .box-content {
+      * {
+        color: $text-yellow;
+      }
+    }
+  }
+}
+
 .post-upload-purple {
   &:hover {
     border-color: $bg-purple;
     .box-content {
       * {
         color: $text-purple;
+      }
+    }
+  }
+}
+
+.post-upload-pink {
+  &:hover {
+    border-color: $bg-pink;
+    .box-content {
+      * {
+        color: $text-pink;
       }
     }
   }

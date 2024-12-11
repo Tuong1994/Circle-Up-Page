@@ -1,27 +1,24 @@
 <script setup lang="ts">
 import { defineEmits, defineProps, ref } from 'vue'
 import { Space, Avatar, Typography, Grid, Card, Tooltip, Button, Icon } from '@/components/UI'
-import { TextArea, Upload } from '@/components/Control'
+import { TextArea } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EActionType } from './enum'
 import type { ActionType } from './PostModal.vue'
 import type { ComponentColor } from '@/common/type'
-import type { ControlColor } from '@/components/Control/type'
+import type { ControlShape, ControlColor } from '@/components/Control/type'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
 import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
 import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
 import PostUpload from './PostUpload/PostUpload.vue'
+import AudiencesButton from '@/components/View/Audiences/AudiencesButton.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
-
-const { ImageUpload } = Upload
-
-const { MultipleImageUpload } = ImageUpload
 
 type Action = {
   type: ActionType
@@ -84,18 +81,14 @@ const handleAction = (type: ActionType) => {
       <Avatar :size="45" />
       <div>
         <Paragraph>User name</Paragraph>
-        <Button :color="layout.color" ghost sizes="sm" @click="() => handleAction(EActionType.AUDIENCE)">
-          <Space aligns="middle">
-            <Icon :iconName="iconName.USER_GROUP" />
-            <span>{{ t.lang.home.modal.common.friends }}</span>
-          </Space>
-        </Button>
+        <AudiencesButton sizes="sm" @click="() => handleAction(EActionType.AUDIENCE)" />
       </div>
     </Space>
     <div class="py-5 create-post-content">
       <TextArea
         rootClassName="pb-5"
         :color="(layout.color as ControlColor)"
+        :shape="(layout.shape as ControlShape)"
         :placeholder="`${t.lang.home.modal.createPost.placeholder}, User name?`"
       />
       <PostUpload v-if="isUpload" @onClose="() => handleAction(EActionType.PHOTO)" />

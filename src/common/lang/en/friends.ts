@@ -4,7 +4,10 @@ const friends_en = {
     friends: 'Friends',
     requests: {
       title: 'Friends requests',
-      view: 'View sent requests'
+      view: 'View sent requests',
+      modal: {
+        title: 'Sent requests'
+      }
     },
     suggestions: {
       title: 'Suggestions'
@@ -17,7 +20,7 @@ const friends_en = {
   item: {
     followedBy: 'Followed by',
     add: 'Add friend',
-    cancelRequest: 'Cancel request',
+    cancelRequest: 'Cancel request'
   },
   empty: {
     list: "When you become friends with people on Circle Up, they'll appear here.",

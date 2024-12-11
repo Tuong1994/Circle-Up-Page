@@ -4,7 +4,10 @@ const friends_vn = {
     friends: 'Bạn bè',
     requests: {
       title: 'Lời mời kết bạn',
-      view: 'Xem lời mời đã gửi'
+      view: 'Xem lời mời đã gửi',
+      modal: {
+        title: 'Lời mời đã gửi'
+      }
     },
     suggestions: {
       title: 'Gợi ý'

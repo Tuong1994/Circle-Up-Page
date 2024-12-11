@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, } from 'vue'
+import { computed } from 'vue'
 import { Layout } from '@/components/UI'
 import { routeNames } from '@/router'
 import { useRouter } from 'vue-router'
@@ -13,6 +13,7 @@ import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useCommentStore from '../Comment/CommentStore'
 import useRenderSide from './hooks/useRenderSide'
 import useRenderHeader from './hooks/useRenderHeader'
+import AlbumSide from './Side/Media/AlbumSide.vue'
 
 const { Container, Head, Body, Side, Content } = Layout
 
@@ -48,6 +49,7 @@ const handleCloseCommentModal = () => comment.setOpenModal(false)
       <Side v-if="renderSide" :hasCollapseButton="false">
         <HomeMenu v-if="currentRoute.name === routeNames.HOME" />
         <FriendsMenu v-if="currentRoute.fullPath.includes(routeNames.FRIENDS)" />
+        <AlbumSide v-if="currentRoute.name === routeNames.MEDIA_ALBUM" />
       </Side>
       <Content :rootClassName="contentClassName">
         <slot></slot>

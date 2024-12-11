@@ -11,7 +11,7 @@ const t = useLangStore()
 </script>
 
 <template>
-  <ContentHead hasSearch :placeholder="t.lang.friends.sideMenu.list.placeholder">
+  <ContentHead hasSearch :searchPlaceholder="t.lang.friends.sideMenu.list.placeholder">
     {{ t.lang.friends.sideMenu.list.title }}
   </ContentHead>
   <ContentBody>
