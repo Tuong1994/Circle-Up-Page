@@ -4,10 +4,10 @@ import type { UploadItem, UploadItems } from '@/components/Control/type'
 import useMediaStore from '@/stores/MediaStore'
 import utils from '@/utils'
 
-const usePostUpload = (inputRef: Ref<HTMLInputElement | null>) => {
+const useUploadMedia = (inputRef: Ref<HTMLInputElement | null>) => {
   const media = useMediaStore()
 
-  const { images } = storeToRefs(media)
+  const { images, viewImages } = storeToRefs(media)
 
   const dragged = ref<boolean>(false)
 
@@ -62,6 +62,11 @@ const usePostUpload = (inputRef: Ref<HTMLInputElement | null>) => {
     media.setFilterImages(filterImages)
   }
 
+  const handleTriggerInput = () => {
+    if (!inputRef.value) return
+    inputRef.value.click()
+  }
+
   watch(
     images,
     (newImages) => {
@@ -73,7 +78,7 @@ const usePostUpload = (inputRef: Ref<HTMLInputElement | null>) => {
     },
   )
 
-  return { dragged, handleChange, handleDrag, handleDrop, handleRemove }
+  return { images, viewImages, dragged, handleChange, handleDrag, handleDrop, handleRemove, handleTriggerInput }
 }
 
-export default usePostUpload
+export default useUploadMedia

@@ -5,11 +5,10 @@ import { iconName } from '@/components/UI/Icon/constant'
 import type { DynamicGridItems } from '@/components/UI/DynamicGrid/type'
 import type { UploadItem } from '@/components/Control/type'
 import UploadedItem from './UploadedItem.vue'
+import UploadActions from './UploadActions.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
-import usePostUpload from '../../../hooks/usePostUpload'
-import UploadActions from './UploadActions.vue'
-import useMediaStore from '@/stores/MediaStore'
+import useUploadMedia from '@/hooks/useUploadMedia'
 
 const { Paragraph } = Typography
 
@@ -23,14 +22,12 @@ const t = useLangStore()
 
 const layout = useLayoutStore()
 
-const media = useMediaStore()
-
 const inputRef = ref<HTMLInputElement | null>(null)
 
-const { dragged, handleChange, handleDrag, handleDrop, handleRemove } = usePostUpload(inputRef)
+const { dragged, viewImages, handleChange, handleDrag, handleDrop, handleRemove, handleTriggerInput } = useUploadMedia(inputRef)
 
 const gridItems = computed<DynamicGridItems<UploadItem>>(() =>
-  [...media.viewImages].map((item) => ({
+  [...viewImages.value].map((item) => ({
     id: item.id,
     comName: `item-${item.id}`,
     data: item
@@ -46,11 +43,6 @@ const dragClassName = computed<string>(() => (dragged.value ? `upload-box-dragge
 const uploadItemHasRemove = (idx: number) => {}
 
 const handleClose = () => emits('onClose')
-
-const handleTriggerInput = () => {
-  if (!inputRef.value) return
-  inputRef.value.click()
-}
 
 const handleRemoveImage = (data?: UploadItem) => {
   if (!data) return

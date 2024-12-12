@@ -57,7 +57,7 @@ const handleSelect = (type: EProfileMenuType) => emits('onSelect', type)
       <template #body>
         <Row aligns="middle" justify="between">
           <Col>
-            <RouterLink :to="routePaths.PROFILE">
+            <RouterLink :to="routePaths.PROFILE" @click="handleBack">
               <Space aligns="middle">
                 <Avatar :size="35" :color="layout.color" />
                 <Paragraph>Profile</Paragraph>
