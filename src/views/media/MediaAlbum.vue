@@ -1,3 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Card } from '@/components/UI'
+import AlbumEmpty from '@/features/media/album/AlbumEmpty.vue';
+</script>
 
-<template>Album</template>
+<template>
+  <div class="album">
+    <Card></Card>
+    <AlbumEmpty />
+  </div>
+</template>

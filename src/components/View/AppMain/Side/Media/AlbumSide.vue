@@ -15,7 +15,7 @@ const layout = useLayoutStore()
 
 const inputRef = ref<HTMLInputElement | null>(null)
 
-const { handleTriggerInput } = useUploadMedia(inputRef)
+const { handleChange, handleTriggerInput } = useUploadMedia(inputRef)
 </script>
 
 <template>
@@ -28,7 +28,7 @@ const { handleTriggerInput } = useUploadMedia(inputRef)
     >
       <template #label>Album name</template>
     </InputComponent>
-    <input multiple ref="inputRef" type="file" class="hidden" />
+    <input multiple ref="inputRef" type="file" class="hidden" @input="handleChange" />
     <Space>
       <Button :color="layout.color" :shape="layout.shape" @click="handleTriggerInput">
         <Space aligns="middle">
