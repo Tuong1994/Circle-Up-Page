@@ -36,6 +36,7 @@
       height: calc($h-screen - $h-1 * 8);
       margin-top: $m-5 + 1;
       background: $bg-white;
+      box-shadow: 2px 2px 10px $bg-black-rgba-sm;
       border-radius: $rounded-lg;
       overflow: hidden;
       .side-head {

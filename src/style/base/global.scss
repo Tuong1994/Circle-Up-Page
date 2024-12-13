@@ -1,5 +1,6 @@
 .head.head-fixed {
   z-index: 4;
+  box-shadow: 2px 2px 10px $bg-black-rgba-sm;
   @include respond(mdTablet) {
     height: auto;
   }
@@ -15,6 +16,7 @@
     margin-top: $m-1;
     margin-left: $m-1;
     border-radius: $rounded-lg;
+    box-shadow: 2px 2px 10px $bg-black-rgba-sm;
     @include respond(mdTablet) {
       margin-top: $m-2;
       height: calc($h-screen - $h-1 * 10) !important;
@@ -71,7 +73,7 @@
 .card {
   border: unset !important;
   border-radius: $rounded-lg !important;
-  box-shadow: 0 0 5px $bg-gray;
+  box-shadow: 2px 2px 10px $bg-black-rgba-sm;
   .card-head,
   .card-body,
   .card-foot {
@@ -79,44 +81,50 @@
   }
 }
 
+.card-hoverable {
+  &:hover {
+    box-shadow: 2px 2px 10px $bg-black-rgba-lg !important;
+  }
+}
+
 .container-blue {
   .content.content-layout {
-    background: $bg-blue-rgba-sm;
+    background: $bg-blue-rgba-md;
   }
 }
 
 .container-red {
   .content.content-layout {
-    background: $bg-red-rgba-sm;
+    background: $bg-red-rgba-md;
   }
 }
 
 .container-green {
   .content.content-layout {
-    background: $bg-green-rgba-sm;
+    background: $bg-green-rgba-md;
   }
 }
 
 .container-orange {
   .content.content-layout {
-    background: $bg-orange-rgba-sm;
+    background: $bg-orange-rgba-md;
   }
 }
 
 .container-yellow {
   .content.content-layout {
-    background: $bg-yellow-rgba-sm;
+    background: $bg-yellow-rgba-md;
   }
 }
 
 .container-purple {
   .content.content-layout {
-    background: $bg-purple-rgba-sm;
+    background: $bg-purple-rgba-md;
   }
 }
 
 .container-pink {
   .content.content-layout {
-    background: $bg-pink-rgba-sm;
+    background: $bg-pink-rgba-md;
   }
 }

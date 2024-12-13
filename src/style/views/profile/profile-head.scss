@@ -4,6 +4,7 @@
   .head-wrap {
     background: $bg-white;
     padding: 0 $p-5;
+    box-shadow: 2px 2px 10px $bg-black-rgba-sm;
     border-bottom-left-radius: $rounded-lg;
     border-bottom-right-radius: $rounded-lg;
     .wrap-image {
