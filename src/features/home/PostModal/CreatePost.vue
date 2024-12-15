@@ -3,9 +3,8 @@ import { defineEmits, defineProps, ref } from 'vue'
 import { Space, Avatar, Typography, Grid, Card, Tooltip, Button, Icon } from '@/components/UI'
 import { TextArea } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
-import { EActionType } from './enum'
-import type { ActionType } from './PostModal.vue'
-import type { ComponentColor } from '@/common/type'
+import { EPostActionType } from '@/services/post/enums'
+import type { PostAction, PostActionType } from '@/services/post/type'
 import type { ControlShape, ControlColor } from '@/components/Control/type'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
@@ -20,15 +19,8 @@ const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
-type Action = {
-  type: ActionType
-  name: string
-  icon: string
-  iconColor: Exclude<ComponentColor, 'white' | 'gray'>
-}
-
 interface CreatePostProps {
-  actionType: ActionType
+  actionType: PostActionType
   buttonProps: ButtonProps
 }
 
@@ -42,22 +34,22 @@ const t = useLangStore()
 
 const isUpload = ref<boolean>(false)
 
-const actions: Action[] = [
+const actions: PostAction[] = [
   {
-    type: EActionType.PHOTO,
+    type: EPostActionType.PHOTO,
     name: t.lang.home.modal.createPost.photo,
     icon: iconName.IMAGE,
     iconColor: 'green'
   },
-  { type: EActionType.TAG, name: t.lang.home.modal.createPost.tag, icon: iconName.TAG, iconColor: 'blue' },
+  { type: EPostActionType.TAG, name: t.lang.home.modal.createPost.tag, icon: iconName.TAG, iconColor: 'blue' },
   {
-    type: EActionType.FEELING,
+    type: EPostActionType.FEELING,
     name: t.lang.home.modal.createPost.feeling,
     icon: iconName.LAUGH,
     iconColor: 'yellow'
   },
   {
-    type: EActionType.CHECK_IN,
+    type: EPostActionType.CHECK_IN,
     name: t.lang.home.modal.createPost.checkin,
     icon: iconName.MAP_MARKER_ALT,
     iconColor: 'pink'
@@ -68,8 +60,8 @@ const handleBack = () => emits('onBack')
 
 const handleClose = () => emits('onClose')
 
-const handleAction = (type: ActionType) => {
-  if (type === EActionType.PHOTO) return (isUpload.value = !isUpload.value)
+const handleAction = (type: PostActionType) => {
+  if (type === EPostActionType.PHOTO) return (isUpload.value = !isUpload.value)
   emits('onAction', type)
 }
 </script>
@@ -81,7 +73,7 @@ const handleAction = (type: ActionType) => {
       <Avatar :size="45" />
       <div>
         <Paragraph>User name</Paragraph>
-        <AudiencesButton sizes="sm" @click="() => handleAction(EActionType.AUDIENCE)" />
+        <AudiencesButton sizes="sm" @click="() => handleAction(EPostActionType.AUDIENCE)" />
       </div>
     </Space>
     <div class="py-5 create-post-content">
@@ -91,7 +83,7 @@ const handleAction = (type: ActionType) => {
         :shape="(layout.shape as ControlShape)"
         :placeholder="`${t.lang.home.modal.createPost.placeholder}, User name?`"
       />
-      <PostUpload v-if="isUpload" @onClose="() => handleAction(EActionType.PHOTO)" />
+      <PostUpload v-if="isUpload" @onClose="() => handleAction(EPostActionType.PHOTO)" />
     </div>
     <Card>
       <template #body>

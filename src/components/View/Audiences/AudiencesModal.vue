@@ -5,7 +5,7 @@ import ModalLayout from '@/components/View/ModalLayout/ModalLayout.vue'
 import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
 import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
 import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
-import Audiences from '@/components/View/Audiences/Audiences.vue'
+import AudiencesContent from './AudiencesContent.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 
@@ -28,9 +28,9 @@ const handleClose = () => emits('onClose')
 
 <template>
   <ModalLayout :open="open" @onClose="handleClose">
-    <ModalLayoutHead :title="t.lang.profile.about.audience" @onClose="handleClose" />
+    <ModalLayoutHead :title="t.lang.common.audiences.modal.title" @onClose="handleClose" />
     <ModalLayoutBody>
-      <Audiences />
+      <AudiencesContent />
     </ModalLayoutBody>
     <ModalLayoutFoot>
       <Space justify="end">

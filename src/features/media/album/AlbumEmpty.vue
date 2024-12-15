@@ -19,7 +19,7 @@ const layout = useLayoutStore()
       <Space justify="center" rootClassName="mb-5">
         <Icon :size="50" :iconName="iconName.IMAGE" :color="layout.color" />
       </Space>
-      <Paragraph :size="18" :weight="600" aligns="center"> Album's photos will showing here </Paragraph>
+      <Paragraph :size="18" :weight="600" aligns="center"> Add photos to album </Paragraph>
     </div>
   </div>
 </template>

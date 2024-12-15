@@ -14,11 +14,11 @@ const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
-interface AudiencesProps {
+interface AudiencesContentProps {
   defaultType?: EAudienceType
 }
 
-const props = withDefaults(defineProps<AudiencesProps>(), {
+const props = withDefaults(defineProps<AudiencesContentProps>(), {
   defaultType: EAudienceType.PUBLIC
 })
 

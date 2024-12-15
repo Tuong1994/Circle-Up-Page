@@ -47,6 +47,9 @@ const common_en = {
     follow: 'Follow'
   },
   audiences: {
+    modal: {
+      title: 'Select audience'
+    },
     friends: {
       title: 'Friends',
       desc: 'Anyone on or off Circle Up'

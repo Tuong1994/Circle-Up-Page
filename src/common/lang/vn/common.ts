@@ -47,6 +47,9 @@ const common_vn = {
     follow: 'Theo dõi'
   },
   audiences: {
+    modal: {
+      title: 'Chọn đối tượng'
+    },
     friends: {
       title: 'Bạn bè',
       desc: 'Bất kỳ ai trên hoặc ngoài Circle Up'

@@ -4,7 +4,7 @@ import type { UploadItem, UploadItems } from '@/components/Control/type'
 import useMediaStore from '@/stores/MediaStore'
 import utils from '@/utils'
 
-const useUploadMedia = (inputRef: Ref<HTMLInputElement | null>) => {
+const useUploadMedia = (inputRef?: Ref<HTMLInputElement | null>) => {
   const media = useMediaStore()
 
   const { images, viewImages } = storeToRefs(media)
@@ -17,7 +17,7 @@ const useUploadMedia = (inputRef: Ref<HTMLInputElement | null>) => {
   }
 
   const onRemoveInputFile = (image: UploadItem) => {
-    const inputEl = inputRef.value
+    const inputEl = inputRef?.value
     if (media.images.length && inputEl && inputEl.files) {
       const fileTransfer = new DataTransfer()
       const UploadItems: File[] = Array.from(inputEl.files)
@@ -63,7 +63,7 @@ const useUploadMedia = (inputRef: Ref<HTMLInputElement | null>) => {
   }
 
   const handleTriggerInput = () => {
-    if (!inputRef.value) return
+    if (!inputRef?.value) return
     inputRef.value.click()
   }
 

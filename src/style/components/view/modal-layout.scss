@@ -58,3 +58,16 @@
     z-index: 5;
   }
 }
+
+.modal-layout-content {
+  padding: $p-1 0;
+  max-height: calc($h-screen - 250px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  @include respond(mdTablet) {
+    max-height: calc($h-screen - 200px);
+  }
+  @include respond(mdPhone) {
+    max-height: calc($h-screen - 200px);
+  }
+}

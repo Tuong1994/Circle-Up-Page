@@ -3,12 +3,13 @@ import { computed, defineProps, defineEmits } from 'vue'
 import { Button, Icon, Grid, Space, Avatar } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
-import { EFeeling } from './enum'
 import type { ControlColor, ControlShape } from '@/components/Control/type'
 import type { ButtonProps } from '@/components/UI/Button/Button.vue'
+import { EFeeling } from '@/services/post/enums'
 import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
 import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
 import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
+import ModalLayoutContent from '@/components/View/ModalLayout/ModalLayoutContent.vue'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
@@ -131,7 +132,7 @@ const handleBack = () => emits('onBack')
         </template>
       </Input>
     </div>
-    <div class="post-content">
+    <ModalLayoutContent>
       <Row v-for="(groups, idx) in feelings" :key="idx" justify="between" aligns="middle">
         <Col v-for="group in groups" :key="group.title" :xs="24" :md="12" :lg="12" :span="12">
           <ItemWrapper>
@@ -144,7 +145,7 @@ const handleBack = () => emits('onBack')
           </ItemWrapper>
         </Col>
       </Row>
-    </div>
+    </ModalLayoutContent>
   </ModalLayoutBody>
   <ModalLayoutFoot>
     <Button v-bind="buttonProps">

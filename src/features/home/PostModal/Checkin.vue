@@ -8,6 +8,7 @@ import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
 import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
 import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
+import ModalLayoutContent from '@/components/View/ModalLayout/ModalLayoutContent.vue'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
@@ -43,11 +44,11 @@ const handleBack = () => emits('onBack')
         </template>
       </Input>
     </div>
-    <div class="post-content">
+    <ModalLayoutContent>
       <ItemWrapper v-for="item in 10">
         <Paragraph>Ho Chi Minh, Viet Nam</Paragraph>
       </ItemWrapper>
-    </div>
+    </ModalLayoutContent>
   </ModalLayoutBody>
   <ModalLayoutFoot>
     <Button v-bind="buttonProps">

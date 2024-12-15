@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useViewPoint } from '@/hooks'
 import AboutDesktop from '@/features/profile/components/ProfileAbout/AboutDesktop/AboutDesktop.vue'
-import AudiencesModal from '@/features/profile/components/ProfileAbout/Common/AudiencesModal.vue'
+import AudiencesModal from '@/components/View/Audiences/AudiencesModal.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useProfileStore from '@/features/profile/store/ProfileStore'
 import AboutMobile from '@/features/profile/components/ProfileAbout/AboutMobile/AboutMobile.vue'

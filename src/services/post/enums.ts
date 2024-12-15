@@ -1,4 +1,4 @@
-export enum EActionType {
+export enum EPostActionType {
   PHOTO = 'photo',
   TAG = 'tag',
   FEELING = 'feeling',
@@ -62,5 +62,5 @@ export enum EFeeling {
   WALKING,
   RUNNING,
   RESTING,
-  WORKING_ON,
+  WORKING_ON
 }

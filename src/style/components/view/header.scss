@@ -25,6 +25,9 @@
       }
       .control-box {
         width: $w-full;
+        .input-group {
+          box-shadow: 2px 2px 5px $bg-black-rgba-sm;
+        }
       }
       .control-dropdown {
         min-width: max-content;
@@ -34,7 +37,7 @@
         padding: $p-1;
         background: $bg-white;
         border-radius: $rounded;
-        box-shadow: 0 0 5px $bg-black-rgba-xs;
+        box-shadow: 2px 2px 10px $bg-black-rgba-xs;
         overflow-y: auto;
         position: absolute;
         top: 80%;
@@ -99,6 +102,7 @@
     }
     .navbar-item-active {
       .item-title {
+        box-shadow: 2px 2px 5px $bg-black-rgba-sm;
         path {
           color: $text-white;
         }

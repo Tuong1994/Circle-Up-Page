@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import { Card } from '@/components/UI'
-import AlbumEmpty from '@/features/media/album/AlbumEmpty.vue';
+import { computed } from 'vue'
+import AlbumList from '@/features/media/album/AlbumList.vue'
+import AlbumEmpty from '@/features/media/album/AlbumEmpty.vue'
+import useMediaStore from '@/stores/MediaStore'
+
+const media = useMediaStore()
+
+const isEmpty = computed<boolean>(() => !media.viewImages.length)
 </script>
 
 <template>
   <div class="album">
-    <Card></Card>
-    <AlbumEmpty />
+    <AlbumEmpty v-if="isEmpty" />
+    <AlbumList v-else />
   </div>
 </template>

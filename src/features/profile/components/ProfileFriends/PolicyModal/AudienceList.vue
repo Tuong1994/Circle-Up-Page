@@ -2,7 +2,7 @@
 import { defineEmits } from 'vue'
 import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
 import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
-import Audiences from '@/components/View/Audiences/Audiences.vue';
+import AudiencesContent from '@/components/View/Audiences/AudiencesContent.vue';
 import useLangStore from '@/stores/LangStore';
 
 const emits = defineEmits(['onBack'])
@@ -15,6 +15,6 @@ const handleBack = () => emits('onBack')
 <template>
   <ModalLayoutHead :title="t.lang.profile.about.audience" type="sub" @onBack="handleBack" />
   <ModalLayoutBody>
-    <Audiences />
+    <AudiencesContent />
   </ModalLayoutBody>
 </template>

@@ -5,7 +5,7 @@ import type { ButtonProps } from '@/components/UI/Button/Button.vue'
 import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
 import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
 import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
-import Audiences from '@/components/View/Audiences/Audiences.vue'
+import AudiencesContent from '@/components/View/Audiences/AudiencesContent.vue'
 import useLangStore from '@/stores/LangStore'
 
 interface PostAudienceProps {
@@ -37,7 +37,7 @@ const handleBack = () => emits('onBack')
     </Paragraph>
     <Divider />
     <div class="post-content">
-      <Audiences />
+      <AudiencesContent />
     </div>
   </ModalLayoutBody>
   <ModalLayoutFoot>
