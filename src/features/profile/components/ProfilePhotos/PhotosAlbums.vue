@@ -6,7 +6,7 @@ import PhotosItem from './PhotosItem.vue'
 </script>
 
 <template>
-  <ListGrid :span="6">
+  <ListGrid :xs="2" :md="3" :lg="5" :span="6">
     <PhotosControl label="Create album" :path="routePaths.MEDIA_ALBUM" />
     <PhotosItem
       v-for="item in 10"

@@ -110,7 +110,8 @@ const common_vn = {
       school: 'Trường học',
       relationship: 'Mối quan hệ',
       position: 'Chức vụ',
-      desc: 'Mô tả'
+      desc: 'Mô tả',
+      albumName: 'Tên album'
     },
     placeholder: {
       enter: 'Nhập thông tin',

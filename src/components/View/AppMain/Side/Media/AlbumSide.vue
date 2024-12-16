@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, type StyleValue } from 'vue'
 import { Button, Divider, Icon, Space, Tooltip } from '@/components/UI'
 import { Input as InputComponent, TextArea } from '@/components/Control'
 import { routePaths } from '@/router'
 import { iconName } from '@/components/UI/Icon/constant'
-import { useUploadMedia } from '@/hooks'
+import { useUploadMedia, useViewPoint } from '@/hooks'
 import { EPostActionType } from '@/services/post/enums'
+import { breakpoint } from '@/hooks/useViewPoint'
 import type { ControlShape, ControlColor } from '@/components/Control/type'
 import type { PostAction } from '@/services/post/type'
 import ContentHead from '../../Components/ContentHead.vue'
@@ -14,14 +15,28 @@ import AudiencesModal from '@/components/View/Audiences/AudiencesModal.vue'
 import CheckinModal from './CheckinModal.vue'
 import TagPeopleModal from './TagPeopleModal.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
+import AlbumList from '@/features/media/album/AlbumList.vue'
 
 const layout = useLayoutStore()
 
+const t = useLangStore()
+
+const { screenWidth } = useViewPoint()
+
+const { MD_TABLET } = breakpoint
+
 const inputRef = ref<HTMLInputElement | null>(null)
 
-const { handleChange, handleTriggerInput } = useUploadMedia(inputRef)
+const { viewImages, handleChange, handleTriggerInput } = useUploadMedia(inputRef)
 
 const actionType = ref<EPostActionType>()
+
+const isMobile = computed<boolean>(() => screenWidth.value < MD_TABLET)
+
+const renderList = computed<boolean>(() => viewImages.value.length > 0 && isMobile.value)
+
+const bodyStyle = computed<StyleValue>(() => (isMobile.value ? { height: 'auto' } : undefined))
 
 const actions = computed<PostAction[]>(() => [
   { type: EPostActionType.AUDIENCE, name: 'Public', icon: iconName.GLOBE },
@@ -35,10 +50,14 @@ const handleCloseModal = () => (actionType.value = undefined)
 </script>
 
 <template>
-  <ContentHead :hasSubLink="false" :backPath="routePaths.PROFILE"> Create album </ContentHead>
-  <ContentBody>
+  <ContentHead :hasSubLink="false" :backPath="routePaths.PROFILE">
+    {{ t.lang.media.album.side.title }}
+  </ContentHead>
+  <ContentBody :rootStyle="bodyStyle">
     <InputComponent :color="(layout.color as ControlColor)" :shape="(layout.shape as ControlShape)">
-      <template #label>Album name</template>
+      <template #label>
+        {{ t.lang.common.form.label.albumName }}
+      </template>
     </InputComponent>
     <TextArea
       rootClassName="my-5"
@@ -46,14 +65,16 @@ const handleCloseModal = () => (actionType.value = undefined)
       :color="(layout.color as ControlColor)"
       :shape="(layout.shape as ControlShape)"
     >
-      <template #label>Description</template>
+      <template #label>
+        {{ t.lang.common.form.label.desc }}
+      </template>
     </TextArea>
     <input multiple ref="inputRef" type="file" class="hidden" @input="handleChange" />
     <Space>
       <Button :color="layout.color" :shape="layout.shape" @click="handleTriggerInput">
         <Space aligns="middle">
           <Icon :iconName="iconName.IMAGE" />
-          <span>Upload Photos</span>
+          <span>{{ t.lang.media.actions.upload }}</span>
         </Space>
       </Button>
       <Tooltip v-for="action in actions" :key="action.type">
@@ -72,8 +93,14 @@ const handleCloseModal = () => (actionType.value = undefined)
         </template>
       </Tooltip>
     </Space>
+    <template v-if="renderList">
+      <Divider />
+      <AlbumList :hasTitle="false" />
+    </template>
     <Divider />
-    <Button :color="layout.color" :shape="layout.shape" rootClassName="w-full" sizes="lg"> Post </Button>
+    <Button :color="layout.color" :shape="layout.shape" rootClassName="w-full" sizes="lg">
+      {{ t.lang.media.actions.post }}
+    </Button>
   </ContentBody>
   <AudiencesModal :open="actionType === EPostActionType.AUDIENCE" @onClose="handleCloseModal" />
   <TagPeopleModal :open="actionType === EPostActionType.TAG" @onClose="handleCloseModal" />

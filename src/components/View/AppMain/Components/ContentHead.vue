@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watchEffect, withDefaults, defineProps, ref, computed } from 'vue'
+import { watchEffect, withDefaults, defineProps, ref, computed, type StyleValue } from 'vue'
 import { Space, Button, Icon, Typography } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
@@ -12,6 +12,8 @@ import useLangStore from '@/stores/LangStore'
 const { Paragraph } = Typography
 
 interface ContentHeadProps {
+  rootClassName?: string
+  rootStyle?: StyleValue
   hasSubLink?: boolean
   hasSearch?: boolean
   subLinkTitle?: string
@@ -21,6 +23,7 @@ interface ContentHeadProps {
 }
 
 const props = withDefaults(defineProps<ContentHeadProps>(), {
+  rootClassName: '',
   hasSubLink: true,
   backPath: routePaths.FRIENDS,
   subLinkPath: routePaths.FRIENDS
@@ -48,7 +51,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div ref="contentHeadRef" class="side-content-head">
+  <div ref="contentHeadRef" :style="rootStyle" :class="['side-content-head', rootClassName]">
     <Space aligns="middle">
       <RouterLink :to="backPath">
         <Button shape="round">

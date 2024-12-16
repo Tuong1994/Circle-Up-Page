@@ -1,5 +1,5 @@
 .photos-item {
-  width: $w-10 * 1.5;
+  width: auto;
   .item-image {
     width: $w-full;
     height: $h-10 * 1.5;
@@ -19,7 +19,7 @@
 }
 
 .photos-control {
-  width: $w-10 * 1.5;
+  width: auto;
   cursor: pointer;
   .control-icon {
     width: $w-full;

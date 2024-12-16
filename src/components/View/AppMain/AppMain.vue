@@ -8,12 +8,12 @@ import { breakpoint } from '@/hooks/useViewPoint'
 import Header from '../Header/Header.vue'
 import HomeMenu from './Side/HomeMenu.vue'
 import FriendsMenu from './Side/FriendsMenu/FriendsMenu.vue'
+import AlbumSide from './Side/Media/AlbumSide.vue'
 import CommentModal from '../Comment/CommentModal.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useCommentStore from '../Comment/CommentStore'
 import useRenderSide from './hooks/useRenderSide'
 import useRenderHeader from './hooks/useRenderHeader'
-import AlbumSide from './Side/Media/AlbumSide.vue'
 
 const { Container, Head, Body, Side, Content } = Layout
 

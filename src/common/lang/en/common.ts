@@ -111,6 +111,7 @@ const common_en = {
       relationship: 'Relationship',
       position: 'Position',
       desc: 'Description',
+      albumName: 'Album name'
     },
     placeholder: {
       enter: 'Enter infomation',

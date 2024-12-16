@@ -22,7 +22,7 @@ withDefaults(defineProps<PhotosItemProps>(), {
 <template>
   <RouterLink :to="path" class="photos-item">
     <div class="item-image">
-      <Image :src="defaultImg" rootClassName="image-view" imgWidth="100%" imgHeight="100%" />
+      <Image :src="defaultImg" rootClassName="image-view" imgWidth="100%" imgHeight="100%" objectFit="cover" />
     </div>
     <div v-if="hasDesc" class="item-desc">
       <Paragraph :weight="600" rootClassName="desc-content">

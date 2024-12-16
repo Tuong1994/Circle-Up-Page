@@ -9,7 +9,7 @@
   }
   .album-list {
     .list-item {
-      height: $h-10 * 3.5;
+      height: $h-10 * 3;
       position: relative;
       .item-remove {
         position: absolute;
@@ -18,8 +18,19 @@
         z-index: 1;
       }
       @include respond(mdTablet) {
-        height: $h-10 * 3
+        height: $h-10 * 3;
+      }
+      @include respond(mdPhone) {
+        height: $h-10 * 1.5;
       }
     }
   }
+}
+
+.album-mobile {
+  width: $w-full;
+  margin-top: $m-2;
+  min-height: $h-screen;
+  background: $bg-white;
+  border-radius: $rounded-lg;
 }
