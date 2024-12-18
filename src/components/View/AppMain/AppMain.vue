@@ -31,7 +31,7 @@ const renderHeader = useRenderHeader()
 
 const responsive = computed<boolean>(() => screenWidth.value < MD_TABLET)
 
-const renderSide = useRenderSide(responsive.value)
+const renderSide = useRenderSide(responsive)
 
 const colorClassName = computed<string>(() => `container-${layout.color}`)
 

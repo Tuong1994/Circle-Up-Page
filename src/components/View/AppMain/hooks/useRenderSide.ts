@@ -1,19 +1,17 @@
-import { ref, watch } from 'vue'
+import { ref, watch, type ComputedRef } from 'vue'
 import { routeNames } from '@/router'
 import { useRouter } from 'vue-router'
 import useAppMainStore from '../AppMainStore'
 
-const useRenderSide = (responsive: boolean) => {
+const useRenderSide = (responsive: ComputedRef<boolean>) => {
   const { currentRoute } = useRouter()
 
   const app = useAppMainStore()
 
-  const isReponsive = ref<boolean>(responsive)
-
   const renderSide = ref<boolean>(true)
 
   watch(
-    [currentRoute, isReponsive],
+    [currentRoute, responsive],
     ([newRoute, newResponsive]) => {
       const pathName = newRoute.name
       const path = newRoute.fullPath
