@@ -24,7 +24,7 @@ const items = computed<RouterItems>(() => [
 
 <template>
   <ContentBody>
-    <MenuItem v-for="item in items" :key="item.id" :path="item.path" :icon="item.iconName">
+    <MenuItem v-for="item in items" :key="item.id" :path="item.path" :icon="String(item.iconName)">
       {{ item.name }}
     </MenuItem>
   </ContentBody>

@@ -7,10 +7,6 @@ import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
 
-interface AlbumEmptyProps {}
-
-defineProps<AlbumEmptyProps>()
-
 const t = useLangStore()
 
 const layout = useLayoutStore()

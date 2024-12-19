@@ -15,7 +15,7 @@ defineProps<PhotosControlProps>()
 </script>
 
 <template>
-  <RouterLink :to="path" class="photos-control">
+  <RouterLink :to="String(path)" class="photos-control">
     <div class="control-icon">
       <Icon :iconName="iconName.PLUS" :size="30" rootClassName="icon" />
     </div>

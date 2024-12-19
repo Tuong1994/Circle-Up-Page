@@ -34,7 +34,7 @@ const items = computed<RouterItems>(() => [
       {{ t.lang.friends.sideMenu.friends }}
     </Paragraph>
     <Divider />
-    <MenuItem v-for="item in items" :key="item.id" :path="item.path" :icon="item.iconName">
+    <MenuItem v-for="item in items" :key="item.id" :path="item.path" :icon="String(item.iconName)">
       {{ item.name }}
     </MenuItem>
   </div>

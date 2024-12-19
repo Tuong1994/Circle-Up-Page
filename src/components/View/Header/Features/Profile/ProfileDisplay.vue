@@ -13,7 +13,7 @@ const t = useLangStore()
 
 const layout = useLayoutStore()
 
-const colors = computed(() => ['blue', 'green', 'red', 'orange', 'purple', 'pink'])
+const colors = computed<LayoutColor[]>(() => ['blue', 'green', 'red', 'orange', 'purple', 'pink'])
 
 const handleBack = () => emits('onBack')
 

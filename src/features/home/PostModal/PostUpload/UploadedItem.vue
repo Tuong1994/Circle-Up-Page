@@ -6,7 +6,7 @@ import type { UploadItem } from '@/components/Control/type'
 import type { DynamicGridItem } from '@/components/UI/DynamicGrid/type'
 
 interface UploadedItemProps {
-  item: DynamicGridItem<UploadItem>
+  item: DynamicGridItem
   hasRemove?: boolean
 }
 

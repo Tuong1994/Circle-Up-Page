@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, withDefaults, defineProps } from 'vue'
 import { Typography, DynamicGrid } from '@/components/UI'
+import type { DynamicGridItems } from '@/components/UI/DynamicGrid/type'
 import PostMedia from './PostMedia.vue'
 
 const { Paragraph } = Typography
@@ -13,17 +14,17 @@ withDefaults(defineProps<PostBodyProps>(), {
   hasMediaContent: true
 })
 
-const items = computed(() => [
-  { id: '1', comName: 'item-1', url: '/default.jpg' },
-  { id: '2', comName: 'item-2', url: '/default.jpg' },
-  { id: '3', comName: 'item-3', url: '/default.jpg' },
-  { id: '4', comName: 'item-4', url: '/default.jpg' },
-  { id: '5', comName: 'item-5', url: '/default.jpg' },
-  { id: '6', comName: 'item-6', url: '/default.jpg' },
-  { id: '7', comName: 'item-7', url: '/default.jpg' },
-  { id: '8', comName: 'item-8', url: '/default.jpg' },
-  { id: '9', comName: 'item-9', url: '/default.jpg' },
-  { id: '10', comName: 'item-10', url: '/default.jpg' }
+const items = computed<DynamicGridItems>(() => [
+  { id: '1', comName: 'item-1' },
+  { id: '2', comName: 'item-2' },
+  { id: '3', comName: 'item-3' },
+  { id: '4', comName: 'item-4' },
+  { id: '5', comName: 'item-5' },
+  { id: '6', comName: 'item-6' },
+  { id: '7', comName: 'item-7' },
+  { id: '8', comName: 'item-8' },
+  { id: '9', comName: 'item-9' },
+  { id: '10', comName: 'item-10' }
 ])
 </script>
 
@@ -37,19 +38,19 @@ const items = computed(() => [
     <DynamicGrid :items="items">
       <template #content="content">
         <template v-for="item in items" :key="item.id">
-          <PostMedia v-if="content.comName === item.comName" :url="item.url" />
+          <PostMedia v-if="content.comName === item.comName" url="/default.jpg" />
         </template>
       </template>
 
       <template #contentLeft="content">
         <template v-for="item in content.items" :key="item.id">
-          <PostMedia v-if="content.comName === item.comName" :url="item.url" />
+          <PostMedia v-if="content.comName === item.comName" url="/default.jpg" />
         </template>
       </template>
 
       <template #contentRight="content">
         <template v-for="item in content.items" :key="item.id">
-          <PostMedia v-if="content.comName === item.comName" :url="item.url" />
+          <PostMedia v-if="content.comName === item.comName" url="/default.jpg" />
         </template>
       </template>
     </DynamicGrid>

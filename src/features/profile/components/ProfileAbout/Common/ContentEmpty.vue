@@ -19,7 +19,7 @@ withDefaults(defineProps<ContentEmptyProps>(), {
 <template>
   <RowContent>
     <template #label>
-      <Icon :icon="icon" :size="18" />
+      <Icon :iconName="icon" :size="18" />
     </template>
     <template #content>
       <Paragraph :size="15">{{ message }}</Paragraph>

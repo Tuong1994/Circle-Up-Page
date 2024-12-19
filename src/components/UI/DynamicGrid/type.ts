@@ -1,7 +1,7 @@
-export type DynamicGridItem<M = unknown> = {
+export type DynamicGridItem = {
   id: string
   comName: string
-  data?: M
+  data?: any
 }
 
-export type DynamicGridItems<M = unknown> = DynamicGridItem<M>[]
+export type DynamicGridItems = DynamicGridItem[]

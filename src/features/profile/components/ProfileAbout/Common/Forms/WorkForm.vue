@@ -2,7 +2,7 @@
 import { computed, ref, withDefaults, defineEmits, defineProps } from 'vue'
 import { Space, Typography } from '@/components/UI'
 import { Input, Select, TextArea, CheckBox } from '@/components/Control'
-import type { ControlColor, ControlShape } from '@/components/Control/type'
+import type { ClickBoxColor, ControlColor, ControlShape } from '@/components/Control/type'
 import type { ProfileWork } from '@/features/profile/type'
 import ControlLayout from './ControlLayout.vue'
 import DateFilters from '../../../DateFilters/DateFilters.vue'
@@ -98,7 +98,13 @@ const handleSaveEdit = () => emits('onSave')
     <Paragraph :weight="600" :size="16" rootClassName="mb-5">
       {{ t.lang.profile.about.tabsContent.period }}
     </Paragraph>
-    <CheckBox v-bind="commonProps" :checked="formData.isCurrentJob" @onCheck="handleCheck">
+    <CheckBox
+      rootClassName="mb-5"
+      :color="(layout.color as ClickBoxColor)"
+      :shape="(layout.shape as ControlShape)"
+      :checked="formData.isCurrentJob"
+      @onCheck="handleCheck"
+    >
       {{ t.lang.profile.about.tabsContent.currentJob }}
     </CheckBox>
     <Space>

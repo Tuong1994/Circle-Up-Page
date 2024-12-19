@@ -12,10 +12,6 @@ const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
-interface FriendsItemProps {}
-
-defineProps<FriendsItemProps>()
-
 const t = useLangStore()
 
 const layout = useLayoutStore()

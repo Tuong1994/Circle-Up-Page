@@ -4,7 +4,7 @@ import { Grid, Icon, Space, Typography } from '@/components/UI'
 import { Radio } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EAudienceType } from './enum'
-import type { ControlColor } from '@/components/Control/type'
+import type { ClickBoxColor } from '@/components/Control/type'
 import type { Audience } from './type'
 import ItemWrapper from '../ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
@@ -72,7 +72,11 @@ const handleSelect = (value: EAudienceType) => (selectedType.value = value)
         </Space>
       </Col>
       <Col>
-        <Radio name="audience" :checked="isSelected(audience.type)" :color="(layout.color as ControlColor)" />
+        <Radio
+          name="audience"
+          :checked="isSelected(audience.type)"
+          :color="(layout.color as ClickBoxColor)"
+        />
       </Col>
     </Row>
   </ItemWrapper>

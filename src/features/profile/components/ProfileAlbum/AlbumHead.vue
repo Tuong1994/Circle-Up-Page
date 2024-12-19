@@ -3,10 +3,6 @@ import { withDefaults, defineProps } from 'vue'
 import { Typography, Card } from '@/components/UI'
 
 const { Paragraph } = Typography
-
-interface AlbumHeadProps {}
-
-withDefaults(defineProps<AlbumHeadProps>(), {})
 </script>
 
 <template>

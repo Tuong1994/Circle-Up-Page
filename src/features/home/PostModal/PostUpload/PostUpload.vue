@@ -12,10 +12,6 @@ import useUploadMedia from '@/hooks/useUploadMedia'
 
 const { Paragraph } = Typography
 
-interface PostUploadProps {}
-
-defineProps<PostUploadProps>()
-
 const emits = defineEmits(['onClose'])
 
 const t = useLangStore()
@@ -24,9 +20,10 @@ const layout = useLayoutStore()
 
 const inputRef = ref<HTMLInputElement | null>(null)
 
-const { dragged, viewImages, handleChange, handleDrag, handleDrop, handleRemove, handleTriggerInput } = useUploadMedia(inputRef)
+const { dragged, viewImages, handleChange, handleDrag, handleDrop, handleRemove, handleTriggerInput } =
+  useUploadMedia(inputRef)
 
-const gridItems = computed<DynamicGridItems<UploadItem>>(() =>
+const gridItems = computed<DynamicGridItems>(() =>
   [...viewImages.value].map((item) => ({
     id: item.id,
     comName: `item-${item.id}`,
@@ -40,7 +37,10 @@ const colorClassName = computed<string>(() => `post-upload-${layout.color}`)
 
 const dragClassName = computed<string>(() => (dragged.value ? `upload-box-dragged` : ''))
 
-const uploadItemHasRemove = (idx: number) => {}
+const uploadItemHasRemove = (idx: number) => {
+  if (idx < 4) return true
+  return false
+}
 
 const handleClose = () => emits('onClose')
 

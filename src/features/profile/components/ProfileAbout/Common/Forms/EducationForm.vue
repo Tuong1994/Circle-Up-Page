@@ -2,7 +2,7 @@
 import { defineProps, defineEmits, withDefaults, ref, computed } from 'vue'
 import { Input, TextArea, CheckBox } from '@/components/Control'
 import { Typography, Space } from '@/components/UI'
-import type { ControlColor, ControlShape } from '@/components/Control/type'
+import type { ClickBoxColor, ControlColor, ControlShape } from '@/components/Control/type'
 import type { ProfileEducation } from '@/features/profile/type'
 import ControlLayout from './ControlLayout.vue'
 import DateFilters from '../../../DateFilters/DateFilters.vue'
@@ -101,7 +101,13 @@ const handleSaveEdit = () => emits('onSave')
         @onSelectDate="handleSelectDateEnd"
       />
     </Space>
-    <CheckBox v-bind="commonProps" :checked="formData.isGraduated" @onCheck="handleCheck">
+    <CheckBox
+      rootClassName="mb-5"
+      :color="(layout.color as ClickBoxColor)"
+      :shape="(layout.shape as ControlShape)"
+      :checked="formData.isGraduated"
+      @onCheck="handleCheck"
+    >
       {{ t.lang.profile.about.tabsContent.graduated }}
     </CheckBox>
     <TextArea v-bind="commonProps" v-model:modelValue="formData.desc">
