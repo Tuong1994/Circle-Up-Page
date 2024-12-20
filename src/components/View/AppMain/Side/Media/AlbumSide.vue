@@ -12,11 +12,11 @@ import type { PostAction } from '@/services/post/type'
 import ContentHead from '../../Components/ContentHead.vue'
 import ContentBody from '../../Components/ContentBody.vue'
 import AudiencesModal from '@/components/View/Audiences/AudiencesModal.vue'
+import AlbumList from '@/features/media/album/AlbumList.vue'
 import CheckinModal from './CheckinModal.vue'
 import TagPeopleModal from './TagPeopleModal.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
-import AlbumList from '@/features/media/album/AlbumList.vue'
 
 const layout = useLayoutStore()
 

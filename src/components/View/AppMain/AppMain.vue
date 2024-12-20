@@ -10,10 +10,12 @@ import HomeMenu from './Side/HomeMenu.vue'
 import FriendsMenu from './Side/FriendsMenu/FriendsMenu.vue'
 import AlbumSide from './Side/Media/AlbumSide.vue'
 import CommentModal from '../Comment/CommentModal.vue'
+import PostModal from '../PostModal/PostModal.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useCommentStore from '../Comment/CommentStore'
 import useRenderSide from './hooks/useRenderSide'
 import useRenderHeader from './hooks/useRenderHeader'
+import usePostStore from '@/stores/PostStore'
 
 const { Container, Head, Body, Side, Content } = Layout
 
@@ -27,6 +29,8 @@ const layout = useLayoutStore()
 
 const comment = useCommentStore()
 
+const post = usePostStore()
+
 const renderHeader = useRenderHeader()
 
 const responsive = computed<boolean>(() => screenWidth.value < MD_TABLET)
@@ -38,6 +42,8 @@ const colorClassName = computed<string>(() => `container-${layout.color}`)
 const contentClassName = computed<string>(() => (!renderSide.value ? 'content-full' : ''))
 
 const handleCloseCommentModal = () => comment.setOpenModal(false)
+
+const handleClosePostModal = () => post.setOpenModal(false)
 </script>
 
 <template>
@@ -57,4 +63,5 @@ const handleCloseCommentModal = () => comment.setOpenModal(false)
     </Body>
   </Container>
   <CommentModal :open="comment.openModal" @onClose="handleCloseCommentModal" />
+  <PostModal :open="post.openModal" @onClose="handleClosePostModal" />
 </template>

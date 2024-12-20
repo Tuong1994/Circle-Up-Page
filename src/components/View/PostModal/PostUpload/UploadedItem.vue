@@ -2,7 +2,6 @@
 import { defineProps, defineEmits, withDefaults } from 'vue'
 import { Icon, Button, Image } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
-import type { UploadItem } from '@/components/Control/type'
 import type { DynamicGridItem } from '@/components/UI/DynamicGrid/type'
 
 interface UploadedItemProps {
