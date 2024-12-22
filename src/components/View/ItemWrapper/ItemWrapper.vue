@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { withDefaults, defineProps, computed } from 'vue'
-import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLayoutStore, { type LayoutShape } from '@/components/UI/Layout/LayoutStore'
 
 interface ItemProps {
   rootClassName?: string
+  shape?: LayoutShape
 }
 
-withDefaults(defineProps<ItemProps>(), {
+const props = withDefaults(defineProps<ItemProps>(), {
   rootClassName: ''
 })
 
@@ -14,7 +15,7 @@ const emits = defineEmits(['onSelect'])
 
 const layout = useLayoutStore()
 
-const shapeClassName = computed<string>(() => `item-wrapper-${layout.shape}`)
+const shapeClassName = computed<string>(() => `item-wrapper-${props.shape ? props.shape : layout.shape}`)
 
 const handleMouseEnter = () => emits('onSelect', true)
 
