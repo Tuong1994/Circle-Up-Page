@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Grid, Typography, Space, Image, Badge, Icon } from '@/components/UI'
-import { iconName } from '@/components/UI/Icon/constant'
+import { Grid, Typography, Image } from '@/components/UI'
+import AudiencesButton from '@/components/View/Audiences/AudiencesButton.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
@@ -17,12 +17,7 @@ const layout = useLayoutStore()
     </Col>
     <Col :xs="18" :md="18" :lg="18" :span="18">
       <Paragraph>Collection name</Paragraph>
-      <Badge ghost :color="layout.color">
-        <Space aligns="middle">
-          <Icon :iconName="iconName.GLOBE" />
-          <span>Public</span>
-        </Space>
-      </Badge>
+      <AudiencesButton sizes="sm" :shape="layout.shape" />
     </Col>
   </Row>
 </template>

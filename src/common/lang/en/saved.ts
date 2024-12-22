@@ -10,6 +10,11 @@ const saved_en = {
       formTitle: 'Create collection',
       new: 'New collection'
     }
+  },
+  collection: {
+    list: {
+      title: 'Collections'
+    }
   }
 }
 

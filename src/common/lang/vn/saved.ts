@@ -10,6 +10,11 @@ const saved_vn = {
       formTitle: 'Tạo bộ sưu tập',
       new: 'Bộ sưu tập mới'
     }
+  },
+  collection: {
+    list: {
+      title: 'Các bộ sưu tập'
+    }
   }
 }
 
