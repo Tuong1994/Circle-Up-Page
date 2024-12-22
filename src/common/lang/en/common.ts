@@ -3,6 +3,8 @@ const common_en = {
     home: 'Home',
     friends: 'Friends',
     saved: 'Saved',
+    savedItems: 'Saved Items',
+    collection: 'Collection',
     events: 'Events',
     friendRequests: 'Friend requests',
     friendSuggestions: 'Suggestions',
@@ -10,7 +12,7 @@ const common_en = {
     profilePost: 'Post',
     profileAbout: 'About',
     profileFriends: 'Friends',
-    profilePhotos: 'Photos'
+    profilePhotos: 'Photos',
   },
   header: {
     searchInput: {

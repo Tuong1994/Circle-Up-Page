@@ -2,9 +2,10 @@
 import { computed } from 'vue'
 import { useViewPoint } from '@/hooks'
 import { breakpoint } from '@/hooks/useViewPoint'
-import AlbumList from '@/features/media/album/AlbumList.vue'
-import AlbumEmpty from '@/features/media/album/AlbumEmpty.vue'
-import AlbumMobile from '@/features/media/album/AlbumMobile.vue'
+import { Section } from '@/components/UI'
+import AlbumList from '@/features/media/AlbumList.vue'
+import AlbumEmpty from '@/features/media/AlbumEmpty.vue'
+import AlbumMobile from '@/features/media/AlbumMobile.vue'
 import useMediaStore from '@/stores/MediaStore'
 
 const media = useMediaStore()
@@ -19,11 +20,11 @@ const isEmpty = computed<boolean>(() => !media.viewImages.length)
 </script>
 
 <template>
-  <div class="album">
+  <Section rootClassName="album">
     <AlbumMobile v-if="isMobile" />
     <template v-if="!isMobile">
       <AlbumEmpty v-if="isEmpty" />
       <AlbumList v-else />
     </template>
-  </div>
+  </Section>
 </template>

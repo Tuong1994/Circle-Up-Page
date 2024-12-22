@@ -15,8 +15,10 @@ export const routePaths = {
   PROFILE_ALBUM: '/profile/album',
   PROFILE_FRIENDS: '/profile/friends',
   PROFILE_ABOUT: '/profile/about',
-  MEDIA_PHOTO: '/media/photo',
-  MEDIA_ALBUM: '/media/album'
+  MEDIA_ALBUM: '/media/album',
+  SAVED: '/saved',
+  SAVED_ITEMS: '/saved/items',
+  SAVED_COLLECTION: '/saved/collection'
 } as const
 
 export const routeNames = {
@@ -35,8 +37,10 @@ export const routeNames = {
   PROFILE_ALBUM: 'profile-album',
   PROFILE_FRIENDS: 'profile-friends',
   PROFILE_ABOUT: 'profile-about',
-  MEDIA_PHOTO: 'media-photo',
-  MEDIA_ALBUM: 'media-album'
+  MEDIA_ALBUM: 'media-album',
+  SAVED: 'saved',
+  SAVED_ITEMS: 'saved-items',
+  SAVED_COLLECTION: 'saved-collection'
 } as const
 
 const router = createRouter({
@@ -124,17 +128,29 @@ const router = createRouter({
     {
       path: routePaths.MEDIA_ALBUM,
       name: routeNames.MEDIA_ALBUM,
-      component: () => import('@/views/media/MediaAlbum.vue')
-    },
-    {
-      path: routePaths.MEDIA_PHOTO,
-      name: routeNames.MEDIA_PHOTO,
-      component: () => import('@/views/media/MediaPhoto.vue')
+      component: () => import('@/views/media/MediaAlbumView.vue')
     },
     {
       path: routePaths.POST_DETAIL,
       name: routeNames.POST_DETAIL,
       component: () => import('@/views/post/PostView.vue')
+    },
+    {
+      path: routePaths.SAVED,
+      name: routeNames.SAVED,
+      component: () => import('@/views/saved/SavedView.vue'),
+      children: [
+        {
+          path: "",
+          name: routeNames.SAVED_ITEMS,
+          component: () => import('@/views/saved/SavedItems.vue')
+        },
+        {
+          path: routePaths.SAVED_COLLECTION,
+          name: routeNames.SAVED_COLLECTION,
+          component: () => import('@/views/saved/SavedCollection.vue')
+        }
+      ]
     }
   ]
 })

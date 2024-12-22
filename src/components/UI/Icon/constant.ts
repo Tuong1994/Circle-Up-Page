@@ -60,5 +60,7 @@ export const iconName = {
   TRANSGENDER: 'transgender',
   BRIEFCASE: 'briefcase',
   GRADUATION_CAP: 'graduation-cap',
-  HEART: 'heart'
+  HEART: 'heart',
+  HARD_DRIVE: 'hard-drive',
+  LAYER_GROUP: 'layer-group'
 }

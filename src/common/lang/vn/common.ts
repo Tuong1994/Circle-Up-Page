@@ -3,6 +3,8 @@ const common_vn = {
     home: 'Trang chủ',
     friends: 'Bạn bè',
     saved: 'Đã lưu',
+    savedItems: 'Các mục đã lưu',
+    collection: 'Bộ sưu tập',
     events: 'Sự kiện',
     friendRequests: 'Yêu cầu kết bạn',
     friendSuggestions: 'Gợi ý',

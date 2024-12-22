@@ -6,8 +6,8 @@ import { useRouter } from 'vue-router'
 import { useViewPoint } from '@/hooks'
 import { breakpoint } from '@/hooks/useViewPoint'
 import Header from '../Header/Header.vue'
-import HomeMenu from './Side/HomeMenu.vue'
-import FriendsMenu from './Side/FriendsMenu/FriendsMenu.vue'
+import HomeMenu from './Side/Home/HomeMenu.vue'
+import FriendsMenu from './Side/Friends/FriendsMenu.vue'
 import AlbumSide from './Side/Media/AlbumSide.vue'
 import CommentModal from '../Comment/CommentModal.vue'
 import PostModal from '../PostModal/PostModal.vue'
@@ -16,6 +16,7 @@ import useCommentStore from '../Comment/CommentStore'
 import useRenderSide from './hooks/useRenderSide'
 import useRenderHeader from './hooks/useRenderHeader'
 import usePostStore from '@/stores/PostStore'
+import SavedSide from './Side/Saved/SavedSide.vue'
 
 const { Container, Head, Body, Side, Content } = Layout
 
@@ -56,6 +57,7 @@ const handleClosePostModal = () => post.setOpenModal(false)
         <HomeMenu v-if="currentRoute.name === routeNames.HOME" />
         <FriendsMenu v-if="currentRoute.fullPath.includes(routeNames.FRIENDS)" />
         <AlbumSide v-if="currentRoute.name === routeNames.MEDIA_ALBUM" />
+        <SavedSide v-if="currentRoute.fullPath.includes(routeNames.SAVED)" />
       </Side>
       <Content :rootClassName="contentClassName">
         <slot></slot>

@@ -59,7 +59,9 @@ import {
   faTransgender,
   faBriefcase,
   faGraduationCap,
-  faHeart
+  faHeart,
+  faHardDrive,
+  faLayerGroup,
 } from '@fortawesome/free-solid-svg-icons'
 
 import App from './App.vue'
@@ -125,6 +127,8 @@ library.add(
   faBriefcase,
   faGraduationCap,
   faHeart,
+  faHardDrive,
+  faLayerGroup,
 )
 
 const app = createApp(App)
