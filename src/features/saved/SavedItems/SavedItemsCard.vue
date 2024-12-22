@@ -33,10 +33,10 @@ const handleRemove = () => emits('onRemove')
   <Card hoverable>
     <template #body>
       <Row justify="between">
-        <Col :span="8">
+        <Col :xs="24" :md="8" :lg="8" :span="8">
           <Image imgWidth="100%" imgHeight="100%" rootClassName="image-full-size" />
         </Col>
-        <Col :span="16">
+        <Col :xs="24" :md="16" :lg="16" :span="16">
           <Paragraph :size="16" :weight="600">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit
           </Paragraph>
@@ -61,12 +61,14 @@ const handleRemove = () => emits('onRemove')
                 </Button>
               </template>
               <template #dropdown>
-                <ItemWrapper>
-                  <Space aligns="middle" @click="handleRemove">
-                    <Icon :iconName="iconName.TRASH" />
-                    <Paragraph>Unsaved</Paragraph>
-                  </Space>
-                </ItemWrapper>
+                <div class="p-2">
+                  <ItemWrapper>
+                    <Space aligns="middle" @click="handleRemove">
+                      <Icon :iconName="iconName.TRASH" />
+                      <Paragraph>Unsaved</Paragraph>
+                    </Space>
+                  </ItemWrapper>
+                </div>
               </template>
             </Dropdown>
           </Space>

@@ -69,8 +69,12 @@
   }
   @include respond(mdTablet) {
     max-height: calc($h-screen - 200px);
+    padding-right: $p-1;
+    overflow-y: auto;
   }
   @include respond(mdPhone) {
     max-height: calc($h-screen - 200px);
+    padding-right: $p-1;
+    overflow-y: auto;
   }
 }

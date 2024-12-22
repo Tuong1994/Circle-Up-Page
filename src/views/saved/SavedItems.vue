@@ -10,7 +10,7 @@ const handleOpenAddModal = () => (openAddModal.value = !openAddModal.value)
 </script>
 
 <template>
-  <ListGrid :span="2" title="Saved items">
+  <ListGrid :xs="1" :md="1" :lg="1" :span="2" title="Saved items">
     <SavedItemsCard v-for="item in 5" @onAdd="handleOpenAddModal" />
   </ListGrid>
   <SavedItemsAddCollectionModal :open="openAddModal" @onClose="handleOpenAddModal" />
