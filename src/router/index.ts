@@ -18,7 +18,8 @@ export const routePaths = {
   MEDIA_ALBUM: '/media/album',
   SAVED: '/saved',
   SAVED_ITEMS: '/saved/items',
-  SAVED_COLLECTION: '/saved/collection'
+  SAVED_COLLECTION: '/saved/collection',
+  SAVED_COLLECTION_DETAIL: '/saved/collection/detail'
 } as const
 
 export const routeNames = {
@@ -40,7 +41,8 @@ export const routeNames = {
   MEDIA_ALBUM: 'media-album',
   SAVED: 'saved',
   SAVED_ITEMS: 'saved-items',
-  SAVED_COLLECTION: 'saved-collection'
+  SAVED_COLLECTION: 'saved-collection',
+  SAVED_COLLECTION_DETAIL: 'saved-collection-detail'
 } as const
 
 const router = createRouter({
@@ -141,7 +143,7 @@ const router = createRouter({
       component: () => import('@/views/saved/SavedView.vue'),
       children: [
         {
-          path: "",
+          path: '',
           name: routeNames.SAVED_ITEMS,
           component: () => import('@/views/saved/SavedItems.vue')
         },
@@ -149,6 +151,11 @@ const router = createRouter({
           path: routePaths.SAVED_COLLECTION,
           name: routeNames.SAVED_COLLECTION,
           component: () => import('@/views/saved/SavedCollection.vue')
+        },
+        {
+          path: routePaths.SAVED_COLLECTION_DETAIL,
+          name: routePaths.SAVED_COLLECTION_DETAIL,
+          component: () => import('@/views/saved/SavedCollectionDetail.vue')
         }
       ]
     }

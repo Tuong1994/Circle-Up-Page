@@ -27,9 +27,11 @@ const items = computed<RouterItems>(() => [
 </script>
 
 <template>
-  <ContentHead :hasSubLink="false" :backPath="routePaths.HOME">Saved</ContentHead>
+  <ContentHead :hasSubLink="false" :backPath="routePaths.HOME">
+    {{ t.lang.common.routes.saved }}
+  </ContentHead>
   <ContentBody>
-    <MenuItem v-for="item in items" :key="item.id" :path="item.path" :icon="item.iconName">
+    <MenuItem v-for="item in items" :key="item.id" :path="item.path" :icon="String(item.iconName)">
       {{ item.name }}
     </MenuItem>
   </ContentBody>

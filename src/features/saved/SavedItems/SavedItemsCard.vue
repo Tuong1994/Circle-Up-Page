@@ -15,12 +15,15 @@ import {
 import { iconName } from '@/components/UI/Icon/constant'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Paragraph } = Typography
 
 const { Row, Col } = Grid
 
 const emits = defineEmits(['onAdd', 'onRemove'])
+
+const t = useLangStore()
 
 const layout = useLayoutStore()
 
@@ -43,17 +46,23 @@ const handleRemove = () => emits('onRemove')
           <Space :size="5" aligns="middle">
             <Paragraph :size="12" variant="secondary">Post</Paragraph>
             <Paragraph :size="16" :weight="600" variant="secondary">-</Paragraph>
-            <Paragraph :size="12" variant="secondary">Saved to</Paragraph>
+            <Paragraph :size="12" variant="secondary">
+              {{ t.lang.saved.items.savedTo }}
+            </Paragraph>
             <Paragraph :size="12">Collection name</Paragraph>
           </Space>
           <Space :size="5" aligns="middle">
             <Avatar :size="20" :color="layout.color" />
-            <Paragraph :size="12" variant="secondary">Saved from</Paragraph>
+            <Paragraph :size="12" variant="secondary">
+              {{ t.lang.saved.items.savedFrom }}
+            </Paragraph>
             <Paragraph :size="12">Item Author</Paragraph>
           </Space>
           <Divider />
           <Space aligns="middle">
-            <Button :color="layout.color" :shape="layout.shape" @click="handleAdd">Add to collection</Button>
+            <Button :color="layout.color" :shape="layout.shape" @click="handleAdd">
+              {{ t.lang.saved.items.add }}
+            </Button>
             <Dropdown>
               <template #label>
                 <Button :color="layout.color" :shape="layout.shape" ghost>
@@ -65,7 +74,9 @@ const handleRemove = () => emits('onRemove')
                   <ItemWrapper>
                     <Space aligns="middle" @click="handleRemove">
                       <Icon :iconName="iconName.TRASH" />
-                      <Paragraph>Unsaved</Paragraph>
+                      <Paragraph>
+                        {{ t.lang.saved.items.unsaved }}
+                      </Paragraph>
                     </Space>
                   </ItemWrapper>
                 </div>

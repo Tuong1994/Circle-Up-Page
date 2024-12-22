@@ -113,7 +113,8 @@ const common_vn = {
       relationship: 'Mối quan hệ',
       position: 'Chức vụ',
       desc: 'Mô tả',
-      albumName: 'Tên album'
+      albumName: 'Tên album',
+      collectionName: 'Tên bộ sưu tập'
     },
     placeholder: {
       enter: 'Nhập thông tin',
@@ -151,6 +152,7 @@ const common_vn = {
     send: 'Gửi',
     save: 'Lưu',
     edit: 'Chỉnh sửa',
+    create: 'Tạo mới',
     update: 'Cập nhật',
     remove: 'Xóa',
     filter: 'Lọc',

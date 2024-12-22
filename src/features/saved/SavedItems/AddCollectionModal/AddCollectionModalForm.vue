@@ -7,8 +7,11 @@ import ModalLayoutHead from '@/components/View/ModalLayout/ModalLayoutHead.vue'
 import ModalLayoutBody from '@/components/View/ModalLayout/ModalLayoutBody.vue'
 import ModalLayoutFoot from '@/components/View/ModalLayout/ModalLayoutFoot.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 const emits = defineEmits(['onBack'])
+
+const t = useLangStore()
 
 const layout = useLayoutStore()
 
@@ -16,15 +19,19 @@ const handleBack = () => emits('onBack')
 </script>
 
 <template>
-  <ModalLayoutHead title="Create collection" type="sub" @onBack="handleBack" />
+  <ModalLayoutHead :title="t.lang.saved.items.modal.formTitle" type="sub" @onBack="handleBack" />
   <ModalLayoutBody>
     <Input :color="(layout.color as ControlColor)" :shape="(layout.shape as ControlShape)">
-      <template #label> Name </template>
+      <template #label>
+        {{ t.lang.common.form.label.collectionName }}
+      </template>
     </Input>
   </ModalLayoutBody>
   <ModalLayoutFoot>
-    <Space aligns="end">
-      <Button :color="layout.color" :shape="layout.shape">Create</Button>
+    <Space justify="end">
+      <Button :color="layout.color" :shape="layout.shape">
+        {{ t.lang.common.actions.create }}
+      </Button>
     </Space>
   </ModalLayoutFoot>
 </template>

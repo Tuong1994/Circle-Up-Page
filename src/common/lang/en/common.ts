@@ -12,7 +12,7 @@ const common_en = {
     profilePost: 'Post',
     profileAbout: 'About',
     profileFriends: 'Friends',
-    profilePhotos: 'Photos',
+    profilePhotos: 'Photos'
   },
   header: {
     searchInput: {
@@ -113,7 +113,8 @@ const common_en = {
       relationship: 'Relationship',
       position: 'Position',
       desc: 'Description',
-      albumName: 'Album name'
+      albumName: 'Album name',
+      collectionName: 'Collection name'
     },
     placeholder: {
       enter: 'Enter infomation',
@@ -151,6 +152,7 @@ const common_en = {
     send: 'Send',
     save: 'Save',
     edit: 'Edit',
+    create: 'Create',
     update: 'Update',
     remove: 'Remove',
     filter: 'Filter',
