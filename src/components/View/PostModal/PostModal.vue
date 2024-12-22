@@ -47,7 +47,7 @@ const handleBack = () => {
 </script>
 
 <template>
-  <ModalLayout rootClassName="post-modal" :open="open" @onClose="handleClose">
+  <ModalLayout :open="open" @onClose="handleClose">
     <Slider :slided="slided">
       <template #main>
         <CreatePost

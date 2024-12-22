@@ -1,7 +1,7 @@
 .modal-layout {
   width: $w-10 * 5;
   border-radius: $rounded-lg;
-  overflow: unset;
+  overflow: hidden;
   .modal-body {
     max-height: $h-screen;
     padding: 0;

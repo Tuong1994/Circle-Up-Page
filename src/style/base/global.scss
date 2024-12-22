@@ -99,6 +99,12 @@
   }
 }
 
+.dropdown {
+  .dropdown-list {
+    box-shadow: 2px 2px 10px $bg-black-rgba-lg !important;
+  }
+}
+
 .container-blue {
   .content.content-layout {
     background: $bg-blue-rgba-md;
