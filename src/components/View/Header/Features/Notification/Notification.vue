@@ -59,10 +59,8 @@ const handleBack = () => emits('onBack', EHeaderFeatureType.NOTIFICATION)
   <div class="p-5">
     <Row justify="between" aligns="middle">
       <Col>
-        <Space aligns="middle">
-          <Button shape="round" @click="handleBack" v-if="responsive">
-            <Icon :iconName="iconName.ANGLE_LEFT" />
-          </Button>
+        <Space :size="15" aligns="middle">
+          <Icon v-if="responsive" :size="18" :iconName="iconName.ANGLE_LEFT" @click="handleBack" />
           <Paragraph :weight="600" :size="18">
             {{ t.lang.common.header.features.notification.title }}
           </Paragraph>

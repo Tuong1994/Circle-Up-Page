@@ -53,31 +53,46 @@ const handleSelect = (type: EProfileMenuType) => emits('onSelect', type)
 
 <template>
   <div class="p-5">
-    <Card>
-      <template #body>
-        <Row aligns="middle" justify="between">
-          <Col>
+    <!-- Profile head desktop start -->
+    <RouterLink v-if="!responsive" :to="routePaths.PROFILE" @click="handleBack">
+      <Card>
+        <template #body>
+          <Space aligns="middle">
+            <Avatar :size="35" :color="layout.color" />
+            <Paragraph>Profile</Paragraph>
+          </Space>
+        </template>
+      </Card>
+    </RouterLink>
+    <!-- Profile head desktop end -->
+
+    <!-- Profile head mobile start -->
+    <Row v-if="responsive" aligns="middle" justify="between">
+      <Col :xs="14" :md="12">
+        <Card bodyClassName="!p-3">
+          <template #body>
             <RouterLink :to="routePaths.PROFILE" @click="handleBack">
               <Space aligns="middle">
                 <Avatar :size="35" :color="layout.color" />
                 <Paragraph>Profile</Paragraph>
               </Space>
             </RouterLink>
-          </Col>
-          <Col v-if="responsive">
-            <Button :shape="layout.shape" @click="handleBack">
-              <Icon :iconName="iconName.X_MARK" />
-            </Button>
-          </Col>
-        </Row>
-      </template>
-    </Card>
+          </template>
+        </Card>
+      </Col>
+      <Col>
+        <Button :color="layout.color" :shape="layout.shape" @click="handleBack">
+          <Icon :iconName="iconName.X_MARK" />
+        </Button>
+      </Col>
+    </Row>
+    <!-- Profile head mobile end -->
     <Divider />
     <ItemWrapper v-for="item in items" :key="item.id" @click="() => handleSelect(item.type)">
       <Row justify="between" aligns="middle">
         <Col>
           <Space aligns="middle">
-            <Avatar :size="30">
+            <Avatar :color="layout.color" :size="30">
               <Icon :iconName="item.icon" />
             </Avatar>
             <Paragraph>{{ item.name }}</Paragraph>

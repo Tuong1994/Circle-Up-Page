@@ -133,6 +133,9 @@
     &:hover {
       overflow-y: auto;
     }
+    @include respond(lgTablet) {
+      overflow-y: auto;
+    }
     @include respond(smTablet) {
       width: calc($w-full - 100px);
       height: $h-screen;
@@ -140,6 +143,7 @@
       top: 0;
       right: 0;
       position: fixed;
+      overflow-y: auto;
     }
   }
   .features-active {

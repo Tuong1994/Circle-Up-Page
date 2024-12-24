@@ -28,7 +28,7 @@ const menus = computed<RouterItems>(() => [
     id: routeNames.FRIENDS,
     name: t.lang.common.routes.friends,
     path: routePaths.FRIENDS,
-    iconName: iconName.USER
+    iconName: iconName.USER_GROUP
   }
 ])
 
