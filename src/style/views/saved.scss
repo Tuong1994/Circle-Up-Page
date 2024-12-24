@@ -8,6 +8,9 @@
       height: $h-full;
       padding-top: 0;
     }
+    @include respond(mdPhone) {
+      height: $h-10 * 2.5;
+    }
   }
   .detail-head {
     margin: $m-2 0;

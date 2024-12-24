@@ -9,10 +9,12 @@ import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 interface HeaderProfileProps {
   responsive?: boolean
   iconSize?: number
+  avatarSize?: number
 }
 
-const props = withDefaults(defineProps<HeaderProfileProps>(), {
-  iconSize: 18
+withDefaults(defineProps<HeaderProfileProps>(), {
+  iconSize: 18,
+  avatarSize: 30
 })
 
 const emits = defineEmits(['onClick'])
@@ -20,8 +22,6 @@ const emits = defineEmits(['onClick'])
 const layout = useLayoutStore()
 
 const t = useLangStore()
-
-const avatarSize = computed<number>(() => (props.responsive ? 30 : 40))
 
 const handleClick = () => emits('onClick', EHeaderFeatureType.PROFILE)
 </script>

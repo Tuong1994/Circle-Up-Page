@@ -3,7 +3,7 @@ import { Card, Grid, Dropdown, Button, Space, Icon, Typography } from '@/compone
 import { iconName } from '@/components/UI/Icon/constant'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
-import AudiencesButton from '@/components/View/Audiences/AudiencesButton.vue';
+import AudiencesButton from '@/components/View/Audiences/AudiencesButton.vue'
 
 const { Row, Col } = Grid
 
@@ -15,7 +15,7 @@ const layout = useLayoutStore()
 <template>
   <Card rootClassName="detail-head">
     <template #body>
-      <Row justify="between" aligns="middle">
+      <Row justify="between">
         <Col>
           <Paragraph :size="18" :weight="600" rootClassName="mb-3">Collection title</Paragraph>
           <AudiencesButton sizes="sm" :shape="layout.shape" />

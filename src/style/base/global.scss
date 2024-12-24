@@ -1,3 +1,4 @@
+// Section
 .section {
   padding: $p-1 $p-3 !important;
   @include respond(mdPhone) {
@@ -5,6 +6,7 @@
   }
 }
 
+// Layout
 .head.head-fixed {
   z-index: 4;
   box-shadow: 2px 2px 10px $bg-black-rgba-sm;
@@ -73,15 +75,18 @@
   padding-left: 0;
 }
 
+// Button
 .button.button-text {
   padding: 0;
 }
 
+// Image
 .image-full-size {
   width: $w-full !important;
   height: $h-full;
 }
 
+// Card
 .card {
   border: unset !important;
   border-radius: $rounded-lg !important;
@@ -99,12 +104,27 @@
   }
 }
 
+// Dropdown
 .dropdown {
   .dropdown-list {
     box-shadow: 2px 2px 10px $bg-black-rgba-lg !important;
   }
 }
 
+// Drawer
+.drawer-backdrop {
+  transition: opacity $transition-time-xs $transition-fn !important;
+}
+
+.drawer {
+  transition: all $transition-time-xs $transition-fn !important;
+}
+
+.drawer-active {
+  animation: fadeInRight $transition-time-xs $transition-fn !important;
+}
+
+// Layout color
 .container-blue {
   .content.content-layout {
     background: $bg-blue-rgba-md;

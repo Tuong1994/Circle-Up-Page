@@ -5,8 +5,9 @@ import { useViewPoint } from '@/hooks'
 import { breakpoint } from '@/hooks/useViewPoint'
 import HeaderNav from './HeaderNav.vue'
 import HeaderSearch from './HeaderSearch.vue'
-import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import HeaderFeatures from './HeaderFeatures.vue'
+import HeaderMenuMobile from './HeaderMenuMobile.vue'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
 
@@ -36,7 +37,7 @@ const responsive = computed<boolean>(() => screenWidth.value >= SM_PHONE && scre
         <HeaderNav />
       </Col>
       <Col :span="6">
-        <HeaderFeatures />
+        <HeaderFeatures :responsive="responsive" />
       </Col>
     </Row>
   </div>
