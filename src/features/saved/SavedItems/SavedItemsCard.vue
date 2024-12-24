@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineEmits } from 'vue'
+import { withDefaults, defineProps, defineEmits } from 'vue'
 import {
   Card,
   Image,
@@ -16,10 +16,19 @@ import { iconName } from '@/components/UI/Icon/constant'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
+import defaultImage from '/default.jpg'
 
 const { Paragraph } = Typography
 
 const { Row, Col } = Grid
+
+interface SavedItemsCardProps {
+  hasAddAction?: boolean
+}
+
+withDefaults(defineProps<SavedItemsCardProps>(), {
+  hasAddAction: true
+})
 
 const emits = defineEmits(['onAdd', 'onRemove'])
 
@@ -37,7 +46,7 @@ const handleRemove = () => emits('onRemove')
     <template #body>
       <Row justify="between">
         <Col :xs="24" :md="8" :lg="8" :span="8">
-          <Image imgWidth="100%" imgHeight="100%" rootClassName="image-full-size" />
+          <Image :src="defaultImage" imgWidth="100%" imgHeight="100%" rootClassName="image-full-size" />
         </Col>
         <Col :xs="24" :md="16" :lg="16" :span="16">
           <Paragraph :size="16" :weight="600">
@@ -60,10 +69,10 @@ const handleRemove = () => emits('onRemove')
           </Space>
           <Divider />
           <Space aligns="middle">
-            <Button :color="layout.color" :shape="layout.shape" @click="handleAdd">
+            <Button v-if="hasAddAction" :color="layout.color" :shape="layout.shape" @click="handleAdd">
               {{ t.lang.saved.items.add }}
             </Button>
-            <Dropdown>
+            <Dropdown v-if="hasAddAction">
               <template #label>
                 <Button :color="layout.color" :shape="layout.shape" ghost>
                   <Icon :iconName="iconName.ELLIPSIS_H" />
@@ -82,6 +91,14 @@ const handleRemove = () => emits('onRemove')
                 </div>
               </template>
             </Dropdown>
+            <Button v-else :color="layout.color" :shape="layout.shape" ghost @click="handleRemove">
+              <Space aligns="middle">
+                <Icon :iconName="iconName.TRASH" />
+                <Paragraph>
+                  {{ t.lang.saved.items.unsaved }}
+                </Paragraph>
+              </Space>
+            </Button>
           </Space>
         </Col>
       </Row>
