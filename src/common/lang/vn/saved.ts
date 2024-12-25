@@ -14,6 +14,9 @@ const saved_vn = {
   collection: {
     list: {
       title: 'Các bộ sưu tập'
+    },
+    detail: {
+      delete: 'Xóa bộ sưu tập'
     }
   }
 }

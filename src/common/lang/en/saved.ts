@@ -14,6 +14,9 @@ const saved_en = {
   collection: {
     list: {
       title: 'Collections'
+    },
+    detail: {
+      delete: 'Delete collection'
     }
   }
 }

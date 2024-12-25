@@ -2,14 +2,17 @@
 import { Card, Grid, Dropdown, Button, Space, Icon, Typography } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
-import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import AudiencesButton from '@/components/View/Audiences/AudiencesButton.vue'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
 const layout = useLayoutStore()
+
+const t = useLangStore()
 </script>
 
 <template>
@@ -32,7 +35,7 @@ const layout = useLayoutStore()
                 <ItemWrapper>
                   <Space aligns="middle">
                     <Icon :iconName="iconName.TRASH" />
-                    <Paragraph>Delete collection</Paragraph>
+                    <Paragraph>{{ t.lang.saved.collection.detail.delete }}</Paragraph>
                   </Space>
                 </ItemWrapper>
               </div>
