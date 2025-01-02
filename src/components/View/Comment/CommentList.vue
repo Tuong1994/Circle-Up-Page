@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { defineProps, ref } from 'vue'
-import type { Comment } from './Comment.vue'
-import type { ActiveComment } from './type'
+import type { Comment, ActiveComment } from '@/services/comment/type'
 import CommentItem from './CommentItem.vue'
 
 interface CommentListProps {
