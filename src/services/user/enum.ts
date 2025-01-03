@@ -12,3 +12,8 @@ export enum EUserInfoType {
   BIRTHDAY,
   RELATIONSHIP
 }
+
+export enum EGender {
+  MALE = 1,
+  FEMALE = 2
+}
