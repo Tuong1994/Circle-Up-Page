@@ -1,6 +1,13 @@
-import type { User } from '../user/type'
+import type { ERole } from '../user/enum'
 
-export type AuthInfo = Omit<User, 'password' | 'createdAt' | 'updatedAt'>
+export type AuthInfo = {
+  id: string
+  email: string
+  firstName: string
+  lastName: string
+  fullName: string
+  role: ERole
+}
 
 export type Auth = {
   accessToken: string
