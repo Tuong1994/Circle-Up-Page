@@ -1,4 +1,4 @@
-import type { Auth, AuthSignIn, AuthSignUp } from './type'
+import type { Auth, AuthInfo, AuthSignIn, AuthSignUp } from './type'
 import localStorageKey from '@/common/constant/localStorage'
 import authApiPaths from './path'
 import Fetch from '..'
