@@ -8,3 +8,7 @@ export type Collection = {
   createdAt?: Date | string
   updatedAt?: Date | string
 }
+
+export type CollectionFormData = Pick<Collection, 'name' | 'userId'> & {
+  postId: string
+}
