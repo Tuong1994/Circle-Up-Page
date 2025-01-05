@@ -11,15 +11,11 @@ const Method = {
 
 export const defaultApiResponse = <T>(): ApiResponse<T> => ({ data: {} as T, success: false })
 
-export const ApiResponseError = (error: any) => {
-  let responseError: ResponseError = { status: 0, message: '' }
-  const status = error.response.data.statusCode
-  const message = error.response?.data.message
-  responseError = {
-    status: status ? status : error.response?.status || 0,
-    message: message ? message : error.response?.statusText || ''
+export const ApiResponseError = (status: number, message: string): ResponseError => {
+  return {
+    status: status ? status : 0,
+    message: message ? message : ''
   }
-  return responseError
 }
 
 const call = async <T = unknown, D = any>(apiConfig: ApiConfig<T>) => {
@@ -38,25 +34,27 @@ const call = async <T = unknown, D = any>(apiConfig: ApiConfig<T>) => {
       apiResponse = {
         ...apiResponse,
         success: false,
-        error: { status: response.status, message: response.statusText }
+        error: ApiResponseError(response.status, response.statusText)
       }
     else apiResponse = { ...apiResponse, success: true, data: response.data }
-  } catch (err: any) {
-    if (!err.response) {
-      if (err.code === 'ECONNABORTED') {
+  } catch (error: any) {
+    if (!error.response) {
+      if (error.code === 'ECONNABORTED') {
         return (apiResponse = {
           ...apiResponse,
           success: false,
-          error: { status: 504, message: 'Request timeout' }
+          error: ApiResponseError(504, 'Request timeout')
         })
       }
       apiResponse = {
         ...apiResponse,
         success: false,
-        error: { status: 500, message: 'Api network failed' }
+        error: ApiResponseError(500, 'Api network failed')
       }
     } else {
-      apiResponse = { ...apiResponse, success: false, error: ApiResponseError(err) }
+      const status = error.response.data.statusCode
+      const message = error.response?.data.message
+      apiResponse = { ...apiResponse, success: false, error: ApiResponseError(status, message) }
     }
   }
   return apiResponse
