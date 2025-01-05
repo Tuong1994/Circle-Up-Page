@@ -9,4 +9,4 @@ export type Friend = {
   updatedAt?: Date | string
 }
 
-export type FriendFormData = Omit<Friend, 'id' | 'createdAt' | 'updatedAt'>
+export type FriendRequestData = Omit<Friend, 'id' | 'createdAt' | 'updatedAt'>

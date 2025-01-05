@@ -1,6 +1,6 @@
 import { getApiQuery } from '../helper'
 import type { ApiQuery, Paging } from '../type'
-import type { Collection, CollectionFormData } from './type'
+import type { Collection, CollectionRequestData } from './type'
 import collectionApiPaths from './path'
 import Fetch from '..'
 
@@ -14,13 +14,13 @@ export const getCollection = async (query: ApiQuery) => {
   return response
 }
 
-export const createCollection = async (data: CollectionFormData) => {
-  const response = await Fetch.Post<CollectionFormData, Collection>(collectionApiPaths.create, data)
+export const createCollection = async (data: CollectionRequestData) => {
+  const response = await Fetch.Post<CollectionRequestData, Collection>(collectionApiPaths.create, data)
   return response
 }
 
-export const updateCollection = async (query: ApiQuery, data: CollectionFormData) => {
-  const response = await Fetch.Put<CollectionFormData, any>(
+export const updateCollection = async (query: ApiQuery, data: CollectionRequestData) => {
+  const response = await Fetch.Put<CollectionRequestData, any>(
     collectionApiPaths.update + getApiQuery(query),
     data
   )

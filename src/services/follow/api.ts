@@ -1,6 +1,6 @@
 import { getApiQuery } from '../helper'
 import type { ApiQuery, Paging } from '../type'
-import type { Follow, FollowFormData } from './type'
+import type { Follow, FollowRequestData } from './type'
 import followApiPaths from './path'
 import Fetch from '..'
 
@@ -14,13 +14,13 @@ export const getFollow = async (query: ApiQuery) => {
   return response
 }
 
-export const createFollow = async (data: FollowFormData) => {
-  const response = await Fetch.Post<FollowFormData, Follow>(followApiPaths.create, data)
+export const createFollow = async (data: FollowRequestData) => {
+  const response = await Fetch.Post<FollowRequestData, Follow>(followApiPaths.create, data)
   return response
 }
 
-export const updateFollow = async (query: ApiQuery, data: FollowFormData) => {
-  const response = await Fetch.Put<FollowFormData, any>(followApiPaths.update + getApiQuery(query), data)
+export const updateFollow = async (query: ApiQuery, data: FollowRequestData) => {
+  const response = await Fetch.Put<FollowRequestData, any>(followApiPaths.update + getApiQuery(query), data)
   return response
 }
 

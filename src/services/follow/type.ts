@@ -7,4 +7,4 @@ export type Follow = {
   updatedAt?: Date | string
 }
 
-export type FollowFormData = Omit<Follow, 'id' | 'createdAt' | 'updatedAt'>
+export type FollowRequestData = Omit<Follow, 'id' | 'createdAt' | 'updatedAt'>

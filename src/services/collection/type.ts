@@ -9,6 +9,6 @@ export type Collection = {
   updatedAt?: Date | string
 }
 
-export type CollectionFormData = Pick<Collection, 'name' | 'userId'> & {
+export type CollectionRequestData = Pick<Collection, 'name' | 'userId'> & {
   postId: string
 }

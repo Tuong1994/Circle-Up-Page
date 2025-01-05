@@ -5,3 +5,5 @@ export type Like = {
   createdAt?: Date | string
   updatedAt?: Date | string
 }
+
+export type LikeRequestData = Omit<Like, 'id' | 'createdAt' | 'updatedAt'>
