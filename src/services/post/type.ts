@@ -34,8 +34,6 @@ export type Post = {
   cityCode?: number
   feeling?: number
   audience: EAudienceType
-  createdAt?: Date | string
-  updatedAt?: Date | string
   userId: string
   collectionId?: string
   comments: Comment[]
@@ -43,4 +41,6 @@ export type Post = {
   medias: Media[]
   followers: Follow[]
   tags: PostTag[]
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
