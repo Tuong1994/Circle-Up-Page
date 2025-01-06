@@ -94,3 +94,22 @@ export type User = {
   createdAt?: Date | string
   updatedAt?: Date | string
 }
+
+export type DateRangeRequestData = Pick<DateRange, 'date' | 'month' | 'year'>
+
+export type UserRequestData = Pick<User, 'firstName' | 'lastName' | 'role'> &
+  Pick<UserEmail, 'email' | 'password'>
+
+export type UserInfoRequestData = Omit<UserInfo, 'id' | 'createdAt' | 'updatedAt'> & Pick<UserEmail, 'email'>
+
+export type UserWorkRequestData = Omit<UserWork, 'id' | 'createdAt' | 'updatedAt' | 'timePeriod'> & {
+  startDate: DateRangeRequestData
+  endDate?: DateRangeRequestData
+}
+
+export type UserEducatonRequestData = Omit<UserEducation, 'id' | 'createdAt' | 'updatedAt' | 'timePeriod'> & {
+  startDate: DateRangeRequestData
+  endDate?: DateRangeRequestData
+}
+
+export type UserLivedRequestData = Omit<UserLived, 'id' | 'createdAt' | 'updatedAt'>
