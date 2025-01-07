@@ -18,6 +18,7 @@
 .side {
   z-index: 1 !important;
   background: transparent !important;
+  box-shadow: unset !important;
   .side-content {
     margin-top: $m-1;
     // margin-left: $m-1;
@@ -30,6 +31,12 @@
       margin-top: $m-2;
       // height: calc($h-screen - $h-1 * 10) !important;
     }
+  }
+}
+
+.side-dark {
+  .side-content {
+    background: $bg-dark;
   }
 }
 

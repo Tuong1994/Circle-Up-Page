@@ -11,12 +11,12 @@ import FriendsMenu from './Side/Friends/FriendsMenu.vue'
 import AlbumSide from './Side/Media/AlbumSide.vue'
 import CommentModal from '../Comment/CommentModal.vue'
 import PostModal from '../PostModal/PostModal.vue'
+import SavedSide from './Side/Saved/SavedSide.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useCommentStore from '../Comment/CommentStore'
 import useRenderSide from './hooks/useRenderSide'
 import useRenderHeader from './hooks/useRenderHeader'
 import usePostStore from '@/stores/PostStore'
-import SavedSide from './Side/Saved/SavedSide.vue'
 
 const { Container, Head, Body, Side, Content } = Layout
 
@@ -48,7 +48,7 @@ const handleClosePostModal = () => post.setOpenModal(false)
 </script>
 
 <template>
-  <Container :rootClassName="colorClassName">
+  <Container theme="dark" :rootClassName="colorClassName">
     <Head v-if="renderHeader">
       <Header />
     </Head>
