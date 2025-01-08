@@ -1,16 +1,24 @@
 .item-wrapper {
   cursor: pointer;
   padding: $p-1;
-  transition: all $transition-time-sm $transition-fn;
+  transition: background-color $transition-time-sm $transition-fn;
   &:hover {
     background: $bg-slate;
   }
 }
 
+// Shape
 .item-wrapper-square {
   border-radius: $rounded;
 }
 
 .item-wrapper-round {
   border-radius: $rounded-xxl;
+}
+
+// Theme
+.item-wrapper-dark {
+  &:hover {
+    background: $bg-black;
+  }
 }

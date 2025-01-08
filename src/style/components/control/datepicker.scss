@@ -570,7 +570,7 @@
 
 .datepicker-dark {
   .wrap-group {
-    background: $bg-deep-blue !important;
+    background: $bg-dark !important;
     .control-action {
       &:hover path {
         color: $text-white !important;
@@ -578,10 +578,10 @@
     }
   }
   .wrap-calendar {
-    background: $bg-deep-blue !important;
+    background: $bg-dark !important;
     box-shadow: 0 0 10px $bg-black !important;
     .select-dropdown {
-      background: $bg-deep-blue !important;
+      background: $bg-dark !important;
       box-shadow: 0 0 10px $bg-black !important;
       .dropdown-item {
         &:hover {

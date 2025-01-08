@@ -39,6 +39,7 @@
       box-shadow: 2px 2px 10px $bg-black-rgba-sm;
       border-radius: $rounded-lg;
       overflow: hidden;
+      transition: background-color $transition-time-xs $transition-fn;
       .side-head {
         padding: $p-1 $p-2;
         height: $h-1 * 6;
@@ -85,6 +86,15 @@
   }
   @include respond(mdPhone) {
     width: $w-full;
+  }
+}
+
+// Theme
+.home-dark {
+  .home-side {
+    .side-inner {
+      background: $bg-dark;
+    }
   }
 }
 

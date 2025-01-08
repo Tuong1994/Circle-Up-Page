@@ -6,7 +6,7 @@
     padding: $p-1;
     background: $bg-white;
     border-radius: $rounded;
-    box-shadow: 0 0 10px $bg-gray;
+    box-shadow: 0 0 10px $bg-black-rgba-sm;
     position: absolute;
     top: 100%;
     z-index: 3;
@@ -26,5 +26,13 @@
   .hover-info-content-bottom {
     top: unset;
     bottom: 100%;
+  }
+}
+
+// Theme
+.hover-info-dark {
+  .hover-info-content {
+    background: $bg-dark;
+    box-shadow: 0 0 10px $bg-black;
   }
 }

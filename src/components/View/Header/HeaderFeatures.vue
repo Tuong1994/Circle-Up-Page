@@ -30,6 +30,8 @@ const iconSize = computed<number>(() => (isPhone.value ? 14 : 18))
 
 const avatarSize = computed<number>(() => (props.responsive ? 30 : 40))
 
+const themeClassName = computed<string>(() => `header-features-${layout.theme}`)
+
 const handleOpenFeatures = (featureType: FeatureType) => {
   if (!featureType) return
   if (type.value === featureType) return (type.value = undefined)
@@ -55,7 +57,7 @@ watchEffect((onStop) => {
 </script>
 
 <template>
-  <div ref="featureRef" class="header-features">
+  <div ref="featureRef" :class="['header-features', themeClassName]">
     <Space justify="end" aligns="middle">
       <Notification v-bind="commonProps" @onClick="handleOpenFeatures" />
       <Profile v-bind="commonProps" @onClick="handleOpenFeatures" />

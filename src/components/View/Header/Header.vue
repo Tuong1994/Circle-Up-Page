@@ -17,6 +17,8 @@ const { isPhone, screenWidth } = useViewPoint()
 
 const layout = useLayoutStore()
 
+const themeClassName = computed<string>(() => `header-${layout.theme}`)
+
 const colorClassName = computed<string>(() => `header-${layout.color}`)
 
 const shapeClassName = computed<string>(() => `header-${layout.shape}`)
@@ -27,7 +29,7 @@ const responsive = computed<boolean>(() => screenWidth.value >= SM_PHONE && scre
 </script>
 
 <template>
-  <div :class="['header', shapeClassName, colorClassName]">
+  <div :class="['header', shapeClassName, themeClassName, colorClassName]">
     <HeaderNav v-if="responsive" :iconSize="iconSize" />
     <Row aligns="middle" justify="between">
       <Col :xs="3" :span="6">

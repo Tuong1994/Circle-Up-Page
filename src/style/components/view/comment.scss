@@ -62,7 +62,7 @@
 .comment-item {
   .item-main {
     .main-content {
-      padding: $p-1;
+      padding: $p-1 $p-2;
       background: $bg-slate;
       & > p {
         line-height: $h-2 !important;
@@ -113,6 +113,7 @@
   }
 }
 
+// Item Shape
 .comment-item-square {
   .item-main {
     .main-content {
@@ -125,6 +126,15 @@
   .item-main {
     .main-content {
       border-radius: $rounded-xxl;
+    }
+  }
+}
+
+// Item Theme
+.comment-item-dark {
+  .item-main {
+    .main-content {
+      background: $bg-black;
     }
   }
 }

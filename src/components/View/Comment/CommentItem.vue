@@ -2,7 +2,7 @@
 import { withDefaults, defineProps, defineEmits, computed } from 'vue'
 import { Avatar, Space, Dropdown, Icon, Typography } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
-import type { Comment, ActiveComment  } from '@/services/comment/type'
+import type { Comment, ActiveComment } from '@/services/comment/type'
 import CommentList from './CommentList.vue'
 import CommentInput from './CommentInput/CommentInput.vue'
 import HoverInfo from '../HoverInfo/HoverInfo.vue'
@@ -31,6 +31,8 @@ const childComments = props.comments.filter((childComment) => childComment.paren
 
 const actionClassName = computed<string>(() => `main-action main-action-${layout.color}`)
 
+const themeClassName = computed<string>(() => `comment-item-${layout.theme}`)
+
 const shapeClassName = computed<string>(() => `comment-item-${layout.shape}`)
 
 const isReply = computed<boolean>(
@@ -43,11 +45,11 @@ const handleCancelReply = () => emits('onCancelReply')
 </script>
 
 <template>
-  <div :class="['comment-item', shapeClassName]">
+  <div :class="['comment-item', shapeClassName, themeClassName]">
     <div class="item-main">
       <Space>
         <HoverInfo>
-          <Avatar :size="35" />
+          <Avatar :color="layout.color" :size="35" />
         </HoverInfo>
         <div>
           <div class="main-content">

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, withDefaults, defineProps, defineEmits } from 'vue'
 import { Avatar, Space, Grid, Icon, Tooltip, Button, Image, Dropdown } from '@/components/UI'
-import { InputMention as CommentBox } from '@/components/Control'
+import { InputMention as CommentControl } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EFeatureType } from '@/services/comment/enum'
 import type { ControlShape, ControlColor } from '@/components/Control/type'
@@ -70,10 +70,10 @@ const handleRemoveImage = () => {
 <template>
   <Row>
     <Col :xs="4" :md="2" :lg="2" :span="2">
-      <Avatar :size="40" />
+      <Avatar :color="layout.color" :size="40" />
     </Col>
     <Col :xs="20" :md="22" :lg="22" :span="22">
-      <CommentBox
+      <CommentControl
         placement="top"
         rootClassName="mb-3"
         :rows="1"
@@ -115,8 +115,8 @@ const handleRemoveImage = () => {
           <Space aligns="middle">
             <Tooltip placement="top">
               <template #title>
-                <Button sizes="sm" shape="round">
-                  <Icon :iconName="iconName.PAPER_PLANE" :sizes="16" color="gray" />
+                <Button sizes="sm" :color="layout.color" :shape="layout.shape">
+                  <Icon :iconName="iconName.PAPER_PLANE" :sizes="16" />
                 </Button>
               </template>
               <template #content>
@@ -125,7 +125,13 @@ const handleRemoveImage = () => {
             </Tooltip>
             <Tooltip placement="top">
               <template #title>
-                <Button v-if="hasCancel" sizes="sm" shape="round" @click="handleCancel">
+                <Button
+                  v-if="hasCancel"
+                  sizes="sm"
+                  :color="layout.color"
+                  :shape="layout.shape"
+                  @click="handleCancel"
+                >
                   <Icon :iconName="iconName.X_MARK" :sizes="16" color="gray" />
                 </Button>
               </template>
@@ -137,7 +143,13 @@ const handleRemoveImage = () => {
         </Col>
       </Row>
       <div v-if="comment.uploaded" class="comment-photo">
-        <Button sizes="sm" shape="round" rootClassName="photo-close" @click="handleRemoveImage">
+        <Button
+          sizes="sm"
+          :color="layout.color"
+          :shape="layout.shape"
+          rootClassName="photo-close"
+          @click="handleRemoveImage"
+        >
           <Icon :iconName="iconName.X_MARK" />
         </Button>
         <Image :imgWidth="50" :imgHeight="50" />

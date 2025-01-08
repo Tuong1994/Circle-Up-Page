@@ -158,6 +158,37 @@
   }
 }
 
+// Theme
+.header-dark {
+  .input-control {
+    .control-dropdown {
+      background: $bg-dark !important;
+      box-shadow: 2px 2px 10px $bg-black !important;
+    }
+  }
+  .header-navbar {
+    .navbar-item {
+      .item-title {
+        &:hover {
+          background: $bg-black;
+        }
+      }
+    }
+    .navbar-item-active {
+      .item-title {
+        box-shadow: 2px 2px 5px $bg-black;
+      }
+    }
+  }
+}
+
+.header-features-dark {
+  .features {
+    background: $bg-dark;
+    box-shadow: 2px 2px 10px $bg-black;
+  }
+}
+
 // Shape
 .header-square {
   .navbar-item {

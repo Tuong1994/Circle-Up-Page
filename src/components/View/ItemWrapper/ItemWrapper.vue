@@ -15,6 +15,8 @@ const emits = defineEmits(['onSelect'])
 
 const layout = useLayoutStore()
 
+const themeClassName = computed<string>(() => `item-wrapper-${layout.theme}`)
+
 const shapeClassName = computed<string>(() => `item-wrapper-${props.shape ? props.shape : layout.shape}`)
 
 const handleMouseEnter = () => emits('onSelect', true)
@@ -24,7 +26,7 @@ const handleMouseLeave = () => emits('onSelect', false)
 
 <template>
   <div
-    :class="['item-wrapper', shapeClassName, rootClassName]"
+    :class="['item-wrapper', shapeClassName, themeClassName, rootClassName]"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >

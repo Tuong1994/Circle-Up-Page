@@ -24,6 +24,8 @@ const isTablet = computed<boolean>(() => screenWidth.value > MD_PHONE && screenW
 
 const isMobile = computed<boolean>(() => Boolean(isPhone.value || isTablet.value))
 
+const themeClassName = computed<string>(() => `home-${layout.theme}`)
+
 const colorClassName = computed<string>(() => `home-${layout.color}`)
 
 const handleOpenPostModal = () => post.setOpenModal(true)
@@ -32,7 +34,7 @@ const handleOpenCommentModal = () => comment.setOpenModal(true)
 </script>
 
 <template>
-  <div :class="['home', colorClassName]">
+  <div :class="['home', themeClassName, colorClassName]">
     <div class="home-wrap">
       <HomeActions @onClick="handleOpenPostModal" />
       <PostCard v-for="item in 10" @onComment="handleOpenCommentModal" />

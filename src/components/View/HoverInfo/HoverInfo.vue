@@ -5,6 +5,7 @@ import { Grid, UList, Space, Button, Icon, Avatar, Divider, Dropdown } from '@/c
 import { iconName } from '@/components/UI/Icon/constant'
 import useLangStore from '@/stores/LangStore'
 import ItemWrapper from '../ItemWrapper/ItemWrapper.vue'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
 
@@ -30,6 +31,8 @@ const { isPhone, isTablet } = useViewPoint()
 
 const t = useLangStore()
 
+const layout = useLayoutStore()
+
 const show = ref<boolean>(false)
 
 const elRef = ref<HTMLDivElement>()
@@ -53,6 +56,8 @@ const bottomClassName = computed<string>(() => (bottom.value ? 'hover-info-conte
 
 const placementClassName = computed<string>(() => `hover-info-content-${props.placement}`)
 
+const themeClassName = computed<string>(() => `hover-info-${layout.theme}`)
+
 const handleMouseEnter = () => (show.value = true)
 
 const handleMouseLeave = () => (show.value = false)
@@ -61,7 +66,7 @@ const handleMouseLeave = () => (show.value = false)
 <template>
   <div
     ref="elRef"
-    :class="['hover-info', rootClassName]"
+    :class="['hover-info', themeClassName, rootClassName]"
     :style="rootStyle"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
@@ -73,7 +78,7 @@ const handleMouseLeave = () => (show.value = false)
       :class="['hover-info-content', placementClassName, bottomClassName, activeClassName, contentClassName]"
     >
       <Space size="md">
-        <Avatar :size="60" />
+        <Avatar :color="layout.color" :size="60" />
         <List>
           <template #head> Head </template>
           <ListItem>Item 1</ListItem>

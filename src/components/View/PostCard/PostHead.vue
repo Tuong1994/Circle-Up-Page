@@ -6,6 +6,7 @@ import HoverInfo from '@/components/View/HoverInfo/HoverInfo.vue'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useViewPoint from '@/hooks/useViewPoint'
 import useLangStore from '@/stores/LangStore'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
 
@@ -22,6 +23,8 @@ withDefaults(defineProps<PostHeadProps>(), {
 const emits = defineEmits(['onRemove'])
 
 const t = useLangStore()
+
+const layout = useLayoutStore()
 
 const { isSmPhone } = useViewPoint()
 
@@ -68,7 +71,7 @@ const handleRemove = () => emits('onRemove')
     <Col>
       <Space aligns="middle">
         <HoverInfo>
-          <Avatar :size="40" />
+          <Avatar :color="layout.color" :size="40" />
         </HoverInfo>
         <div>
           <Space aligns="middle">
@@ -91,7 +94,7 @@ const handleRemove = () => emits('onRemove')
             <div class="post-setting">
               <ItemWrapper v-for="setting in settings" :key="setting.id">
                 <Space aligns="middle">
-                  <Avatar>
+                  <Avatar :color="layout.color">
                     <Icon :iconName="setting.iconName" :size="iconSize" />
                   </Avatar>
                   <div>

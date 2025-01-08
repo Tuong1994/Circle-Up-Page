@@ -41,7 +41,12 @@ const actions: PostAction[] = [
     icon: iconName.IMAGE,
     iconColor: 'green'
   },
-  { type: EPostActionType.TAG, name: t.lang.home.modal.createPost.tag, icon: iconName.TAG, iconColor: 'blue' },
+  {
+    type: EPostActionType.TAG,
+    name: t.lang.home.modal.createPost.tag,
+    icon: iconName.TAG,
+    iconColor: 'blue'
+  },
   {
     type: EPostActionType.FEELING,
     name: t.lang.home.modal.createPost.feeling,
@@ -70,7 +75,7 @@ const handleAction = (type: PostActionType) => {
   <ModalLayoutHead :title="t.lang.home.modal.createPost.title" @onBack="handleBack" @onClose="handleClose" />
   <ModalLayoutBody>
     <Space>
-      <Avatar :size="45" />
+      <Avatar :color="layout.color" :size="45" />
       <div>
         <Paragraph>User name</Paragraph>
         <AudiencesButton sizes="sm" @click="() => handleAction(EPostActionType.AUDIENCE)" />
