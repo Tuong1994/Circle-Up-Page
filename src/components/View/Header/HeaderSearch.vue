@@ -94,7 +94,7 @@ watch(open, (newValue) => {
           <Row justify="between" aligns="middle">
             <Col>
               <Space>
-                <Avatar />
+                <Avatar :color="layout.color" />
                 <Paragraph strong>Friend</Paragraph>
               </Space>
             </Col>
