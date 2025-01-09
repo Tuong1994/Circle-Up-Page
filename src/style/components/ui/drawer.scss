@@ -71,3 +71,8 @@
   right: 0;
   animation: fadeInRight $transition-time-md $transition-fn;
 }
+
+// Theme
+.drawer-dark {
+  background: $bg-dark;
+}

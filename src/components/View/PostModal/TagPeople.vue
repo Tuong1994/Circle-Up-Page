@@ -49,7 +49,7 @@ const handleBack = () => emits('onBack')
     </Divider>
     <Row>
       <Col>
-        <Avatar :size="45" />
+        <Avatar :color="layout.color" :size="45" />
       </Col>
     </Row>
     <Divider>
@@ -60,7 +60,7 @@ const handleBack = () => emits('onBack')
         <Row justify="between" aligns="middle">
           <Col>
             <Space aligns="middle">
-              <Avatar :size="40" />
+              <Avatar :color="layout.color" :size="40" />
               <Paragraph>People</Paragraph>
             </Space>
           </Col>

@@ -20,10 +20,10 @@ const t = useLangStore()
       </RouterLink>
       <Paragraph :weight="600" :size="16" rootClassName="pt-3">Friend name</Paragraph>
       <Paragraph variant="secondary">{{ t.lang.friends.item.followedBy }} 1k</Paragraph>
-      <Button rootClassName="w-full my-5" :color="layout.color">
+      <Button rootClassName="w-full my-5" :shape="layout.shape" :color="layout.color">
         {{ t.lang.friends.item.add }}
       </Button>
-      <Button rootClassName="w-full">
+      <Button rootClassName="w-full" ghost :shape="layout.shape" :color="layout.color">
         {{ t.lang.common.actions.remove }}
       </Button>
     </template>

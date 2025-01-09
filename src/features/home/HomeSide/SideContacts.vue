@@ -51,7 +51,7 @@ const handleCloseSearch = () => (open.value = false)
   <div class="side-contacts">
     <ItemWrapper v-for="item in 20">
       <Space aligns="middle">
-        <Avatar :size="35" />
+        <Avatar :color="layout.color" :size="35" />
         <Paragraph>Friend</Paragraph>
       </Space>
     </ItemWrapper>

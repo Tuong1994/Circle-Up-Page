@@ -5,8 +5,11 @@ import { useViewPoint } from '@/hooks'
 import PostContent from '@/features/post/PostContent.vue'
 import PostCarousel from '@/features/post/PostCarousel.vue'
 import PostContentMobile from '@/features/post/PostContentMobile.vue'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
+
+const layout = useLayoutStore()
 
 const { isPhone, isTablet, isLgTablet } = useViewPoint()
 
@@ -14,11 +17,13 @@ const openContent = ref<boolean>(false)
 
 const responsive = computed<boolean>(() => isPhone.value || isTablet.value || isLgTablet.value)
 
+const themeClassName = computed<string>(() => `post-detail-${layout.theme}`)
+
 const handleOpenContent = () => (openContent.value = !openContent.value)
 </script>
 
 <template>
-  <div class="post-detail">
+  <div :class="['post-detail', themeClassName]">
     <Row :gutters="[0]">
       <Col :xs="24" :md="24" :lg="isLgTablet ? 24 : 16" :span="16">
         <PostCarousel @onOpenContent="handleOpenContent" />

@@ -112,6 +112,10 @@
   }
 }
 
+.card-dark {
+  box-shadow: 2px 2px 10px $bg-black;
+}
+
 // Dropdown
 .dropdown {
   .dropdown-list {

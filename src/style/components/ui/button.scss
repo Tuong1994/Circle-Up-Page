@@ -167,7 +167,7 @@
   border-color: $bg-blue;
   *,
   path {
-    color: $text-blue;
+    color: $text-blue !important;
   }
   &::after {
     background: $bg-blue-rgba-sm;
@@ -178,7 +178,7 @@
   border-color: $bg-green;
   *,
   path {
-    color: $text-green;
+    color: $text-green !important;
   }
   &::after {
     background: $bg-green-rgba-sm;
@@ -189,7 +189,7 @@
   border-color: $bg-red;
   *,
   path {
-    color: $text-red;
+    color: $text-red !important;
   }
   &::after {
     background: $bg-red-rgba-sm;
@@ -200,7 +200,7 @@
   border-color: $bg-orange;
   *,
   path {
-    color: $text-orange;
+    color: $text-orange !important;
   }
   &::after {
     background: $bg-orange-rgba-sm;
@@ -211,7 +211,7 @@
   border-color: $bg-yellow;
   *,
   path {
-    color: $text-yellow;
+    color: $text-yellow !important;
   }
   &::after {
     background: $bg-yellow-rgba-sm;
@@ -222,7 +222,7 @@
   border-color: $bg-purple;
   *,
   path {
-    color: $text-purple;
+    color: $text-purple !important;
   }
   &::after {
     background: $bg-purple-rgba-sm;
@@ -233,7 +233,7 @@
   border-color: $bg-pink;
   *,
   path {
-    color: $text-pink;
+    color: $text-pink !important;
   }
   &::after {
     background: $bg-pink-rgba-sm;
@@ -244,7 +244,7 @@
   border-color: $bg-black;
   *,
   path {
-    color: $text-black;
+    color: $text-black !important;
   }
   &::after {
     background: $bg-black-rgba-xs;

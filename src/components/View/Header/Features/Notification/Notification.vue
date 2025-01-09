@@ -5,6 +5,7 @@ import { iconName } from '@/components/UI/Icon/constant'
 import { EHeaderFeatureType } from '../../enum'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLangStore from '@/stores/LangStore'
+import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
 
@@ -19,6 +20,8 @@ defineProps<FeatureNotificationProps>()
 const emits = defineEmits(['onBack'])
 
 const t = useLangStore()
+
+const layout = useLayoutStore()
 
 const iconSize = 18
 
@@ -93,7 +96,7 @@ const handleBack = () => emits('onBack', EHeaderFeatureType.NOTIFICATION)
       <Row justify="between" aligns="middle">
         <Col>
           <Space aligns="middle">
-            <Avatar :size="40" />
+            <Avatar :color="layout.color" :size="40" />
             <div>
               <Paragraph>Notification</Paragraph>
               <Paragraph :size="11" :weight="600" variant="secondary">1h</Paragraph>

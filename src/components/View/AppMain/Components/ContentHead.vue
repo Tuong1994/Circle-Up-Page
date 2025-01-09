@@ -54,7 +54,7 @@ watchEffect(() => {
   <div ref="contentHeadRef" :style="rootStyle" :class="['side-content-head', rootClassName]">
     <Space aligns="middle">
       <RouterLink :to="backPath">
-        <Button shape="round">
+        <Button shape="round" :color="layout.color">
           <Icon :iconName="iconName.ANGLE_LEFT" />
         </Button>
       </RouterLink>
