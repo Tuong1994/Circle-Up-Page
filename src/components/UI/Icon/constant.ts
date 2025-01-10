@@ -62,5 +62,6 @@ export const iconName = {
   GRADUATION_CAP: 'graduation-cap',
   HEART: 'heart',
   HARD_DRIVE: 'hard-drive',
-  LAYER_GROUP: 'layer-group'
+  LAYER_GROUP: 'layer-group',
+  MOON: 'moon'
 }

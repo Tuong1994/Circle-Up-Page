@@ -62,6 +62,7 @@ import {
   faHeart,
   faHardDrive,
   faLayerGroup,
+  faMoon,
 } from '@fortawesome/free-solid-svg-icons'
 
 import App from './App.vue'
@@ -129,6 +130,7 @@ library.add(
   faHeart,
   faHardDrive,
   faLayerGroup,
+  faMoon,
 )
 
 const app = createApp(App)

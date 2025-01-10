@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, withDefaults, defineProps } from 'vue'
+import { ref, computed, withDefaults, defineProps } from 'vue'
 import { Image } from '@/components/UI'
 import { RouterLink } from 'vue-router'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
@@ -16,12 +16,16 @@ const props = withDefaults(defineProps<LogoProps>(), {
 const layout = useLayoutStore()
 
 const size = computed<number>(() => (props.responsive ? 60 : props.size))
-
-const imageUrl = computed<string>(() => `/logo/logo-${layout.theme}-mode.svg`)
 </script>
 
 <template>
   <RouterLink to="/">
-    <Image :imgWidth="size" :imgHeight="size" :src="imageUrl" />
+    <Image
+      v-if="layout.theme === 'light'"
+      :imgWidth="size"
+      :imgHeight="size"
+      src="/logo/logo-light-mode.svg"
+    />
+    <Image v-if="layout.theme === 'dark'" :imgWidth="size" :imgHeight="size" src="/logo/logo-dark-mode.svg" />
   </RouterLink>
 </template>
