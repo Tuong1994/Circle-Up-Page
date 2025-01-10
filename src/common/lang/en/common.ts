@@ -35,7 +35,12 @@ const common_en = {
         logout: 'Logout',
         english: 'English',
         vietnamese: 'Vietnamese',
-        theme: 'Theme'
+        theme: 'Theme',
+        mode: {
+          title: 'Mode',
+          light: 'Light',
+          dark: 'Dark'
+        }
       }
     }
   },

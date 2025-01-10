@@ -35,7 +35,12 @@ const common_vn = {
         logout: 'Đăng xuất',
         english: 'Tiếng Anh',
         vietnamese: 'Tiếng Việt',
-        theme: 'Chủ đề'
+        theme: 'Chủ đề',
+        mode: {
+          title: 'Chế độ',
+          light: 'Sáng',
+          dark: 'Tối'
+        }
       }
     }
   },

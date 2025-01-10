@@ -3,7 +3,7 @@ import { computed, defineEmits } from 'vue'
 import { Button, Icon, Space, Typography } from '@/components/UI'
 import { Select } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
-import type { SelectOptions } from '@/components/Control/type'
+import type { ControlColor, ControlShape, SelectOptions } from '@/components/Control/type'
 import MenuHead from './MenuHead.vue'
 import useLangStore from '@/stores/LangStore'
 import useLayoutStore, { type LayoutColor, type LayoutTheme } from '@/components/UI/Layout/LayoutStore'
@@ -19,8 +19,8 @@ const layout = useLayoutStore()
 const colors = computed<LayoutColor[]>(() => ['blue', 'green', 'red', 'orange', 'purple', 'pink'])
 
 const modeOption = computed<SelectOptions>(() => [
-  { label: 'Dark', value: 'dark' },
-  { label: 'Light', value: 'light' }
+  { label: t.lang.common.header.features.profile.mode.dark, value: 'dark' },
+  { label: t.lang.common.header.features.profile.mode.light, value: 'light' }
 ])
 
 const modeIcon = computed<string>(() => (layout.theme === 'dark' ? iconName.MOON : iconName.LIGHTBULB))
@@ -46,11 +46,13 @@ const handleSelectMode = (value: LayoutTheme) => layout.switchTheme(value)
         @click="() => handleSelectTheme(color as LayoutColor)"
       />
     </Space>
-    <Paragraph rootClassName="my-5" :weight="600">Mode</Paragraph>
+    <Paragraph rootClassName="my-5" :weight="600">
+      {{ t.lang.common.header.features.profile.mode.title }}
+    </Paragraph>
     <Select
       :hasSearch="false"
-      :shape="layout.shape"
-      :color="layout.color"
+      :shape="layout.shape as ControlShape"
+      :color="layout.color as ControlColor"
       :options="modeOption"
       :defaultValue="layout.theme"
       @onChangeSelect="handleSelectMode"

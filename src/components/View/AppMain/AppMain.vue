@@ -48,7 +48,7 @@ const handleClosePostModal = () => post.setOpenModal(false)
 </script>
 
 <template>
-  <Container :rootClassName="colorClassName">
+  <Container theme="dark" :rootClassName="colorClassName">
     <Head v-if="renderHeader">
       <Header />
     </Head>
