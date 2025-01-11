@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 import { Drawer, Card, Icon, Grid, Space, Divider, Typography } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import type { DrawerProps } from '@/components/UI/Drawer/Drawer.vue'
-import useMenuItems from '../AppMain/hooks/useMenuItems'
+import useMenuItems from '../AppLayout/hooks/useMenuItems'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Row, Col } = Grid
