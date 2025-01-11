@@ -5,7 +5,7 @@ import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
 import { routePaths } from '@/router'
 import type { ControlShape, ControlColor } from '@/components/Control/type'
-import useAppMainStore from '../AppMainStore'
+import useAppLayoutStore from '../AppLayoutStore'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 
@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<ContentHeadProps>(), {
   subLinkPath: routePaths.FRIENDS
 })
 
-const app = useAppMainStore()
+const app = useAppLayoutStore()
 
 const layout = useLayoutStore()
 
@@ -82,3 +82,4 @@ watchEffect(() => {
     </Input>
   </div>
 </template>
+../AppLayoutStore

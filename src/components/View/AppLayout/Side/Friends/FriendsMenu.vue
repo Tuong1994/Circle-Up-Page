@@ -7,11 +7,11 @@ import DefaultContent from './DefaultContent.vue'
 import RequestsContent from './RequestsContent.vue'
 import SuggestionsContent from './SuggestionsContent.vue'
 import ListContent from './ListContent.vue'
-import useAppMainStore from '../../AppMainStore'
+import useAppLayoutStore from '../../AppLayoutStore'
 
 const { currentRoute } = useRouter()
 
-const app = useAppMainStore()
+const app = useAppLayoutStore()
 
 watchEffect(() => {
   if (currentRoute.value.fullPath === routePaths.FRIENDS) app.setFriendMenuType(EFriendMenuType.DEFAULT)
@@ -29,3 +29,4 @@ watchEffect(() => {
   <SuggestionsContent v-if="app.friendMenuType === EFriendMenuType.SUGGESTIONS" />
   <ListContent v-if="app.friendMenuType === EFriendMenuType.LIST" />
 </template>
+../../AppLayoutStore

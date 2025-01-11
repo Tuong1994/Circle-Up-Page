@@ -1,14 +1,24 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import AppMain from '@/components/View/AppMain/AppMain.vue'
+import AppLayout from '@/components/View/AppLayout/AppLayout.vue'
 import GridProvider from './components/UI/Grid/GridProvider.vue'
-import "../node_modules/vue3-emoji-picker/dist/style.css";
+import ProtectedRoute from './components/View/ProtectedRoute/ProtectedRoute.vue'
+import AuthLayout from './features/auth/AuthLayout.vue'
+import useAuthStore from './stores/AuthStore'
+import '../node_modules/vue3-emoji-picker/dist/style.css'
+
+const auth = useAuthStore()
 </script>
 
 <template>
   <GridProvider>
-    <AppMain>
-      <RouterView />
-    </AppMain>
+    <ProtectedRoute>
+      <AppLayout v-if="auth.isAuth">
+        <RouterView />
+      </AppLayout>
+      <AuthLayout v-else>
+        <RouterView />
+      </AuthLayout>
+    </ProtectedRoute>
   </GridProvider>
 </template>

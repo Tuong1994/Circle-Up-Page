@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { EFriendMenuType } from './enum'
 import type { FriendMenuType } from './type'
 
-const useAppMainStore = defineStore('app', () => {
+const useAppLayoutStore = defineStore('app', () => {
   const hasContentMenuHead = ref<boolean>(false)
   const contentMenuHeadHeight = ref<number>(0)
   const friendMenuType = ref<FriendMenuType>(EFriendMenuType.DEFAULT)
@@ -21,4 +21,4 @@ const useAppMainStore = defineStore('app', () => {
   }
 })
 
-export default useAppMainStore
+export default useAppLayoutStore

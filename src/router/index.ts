@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/home/HomeView.vue'
+import LoginView from '@/views/auth/LoginView.vue'
+import RegisterView from '@/views/auth/RegisterView.vue'
 
 export const routePaths = {
   HOME: '/',
@@ -19,7 +21,9 @@ export const routePaths = {
   SAVED: '/saved',
   SAVED_ITEMS: '/saved/items',
   SAVED_COLLECTION: '/saved/collection',
-  SAVED_COLLECTION_DETAIL: '/saved/collection/detail'
+  SAVED_COLLECTION_DETAIL: '/saved/collection/detail',
+  LOGIN: '/login',
+  REGISTER: '/register'
 } as const
 
 export const routeNames = {
@@ -42,12 +46,24 @@ export const routeNames = {
   SAVED: 'saved',
   SAVED_ITEMS: 'saved-items',
   SAVED_COLLECTION: 'saved-collection',
-  SAVED_COLLECTION_DETAIL: 'saved-collection-detail'
+  SAVED_COLLECTION_DETAIL: 'saved-collection-detail',
+  LOGIN: 'login',
+  REGISTER: 'register'
 } as const
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: routePaths.LOGIN,
+      name: routeNames.LOGIN,
+      component: LoginView
+    },
+    {
+      path: routePaths.REGISTER,
+      name: routeNames.REGISTER,
+      component: RegisterView
+    },
     {
       path: routePaths.HOME,
       name: routeNames.HOME,

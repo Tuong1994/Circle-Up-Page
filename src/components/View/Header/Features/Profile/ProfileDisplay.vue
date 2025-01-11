@@ -51,6 +51,7 @@ const handleSelectMode = (value: LayoutTheme) => layout.switchTheme(value)
     </Paragraph>
     <Select
       :hasSearch="false"
+      :hasClear="false"
       :shape="layout.shape as ControlShape"
       :color="layout.color as ControlColor"
       :options="modeOption"

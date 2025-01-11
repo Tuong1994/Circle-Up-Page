@@ -1,7 +1,7 @@
 import { ref, watch, type ComputedRef } from 'vue'
 import { routeNames } from '@/router'
 import { useRouter } from 'vue-router'
-import useAppMainStore from '../AppMainStore'
+import useAppMainStore from '../AppLayoutStore'
 
 const useRenderSide = (responsive: ComputedRef<boolean>) => {
   const { currentRoute } = useRouter()

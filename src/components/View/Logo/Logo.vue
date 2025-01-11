@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, withDefaults, defineProps } from 'vue'
+import { computed, withDefaults, defineProps } from 'vue'
 import { Image } from '@/components/UI'
 import { RouterLink } from 'vue-router'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'

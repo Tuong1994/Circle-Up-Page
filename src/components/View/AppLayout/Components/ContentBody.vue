@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, withDefaults, computed, type StyleValue } from 'vue'
-import useAppMainStore from '../AppMainStore'
+import useAppLayoutStore from '../AppLayoutStore'
 
 interface ContentBodyProps {
   rootClassName?: string
@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<ContentBodyProps>(), {
   rootClassName: ''
 })
 
-const app = useAppMainStore()
+const app = useAppLayoutStore()
 
 const style = computed<StyleValue>(() => {
   if (props.rootStyle) return props.rootStyle
@@ -27,3 +27,4 @@ const style = computed<StyleValue>(() => {
     </div>
   </div>
 </template>
+../AppLayoutStore
