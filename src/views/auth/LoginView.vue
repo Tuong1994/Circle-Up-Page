@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import { Card, Button, Divider, Space, Typography } from '@/components/UI'
 import { Form, Input, InputPassword } from '@/components/Control'
+import { routePaths } from '@/router'
 import type { ControlColor, ControlShape } from '@/components/Control/type'
-import type { AuthSignIn } from '@/services/auth/type'
+import type { AuthLogin } from '@/services/auth/type'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 
@@ -13,7 +15,7 @@ const layout = useLayoutStore()
 
 const t = useLangStore()
 
-const formData = ref<AuthSignIn>({
+const formData = ref<AuthLogin>({
   email: '',
   password: ''
 })
@@ -47,9 +49,11 @@ const formData = ref<AuthSignIn>({
           {{ t.lang.auth.login.title }}
         </Button>
         <Divider />
-        <Button rootClassName="w-full" color="green" :shape="layout.shape">
+        <RouterLink :to="routePaths.REGISTER">
+          <Button rootClassName="w-full" color="green" :shape="layout.shape">
           {{ t.lang.auth.login.createAccount }}
         </Button>
+        </RouterLink>
       </template>
     </Card>
   </Form>
