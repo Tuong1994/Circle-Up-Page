@@ -12,5 +12,15 @@
     .inner-wrap {
       height: $h-full;
     }
+    @include respond(laptop) {
+      padding: 0;
+    }
+  }
+  @include respond(laptop) {
+    padding: $p-2;
+  }
+  @include respond(smTablet) {
+    padding: $p-2;
+    height: auto;
   }
 }

@@ -3,12 +3,18 @@ import { Layout, Space, Grid, Typography } from '@/components/UI'
 import Logo from '@/components/View/Logo/Logo.vue'
 import AuthLayoutLang from './AuthLayoutLang.vue'
 import AuthLayoutSetting from './AuthLayoutSetting.vue'
+import useViewPoint from '@/hooks/useViewPoint'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
 
 const { Container, Content } = Layout
+
+const { isSmTablet } = useViewPoint()
+
+const t = useLangStore()
 </script>
 
 <template>
@@ -24,16 +30,16 @@ const { Container, Content } = Layout
       </Row>
       <div class="content-inner">
         <Row justify="between" aligns="middle" rootClassName="inner-wrap">
-          <Col :span="12">
-            <Space :size="5" aligns="middle">
+          <Col :xs="0" :md="isSmTablet ? 0 : 10" :lg="12" :span="12">
+            <Space :size="5" justify="center" aligns="middle">
               <Logo />
-              <Paragraph :weight="600" :size="25">Circle Up</Paragraph>
+              <Paragraph :weight="600" :size="30" variant="warning">Circle Up</Paragraph>
             </Space>
-            <Paragraph :size="20">
-              Circle Up helps you connect and share with the people in your life.
+            <Paragraph :size="20" aligns="center">
+              {{ t.lang.auth.layout.content }}
             </Paragraph>
           </Col>
-          <Col :span="10">
+          <Col :xs="24" :md="isSmTablet ? 24 : 12" :lg="12" :span="10">
             <slot></slot>
           </Col>
         </Row>
