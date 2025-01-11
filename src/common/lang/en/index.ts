@@ -1,3 +1,4 @@
+import auth_en from './auth'
 import common_en from './common'
 import friends_en from './friends'
 import home_en from './home'
@@ -11,7 +12,8 @@ const en = {
   friends: friends_en,
   profile: profile_en,
   media: media_en,
-  saved: saved_en
+  saved: saved_en,
+  auth: auth_en
 }
 
 export type EN = typeof en

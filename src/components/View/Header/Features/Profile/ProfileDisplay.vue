@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineEmits } from 'vue'
+import { computed, defineProps, defineEmits, withDefaults } from 'vue'
 import { Button, Icon, Space, Typography } from '@/components/UI'
 import { Select } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
@@ -9,6 +9,14 @@ import useLangStore from '@/stores/LangStore'
 import useLayoutStore, { type LayoutColor, type LayoutTheme } from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
+
+interface ProfileDisplayProps {
+  hasHead?: boolean
+}
+
+withDefaults(defineProps<ProfileDisplayProps>(), {
+  hasHead: true
+})
 
 const emits = defineEmits(['onBack'])
 
@@ -34,7 +42,7 @@ const handleSelectMode = (value: LayoutTheme) => layout.switchTheme(value)
 
 <template>
   <div class="p-5">
-    <MenuHead :title="t.lang.common.header.features.profile.display" @onBack="handleBack" />
+    <MenuHead v-if="hasHead" :title="t.lang.common.header.features.profile.display" @onBack="handleBack" />
     <Paragraph rootClassName="mb-5" :weight="600">
       {{ t.lang.common.header.features.profile.theme }}
     </Paragraph>

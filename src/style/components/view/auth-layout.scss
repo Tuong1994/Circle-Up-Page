@@ -1,0 +1,16 @@
+.auth-layout-content {
+  height: $h-screen;
+  .content-header {
+    width: $w-full;
+    padding: $p-2 $p-5;
+    position: fixed;
+    top: 0;
+  }
+  .content-inner {
+    padding: 0 $p-5 * 8;
+    height: $h-full;
+    .inner-wrap {
+      height: $h-full;
+    }
+  }
+}

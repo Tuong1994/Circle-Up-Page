@@ -1,3 +1,4 @@
+import auth_vn from './auth'
 import common_vn from './common'
 import friends_vn from './friends'
 import home_vn from './home'
@@ -11,7 +12,8 @@ const vn = {
   friends: friends_vn,
   profile: profile_vn,
   media: media_vn,
-  saved: saved_vn
+  saved: saved_vn,
+  auth: auth_vn
 }
 
 export type VN = typeof vn
