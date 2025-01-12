@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Dropdown, Icon } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
-import ProfileDisplay from '../Header/Features/Profile/ProfileDisplay.vue'
+import ProfileDisplay from '@/components/View/Header/Features/Profile/ProfileDisplay.vue'
 </script>
 
 <template>

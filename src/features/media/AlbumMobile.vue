@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AlbumSide from '@/components/View/AppMain/Side/Media/AlbumSide.vue'
+import AlbumSide from '@/components/View/AppContainer/AppLayout/Side/Media/AlbumSide.vue'
 </script>
 
 <template>

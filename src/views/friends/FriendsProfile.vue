@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
-import { EFriendMenuType } from '@/components/View/AppMain/enum'
+import { EFriendMenuType } from '@/components/View/AppContainer/AppLayout/enum'
 import FriendsEmpty from '@/features/friends/FriendsEmpty.vue'
-import useAppMainStore from '@/components/View/AppMain/AppMainStore'
+import useAppLayoutStore from '@/components/View/AppContainer/AppLayout/AppLayoutStore'
 import useLangStore from '@/stores/LangStore'
 
-const app = useAppMainStore()
+const app = useAppLayoutStore()
 
 const t = useLangStore()
 

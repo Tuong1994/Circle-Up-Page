@@ -2,7 +2,7 @@
 import { defineProps } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Space, Avatar, Icon, Typography } from '@/components/UI'
-import ItemWrapper from '../../ItemWrapper/ItemWrapper.vue'
+import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
