@@ -17,6 +17,7 @@ import useCommentStore from '@/components/View/Comment/CommentStore'
 import useRenderSide from './hooks/useRenderSide'
 import useRenderHeader from './hooks/useRenderHeader'
 import usePostStore from '@/stores/PostStore'
+import useCacheRoute from './hooks/useCacheRoute'
 
 const { Container, Head, Body, Side, Content } = Layout
 
@@ -33,6 +34,8 @@ const comment = useCommentStore()
 const post = usePostStore()
 
 const renderHeader = useRenderHeader()
+
+useCacheRoute()
 
 const responsive = computed<boolean>(() => screenWidth.value < MD_TABLET)
 
