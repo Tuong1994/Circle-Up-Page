@@ -9,7 +9,7 @@ const auth_en = {
   },
   register: {
     title: 'Register'
-  }
+  },
 }
 
 export default auth_en

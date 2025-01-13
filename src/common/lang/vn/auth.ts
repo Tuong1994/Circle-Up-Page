@@ -9,7 +9,7 @@ const auth_vn = {
   },
   register: {
     title: 'Đăng ký'
-  }
+  },
 }
 
 export default auth_vn

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/home/HomeView.vue'
 import LoginView from '@/views/auth/LoginView.vue'
 import RegisterView from '@/views/auth/RegisterView.vue'
+import ForgetPasswordView from '@/views/auth/ForgetPasswordView.vue'
 
 export const routePaths = {
   HOME: '/',
@@ -23,7 +24,8 @@ export const routePaths = {
   SAVED_COLLECTION: '/saved/collection',
   SAVED_COLLECTION_DETAIL: '/saved/collection/detail',
   LOGIN: '/login',
-  REGISTER: '/register'
+  REGISTER: '/register',
+  FORGET_PASSWORD: '/forgetPassword'
 } as const
 
 export const routeNames = {
@@ -48,7 +50,8 @@ export const routeNames = {
   SAVED_COLLECTION: 'saved-collection',
   SAVED_COLLECTION_DETAIL: 'saved-collection-detail',
   LOGIN: 'login',
-  REGISTER: 'register'
+  REGISTER: 'register',
+  FORGET_PASSWORD: 'forget-password'
 } as const
 
 const router = createRouter({
@@ -63,6 +66,11 @@ const router = createRouter({
       path: routePaths.REGISTER,
       name: routeNames.REGISTER,
       component: RegisterView
+    },
+    {
+      path: routePaths.FORGET_PASSWORD,
+      name: routeNames.FORGET_PASSWORD,
+      component: ForgetPasswordView
     },
     {
       path: routePaths.HOME,
