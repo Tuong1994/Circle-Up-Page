@@ -1,12 +1,16 @@
 <script setup lang="ts" generic="M extends object">
 import { defineProps, defineEmits } from 'vue'
-import { Card } from '@/components/UI'
+import { Card, Typography } from '@/components/UI'
 import { Form } from '@/components/Control'
 import type { FormProps } from '@/components/Control/Form/Form.vue'
 import type { ControlShape, ControlColor } from '@/components/Control/type'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
-interface AuthFormLayout extends FormProps<M> {}
+const { Paragraph } = Typography
+
+interface AuthFormLayout extends FormProps<M> {
+  title?: string
+}
 
 const props = defineProps<AuthFormLayout>()
 
@@ -26,7 +30,9 @@ const handleFinish = (data: M) => emits('onFinish', data)
   >
     <Card>
       <template #head>
-        <slot name="head"></slot>
+        <Paragraph :weight="600" :size="20">
+          {{ title }}
+        </Paragraph>
       </template>
       <template #body>
         <slot name="body"></slot>

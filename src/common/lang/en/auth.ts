@@ -10,6 +10,9 @@ const auth_en = {
   register: {
     title: 'Register'
   },
+  forgetPassword: {
+    resetPassword: 'Reset password'
+  }
 }
 
 export default auth_en

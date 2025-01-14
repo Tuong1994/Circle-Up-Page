@@ -1,15 +1,15 @@
 <script setup lang="ts">
+import * as yup from "yup"
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { Button, Divider, Space, Typography } from '@/components/UI'
+import { Button, Divider, Space, Icon } from '@/components/UI'
 import { Input, InputPassword } from '@/components/Control'
 import { routePaths } from '@/router'
+import { iconName } from '@/components/UI/Icon/constant'
 import type { AuthLogin } from '@/services/auth/type'
 import AuthFormLayout from '@/features/auth/AuthFormLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
-
-const { Paragraph } = Typography
 
 const layout = useLayoutStore()
 
@@ -22,21 +22,22 @@ const formData = ref<AuthLogin>({
 </script>
 
 <template>
-  <AuthFormLayout :initialValues="formData">
-    <template #head>
-      <Paragraph :weight="600" :size="20">
-        {{ t.lang.auth.login.title }}
-      </Paragraph>
-    </template>
+  <AuthFormLayout :initialValues="formData" :title="t.lang.auth.login.title">
     <template #body>
-      <Input name="email">
+      <Input name="email" :rule="yup.string().required('This field is required').email('Email invalid')">
         <template #label>
           {{ t.lang.common.form.label.email }}
+        </template>
+        <template #addonBefore>
+          <Icon :iconName="iconName.ENVELOPE" />
         </template>
       </Input>
       <InputPassword name="password" rootClassName="my-5">
         <template #label>
           {{ t.lang.common.form.label.password }}
+        </template>
+        <template #addonBefore>
+          <Icon :iconName="iconName.LOCK" />
         </template>
       </InputPassword>
       <Space justify="end">

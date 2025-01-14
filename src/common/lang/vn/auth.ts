@@ -10,6 +10,9 @@ const auth_vn = {
   register: {
     title: 'Đăng ký'
   },
+  forgetPassword: {
+    resetPassword: 'Đặt lại mật khẩu'
+  }
 }
 
 export default auth_vn
