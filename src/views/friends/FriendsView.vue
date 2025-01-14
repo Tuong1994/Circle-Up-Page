@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { RouterView } from 'vue-router'
 import { useViewPoint } from '@/hooks'
-import { breakpoint } from '@/hooks/useViewPoint'
+import { breakpoint } from '@/hooks/features/useViewPoint'
 import FriendsMobile from '@/features/friends/FriendsMobile.vue'
 
 const { screenWidth } = useViewPoint()

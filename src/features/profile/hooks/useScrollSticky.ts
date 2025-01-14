@@ -1,5 +1,5 @@
 import { computed, watchEffect } from 'vue'
-import useViewPoint, { breakpoint } from '@/hooks/useViewPoint'
+import useViewPoint, { breakpoint } from '@/hooks/features/useViewPoint'
 
 const useScrollSticky = () => {
   const { screenWidth } = useViewPoint()

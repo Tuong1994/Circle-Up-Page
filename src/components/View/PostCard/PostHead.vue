@@ -2,9 +2,9 @@
 import { computed, withDefaults, defineProps, defineEmits } from 'vue'
 import { Grid, Space, Avatar, Dropdown, Icon, Typography, Button } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
+import { useViewPoint } from '@/hooks'
 import HoverInfo from '@/components/View/HoverInfo/HoverInfo.vue'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
-import useViewPoint from '@/hooks/useViewPoint'
 import useLangStore from '@/stores/LangStore'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 

@@ -3,11 +3,10 @@ import { computed, ref, watch, defineProps } from 'vue'
 import { Avatar, Icon, Space, Button, Grid, Typography } from '@/components/UI'
 import { Input } from '@/components/Control'
 import { iconName } from '@/components/UI/Icon/constant'
-import { useRender } from '@/hooks'
+import { useRender, useClickOutside } from '@/hooks'
 import type { ControlShape, ControlColor } from '@/components/Control/type'
 import Logo from '../Logo/Logo.vue'
 import ItemWrapper from './../ItemWrapper/ItemWrapper.vue'
-import useClickOutSide from '@/hooks/useClickOutside'
 import useLangStore from '@/stores/LangStore'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
@@ -31,7 +30,7 @@ const t = useLangStore()
 
 const render = useRender(open)
 
-useClickOutSide(inputRef, open)
+useClickOutside(inputRef, open)
 
 const logoClassName = computed<string>(() => (open.value ? 'input-logo-render' : ''))
 
@@ -107,3 +106,4 @@ watch(open, (newValue) => {
     </div>
   </Space>
 </template>
+@/hooks/features/useClickOutside

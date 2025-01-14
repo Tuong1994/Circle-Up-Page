@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Layout, Space, Grid, Typography } from '@/components/UI'
+import { useViewPoint } from '@/hooks'
 import Logo from '@/components/View/Logo/Logo.vue'
 import AuthLayoutLang from './AuthLayoutLang.vue'
 import AuthLayoutSetting from './AuthLayoutSetting.vue'
-import useViewPoint from '@/hooks/useViewPoint'
 import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid

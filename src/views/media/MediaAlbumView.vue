@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useViewPoint } from '@/hooks'
-import { breakpoint } from '@/hooks/useViewPoint'
+import { breakpoint } from '@/hooks/features/useViewPoint'
 import { Section } from '@/components/UI'
 import AlbumList from '@/features/media/AlbumList.vue'
 import AlbumEmpty from '@/features/media/AlbumEmpty.vue'

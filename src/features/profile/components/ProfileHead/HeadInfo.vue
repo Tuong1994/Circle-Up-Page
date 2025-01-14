@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { Grid, Typography, Space, Button, Icon } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import { useViewPoint } from '@/hooks'
-import { breakpoint } from '@/hooks/useViewPoint'
+import { breakpoint } from '@/hooks/features/useViewPoint'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 

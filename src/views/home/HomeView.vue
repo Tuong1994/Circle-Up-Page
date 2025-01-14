@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useViewPoint } from '@/hooks'
-import { breakpoint } from '@/hooks/useViewPoint'
+import { breakpoint } from '@/hooks/features/useViewPoint'
 import HomeActions from '@/features/home/HomeActions.vue'
 import HomeSide from '@/features/home/HomeSide/HomeSide.vue'
 import HomeEmpty from '@/features/home/HomeEmpty.vue'

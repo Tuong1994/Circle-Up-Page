@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, withDefaults, toRef, type StyleValue } from 'vue'
-import type { MenuItem } from '../type.ts'
 import { iconName } from '@/components/UI/Icon/constant.ts'
+import { useRender } from '@/hooks'
+import type { MenuItem } from '../type.ts'
 import Icon from '@/components/UI/Icon/Icon.vue'
-import useRender from '@/hooks/useRender.ts'
 
 interface MenuHorizontalItemProps {
   itemClassName?: string
@@ -37,10 +37,7 @@ const handleOpenMenu = (id: string) => emits('onOpenMenu', id)
 <!-- @mouseenter="() => handleOpenMenu(item.id)"
 @mouseleave="() => handleOpenMenu(item.id)" -->
 <template>
-  <div
-    :style="itemStyle"
-    :class="['horizontal-item', itemClassName]"
-  >
+  <div :style="itemStyle" :class="['horizontal-item', itemClassName]">
     <div :class="['item-label', labelActiveClassName]">
       <div class="label-content">
         <div v-if="item.labelIcon" class="content-icon">

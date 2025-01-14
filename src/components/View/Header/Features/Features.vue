@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { toRefs, watch, withDefaults, defineProps, defineEmits, computed } from 'vue'
 import { useRender, useViewPoint } from '@/hooks'
-import { breakpoint } from '@/hooks/useViewPoint'
+import { breakpoint } from '@/hooks/features/useViewPoint'
 import type { FeatureType } from '../type'
 import Profile from './Profile/Profile.vue'
 import Notification from './Notification/Notification.vue'

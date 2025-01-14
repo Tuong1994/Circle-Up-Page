@@ -7,7 +7,7 @@ import type { FriendItemType } from '../../type'
 import { EFriendItemType } from '../../enum'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
-import useViewPoint, { breakpoint } from '@/hooks/useViewPoint'
+import useViewPoint, { breakpoint } from '@/hooks/features/useViewPoint'
 import useLangStore from '@/stores/LangStore'
 import defaultImg from '/default.jpg'
 

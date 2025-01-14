@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { EProfileTabType } from '../../enum'
 import { useViewPoint } from '@/hooks'
-import { breakpoint } from '@/hooks/useViewPoint'
+import { breakpoint } from '@/hooks/features/useViewPoint'
 import type { ProfileTabs as FriendsTabs } from '../../type'
 import ProfileTabs from '../ProfileTabs/ProfileTabs.vue'
 import FriendsList from './FriendsList.vue'

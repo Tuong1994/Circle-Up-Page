@@ -2,11 +2,11 @@
 import { computed, ref, watchEffect, defineProps } from 'vue'
 import { Space, Avatar, Icon } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
+import { useViewPoint } from '@/hooks'
 import type { FeatureType } from './type'
 import Profile from './Features/Profile/ProfileIcon.vue'
 import Notification from './Features/Notification/NotificationIcon.vue'
 import Features from './Features/Features.vue'
-import useViewPoint from '@/hooks/useViewPoint'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import HeaderMenuMobile from './HeaderMenuMobile.vue'
 

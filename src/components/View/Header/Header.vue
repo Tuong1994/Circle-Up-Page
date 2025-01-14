@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { Grid } from '@/components/UI'
 import { useViewPoint } from '@/hooks'
-import { breakpoint } from '@/hooks/useViewPoint'
+import { breakpoint } from '@/hooks/features/useViewPoint'
 import HeaderNav from './HeaderNav.vue'
 import HeaderSearch from './HeaderSearch.vue'
 import HeaderFeatures from './HeaderFeatures.vue'

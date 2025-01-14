@@ -2,13 +2,13 @@
 import { computed, ref, defineEmits, defineProps } from 'vue'
 import { Icon, Typography, DynamicGrid } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
+import { useUploadMedia } from '@/hooks'
 import type { DynamicGridItems } from '@/components/UI/DynamicGrid/type'
 import type { UploadItem } from '@/components/Control/type'
 import UploadedItem from './UploadedItem.vue'
 import UploadActions from './UploadActions.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
-import useUploadMedia from '@/hooks/useUploadMedia'
 
 const { Paragraph } = Typography
 
