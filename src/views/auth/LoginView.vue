@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import * as yup from "yup"
+import * as yup from 'yup'
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Button, Divider, Space, Icon } from '@/components/UI'
@@ -10,10 +10,13 @@ import type { AuthLogin } from '@/services/auth/type'
 import AuthFormLayout from '@/features/auth/AuthFormLayout.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
+import useFormRule from '@/components/Control/Form/useFormRule'
 
 const layout = useLayoutStore()
 
 const t = useLangStore()
+
+const { email, password, minNumber, required, combine } = useFormRule()
 
 const formData = ref<AuthLogin>({
   email: '',
@@ -24,7 +27,7 @@ const formData = ref<AuthLogin>({
 <template>
   <AuthFormLayout :initialValues="formData" :title="t.lang.auth.login.title">
     <template #body>
-      <Input name="email" :rule="yup.string().required('This field is required').email('Email invalid')">
+      <Input name="email" :rule="combine(minNumber, required)">
         <template #label>
           {{ t.lang.common.form.label.email }}
         </template>
