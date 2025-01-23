@@ -27,7 +27,7 @@ const formData = ref<AuthLogin>({
 <template>
   <AuthFormLayout :initialValues="formData" :title="t.lang.auth.login.title">
     <template #body>
-      <Input name="email" :rule="combine(minNumber, required)">
+      <Input name="email">
         <template #label>
           {{ t.lang.common.form.label.email }}
         </template>
