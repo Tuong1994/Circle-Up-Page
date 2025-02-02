@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { computed, withDefaults, defineProps } from 'vue'
 import { Typography, DynamicGrid } from '@/components/UI'
+import type { Post } from '@/services/post/type'
 import type { DynamicGridItems } from '@/components/UI/DynamicGrid/type'
 import PostMedia from './PostMedia.vue'
 
 const { Paragraph } = Typography
 
 interface PostBodyProps {
+  post: Post;
   hasMediaContent?: boolean
 }
 

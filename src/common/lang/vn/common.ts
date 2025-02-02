@@ -198,7 +198,9 @@ const common_vn = {
       emailExist: 'Email này đã tồn tại',
       logout: 'Lỗi đăng xuất',
       remove: 'Lỗi không thể xóa',
-      api: 'Đã xảy ra lỗi'
+      api: 'Đã xảy ra lỗi',
+      connection:
+        'Có vẻ như máy chủ đang ngừng hoạt động để bảo trì hoặc mất kết nối. Chúng tôi đang làm việc đó và sẽ quay lại ngay!'
     }
   }
 }

@@ -4,7 +4,7 @@ import { getApiQuery } from './helper'
 import authApiPaths from './auth/path'
 import localStorageKey from '@/common/constant/localStorage'
 
-const BASE_URL ='http://localhost:6000/'
+const BASE_URL ='http://localhost:8000/'
 
 export const HttpStatus = {
   BAD_REQUEST: 400,

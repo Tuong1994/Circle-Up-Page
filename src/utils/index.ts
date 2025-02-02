@@ -23,6 +23,13 @@ const utils = {
     const startDate = new Date(start.year, start.month, start.date)
     const endDate = new Date(end.year, end.month, end.date)
     return { startDate, endDate }
+  },
+
+  getUserFullName: (firstName: string, lastName: string) => {
+    if (!firstName && !lastName) return ''
+    if (firstName && !lastName) return firstName
+    if (!firstName && lastName) return lastName
+    return `${lastName} ${firstName}`
   }
 }
 

@@ -5,6 +5,7 @@ import type { Like } from '../like/type'
 import type { Media } from '../media/type'
 import type { Follow } from '../follow/type'
 import type { EAudienceType } from '@/components/View/Audiences/enum'
+import type { User } from '../user/type'
 
 export type PostActionType =
   | EPostActionType.PHOTO
@@ -36,6 +37,7 @@ export type Post = {
   audience: EAudienceType
   userId: string
   collectionId?: string
+  user?: User;
   comments: Comment[]
   likes: Like[]
   medias: Media[]

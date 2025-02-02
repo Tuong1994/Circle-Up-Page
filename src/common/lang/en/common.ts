@@ -198,7 +198,9 @@ const common_en = {
       emailExist: 'Email is already exist',
       logout: 'Logout failed',
       remove: 'Remove failed',
-      api: 'Api network failed'
+      api: 'Api network failed',
+      connection:
+        'It looks like the server is down for maintenance or has lost connection. We’re on it and will be back shortly!'
     }
   }
 }
