@@ -1,9 +1,11 @@
 import type { ComponentShape } from '@/common/type'
+import type { StyleValue } from 'vue'
+import type { LayoutShape } from '../../Layout/LayoutStore'
 
 type CommonOptions = {
   width?: number | string
   height?: number | string
-  shape?: Exclude<ComponentShape, 'circle'>
+  shape?: LayoutShape
 }
 
 export type TitleOptions = CommonOptions
@@ -11,12 +13,14 @@ export type TitleOptions = CommonOptions
 export type ButtonOptions = CommonOptions
 
 export type ParagraphOptions = CommonOptions & {
-  lines?: number
+  lines?: number,
+  linesClassName?: string;
+  linesStyle?: StyleValue;
 }
 
 export type ImageOptions = CommonOptions & {
   size?: number
-  shape?: ComponentShape
+  shape?: LayoutShape
 }
 
 export type SkeletonType = 'title' | 'paragraph' | 'image' | 'button'

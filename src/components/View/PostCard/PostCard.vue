@@ -12,7 +12,7 @@ interface PostCardProps {
   hasRemove?: boolean
 }
 
-const props = withDefaults(defineProps<PostCardProps>(), {
+withDefaults(defineProps<PostCardProps>(), {
   hasRemove: true
 })
 

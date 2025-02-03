@@ -49,7 +49,10 @@ const colorClassName = computed<string>(() => `home-${layout.color}`)
 
 const handleOpenPostModal = () => post.setOpenModal(true)
 
-const handleOpenCommentModal = () => comment.setOpenModal(true)
+const handleOpenCommentModal = (postId: string) => {
+  comment.setOpenModal(true)
+  setTimeout(() => post.setId(postId), 500)
+}
 
 const handleUpdateApiQuery = () => {
   if (isNoMorePosts.value) return
@@ -73,7 +76,11 @@ watch(
     <div class="home-wrap">
       <HomeActions @onClick="handleOpenPostModal" />
       <InfiniteScroll :isReach="isNoMorePosts" @onReach="handleUpdateApiQuery">
-        <PostCard v-for="post in posts" :post="post" @onComment="handleOpenCommentModal" />
+        <PostCard
+          v-for="post in posts"
+          :post="post"
+          @onComment="() => handleOpenCommentModal(String(post.id))"
+        />
         <HomeLoading v-if="isLoading" />
         <HomeEmpty v-if="isNoMorePosts" />
       </InfiniteScroll>

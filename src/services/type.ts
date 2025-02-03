@@ -2,6 +2,7 @@ import { ELang, ESort } from '@/common/enum'
 import { EGender, ERole } from './user/enum'
 import type { AxiosRequestConfig } from 'axios'
 import type { EMediaType } from './media/enum'
+import type { ComputedRef, Ref } from 'vue'
 
 export type Paging<T> = {
   totalItems: number
@@ -52,6 +53,8 @@ export type ApiQuery = {
   gender?: EGender
   fileType?: EMediaType;
 }
+
+export type ApiQueryReactive = Ref<ApiQuery> | ComputedRef<ApiQuery>
 
 export type ApiConfig<T> = {
   method: string

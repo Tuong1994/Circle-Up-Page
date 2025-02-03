@@ -1,10 +1,10 @@
-import { computed, watch, type Ref } from 'vue'
+import { computed, watch, type ComputedRef, type Ref } from 'vue'
 import { useQuery } from '@tanstack/vue-query'
 import { getApiQuery } from '@/services/helper'
 import { getPosts } from '@/services/post/api'
-import type { ApiQuery } from '@/services/type'
+import type { ApiQueryReactive } from '@/services/type'
 
-const useGetPostsPaging = (apiQuery: Ref<ApiQuery>) => {
+const useGetPostsPaging = (apiQuery: ApiQueryReactive) => {
   const queryKey = computed<string[]>(() => ['getPosts' + getApiQuery(apiQuery.value)])
 
   const getPostsPaging = async () => {
@@ -14,9 +14,7 @@ const useGetPostsPaging = (apiQuery: Ref<ApiQuery>) => {
 
   const { refetch, ...rest } = useQuery({ queryKey, queryFn: getPostsPaging })
 
-  watch(queryKey, () => {
-    refetch()
-  })
+  watch(queryKey, () => refetch())
 
   return { refetch, ...rest }
 }

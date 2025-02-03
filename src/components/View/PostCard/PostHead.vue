@@ -93,7 +93,7 @@ const handleRemove = () => emits('onRemove')
             <Button text>{{ t.lang.home.post.follow }}</Button>
           </Space>
           <Paragraph :size="11" variant="secondary">
-            {{ moment(post?.createdAt).fromNow() }}
+            {{ moment(post.createdAt).fromNow() }}
           </Paragraph>
         </div>
       </Space>
