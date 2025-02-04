@@ -6,7 +6,7 @@ import { Input, InputPassword } from '@/components/Control'
 import { routePaths } from '@/router'
 import { iconName } from '@/components/UI/Icon/constant'
 import type { AuthRegister } from '@/services/auth/type'
-import AuthFormLayout from '@/features/auth/AuthFormLayout.vue'
+import AuthFormLayout from '@/features/auth/components/AuthFormLayout.vue'
 import useLangStore from '@/stores/LangStore'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 

@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="M extends object">
+<script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
 import { Card, Typography } from '@/components/UI'
 import { Form } from '@/components/Control'
@@ -8,17 +8,17 @@ import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 
 const { Paragraph } = Typography
 
-interface AuthFormLayout extends FormProps<M> {
+interface AuthFormLayout<M extends object> extends FormProps<M> {
   title?: string
 }
 
-const props = defineProps<AuthFormLayout>()
+const props = defineProps<AuthFormLayout<any>>()
 
 const emits = defineEmits(['onFinish'])
 
 const layout = useLayoutStore()
 
-const handleFinish = (data: M) => emits('onFinish', data)
+const handleFinish = (data: any) => emits('onFinish', data)
 </script>
 
 <template>
