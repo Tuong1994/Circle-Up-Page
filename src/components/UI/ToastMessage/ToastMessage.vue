@@ -3,6 +3,7 @@ import { computed, withDefaults, type StyleValue } from 'vue'
 import { useRender } from '@/hooks'
 import ToastItem from './ToastItem.vue'
 import useToastStore from './ToastStore.ts'
+import useLayoutStore from '../Layout/LayoutStore.ts'
 
 export interface ToastMessageProps {
   rootClassName?: string
@@ -18,7 +19,11 @@ withDefaults(defineProps<ToastMessageProps>(), {
   showProgress: true
 })
 
+const layout = useLayoutStore()
+
 const toastStore = useToastStore()
+
+const themeClassName = computed<string>(() => `toast-message-${layout.theme}`)
 
 const hasToast = computed<boolean>(() => toastStore.toastMessages.length > 0)
 
@@ -27,7 +32,7 @@ const render = useRender(hasToast)
 
 <template>
   <Teleport to="#portal">
-    <div v-if="render" :style="rootStyle" :class="['toast-message', rootClassName]">
+    <div v-if="render" :style="rootStyle" :class="['toast-message', themeClassName, rootClassName]">
       <ToastItem
         v-for="toast in toastStore.toastMessages"
         :key="toast.id"

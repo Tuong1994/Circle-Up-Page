@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { connection } from '@/services/global/api'
+import { ToastMessage } from '@/components/UI'
 import ConnectionError from '../Error/ConnectionError.vue'
 import AppLayout from './AppLayout/AppLayout.vue'
 import AuthLayout from './AuthLayout/AuthLayout.vue'
 import useAuthStore from '@/stores/AuthStore'
 
-const auth = useAuthStore()
+const authStore = useAuthStore()
 
 const isError = ref<boolean>(false)
 
@@ -22,10 +23,11 @@ onMounted(() => handleConnection())
 
 <template>
   <ConnectionError :isError="isError" @onClose="handleCloseError" />
-  <AppLayout v-if="auth.isAuth">
+  <AppLayout v-if="authStore.auth.isAuth">
     <slot></slot>
   </AppLayout>
   <AuthLayout v-else>
     <slot></slot>
   </AuthLayout>
+  <ToastMessage />
 </template>

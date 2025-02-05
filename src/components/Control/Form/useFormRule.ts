@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 import type { FormRule } from '../type'
-import { PHONE_REGEX } from '@/common/constant/regex'
+import { PHONE_REGEX, REPLACE_MAX_NUM_REGEX, REPLACE_MIN_NUM_REGEX } from '@/common/constant/regex'
 import useLangStore from '@/stores/LangStore'
 
 const useFormRule = () => {
@@ -13,7 +13,7 @@ const useFormRule = () => {
   }
 
   const minNumber = (min: number): FormRule => {
-    return yup.number().min(min, rule.min)
+    return yup.number().min(min, rule.min.replace(REPLACE_MIN_NUM_REGEX, String(min)))
   }
 
   const email = (): FormRule => {
@@ -32,8 +32,8 @@ const useFormRule = () => {
     return yup
       .string()
       .required(rule.required)
-      .min(minLength, rule.minLength)
-      .max(maxLength, rule.maxLength)
+      .min(minLength, rule.minLength.replace(REPLACE_MIN_NUM_REGEX, String(minLength)))
+      .max(maxLength, rule.maxLength.replace(REPLACE_MAX_NUM_REGEX, String(maxLength)))
       .test('no-whitespace', rule.whiteSpace, (value) => Boolean(value && value === value.trim()))
   }
 

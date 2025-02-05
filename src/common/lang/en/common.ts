@@ -196,6 +196,7 @@ const common_en = {
       authEmail: 'Email is not correct. Please try again',
       authPassword: 'Password is not correct. Please try again',
       emailExist: 'Email is already exist',
+      signIn: "Sign in failed",
       logout: 'Logout failed',
       remove: 'Remove failed',
       api: 'Api network failed',

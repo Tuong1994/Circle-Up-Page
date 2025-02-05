@@ -196,6 +196,7 @@ const common_vn = {
       authEmail: 'Email không đúng. Vui lòng thử lại',
       authPassword: 'Mật khẩu không đúng. Vui lòng thử lại',
       emailExist: 'Email này đã tồn tại',
+      signIn: "Lỗi đăng nhập",
       logout: 'Lỗi đăng xuất',
       remove: 'Lỗi không thể xóa',
       api: 'Đã xảy ra lỗi',
