@@ -1,6 +1,6 @@
 import type { ERole } from '../user/enum'
 
-export type AuthInfo = {
+export type AuthPayload = {
   id: string
   email: string
   firstName: string
@@ -12,7 +12,7 @@ export type AuthInfo = {
 export type Auth = {
   accessToken: string
   expired: number
-  info: AuthInfo
+  payload: AuthPayload
   isAuth: boolean
 }
 

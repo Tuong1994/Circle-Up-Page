@@ -5,9 +5,12 @@ import { Grid, Icon, Space, Avatar, Card, Button, Typography, Divider } from '@/
 import { iconName } from '@/components/UI/Icon/constant'
 import { EHeaderFeatureType, EProfileMenuType } from '../../enum'
 import { routePaths } from '@/router'
+import type { ApiQuery } from '@/services/type'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLangStore from '@/stores/LangStore'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useAuthStore from '@/stores/AuthStore'
+import useLogout from '@/features/auth/hooks/useLogout'
 
 const { Row, Col } = Grid
 
@@ -24,6 +27,10 @@ const emits = defineEmits(['onBack', 'onSelect'])
 const t = useLangStore()
 
 const layout = useLayoutStore()
+
+const authStore = useAuthStore()
+
+const { mutate: onLogout, isPending } = useLogout()
 
 const items = computed(() => [
   {
@@ -48,7 +55,14 @@ const items = computed(() => [
 
 const handleBack = () => emits('onBack', EHeaderFeatureType.PROFILE)
 
-const handleSelect = (type: EProfileMenuType) => emits('onSelect', type)
+const handleSelect = (type: EProfileMenuType) => {
+  if (type === EProfileMenuType.LOGOUT) {
+    const userInfo = authStore.auth.payload
+    const apiQuery: ApiQuery = { userId: userInfo.id }
+    onLogout(apiQuery)
+  }
+  emits('onSelect', type)
+}
 </script>
 
 <template>

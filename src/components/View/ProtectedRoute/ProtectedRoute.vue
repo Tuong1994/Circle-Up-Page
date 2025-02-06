@@ -9,23 +9,23 @@ const { PATH } = localStorageKey
 
 const authStore = useAuthStore()
 
-const { push } = useRouter()
+const { push: routerPush } = useRouter()
 
 const isAuth = computed<boolean>(() => authStore.auth.isAuth)
 
 onMounted(() => {
-  if (!isAuth.value) push(routePaths.LOGIN)
+  if (!isAuth.value) routerPush(routePaths.LOGIN)
   else {
     if (localStorage.getItem(PATH)) {
       const cacheRoute = JSON.parse(localStorage.getItem(PATH) ?? '')
-      return push(cacheRoute)
+      return routerPush(cacheRoute)
     }
-    push(routePaths.HOME)
+    routerPush(routePaths.HOME)
   }
 })
 
 watch(isAuth, (newIsAuth) => {
-  if (newIsAuth) push(routePaths.HOME)
+  if (newIsAuth) routerPush(routePaths.HOME)
 })
 </script>
 

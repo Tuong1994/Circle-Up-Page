@@ -6,7 +6,8 @@ import helpers from '@/helpers'
 const useAuthStore = defineStore('auth', () => {
   const auth = ref<Auth>(helpers.getAuthInitialData())
   const setAuth = (data: Auth) => (auth.value = data)
-  return { auth, setAuth }
+  const resetAuth = () => auth.value = helpers.getAuthInitialData();
+  return { auth, setAuth, resetAuth }
 })
 
 export default useAuthStore

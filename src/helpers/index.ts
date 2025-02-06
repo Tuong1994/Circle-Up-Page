@@ -19,7 +19,7 @@ const helpers = {
       accessToken: '',
       expired: 0,
       isAuth: false,
-      info: {
+      payload: {
         id: '',
         email: '',
         firstName: '',

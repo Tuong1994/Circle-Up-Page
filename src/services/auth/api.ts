@@ -1,4 +1,4 @@
-import type { Auth, AuthChangePassword, AuthInfo, AuthLogin, AuthRegister } from './type'
+import type { Auth, AuthChangePassword, AuthPayload, AuthLogin, AuthRegister } from './type'
 import type { ApiQuery } from '../type'
 import { getApiQuery } from '../helper'
 import localStorageKey from '@/common/constant/localStorage'
@@ -12,7 +12,7 @@ export const signIn = async (data: AuthLogin) => {
 }
 
 export const signUp = async (data: AuthRegister) => {
-  const response = await Fetch.Post<AuthRegister, AuthInfo>(authApiPaths.signUp, data)
+  const response = await Fetch.Post<AuthRegister, AuthPayload>(authApiPaths.signUp, data)
   return response
 }
 
@@ -38,5 +38,6 @@ export const changePassword = async (query: ApiQuery, data: AuthChangePassword) 
 
 export const logout = async (query: ApiQuery) => {
   const response = await Fetch.Post<any, any>(authApiPaths.logout + getApiQuery(query), null)
+  localStorage.removeItem(localStorageKey.AUTH)
   return response
 }
