@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, defineEmits, defineProps } from 'vue'
 import { RouterLink } from 'vue-router'
-import { Grid, Icon, Space, Avatar, Card, Button, Typography, Divider } from '@/components/UI'
+import { Grid, Icon, Space, Avatar, Card, Button, Typography, Divider, Loading } from '@/components/UI'
 import { iconName } from '@/components/UI/Icon/constant'
 import { EHeaderFeatureType, EProfileMenuType } from '../../enum'
 import { routePaths } from '@/router'
@@ -15,6 +15,8 @@ import useLogout from '@/features/auth/hooks/useLogout'
 const { Row, Col } = Grid
 
 const { Paragraph } = Typography
+
+const { Spinner } = Loading
 
 interface FeatureProfileProps {
   responsive?: boolean
@@ -102,20 +104,41 @@ const handleSelect = (type: EProfileMenuType) => {
     </Row>
     <!-- Profile head mobile end -->
     <Divider />
-    <ItemWrapper v-for="item in items" :key="item.id" @click="() => handleSelect(item.type)">
-      <Row justify="between" aligns="middle">
-        <Col>
+
+    <template v-for="item in items" :key="item.id">
+      <ItemWrapper v-if="item.type !== EProfileMenuType.LOGOUT" @click="() => handleSelect(item.type)">
+        <Row justify="between" aligns="middle">
+          <Col>
+            <Space aligns="middle">
+              <Avatar :color="layout.color" :size="30">
+                <Icon :iconName="item.icon" />
+              </Avatar>
+              <Paragraph>{{ item.name }}</Paragraph>
+            </Space>
+          </Col>
+          <Col>
+            <Icon :size="18" :iconName="iconName.ANGLE_RIGHT" />
+          </Col>
+        </Row>
+      </ItemWrapper>
+      
+      <Space v-else justify="end">
+        <Button
+          rootClassName="mt-5"
+          :disabled="isPending"
+          :color="layout.color"
+          :shape="layout.shape"
+          @click="() => handleSelect(item.type)"
+        >
           <Space aligns="middle">
-            <Avatar :color="layout.color" :size="30">
-              <Icon :iconName="item.icon" />
+            <Avatar :color="layout.color" :size="25">
+              <Icon v-if="!isPending" :iconName="item.icon" />
+              <Spinner v-else />
             </Avatar>
             <Paragraph>{{ item.name }}</Paragraph>
           </Space>
-        </Col>
-        <Col>
-          <Icon v-if="item.type !== EProfileMenuType.LOGOUT" :size="18" :iconName="iconName.ANGLE_RIGHT" />
-        </Col>
-      </Row>
-    </ItemWrapper>
+        </Button>
+      </Space>
+    </template>
   </div>
 </template>
