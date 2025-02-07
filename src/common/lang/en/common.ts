@@ -15,6 +15,7 @@ const common_en = {
     profilePhotos: 'Photos'
   },
   header: {
+    menu: 'Menu',
     searchInput: {
       recent: 'Recent',
       placeholder: 'Search Circle Up'
@@ -196,7 +197,8 @@ const common_en = {
       authEmail: 'Email is not correct. Please try again',
       authPassword: 'Password is not correct. Please try again',
       emailExist: 'Email is already exist',
-      signIn: "Sign in failed",
+      alreadyAuth: 'You have already sign in, please try logout and re-login',
+      signIn: 'Sign in failed',
       logout: 'Logout failed',
       remove: 'Remove failed',
       api: 'Api network failed',

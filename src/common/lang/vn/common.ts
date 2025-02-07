@@ -15,6 +15,7 @@ const common_vn = {
     profilePhotos: 'Ảnh'
   },
   header: {
+    menu: 'Danh mục',
     searchInput: {
       recent: 'Gần đây',
       placeholder: 'Tìm kiếm Circle Up'
@@ -196,7 +197,8 @@ const common_vn = {
       authEmail: 'Email không đúng. Vui lòng thử lại',
       authPassword: 'Mật khẩu không đúng. Vui lòng thử lại',
       emailExist: 'Email này đã tồn tại',
-      signIn: "Lỗi đăng nhập",
+      alreadyAuth: 'Bạn đã đăng nhập, vui lòng thử đăng xuất và đăng nhập lại',
+      signIn: 'Lỗi đăng nhập',
       logout: 'Lỗi đăng xuất',
       remove: 'Lỗi không thể xóa',
       api: 'Đã xảy ra lỗi',

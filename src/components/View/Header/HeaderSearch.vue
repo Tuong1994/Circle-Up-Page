@@ -59,7 +59,7 @@ watch(open, (newValue) => {
   <Space aligns="middle" rootClassName="search-input">
     <Space aligns="middle" :rootClassName="`input-logo ${logoClassName}`">
       <Logo :responsive="responsive" />
-      <Avatar v-if="responsive" :size="avatarSize" @click="handleOpen">
+      <Avatar v-if="responsive" :color="layout.color" :size="avatarSize" @click="handleOpen">
         <Icon :iconName="iconName.SEARCH" />
       </Avatar>
     </Space>
@@ -106,4 +106,3 @@ watch(open, (newValue) => {
     </div>
   </Space>
 </template>
-@/hooks/features/useClickOutside

@@ -6,6 +6,7 @@ import { iconName } from '@/components/UI/Icon/constant'
 import type { DrawerProps } from '@/components/UI/Drawer/Drawer.vue'
 import useMenuItems from '@/components/View/AppContainer/AppLayout/hooks/useMenuItems'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
+import useLangStore from '@/stores/LangStore'
 
 const { Row, Col } = Grid
 
@@ -19,6 +20,8 @@ const emits = defineEmits(['onClose'])
 
 const { homeMenuItems } = useMenuItems()
 
+const t = useLangStore()
+
 const layout = useLayoutStore()
 
 const handleClose = () => emits('onClose')
@@ -29,7 +32,9 @@ const handleClose = () => emits('onClose')
     <template #body>
       <Row aligns="middle" justify="between">
         <Col>
-          <Paragraph :size="18" :weight="600">Menu</Paragraph>
+          <Paragraph :size="18" :weight="600">
+            {{ t.lang.common.header.menu }}
+          </Paragraph>
         </Col>
         <Col>
           <Icon :size="18" :iconName="iconName.X_MARK" @click="handleClose" />

@@ -50,6 +50,7 @@
           height: $h-10 * 4;
         }
         @include respond(mdPhone) {
+          padding: $p-1 0;
           width: $w-full;
           min-height: max-content;
           position: unset;
@@ -161,9 +162,9 @@
 // Theme
 .header-dark {
   .input-control {
+    background: $bg-dark !important;
     .control-dropdown {
       background: $bg-dark !important;
-      box-shadow: 2px 2px 10px $bg-black !important;
     }
   }
   .header-navbar {

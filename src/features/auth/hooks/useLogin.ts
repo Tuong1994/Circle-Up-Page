@@ -26,6 +26,7 @@ const useLogin = () => {
         let message = t.lang.common.message.error.api
         if (status === HttpStatus.NOT_FOUND) message = t.lang.common.message.error.authEmail
         if (status === HttpStatus.FORBIDDEN) message = t.lang.common.message.error.authPassword
+        if (status === HttpStatus.BAD_REQUEST) message = t.lang.common.message.error.alreadyAuth
         return messageApi.error(message)
       }
       messageApi.success(t.lang.common.message.success.signIn)

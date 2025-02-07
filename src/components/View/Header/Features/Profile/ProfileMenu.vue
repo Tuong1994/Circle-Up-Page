@@ -6,6 +6,7 @@ import { iconName } from '@/components/UI/Icon/constant'
 import { EHeaderFeatureType, EProfileMenuType } from '../../enum'
 import { routePaths } from '@/router'
 import type { ApiQuery } from '@/services/type'
+import type { AuthPayload } from '@/services/auth/type'
 import ItemWrapper from '@/components/View/ItemWrapper/ItemWrapper.vue'
 import useLangStore from '@/stores/LangStore'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
@@ -34,6 +35,8 @@ const authStore = useAuthStore()
 
 const { mutate: onLogout, isPending } = useLogout()
 
+const profile = computed<AuthPayload>(() => authStore.auth.payload)
+
 const items = computed(() => [
   {
     id: 'language',
@@ -59,8 +62,7 @@ const handleBack = () => emits('onBack', EHeaderFeatureType.PROFILE)
 
 const handleSelect = (type: EProfileMenuType) => {
   if (type === EProfileMenuType.LOGOUT) {
-    const userInfo = authStore.auth.payload
-    const apiQuery: ApiQuery = { userId: userInfo.id }
+    const apiQuery: ApiQuery = { userId: profile.value.id }
     onLogout(apiQuery)
   }
   emits('onSelect', type)
@@ -75,7 +77,9 @@ const handleSelect = (type: EProfileMenuType) => {
         <template #body>
           <Space aligns="middle">
             <Avatar :size="35" :color="layout.color" />
-            <Paragraph>Profile</Paragraph>
+            <Paragraph>
+              {{ profile.fullName }}
+            </Paragraph>
           </Space>
         </template>
       </Card>
@@ -84,13 +88,15 @@ const handleSelect = (type: EProfileMenuType) => {
 
     <!-- Profile head mobile start -->
     <Row v-if="responsive" aligns="middle" justify="between">
-      <Col :xs="14" :md="12">
+      <Col :xs="18" :md="12">
         <Card bodyClassName="!p-3">
           <template #body>
             <RouterLink :to="routePaths.PROFILE" @click="handleBack">
               <Space aligns="middle">
                 <Avatar :size="35" :color="layout.color" />
-                <Paragraph>Profile</Paragraph>
+                <Paragraph>
+                  {{ profile.fullName }}
+                </Paragraph>
               </Space>
             </RouterLink>
           </template>
