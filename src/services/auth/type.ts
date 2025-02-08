@@ -11,7 +11,7 @@ export type AuthPayload = {
 
 export type Auth = {
   accessToken: string
-  expired: number
+  exp: number
   payload: AuthPayload
   isAuth: boolean
 }
