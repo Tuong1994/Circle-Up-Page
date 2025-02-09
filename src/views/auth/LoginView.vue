@@ -59,7 +59,13 @@ const handleFinish = (data: AuthLogin) => onLogin(data)
           </Button>
         </RouterLink>
       </Space>
-      <Button rootClassName="w-full" type="submit" :color="layout.color" :shape="layout.shape">
+      <Button
+        type="submit"
+        rootClassName="w-full"
+        :loading="isPending"
+        :color="layout.color"
+        :shape="layout.shape"
+      >
         {{ t.lang.auth.login.title }}
       </Button>
       <Divider />

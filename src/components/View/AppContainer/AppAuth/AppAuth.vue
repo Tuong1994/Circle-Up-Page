@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import type { Auth } from '@/services/auth/type'
-import useAuthStore from '@/stores/AuthStore'
+import LogoutModal from './LogoutModal.vue'
 import localStorageKey from '@/common/constant/localStorage'
+import useAuthStore from '@/stores/AuthStore'
 import useRefreshToken from './hooks/useRefreshToken'
 
 const { AUTH } = localStorageKey
 
 const authStore = useAuthStore()
 
-useRefreshToken()
+const { openModal, handleCloseModal } = useRefreshToken()
 
 onMounted(() => {
   const authStorage = localStorage.getItem(AUTH)
@@ -21,4 +22,5 @@ onMounted(() => {
 
 <template>
   <slot></slot>
+  <LogoutModal :open="openModal" @onClose="handleCloseModal" />
 </template>

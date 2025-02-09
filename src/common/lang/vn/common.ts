@@ -14,6 +14,9 @@ const common_vn = {
     profileFriends: 'Bạn bè',
     profilePhotos: 'Ảnh'
   },
+  auth: {
+    sessionExpMessage: 'Phiên của bạn đã hết hạn, vui lòng đăng nhập lại'
+  },
   header: {
     menu: 'Danh mục',
     searchInput: {

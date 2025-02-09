@@ -22,6 +22,8 @@ const useRefreshToken = () => {
     if (!response.success) openModal.value = true
   }
 
+  const handleCloseModal = () => openModal.value = false
+
   watch(
     isAuth,
     (newIsAuth) => {
@@ -44,7 +46,7 @@ const useRefreshToken = () => {
     if (interval) clearInterval(interval)
   })
 
-  return { openModal }
+  return { openModal, handleCloseModal }
 }
 
 export default useRefreshToken

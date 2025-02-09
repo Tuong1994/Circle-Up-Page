@@ -14,6 +14,9 @@ const common_en = {
     profileFriends: 'Friends',
     profilePhotos: 'Photos'
   },
+  auth: {
+    sessionExpMessage: 'Your session expired, please re-login'
+  },
   header: {
     menu: 'Menu',
     searchInput: {
