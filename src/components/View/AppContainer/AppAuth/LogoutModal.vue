@@ -22,13 +22,13 @@ const layout = useLayoutStore()
 
 const authStore = useAuthStore()
 
-const { mutate: onLogout, isSuccess, isError, isPending } = useLogout()
+const { mutate: onLogout, isPending } = useLogout()
 
 const handleLogout = () => {
   const { id: userId } = authStore.auth.payload
   const apiQuery: ApiQuery = { userId }
   onLogout(apiQuery)
-  if (isSuccess || isError) emits('onClose')
+  emits('onClose')
 }
 </script>
 

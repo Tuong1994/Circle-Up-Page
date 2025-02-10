@@ -16,6 +16,10 @@ export type Auth = {
   isAuth: boolean
 }
 
+export type AuthEmail = {
+  email: string
+}
+
 export type AuthLogin = {
   email: string
   password: string

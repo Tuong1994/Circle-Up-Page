@@ -202,6 +202,7 @@ const common_en = {
       emailExist: 'Email is already exist',
       alreadyAuth: 'You have already sign in, please try logout and re-login',
       signIn: 'Sign in failed',
+      signUp: 'Sign up failed',
       logout: 'Logout failed',
       remove: 'Remove failed',
       api: 'Api network failed',

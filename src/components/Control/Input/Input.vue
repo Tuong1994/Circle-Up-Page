@@ -110,12 +110,13 @@ const iconSize = computed<number>(() => {
 
 const handleChange = (e: Event) => {
   const value = (e.target as HTMLInputElement).value
+  setValue(value)
   emits('update:modelValue', value)
 }
 
 const handleClearInput = () => (form?.isVee ? setValue('') : emits('update:modelValue', ''))
 
-const onChangeFn = form?.isVee ? veeOnChange : handleChange
+// const onChangeFn = form?.isVee ? veeOnChange : handleChange
 
 watchEffect(() => {
   if (!form?.autoFocusValidation) return
@@ -158,7 +159,7 @@ watchEffect(() => {
             :placeholder="controlPlaceholder"
             :disabled="controlDisabled"
             :class="['control-box', inputClassName]"
-            @input="onChangeFn"
+            @input="handleChange"
             @blur="veeOnBlur"
           />
 

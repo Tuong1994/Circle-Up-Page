@@ -202,6 +202,7 @@ const common_vn = {
       emailExist: 'Email này đã tồn tại',
       alreadyAuth: 'Bạn đã đăng nhập, vui lòng thử đăng xuất và đăng nhập lại',
       signIn: 'Lỗi đăng nhập',
+      signUp: 'Lỗi đăng ký',
       logout: 'Lỗi đăng xuất',
       remove: 'Lỗi không thể xóa',
       api: 'Đã xảy ra lỗi',

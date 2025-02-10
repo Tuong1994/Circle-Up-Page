@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, withDefaults, useSlots, toRefs, watchEffect, type StyleValue } from 'vue'
+import { ref, computed, withDefaults, useSlots, toRefs, watchEffect, type StyleValue, type VNode } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant.ts'
 import type { ComponentColor, ComponentSize } from '@/common/type'
 import { useRender, useOverflow } from '@/hooks'
@@ -30,6 +30,13 @@ export interface ModalProps {
   cancelButtonProps?: ButtonProps
 }
 
+type ModalSlots = {
+  head?: () => VNode
+  body?: () => VNode
+  foot?: () => VNode
+  default?: () => VNode
+}
+
 const props = withDefaults(defineProps<ModalProps>(), {
   rootClassName: '',
   headClassName: '',
@@ -54,7 +61,7 @@ const { open } = toRefs(props)
 
 const render = useRender(open)
 
-const slots = useSlots()
+const slots = useSlots() as ModalSlots
 
 const layout = useLayoutStore()
 

@@ -1,9 +1,14 @@
-import type { Auth, AuthChangePassword, AuthPayload, AuthLogin, AuthRegister } from './type'
+import type { Auth, AuthChangePassword, AuthPayload, AuthLogin, AuthRegister, AuthEmail } from './type'
 import type { ApiQuery } from '../type'
 import { getApiQuery } from '../helper'
 import localStorageKey from '@/common/constant/localStorage'
 import authApiPaths from './path'
 import Fetch from '..'
+
+export const validateEmail = async (data: AuthEmail) => {
+  const response = await Fetch.Post<AuthEmail, any>(authApiPaths.validateEmail, data)
+  return response
+}
 
 export const signIn = async (data: AuthLogin) => {
   const response = await Fetch.Post<AuthLogin, Auth>(authApiPaths.signIn, data)
