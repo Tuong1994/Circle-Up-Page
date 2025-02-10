@@ -5,7 +5,7 @@ import { Button, Divider, Icon } from '@/components/UI'
 import { Input, InputPassword } from '@/components/Control'
 import { routePaths } from '@/router'
 import { iconName } from '@/components/UI/Icon/constant'
-import type { AuthRegister } from '@/services/auth/type'
+import type { AuthLogin, AuthRegister } from '@/services/auth/type'
 import AuthFormLayout from '@/features/auth/components/AuthFormLayout.vue'
 import EmailValidateMessage from '@/features/auth/components/EmailValidateMessage.vue'
 import useLangStore from '@/stores/LangStore'
@@ -14,6 +14,7 @@ import useFormRule from '@/components/Control/Form/useFormRule'
 import useRegister from '@/features/auth/hooks/useRegister'
 import useTypingDebounce from '@/hooks/features/useDebounce'
 import useValidateEmail from '@/features/auth/hooks/useValidateEmail'
+import useLogin from '@/features/auth/hooks/useLogin'
 
 const t = useLangStore()
 
@@ -32,13 +33,20 @@ const emailValue = computed<string>(() => formData.value.email)
 
 const typingDebounce = useTypingDebounce(emailValue)
 
-const { mutate: onRegister, isPending: isLoading } = useRegister(formData.value)
+const { mutate: onLogin } = useLogin()
+
+const { mutate: onRegister, isSuccess, isPending: isLoading } = useRegister()
 
 const { mutate: onValidateEmail, isPending: isValidating, isInValid } = useValidateEmail()
 
-const showValidateMessage = computed<boolean>(() => Boolean(emailValue.value))
+const showValidateMessage = computed<boolean>(() => Boolean(typingDebounce.value))
 
-const handleFinish = (data: AuthRegister) => console.log(data)
+const handleFinish = (data: AuthRegister) => {
+  onRegister(data)
+  if (!isSuccess) return
+  const authLogin: AuthLogin = { email: data.email, password: data.password }
+  onLogin(authLogin)
+}
 
 watch(typingDebounce, (newTypingDebounce) => {
   if (!newTypingDebounce) return

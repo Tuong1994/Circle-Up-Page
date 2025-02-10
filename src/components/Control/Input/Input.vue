@@ -110,11 +110,15 @@ const iconSize = computed<number>(() => {
 
 const handleChange = (e: Event) => {
   const value = (e.target as HTMLInputElement).value
-  setValue(value)
+  if (form?.isVee) setValue(value)
   emits('update:modelValue', value)
 }
 
-const handleClearInput = () => (form?.isVee ? setValue('') : emits('update:modelValue', ''))
+const handleClearInput = () => {
+  // (form?.isVee ? setValue('') : emits('update:modelValue', ''))
+  if (form?.isVee) setValue('')
+  emits('update:modelValue', '')
+}
 
 // const onChangeFn = form?.isVee ? veeOnChange : handleChange
 
